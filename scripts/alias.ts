@@ -12,7 +12,7 @@ export async function alias(): Promise<Array<Alias>> {
 
   return dirArr.map(packagePath => {
     return {
-      find: new RegExp(`^@x-ui\\/vc-${packagePath}(\\/(dist))?$`),
+      find: new RegExp(`^@xw-ui\\/xw-${packagePath}(\\/(dist))?$`),
       replacement: path.join(projectPath, `/${packagePath}/index`)
     }
   })

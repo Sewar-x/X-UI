@@ -1,15 +1,15 @@
 <template>
-  <div class="vc-menu-wrapper">
-    <el-menu :collapse="_collapse" class="vc-menu" v-bind="$attrs">
-      <el-menu-item @click="onTitleClick" class="vc-menu-title" v-if="title" index="title">
-        <i class="el-icon vc-icon-logo">
-          <img class="vc-logo" :src="logo" />
+  <div class="xw-menu-wrapper">
+    <el-menu :collapse="_collapse" class="xw-menu" v-bind="$attrs">
+      <el-menu-item @click="onTitleClick" class="xw-menu-title" v-if="title" index="title">
+        <i class="el-icon xw-icon-logo">
+          <img class="xw-logo" :src="logo" />
         </i>
-        <span slot="title" class="vc-title">{{title}}</span>
+        <span slot="title" class="xw-title">{{title}}</span>
       </el-menu-item>
       <slot></slot>
     </el-menu>
-    <div class="vc-trigger">
+    <div class="xw-trigger">
       <i style="display: inline-block;" class="el-icon el-icon-trigger" @click="toggle">
         <icon-open v-if="collapse" />
         <icon-close v-else="!collapse"/>
@@ -66,12 +66,12 @@ export default {
 </script>
 
 <style lang="less">
-.vc-menu-wrapper {
+.xw-menu-wrapper {
   height: 100%;
   position: relative;
   padding-bottom: 48px;
   box-sizing: border-box;
-  .vc-menu-title {
+  .xw-menu-title {
     border-bottom: 1px solid rgba(0,0,0,.1);
     &:hover {
       background: #fff!important;
@@ -80,7 +80,7 @@ export default {
 }
 
 .el-menu:not(.el-menu--collapse) {
-  .vc-title {
+  .xw-title {
     height: 56px;
     line-height: 56px;
     padding-left: 16px;
@@ -91,9 +91,9 @@ export default {
   }
 }
 
-.vc-menu {
+.xw-menu {
   &:not(.el-menu.el-menu--collapse) {
-    width: var(--vc-menu-width);
+    width: var(--xw-menu-width);
   }
 
   &.el-menu.el-menu--collapse {
@@ -106,12 +106,12 @@ export default {
   overflow-y: auto;
 }
 
-.vc-logo {
+.xw-logo {
   width: 32px;
   margin-left: 32px - 24px;
 }
 
-.vc-trigger {
+.xw-trigger {
   position: absolute;
   display: flex;
   align-items: center;
@@ -129,11 +129,11 @@ export default {
     text-align: center;
     width: 64px;
     &:hover {
-      color: var(--vc-color-primary);
+      color: var(--xw-color-primary);
     }
   }
 }
-.vc-icon-logo {
+.xw-icon-logo {
   width: 32px;
   height: 32px;
 }

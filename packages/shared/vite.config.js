@@ -8,7 +8,7 @@ export default defineConfig(async ({ command, mode }) => {
       lib: {
         entry: path.resolve(__dirname, './index.ts'),
         name: 'voiceShared',
-        fileName: 'vc-shared',
+        fileName: 'xw-shared',
         formats: ['es', 'cjs', 'umd', 'iife']
       }
     },

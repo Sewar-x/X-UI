@@ -12,7 +12,7 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@x-ui/*": [
+      "@xw-ui/*": [
         "./packages/*",
         "./*"
       ]

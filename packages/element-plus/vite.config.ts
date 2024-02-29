@@ -23,7 +23,7 @@ export default defineConfig(async ({ command, mode }) => {
       lib: {
         entry: path.resolve(__dirname, './components/index.ts'),
         name: 'voiceUi',
-        fileName: 'vc-element-plus',
+        fileName: 'xw-element-plus',
         formats: ['es', 'cjs', 'umd', 'iife']
       }
     },

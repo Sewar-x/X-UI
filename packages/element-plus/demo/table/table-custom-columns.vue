@@ -1,14 +1,14 @@
 <template>
-  <vc-table :data="tableData" :default-columns="defaultColumns">
+  <xw-table :data="tableData" :default-columns="defaultColumns">
     <el-table-column prop="date" label="Date" width="160" />
     <el-table-column prop="name" label="Name" width="90" />
     <el-table-column prop="age" label="Age" width="90" />
     <el-table-column prop="address" label="Address" />
-  </vc-table>
+  </xw-table>
 </template>
 
 <script setup>
-import { VcTable } from '@x-ui/vc-element-plus'
+import { VcTable } from '@xw-ui/xw-element-plus'
 
 const defaultColumns = ['Date', 'Name', 'Address']
 

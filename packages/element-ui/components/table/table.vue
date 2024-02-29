@@ -2,7 +2,7 @@
   <div class="table-wrapper">
     <div class="table-options">
       <el-popover
-          popper-class="vc-table-popover"
+          popper-class="xw-table-popover"
           placement="bottom"
       >
         <el-checkbox
@@ -110,7 +110,7 @@ export default {
 }
 </style>
 <style lang="less">
-.vc-table-popover {
+.xw-table-popover {
   .el-checkbox-group {
     display: flex;
     flex-direction: column;
@@ -123,7 +123,7 @@ export default {
       content: "";
       width: 100%;
       height: 2px;
-      background-color: var(--vc-color-primary-light-8);
+      background-color: var(--xw-color-primary-light-8);
     }
   }
 

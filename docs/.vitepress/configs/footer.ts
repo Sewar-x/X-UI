@@ -1,4 +1,4 @@
 export default {
-  message: 'x-ui-design',
+  message: 'xw-ui design by Sewen',
   copyright: 'Copyright © 2024-present Sewen'
 }

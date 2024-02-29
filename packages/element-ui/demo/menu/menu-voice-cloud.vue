@@ -1,7 +1,7 @@
 <template>
   <el-container class="aside">
     <el-aside>
-      <vc-menu title="" :collapse.sync="collapse">
+      <xw-menu title="" :collapse.sync="collapse">
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-location"></i>
@@ -32,7 +32,7 @@
           <i class="el-icon-setting"></i>
           <span slot="title">导航四</span>
         </el-menu-item>
-      </vc-menu>
+      </xw-menu>
     </el-aside>
     <el-main>
     </el-main>
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { VcMenu } from '@x-ui/vc-element-ui'
+import { VcMenu } from '@xw-ui/xw-element-ui'
 
 export default {
   name: 'MenuVoiceCloud',

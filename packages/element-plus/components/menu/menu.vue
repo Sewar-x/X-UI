@@ -106,7 +106,7 @@ export default defineComponent({
 
 .menu {
   &:not(.el-menu.el-menu--collapse) {
-    width: var(--vc-menu-width);
+    width: var(--xw-menu-width);
   }
 
   &.el-menu.el-menu--collapse {
@@ -139,7 +139,7 @@ export default defineComponent({
     width: 64px;
     text-align: center;
     &:hover {
-      color: var(--vc-color-primary);
+      color: var(--xw-color-primary);
     }
   }
 }

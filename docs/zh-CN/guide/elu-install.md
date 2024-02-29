@@ -1,4 +1,4 @@
-# 使用 `vc-element-ui`
+# 使用 `xw-element-ui`
 
 本节将介绍如何在项目中使用 Vc Element Ui。
 
@@ -24,13 +24,13 @@ pnpm install xxx
 
 ## 快速开始
 ### 1. 完整引入
-`vc-element-ui` 将会在Vue应用中进行**全局组件注册**。
+`xw-element-ui` 将会在Vue应用中进行**全局组件注册**。
 
 ```js
 // main.js
 import Vue from 'vue'
-import VcElementUi from '@vc-element-ui'
-import '@vc-element-ui/dist/style.css'
+import VcElementUi from '@xw-element-ui'
+import '@xw-element-ui/dist/style.css'
 
 Vue.use(VcElementUi)
 ```
@@ -40,13 +40,13 @@ Vue.use(VcElementUi)
     ```html
     <!-- App.vue -->
     <template>
-      <vc-table>
+      <xw-table>
         <el-table-column ... />
-      </vc-table>
+      </xw-table>
     </template>
     
     <script>
-      import { VcTable } from '@vc-element-ui'
+      import { VcTable } from '@xw-element-ui'
       
       export default {
         name: 'App',
@@ -58,7 +58,7 @@ Vue.use(VcElementUi)
 2. 在全局中进行 `Vc组件` 部分注册
     ```js
     import Vue from 'vue';
-    import { VcTable } from '@vc-element-ui';
+    import { VcTable } from '@xw-element-ui';
     import App from './App.vue';
     
     Vue.component(VcTable.name, VcTable);

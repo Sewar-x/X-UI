@@ -1,10 +1,13 @@
 node_modules
-
+pnpm-lock.yaml
 # Local Netlify folder
 .netlify
 
 # 文档忽略文件
 docs/**/node_modules
+docs/**/pnpm-lock.yaml
+docs/.vitepress/cache
 
 # 项目文件忽略
 packages/**/node_modules
+packages/**/pnpm-lock.yaml

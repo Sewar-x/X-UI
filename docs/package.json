@@ -1,5 +1,5 @@
 {
-  "name": "@x-ui/docs",
+  "name": "@xw-ui/docs",
   "version": "1.0.0",
   "scripts": {
     "docs:dev": "vitepress dev",
@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.6",
-    "@x-ui/vc-element-plus": "workspace:*",
+    "@xw-ui/xw-element-plus": "workspace:*",
     "@vueuse/core": "^8.7.5",
     "element-plus": "^2.2.8",
     "less": "^4.1.3",

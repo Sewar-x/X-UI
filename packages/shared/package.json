@@ -1,9 +1,9 @@
 {
-  "name": "@x-ui/vc-shared",
+  "name": "@xw-ui/xw-shared",
   "version": "v1.0.2",
   "description": "工具函数",
-  "main": "dist/vc-shared.cjs.js",
-  "module": "dist/vc-shared.es.js",
+  "main": "dist/xw-shared.cjs.js",
+  "module": "dist/xw-shared.es.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build"

@@ -3,8 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@element-plus/icons-vue': ^2.0.6
   '@vitejs/plugin-vue': ^2.3.3
-  '@x-ui/hooks': workspace:*
-  '@x-ui/vc-shared': workspace:*
+  '@xw-ui/hooks': workspace:*
+  '@xw-ui/vc-shared': workspace:*
   element-plus: ^2.2.8
   less: ^4.1.3
   lodash: ^4.17.21
@@ -13,8 +13,8 @@ specifiers:
 
 dependencies:
   '@element-plus/icons-vue': 2.3.1_vue@3.4.21
-  '@x-ui/hooks': link:../hooks
-  '@x-ui/vc-shared': link:../shared
+  '@xw-ui/hooks': link:../hooks
+  '@xw-ui/vc-shared': link:../shared
   lodash: 4.17.21
 
 devDependencies:

@@ -143,7 +143,7 @@ export default {
 
 .container {
   border: 1px solid var(--vp-custom-block-details-border);
-  border-radius: var(--vc-border-radius-base);
+  border-radius: var(--xw-border-radius-base);
 }
 .full-screen-container {
   position: fixed;
@@ -156,7 +156,7 @@ export default {
 }
 .demo {
   .menu {
-    border-radius: var(--vc-border-radius-base) var(--vc-border-radius-base) 0 0;
+    border-radius: var(--xw-border-radius-base) var(--xw-border-radius-base) 0 0;
     height: @menu-height;
     line-height: @menu-height;
     background-color: var(--vp-custom-block-details-bg);
@@ -219,7 +219,7 @@ export default {
   }
   .hide-code-btn {
     border-top: 1px solid var(--vp-custom-block-details-border);
-    border-radius: 0 0 var(--vc-border-radius-base) var(--vc-border-radius-base);
+    border-radius: 0 0 var(--xw-border-radius-base) var(--xw-border-radius-base);
     position: sticky;
     bottom: 0;
     height: 40px;

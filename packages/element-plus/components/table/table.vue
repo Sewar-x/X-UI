@@ -53,7 +53,7 @@ import { ElPopover, ElCheckbox, ElCheckboxGroup, ElIcon } from 'element-plus'
 import RenderElTable from './render-el-table.vue'
 import { Setting } from '@element-plus/icons-vue'
 import { ref, onMounted} from 'vue'
-import { usePrefix } from '@x-ui/hooks';
+import { usePrefix } from '@xw-ui/hooks';
 
 const { classPrefix } = usePrefix()
 

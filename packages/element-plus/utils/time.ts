@@ -1,4 +1,4 @@
-import {  createDateRangeShortcuts as create } from '@x-ui/vc-shared'
+import {  createDateRangeShortcuts as create } from '@xw-ui/xw-shared'
 
 export function createDateRangeShortcuts () {
   const shortcuts = create()

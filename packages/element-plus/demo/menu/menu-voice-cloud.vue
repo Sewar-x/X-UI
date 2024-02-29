@@ -1,7 +1,7 @@
 <template>
   <el-container class="aside">
     <el-aside>
-      <vc-menu title="" v-model:collapse="collapse">
+      <xw-menu title="" v-model:collapse="collapse">
         <el-sub-menu index="0">
           <template #title>
             <el-icon>
@@ -39,7 +39,7 @@
             <notebook />
           </el-icon><template #title>操作日志</template>
         </el-menu-item>
-      </vc-menu>
+      </xw-menu>
     </el-aside>
     <el-main>
 
@@ -49,7 +49,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { VcMenu } from '@x-ui/vc-element-plus'
+import { VcMenu } from '@xw-ui/xw-element-plus'
 import {
   Odometer,
   Monitor,

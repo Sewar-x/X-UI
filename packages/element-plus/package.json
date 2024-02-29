@@ -1,9 +1,9 @@
 {
-  "name": "@x-ui/vc-element-plus",
+  "name": "@xw-ui/xw-element-plus",
   "version": "1.0.0",
   "description": "二次封装 element-plus",
-  "main": "dist/vc-element-plus.cjs.js",
-  "moudle": "dist/vc-element-plus.es.js",
+  "main": "dist/xw-element-plus.cjs.js",
+  "moudle": "dist/xw-element-plus.es.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -17,8 +17,8 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.6",
-    "@x-ui/vc-shared": "workspace:*",
-    "@x-ui/hooks": "workspace:*",
+    "@xw-ui/xw-shared": "workspace:*",
+    "@xw-ui/hooks": "workspace:*",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

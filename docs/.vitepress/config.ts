@@ -2,28 +2,27 @@ import { defineConfig } from 'vitepress'
 import nav from './configs/nav'
 import sidebar from './configs/sidebar'
 import footer from './configs/footer'
-import { mdPlugin } from './configs/plugins'
-
-const base = '/'
-
 export default defineConfig({
-  title: 'x-ui-design',
+  title: 'XW-UI',
   description: '',
   appearance: false,
-  base,
+  base: '/',
   head: [
     [
       'link',
       {
         rel: 'icon',
-        href: '/images/x-ui-icon.svg'
+        href: '/images/xw-ui-icon.svg'
       }
     ]
   ],
   themeConfig: {
-    logo: '/images/x-ui-icon.svg',
+    logo: '/images/xw-ui-icon.svg',
     nav,
     sidebar,
-    footer
+    footer,
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/Sewar-x' },
+    ]
   }
 })

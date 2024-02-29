@@ -1,5 +1,5 @@
 import React from 'react'
-import { VcButton } from '@x-ui/vc-ant-design'
+import { VcButton } from '@xw-ui/xw-ant-design'
 
 const ButtonDemo = () => {
   return <>

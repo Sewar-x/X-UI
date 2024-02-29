@@ -16,7 +16,7 @@ export default defineConfig(async ({ command, mode }) => {
       lib: {
         entry: path.resolve(__dirname, './components/index.ts'),
         name: 'voiceUi',
-        fileName: 'vc-ant-design',
+        fileName: 'xw-ant-design',
         formats: ['es', 'cjs', 'umd', 'iife']
       }
     },

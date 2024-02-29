@@ -1,5 +1,5 @@
 <template>
-  <vc-table :data="tableData" :default-columns="defaultColumns">
+  <xw-table :data="tableData" :default-columns="defaultColumns">
     <el-table-column
         prop="date"
         label="日期"
@@ -19,11 +19,11 @@
         prop="address"
         label="地址">
     </el-table-column>
-  </vc-table>
+  </xw-table>
 </template>
 
 <script>
-import { VcTable } from '@x-ui/vc-element-ui'
+import { VcTable } from '@xw-ui/xw-element-ui'
 export default {
   name: 'TableCustomColumns',
   components: { VcTable },

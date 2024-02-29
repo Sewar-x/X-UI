@@ -9,7 +9,7 @@
 
 <script setup>
 import { ref, watch } from 'vue'
-import { createDateRangeShortcuts } from '@x-ui/vc-element-plus'
+import { createDateRangeShortcuts } from '@xw-ui/xw-element-plus'
 
 const shortcuts = createDateRangeShortcuts()
 
