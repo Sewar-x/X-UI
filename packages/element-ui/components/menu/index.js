@@ -4,8 +4,8 @@ Menu.install = function (Vue) {
   Vue.component(Menu.name, Menu)
 }
 
-export const VcMenu = Menu
+export const XMenu = Menu
 
-export default VcMenu
+export default XMenu
 
 export * from './'

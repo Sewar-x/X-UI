@@ -1,9 +1,9 @@
 import { XTable } from './components/table'
-import { VcMenu } from './components/menu'
+import { XMenu } from './components/menu'
 
 const elmUiComponents = [
   XTable,
-  VcMenu
+  XMenu
 ]
 
 export const installer = (Vue) => {

@@ -24,7 +24,7 @@ import Logo from './assets/logo.png'
 import IconOpen from './iconOpen.vue'
 import IconClose from './iconClose.vue'
 export default {
-  name: 'VcMenu',
+  name: 'XMenu',
   components: { ElMenu, ElMenuItem, IconClose, IconOpen },
   props: {
     title: {

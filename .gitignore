@@ -7,7 +7,10 @@ pnpm-lock.yaml
 docs/**/node_modules
 docs/**/pnpm-lock.yaml
 docs/.vitepress/cache
-
+docs/.vitepress/dist
+docs/**/.pnpm-debug.log
 # 项目文件忽略
 packages/**/node_modules
 packages/**/pnpm-lock.yaml
+packages/**/dist
+packages/**/.pnpm-debug.log

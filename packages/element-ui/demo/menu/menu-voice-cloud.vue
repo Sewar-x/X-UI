@@ -40,12 +40,12 @@
 </template>
 
 <script>
-import { VcMenu } from '@xw-ui/xw-element-ui'
+import { XMenu } from '@xw-ui/xw-element-ui'
 
 export default {
   name: 'MenuVoiceCloud',
   components: {
-    VcMenu
+    XMenu
   },
   data () {
     return {

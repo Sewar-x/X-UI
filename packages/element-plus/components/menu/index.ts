@@ -2,8 +2,8 @@ import { withInstall } from '../../utils'
 
 import Menu from './menu.vue'
 
-export const VcMenu = withInstall(Menu)
+export const XMenu = withInstall(Menu)
 
-export default VcMenu
+export default XMenu
 
 export * from './'

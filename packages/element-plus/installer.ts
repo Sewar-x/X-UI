@@ -1,10 +1,10 @@
 import {App} from 'vue'
 import { XTable } from './components/table'
-import { VcMenu } from './components/menu'
+import { XMenu } from './components/menu'
 
 const elmPlusComponents = [
   XTable,
-  VcMenu
+  XMenu
 ]
 
 export const installer = (app: App) => {

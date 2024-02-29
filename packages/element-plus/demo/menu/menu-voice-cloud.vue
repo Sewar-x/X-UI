@@ -49,7 +49,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { VcMenu } from '@xw-ui/xw-element-plus'
+import { XMenu } from '@xw-ui/xw-element-plus'
 import {
   Odometer,
   Monitor,

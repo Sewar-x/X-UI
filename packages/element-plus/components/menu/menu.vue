@@ -72,7 +72,7 @@ function onTitleClick () {
 <script>
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'VcMenu',
+  name: 'XMenu',
   inheritAttrs: false
 })
 </script>

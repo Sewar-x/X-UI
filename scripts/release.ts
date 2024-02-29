@@ -40,7 +40,7 @@ async function changeVersion() {
   }
 }
 
-// 将修改后的版本号提交到gitlab
+// 将修改后的版本号提交到gitee
 async function commit() {
   await execa('git', ['add', '.'])
   await execa('git', ['commit', '-m', RELEASE_VERSION])
@@ -65,7 +65,7 @@ async function publish() {
 
 async function start() {
   changeVersion()
-  // await commit()
+  await commit()
   await publish()
 }
 
