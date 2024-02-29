@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { VcTable } from '@xw-ui/xw-element-plus'
+import { XTable } from '@xw-ui/xw-element-plus'
 
 const defaultColumns = ['Date', 'Name', 'Address']
 

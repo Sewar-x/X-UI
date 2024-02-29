@@ -1,8 +1,8 @@
-import { VcTable } from './components/table'
+import { XTable } from './components/table'
 import { VcMenu } from './components/menu'
 
 const elmUiComponents = [
-  VcTable,
+  XTable,
   VcMenu
 ]
 

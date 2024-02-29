@@ -18,9 +18,9 @@ dev端口: 3333
 
   import Table from './table.vue'
 
-  export const VcTable = withInstall(Table)
+  export const XTable = withInstall(Table)
   
-  export default VcTable
+  export default XTable
   
   export * from './'
   ```
@@ -36,12 +36,12 @@ dev端口: 3333
 3. 根目录 `installer.ts` 中，添加新开发的组件
 ```js
 import {App} from 'vue'
-import { VcTable } from './components/table'
-import { VcMenu } from './components/menu'
+import { XTable } from './components/table'
+import { XMenu } from './components/menu'
 
 const elmPlusComponents = [
-  VcTable,
-  VcMenu
+  XTable,
+  XMenu
 ]
 
 export const installer = (app: App) => {

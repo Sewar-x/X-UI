@@ -66,7 +66,7 @@ const members = [
       团队成员
     </template>
     <template #lead>
-      核心团队成员是那些积极参与维护一个或多个核心项目的人。他们对 XW-UI 组件做出了重大贡献，并对项目及其用户的成功做出了长期的承诺。
+      核心团队成员是那些积极参与维护组件核心项目的人。他们对 XW-UI 组件做出了贡献。
     </template>
   </VPTeamPageTitle>
   <VPTeamMembers

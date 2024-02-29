@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import { VcTable } from '@xw-ui/xw-element-ui'
+import { XTable } from '@xw-ui/xw-element-ui'
 export default {
   name: 'TableCustomColumns',
-  components: { VcTable },
+  components: { XTable },
   data () {
     return {
       defaultColumns: ['日期', '姓名', '地址'],

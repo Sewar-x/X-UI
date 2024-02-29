@@ -102,7 +102,7 @@ onMounted(() => {
 <script>
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'VcTable'
+  name: 'XTable'
 })
 </script>
 

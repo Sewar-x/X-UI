@@ -4,8 +4,8 @@ Table.install = function (Vue) {
   Vue.component(Table.name, Table)
 }
 
-export const VcTable = Table
+export const XTable = Table
 
-export default VcTable
+export default XTable
 
 export * from './'

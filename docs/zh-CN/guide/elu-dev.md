@@ -20,9 +20,9 @@ dev端口: 3633
     Vue.component(Table.name, Table)
   }
   
-  export const VcTable = Table
+  export const XTable = Table
   
-  export default VcTable
+  export default XTable
   
   export * from './'
   ```
@@ -37,12 +37,12 @@ dev端口: 3633
 
 3. 根目录 `installer.js` 中，添加新开发的组件
 ```js
-import { VcTable } from './components/table'
-import { VcMenu } from './components/menu'
+import { XTable } from './components/table'
+import { XMenu } from './components/menu'
 
 const elmUiComponents = [
-  VcTable,
-  VcMenu
+  XTable,
+  XMenu
 ]
 
 export const installer = (Vue) => {

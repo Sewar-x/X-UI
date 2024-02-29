@@ -47,7 +47,7 @@ import renderElTable from './render-el-table.vue'
 let staticOptions = []
 
 export default {
-  name: 'VcTable',
+  name: 'XTable',
   components: { ElPopover, ElCheckbox, ElCheckboxGroup, ElIcon, renderElTable },
   props: {
     defaultColumns: {

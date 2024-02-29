@@ -1,6 +1,6 @@
 # 使用 `xw-element-ui`
 
-本节将介绍如何在项目中使用 Vc Element Ui。
+本节将介绍如何在项目中使用 X Element UI。
 
 ## 环境支持
 ::: tip 当前封装所使用的库版本
@@ -29,41 +29,41 @@ pnpm install xxx
 ```js
 // main.js
 import Vue from 'vue'
-import VcElementUi from '@xw-element-ui'
+import XWElementUi from '@xw-element-ui'
 import '@xw-element-ui/dist/style.css'
 
-Vue.use(VcElementUi)
+Vue.use(XWElementUi)
 ```
 
 ### 2. 按需引入
-1. 需要在使用组件的地方手动对 `Vc组件` 进行导入。
+1. 需要在使用组件的地方手动对 `X组件` 进行导入。
     ```html
     <!-- App.vue -->
     <template>
-      <xw-table>
+      <x-table>
         <el-table-column ... />
-      </xw-table>
+      </x-table>
     </template>
     
     <script>
-      import { VcTable } from '@xw-element-ui'
+      import { XTable } from '@xw-element-ui'
       
       export default {
         name: 'App',
-        components: { VcTable }
+        components: { XTable }
       }
     </script>
     ```
    
-2. 在全局中进行 `Vc组件` 部分注册
+2. 在全局中进行 `X组件` 部分注册
     ```js
     import Vue from 'vue';
-    import { VcTable } from '@xw-element-ui';
+    import { XTable } from '@xw-element-ui';
     import App from './App.vue';
     
-    Vue.component(VcTable.name, VcTable);
+    Vue.component(XTable.name, XTable);
     /* 或写为
-     * Vue.use(VcTable)
+     * Vue.use(XTable)
      */
     
     new Vue({

@@ -2,8 +2,8 @@ import { withInstall } from '../../utils'
 
 import Table from './table.vue'
 
-export const VcTable = withInstall(Table)
+export const XTable = withInstall(Table)
 
-export default VcTable
+export default XTable
 
 export * from './'
