@@ -1,0 +1,10 @@
+node_modules
+
+# Local Netlify folder
+.netlify
+
+# 文档忽略文件
+docs/**/node_modules
+
+# 项目文件忽略
+packages/**/node_modules
