@@ -106,7 +106,7 @@ export default defineComponent({
 
 .menu {
   &:not(.el-menu.el-menu--collapse) {
-    width: var(--xw-menu-width);
+    width: var(--x-menu-width);
   }
 
   &.el-menu.el-menu--collapse {

@@ -1,7 +1,7 @@
 <template>
   <el-container class="aside">
     <el-aside>
-      <xw-menu title="" v-model:collapse="collapse">
+      <x-menu title="" v-model:collapse="collapse">
         <el-sub-menu index="0">
           <template #title>
             <el-icon>
@@ -39,7 +39,7 @@
             <notebook />
           </el-icon><template #title>操作日志</template>
         </el-menu-item>
-      </xw-menu>
+      </x-menu>
     </el-aside>
     <el-main>
 

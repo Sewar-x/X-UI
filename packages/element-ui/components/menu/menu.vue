@@ -1,7 +1,7 @@
 <template>
-  <div class="xw-menu-wrapper">
-    <el-menu :collapse="_collapse" class="xw-menu" v-bind="$attrs">
-      <el-menu-item @click="onTitleClick" class="xw-menu-title" v-if="title" index="title">
+  <div class="x-menu-wrapper">
+    <el-menu :collapse="_collapse" class="x-menu" v-bind="$attrs">
+      <el-menu-item @click="onTitleClick" class="x-menu-title" v-if="title" index="title">
         <i class="el-icon xw-icon-logo">
           <img class="xw-logo" :src="logo" />
         </i>
@@ -66,12 +66,12 @@ export default {
 </script>
 
 <style lang="less">
-.xw-menu-wrapper {
+.x-menu-wrapper {
   height: 100%;
   position: relative;
   padding-bottom: 48px;
   box-sizing: border-box;
-  .xw-menu-title {
+  .x-menu-title {
     border-bottom: 1px solid rgba(0,0,0,.1);
     &:hover {
       background: #fff!important;
@@ -91,9 +91,9 @@ export default {
   }
 }
 
-.xw-menu {
+.x-menu {
   &:not(.el-menu.el-menu--collapse) {
-    width: var(--xw-menu-width);
+    width: var(--x-menu-width);
   }
 
   &.el-menu.el-menu--collapse {

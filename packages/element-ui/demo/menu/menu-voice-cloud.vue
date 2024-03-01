@@ -1,7 +1,7 @@
 <template>
   <el-container class="aside">
     <el-aside>
-      <xw-menu title="" :collapse.sync="collapse">
+      <x-menu title="" :collapse.sync="collapse">
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-location"></i>
@@ -32,7 +32,7 @@
           <i class="el-icon-setting"></i>
           <span slot="title">导航四</span>
         </el-menu-item>
-      </xw-menu>
+      </x-menu>
     </el-aside>
     <el-main>
     </el-main>

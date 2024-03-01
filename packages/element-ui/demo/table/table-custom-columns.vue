@@ -1,5 +1,5 @@
 <template>
-  <xw-table :data="tableData" :default-columns="defaultColumns">
+  <x-table :data="tableData" :default-columns="defaultColumns">
     <el-table-column
         prop="date"
         label="日期"
@@ -19,7 +19,7 @@
         prop="address"
         label="地址">
     </el-table-column>
-  </xw-table>
+  </x-table>
 </template>
 
 <script>

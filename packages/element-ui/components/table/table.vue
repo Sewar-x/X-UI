@@ -2,7 +2,7 @@
   <div class="table-wrapper">
     <div class="table-options">
       <el-popover
-          popper-class="xw-table-popover"
+          popper-class="x-table-popover"
           placement="bottom"
       >
         <el-checkbox
@@ -110,7 +110,7 @@ export default {
 }
 </style>
 <style lang="less">
-.xw-table-popover {
+.x-table-popover {
   .el-checkbox-group {
     display: flex;
     flex-direction: column;
