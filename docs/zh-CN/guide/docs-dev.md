@@ -140,7 +140,7 @@ export default {
 不传默认为 `"320px"` 。
 
 ```html
-<vp-demo
+<xw-demo
    demo-height="270px"
 />
 ```
@@ -158,7 +158,7 @@ export default {
 
 可以看到 `sourceCode` 最终通过插件会得到个经过 `encode` 的 html 代码。
 ```html
-<vp-demo
+<xw-demo
     demo-height="270px"
     source-code="element-plus:::table/table-custom-columns"
 />

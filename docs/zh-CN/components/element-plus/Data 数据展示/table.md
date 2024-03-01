@@ -4,8 +4,8 @@
 
 自定义列表格用法展示。可通过  `default-columns` 控制默认显示列，如果不传，或者传空数组，则首次加载默认加载全部列。
 
-<vp-demo
-    demo-height="270px"
+<xw-demo
+    demo-height="550px"
     source-code="element-plus:::table/table-custom-columns"
 />
 

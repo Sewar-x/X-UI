@@ -2,16 +2,19 @@
 
 ## 快捷时间段选择
 用来给日期范围组件 `type="daterange"` 时设置快捷方式，目前支持以下快捷方式：
-* 最近半小时
-* 最近一小时
-* 最近三小时
-* 最近六小时
-* 最近一天
-* 最近三天
-* 最近一周
 
-<vp-demo
-    demo-height="160px"
+| daterange 选择范围 |
+| ------------------ |
+| 最近半小时         |
+| 最近一小时         |
+| 最近三小时         |
+| 最近六小时         |
+| 最近一天           |
+| 最近三天           |
+| 最近一周           |
+
+<xw-demo
+    demo-height="450px"
     source-code="element-plus:::data-picker/data-picker-shortcuts"
 />
 

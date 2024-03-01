@@ -6,15 +6,17 @@ body {
   --xw-primary-color: #295dfa;
   --xw-primary-hover-color-lighter: #547dfb;
   --xw-primary-hover-color: #053eeb;
-  --xw-border-color: #dcdfe6;
+  --xw-border-color: #dcdfe6b2;
+  --xw-custom-block-details-bg: #dcdfe665;
+  --xw-c-bg: #dcdfe6de;
   --xw-border-radius-base: 6px;
   --xw-example-padding: 24px;
 }
 
 :root {
-  --vp-c-brand: var(--xw-primary-color);
-  --vp-c-brand-light: var(--xw-primary-hover-color);
-  --vp-c-brand-lighter: var(--xw-primary-hover-color-lighter);
-  --vp-c-brand-dark: var(--xw-primary-color);
-  --vp-c-brand-darker: var(--xw-primary-hover-color);
+  --xw-c-brand: var(--xw-primary-color);
+  --xw-c-brand-light: var(--xw-primary-hover-color);
+  --xw-c-brand-lighter: var(--xw-primary-hover-color-lighter);
+  --xw-c-brand-dark: var(--xw-primary-color);
+  --xw-c-brand-darker: var(--xw-primary-hover-color);
 }

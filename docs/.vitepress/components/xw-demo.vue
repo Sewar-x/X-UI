@@ -134,7 +134,7 @@ onMounted(() => {
 
 <script>
 export default {
-  name: "VpDemo",
+  name: "XwDemo",
 };
 </script>
 
@@ -142,7 +142,7 @@ export default {
 @menu-height: 32px;
 
 .container {
-  border: 1px solid var(--vp-custom-block-details-border);
+  border: 1px solid #dcdfe6b2;
   border-radius: var(--xw-border-radius-base);
 }
 .full-screen-container {
@@ -159,7 +159,7 @@ export default {
     border-radius: var(--xw-border-radius-base) var(--xw-border-radius-base) 0 0;
     height: @menu-height;
     line-height: @menu-height;
-    background-color: var(--vp-custom-block-details-bg);
+    background-color: var(--xw-custom-block-details-bg);
     padding: 0 16px;
     .icon {
       position: relative;
@@ -179,7 +179,7 @@ export default {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%) rotate(-45deg);
-        color: var(--vp-c-text-2);
+        color: var(--xw-c-text-2);
         font-size: 12px;
       }
     }
@@ -195,7 +195,7 @@ export default {
   }
 }
 .options {
-  border-top: 1px solid var(--vp-custom-block-details-border);
+  border-top: 1px solid #dcdfe6b2;
   height: 40px;
   display: flex;
   align-items: center;
@@ -203,22 +203,22 @@ export default {
   .option-item {
     margin-right: 8px;
     cursor: pointer;
-    color: var(--vp-c-text-2);
+    color: var(--xw-c-text-2);
     font-size: 12px;
     &:hover {
-      color: var(--vp-c-text-1);
+      color: var(--xw-c-text-1);
     }
   }
 }
 .source-code {
   background-color: #f6f8fa;
   position: relative;
-  border-top: 1px solid var(--vp-custom-block-details-border);
+  border-top: 1px solid #dcdfe6b2;
   .decode {
     padding: 0 16px;
   }
   .hide-code-btn {
-    border-top: 1px solid var(--vp-custom-block-details-border);
+    border-top: 1px solid #dcdfe6b2;
     border-radius: 0 0 var(--xw-border-radius-base) var(--xw-border-radius-base);
     position: sticky;
     bottom: 0;
@@ -227,10 +227,13 @@ export default {
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    background-color: var(--vp-c-bg);
+    background-color: var(--xw-c-bg);
     z-index: 10;
     .icon {
       margin-right: 8px;
+    }
+    &::hover{
+      color: black;
     }
   }
 }

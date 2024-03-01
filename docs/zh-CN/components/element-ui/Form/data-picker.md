@@ -10,7 +10,7 @@
 * 最近三天
 * 最近一周
 
-<vp-demo
+<xw-demo
     demo-height="430px"
     source-code="element-ui:::data-picker/data-picker-shortcuts"
 />
