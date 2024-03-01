@@ -1,9 +1,9 @@
-import elementPlusSideBar from "../pages/element-plus.json"
-import elementUiSideBar from "../pages/element-ui.json"
-import antDesignSideBar from "../pages/ant-design.json"
+import elementPlusSideBar from "../pages/element-plus.json" // elementPlus 侧边栏配置
+import elementUiSideBar from "../pages/element-ui.json" // elementUI 侧边栏配置
+import antDesignSideBar from "../pages/ant-design.json" // antDesign 侧边栏配置
 
 export default {
-  '/zh-CN/guide/': [
+  '/zh-CN/guide/': [ // 指南侧边栏
     {
       text: '快速开始',
       "collapsible": true,
@@ -25,7 +25,7 @@ export default {
       ]
     }
   ],
-  '/zh-CN/components/element-plus': elementPlusSideBar,
-  '/zh-CN/components/element-ui': elementUiSideBar,
-  '/zh-CN/components/ant-design': antDesignSideBar
+  '/zh-CN/components/element-plus': elementPlusSideBar, // elementPlus 侧边栏配置
+  '/zh-CN/components/element-ui': elementUiSideBar,// elementUI 侧边栏配置
+  '/zh-CN/components/ant-design': antDesignSideBar// antDesign 侧边栏配置
 }
