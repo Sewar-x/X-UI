@@ -4,7 +4,7 @@ specifiers:
   '@element-plus/icons-vue': ^2.0.6
   '@vitejs/plugin-vue': ^2.3.3
   '@xw-ui/hooks': workspace:*
-  '@xw-ui/vc-shared': workspace:*
+  '@xw-ui/xw-shared': workspace:*
   element-plus: ^2.2.8
   less: ^4.1.3
   lodash: ^4.17.21
@@ -14,7 +14,7 @@ specifiers:
 dependencies:
   '@element-plus/icons-vue': 2.3.1_vue@3.4.21
   '@xw-ui/hooks': link:../hooks
-  '@xw-ui/vc-shared': link:../shared
+  '@xw-ui/xw-shared': link:../shared
   lodash: 4.17.21
 
 devDependencies:

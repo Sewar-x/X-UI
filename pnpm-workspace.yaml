@@ -1,3 +1,4 @@
 packages:
-  - packages/*
+  - packages/* # 将 packages 目录下所有文件夹项目视为独立项目，能独立安装 node_modules
+  - test/packages/* # 将 test/packages/ 目录下所有文件夹项目视为独立项目，能独立安装 node_modules
   - docs
