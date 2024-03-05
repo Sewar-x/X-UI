@@ -1,5 +1,5 @@
-import sideBarPlugin from './build/side-bar-plugin'
-import sourceCode from './build/source-code'
+import sideBarPlugin from './plugins/side-bar-plugin'
+import sourceCode from './plugins/source-code'
 import { defineConfig } from 'vite'
 import path from 'path'
 import { alias } from '../scripts'

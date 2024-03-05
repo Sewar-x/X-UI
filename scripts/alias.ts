@@ -1,3 +1,9 @@
+/**
+ * 组件库别名插件，解决打包和开发入口不一致问题。
+ * 作用：把入口从 dist 目录换到当前工程的对应项目下的index入口。
+ * 组件库打包后的入口跟开发时的入口有点不一致，所以如果开发中直接 import xxx from 组件库名称 这样导入组件会有问题。
+ * 一般情况下入口是配置打包完之后的产物的入口的（一般是dist、lib目录下的index）。
+ */
 import * as path from 'path'
 import * as fsPromises from 'fs/promises'
 import { Alias } from 'vite'
