@@ -32,8 +32,10 @@ const getComponentsSideBar = async (path: string) => {
         const buffer = await fsPromises.readFile(`${dirPath}/${fileName}`)
         const fileStr = buffer.toString()
         const reg = /(?<=#\s).*?(?=\n)/
+        const regOpt = /^(#+)[ \t]*(.+?)[ \t]*$/
 
-        const sideName = reg.exec(fileStr) && (reg.exec(fileStr) as Array<string>)[0] || dirItemPath
+
+        const sideName = (reg.exec(fileStr) && (reg.exec(fileStr) as Array<string>)[0]) || `${fileName.split('.')[0]}`
         return {
           text: sideName,
           link: `/zh-CN/components${path}/${dirItemPath}/${fileName.split('.')[0]}`

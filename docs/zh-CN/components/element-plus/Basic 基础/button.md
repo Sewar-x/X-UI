@@ -2,9 +2,7 @@
 
 这是一个 Element-plus 按钮 
 
-# Element-plus
-
-##  Button
+## Element Plus
 
 <xw-demo
     demo-height="100px"
