@@ -3,9 +3,9 @@ body {
 }
 
 :root {
-  --xw-primary-color: #295dfa;
-  --xw-primary-hover-color-lighter: #547dfb;
-  --xw-primary-hover-color: #053eeb;
+  --xw-primary-color: #33fa29cd;
+  --xw-primary-hover-color-lighter: #33fa29;
+  --xw-primary-hover-color: #33fa29dd;
   --xw-border-color: #dcdfe6b2;
   --xw-custom-block-details-bg: #dcdfe665;
   --xw-c-bg: #dcdfe6de;

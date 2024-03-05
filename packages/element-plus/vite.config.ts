@@ -18,14 +18,14 @@ export default defineConfig(async ({ command, mode }) => {
     plugins: [vue()],
     build: {
       rollupOptions: {
-        external: ['element-plus', 'vue']
+        external: ['element-plus', 'vue'] // 打包结果排除第三方包
       },
       lib: {
         entry: path.resolve(__dirname, './components/index.ts'),
-        name: 'voiceUi',
+        name: 'XWUi',
         fileName: 'xw-element-plus',
-        formats: ['es', 'cjs', 'umd', 'iife']
-      }
+        formats: ['es', 'cjs', 'umd', 'iife'] // 构建输出 es、cjs、umd、iife 格式的包
+      } 
     },
     resolve: {
       alias: await alias()

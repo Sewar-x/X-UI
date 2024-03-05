@@ -9,7 +9,9 @@ import { globals } from '../components'
 export default {
   ...Theme,
   enhanceApp({ app }: { app: App }) {
+    // 全局注册 element-plus 组件库，在 markdown 中使用
     app.use(XWComponents)
+    // 全局注册 demo 展示组件
     globals.forEach((comp: Component) => {
       app.component(comp.name as string, comp)
     })

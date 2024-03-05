@@ -21,9 +21,12 @@
   "include": [
     "packages/*.d.ts",
     "packages/element-plus/components", // element-ui用js开发
-    "docs"
+    "docs",
+    "types/**/*.d.ts",
+    "types/**/*.ts",
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist/**"
   ]
 }

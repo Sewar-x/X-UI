@@ -20,6 +20,11 @@ const router = createRouter({
       name: 'MenuVoiceCloud'
     },
     {
+      path: '/button-demo',
+      component: () => import('./button/button-demo.vue'),
+      name: 'ButtonDemo'
+    },
+    {
       path: '/:pathMatch(.*)*',
       redirect: '/table-custom-columns'
     },
