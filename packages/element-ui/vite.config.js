@@ -24,7 +24,7 @@ export default defineConfig(async ({ command, mode }) => {
       },
       lib: {
         entry: path.resolve(__dirname, './components/index.js'),
-        name: 'voiceUi',
+        name: 'XWUi',
         fileName: 'xw-element-ui',
         formats: ['es', 'cjs', 'umd', 'iife']
       }

@@ -1,6 +1,7 @@
 <template>
   <div class="container" :class="{ 'full-screen-container': isFullScreen }">
     <div class="demo">
+      <!--操作菜单-->
       <div class="menu">
         <i
           class="icon"
@@ -16,6 +17,7 @@
           /></el-icon>
         </i>
       </div>
+       <!--demo展示组件，使用 iframe 内嵌组件-->
       <iframe
         class="elp-iframe"
         :class="{ 'full-screen-iframe': isFullScreen }"
@@ -38,6 +40,7 @@
     </div>
     <El-collapse-transition>
       <div class="source-code" v-if="isShowCode">
+        <!--demo 源码内嵌显示-->
         <div class="decode" v-html="decoded" />
         <div class="hide-code-btn">
           <el-button type="info" link :icon="CaretTop" @click="handleToggleCode"
@@ -63,7 +66,7 @@ import { useClipboard } from "@vueuse/core";
 import "prismjs/themes/prism-tomorrow.css";
 
 const props = defineProps({
-  libType: {
+  libType: { // 组件库名称
     type: String,
     default: "element-plus",
   },
@@ -88,7 +91,7 @@ const props = defineProps({
 const decoded = computed(() => {
   return decodeURIComponent(props.sourceCode);
 });
-
+// 组件库 demo 构建地址
 const baseUrl = {
   "element-plus": import.meta.env.VITE_ELP_DEV_BASE,
   "element-ui": import.meta.env.VITE_ELU_DEV_BASE,
@@ -103,11 +106,11 @@ const iconColorArr = [
 
 const isFullScreen = ref(false);
 const isShowCode = ref(false);
-
+//全屏预览
 const handleToggleFullScreen = () => (isFullScreen.value = !isFullScreen.value);
-
+//查看源码
 const handleToggleCode = () => (isShowCode.value = !isShowCode.value);
-
+//复制源码
 const { copy, isSupported } = useClipboard({
   source: decodeURIComponent(props.rawSource),
   read: false,
@@ -126,6 +129,7 @@ const copyCode = async () => {
 };
 
 onMounted(() => {
+  // 监听键盘 esc键，退出全屏
   document.addEventListener("keyup", (e) => {
     if (e.key === "Escape" || e.key === "Esc") isFullScreen.value = false;
   });

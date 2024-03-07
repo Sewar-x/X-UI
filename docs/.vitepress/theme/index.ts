@@ -7,7 +7,9 @@ import XWComponents from '@xw-ui/xw-element-plus'
 import { globals } from '../components'
 
 export default {
+  // 使用 vitepress 默认主题
   ...Theme,
+  //扩展另一个主题，在我们的主题之前调用它的 `enhanceApp`
   enhanceApp({ app }: { app: App }) {
     // 全局注册 element-plus 组件库，在 markdown 中使用
     app.use(XWComponents)
