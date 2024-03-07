@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from "path";
-import {alias} from "../../scripts";
+import { alias } from "../../scripts";
 
 export default defineConfig(async ({ command, mode }) => {
   return {

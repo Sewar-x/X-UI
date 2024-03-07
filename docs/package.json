@@ -11,10 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.6",
-    "@xw-ui/xw-element-plus": "workspace:*",
     "@vueuse/core": "^8.7.5",
+    "@xw-ui/xw-element-plus": "workspace:*",
     "element-plus": "^2.2.8",
     "less": "^4.1.3",
+    "lodash": "^4.17.21",
     "prismjs": "^1.28.0",
     "vue": "^3.2.37"
   },
