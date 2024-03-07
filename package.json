@@ -5,6 +5,7 @@
   "scripts": {
     "docs:dev": "pnpm run -C docs docs:dev",
     "docs:build": "pnpm run -C docs docs:build && pnpm run -C packages/element-plus docs:build && pnpm run -C packages/element-ui docs:build",
+    "docs:preview": "pnpm run -C docs docs:preview",
     "demo:dev-elp": "pnpm run -C packages/element-plus dev",
     "demo:dev-elu": "pnpm run -C packages/element-ui dev",
     "demo:dev-ant": "pnpm run -C packages/ant-design dev",
