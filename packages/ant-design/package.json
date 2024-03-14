@@ -6,7 +6,8 @@
   "module": "dist/xw-ant-design.es.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "docs:build": "vite build --mode docs"
   },
   "keywords": [],
   "author": "",

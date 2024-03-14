@@ -44,8 +44,8 @@ const sourceCode = () => {
       const match = src.match(reg)?.map(_ => {
         // 获取示例组件项目名和文件地址，通过 “项目名:::组件路由地址” 进行分割
         const [packageName, compPath] = sourceSplit(_)
-        // 获取项目类型，react 使用ant design 组件，使用 jsx 语法， Vue 使用
-        const suffix = packageName.includes('ant') ? 'jsx' : 'vue'
+        // 获取项目类型，react 使用ant design 组件，使用 tsx 语法， Vue 使用
+        const suffix = packageName.includes('ant') ? 'tsx' : 'vue'
         // 返回读取的文件内容
         return fsPromises.readFile(path.resolve(packagesPath, `${packageName}/demo/${compPath}.${suffix}`), 'utf-8')
       })
@@ -55,7 +55,7 @@ const sourceCode = () => {
       let i = 0
       //读取模块代码中的所有文件，并将其内容合并到模块代码中
       return src.replace(reg, (str) => {
-         // 获取示例组件项目名和文件地址，通过 “项目名:::组件路由地址” 进行分割
+        // 获取示例组件项目名和文件地址，通过 “项目名:::组件路由地址” 进行分割
         const [packageName, compPath] = sourceSplit(str)
         // 获取示例组件地址
         const compPathStrArr = compPath.split('/')

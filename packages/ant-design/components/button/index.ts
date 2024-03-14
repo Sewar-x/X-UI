@@ -1,7 +1,7 @@
 import Button from './button'
 
-export const VcButton = Button
+export const XwButton = Button
 
-export default VcButton
+export default XwButton
 
 export * from './'

@@ -1,11 +1,12 @@
-import React from 'react'
-import { VcButton } from '@xw-ui/xw-ant-design'
+import React from "react";
+import { XwButton } from "@xw-ui/xw-ant-design";
 
 const ButtonDemo = () => {
-  return <>
-      <p>测试react demo</p>
-      <VcButton />
+  return (
+    <>
+      <XwButton />
     </>
-}
+  );
+};
 
-export default ButtonDemo
+export default ButtonDemo;
