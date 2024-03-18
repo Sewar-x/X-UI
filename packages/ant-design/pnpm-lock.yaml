@@ -6,6 +6,7 @@ specifiers:
   antd: ^4.21.7
   react: 18.2.0
   react-dom: 18.2.0
+  react-router-dom: ^6.22.3
   vite: ^2.9.13
 
 dependencies:
@@ -13,6 +14,7 @@ dependencies:
   antd: 4.24.15_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-router-dom: 6.22.3_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
   '@types/react': 18.2.60
@@ -388,6 +390,11 @@ packages:
       rc-util: 5.38.2_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@remix-run/router/1.15.3:
+    resolution: {integrity: sha512-Oy8rmScVrVxWZVOpEF57ovlnhpZ8CCPlnIIumVcV9nFdiSIrus99+Lw78ekXyGvVDlIsFJbSfmSovJUhCWYV3w==}
+    engines: {node: '>=14.0.0'}
     dev: false
 
   /@rollup/pluginutils/4.2.1:
@@ -1467,6 +1474,29 @@ packages:
   /react-refresh/0.13.0:
     resolution: {integrity: sha512-XP8A9BT0CpRBD+NYLLeIhld/RqG9+gktUjW1FkE+Vm7OCinbG1SshcK5tb9ls4kzvjZr9mOQc7HYgBngEyPAXg==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /react-router-dom/6.22.3_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-7ZILI7HjcE+p31oQvwbokjk6OA/bnFxrhJ19n82Ex9Ph8fNAq+Hm/7KchpMGlTgWhUxRHMMCut+vEtNpWpowKw==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.15.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router: 6.22.3_react@18.2.0
+    dev: false
+
+  /react-router/6.22.3_react@18.2.0:
+    resolution: {integrity: sha512-dr2eb3Mj5zK2YISHK++foM9w4eBnO23eKnZEDs7c880P6oKbrjz/Svg9+nxqtHQK+oMW4OtjZca0RqPglXxguQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.15.3
+      react: 18.2.0
     dev: false
 
   /react/18.2.0:
