@@ -1,11 +1,12 @@
 import React from "react";
-import ButtonDemo from "./button/button-demo";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./router";
 
 const App = () => {
   return (
-    <div>
-      <ButtonDemo />
-    </div>
+    <BrowserRouter>
+        <Router />
+    </BrowserRouter>
   );
 };
 
