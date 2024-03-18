@@ -10,7 +10,9 @@ export default defineConfig(async ({ command, mode }) => {
   if (mode === 'docs') {
     docsBuild.base = sitePublic // demo 文档组件代码入口，打包成正常的单页应用，入口是 index.html。
     docsBuild.build = { //  demo 文档示例组件构建输出目录，输出到 vitepress 目录下
-      outDir: '../../docs/.vitepress/dist/element-plus'
+      outDir: '../../docs/.vitepress/dist/element-plus',
+      // 如果你的资源需要被部署到 CDN，可以设置 publicPath  
+      publicPath: sitePublic, // 这将影响所有资源引用的路径  
     }
   }
   return {
