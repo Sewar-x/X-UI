@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as o,u as a}from"./index.57399bb4.js";import{b as n}from"./index.3ab4912f.js";const r={name:"XButton"},s=Object.assign(r,{setup(_){return(c,u)=>(e(),o(a(n)))}});var f=t(s,[["__file","D:/MyData/webInfra/x-component-library/packages/element-plus/demo/button/button-demo.vue"]]);export{f as default};
