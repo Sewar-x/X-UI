@@ -12,11 +12,26 @@ cd docs/.vitepress/dist
 # 如果是发布到自定义域名
 # echo 'www.yourwebsite.com' > CNAME
 
-git init
+# 初始化git仓库（如果尚未初始化）
+if [ ! -d ".git" ]; then
+    git init
+fi
+
+# 检查deploy分支是否存在
+git branch -a | grep -qw "deploy"
+
+# 根据是否存在deploy分支，选择不同的操作
+if [ $? -eq 0 ]; then
+    # deploy分支存在，直接切换到该分支
+    git checkout deploy
+else
+    # deploy分支不存在，创建并切换到该分支
+    git checkout -b deploy
+fi
 git add -A
 git commit -m 'deploy'
 
 # 如果发布到 https://USERNAME.github.io/<REPO>  REPO=github上的项目
-git push -f https://github.com/Sewar-x/X-UI.git gh-deploy:gh-pages
+git push -f https://github.com/Sewar-x/X-UI.git deploy:gh-pages
 
 cd -

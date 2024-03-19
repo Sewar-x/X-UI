@@ -6,6 +6,7 @@ import { alias } from '../scripts'
 
 export default defineConfig(async ({ command, mode }) => {
   return {
+    base: '/X-UI/',
     server: {
       proxy: {
         '/assets': {
