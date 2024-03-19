@@ -7,7 +7,7 @@ export default defineConfig({
   title: 'XW-UI',
   description: '',
   appearance: false,
-  base: sitePublic,
+  base: `${sitePublic}/`,
   head: [
     [
       'link',
