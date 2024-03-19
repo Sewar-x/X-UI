@@ -4,7 +4,7 @@
   "description": "配置化组件库",
   "scripts": {
     "docs:dev": "pnpm run -C docs docs:dev",
-    "docs:build": "pnpm run -C docs docs:build && pnpm run -C packages/element-plus docs:build && pnpm run -C packages/element-ui docs:build &&  pnpm run -C packages/ant-design docs:build && pnpm run docs:deploy",
+    "docs:build": "pnpm run -C docs docs:build && pnpm run -C packages/element-plus docs:build && pnpm run -C packages/element-ui docs:build &&  pnpm run -C packages/ant-design docs:build",
     "docs:preview": "pnpm run -C docs docs:preview",
     "docs:deploy": "sh deploy.sh",
     "demo:dev-elp": "pnpm run -C packages/element-plus dev",
