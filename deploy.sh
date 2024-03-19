@@ -20,7 +20,7 @@ fi
 # 检查deploy分支是否存在
 git branch -a | grep -qw "deploy"
 
-# 根据是否存在deploy分支，选择不同的操作
+# 根据是否存在deploy分支，创建临时分支
 if [ $? -eq 0 ]; then
     # deploy分支存在，直接切换到该分支
     git checkout deploy
@@ -33,5 +33,6 @@ git commit -m 'deploy'
 
 # 如果发布到 https://USERNAME.github.io/<REPO>  REPO=github上的项目
 git push -f https://github.com/Sewar-x/X-UI.git deploy:gh-pages
-
+# 删除临时分支
+git branch -D deploy
 cd -
