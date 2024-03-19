@@ -6,7 +6,7 @@ export default defineConfig({
   title: 'XW-UI',
   description: '',
   appearance: false,
-  base: '/',
+  base: '/X-UI',
   head: [
     [
       'link',
