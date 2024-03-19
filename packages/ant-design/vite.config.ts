@@ -12,7 +12,7 @@ export default defineConfig(async ({ command, mode }) => {
     docsBuild.build = { //  demo 文档示例组件构建输出目录，输出到 vitepress 目录下
       outDir: '../../docs/.vitepress/dist/ant-design',
       // 如果你的资源需要被部署到 CDN，可以设置 publicPath  
-      publicPath: sitePublic, // 这将影响所有资源引用的路径  
+      publicPath: `${sitePublic}/ant-design`, // 这将影响所有资源引用的路径  
     }
   }
   return {
