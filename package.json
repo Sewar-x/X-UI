@@ -6,7 +6,6 @@
     "docs:dev": "pnpm run -C docs docs:dev",
     "docs:build": "pnpm run -C docs docs:build && pnpm run -C packages/element-plus docs:build && pnpm run -C packages/element-ui docs:build &&  pnpm run -C packages/ant-design docs:build",
     "docs:preview": "pnpm run -C docs docs:preview",
-    "docs:deploy": "sh deploy.sh",
     "demo:dev-elp": "pnpm run -C packages/element-plus dev",
     "demo:dev-elu": "pnpm run -C packages/element-ui dev",
     "demo:dev-ant": "pnpm run -C packages/ant-design dev",
@@ -15,8 +14,7 @@
     "build:elp": "pnpm run -C packages/element-plus build",
     "build:elu": "pnpm run -C packages/element-ui build",
     "build:ant": "pnpm run -C packages/ant-design build",
-    "build:shared": "pnpm run -C packages/shared build",
-    "release": "node scripts/release.ts"
+    "build:shared": "pnpm run -C packages/shared build"
   },
   "keywords": [],
   "author": "",
