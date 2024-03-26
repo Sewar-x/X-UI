@@ -16,17 +16,19 @@ export default defineConfig(async ({ command, mode }) => {
     }
   }
   return {
+    base: '',
     server: {
       port: '3933'
     },
     plugins: [react()],
     build: {
+      outDir: '../../dist/ant-design',
       rollupOptions: {
         external: ['react', 'react-dom', 'ant-design']
       },
       lib: {
         entry: path.resolve(__dirname, './components/index.ts'),
-        name: 'XWUi',
+        name: 'xw-ui-ant',
         fileName: 'xw-ant-design',
         formats: ['es', 'cjs', 'umd', 'iife']
       }
@@ -34,6 +36,7 @@ export default defineConfig(async ({ command, mode }) => {
     resolve: {
       alias: await alias()
     },
+
     ...docsBuild
   }
 })

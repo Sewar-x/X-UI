@@ -21,6 +21,7 @@ export default defineConfig(async ({ command, mode }) => {
     },
     plugins: [vue()],
     build: {
+      outDir: '../../dist/element-plus',
       rollupOptions: {
         external: ['element-plus', 'vue'] // 打包结果排除第三方包
       },

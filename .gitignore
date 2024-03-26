@@ -1,7 +1,7 @@
 node_modules
 # Local Netlify folder
 .netlify
-
+dist
 # 文档忽略文件
 docs/**/node_modules
 docs/**/pnpm-lock.yaml

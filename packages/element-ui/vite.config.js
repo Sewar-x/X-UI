@@ -24,6 +24,7 @@ export default defineConfig(async ({ command, mode }) => {
       createVuePlugin()
     ],
     build: {
+      outDir: '../../dist/element-ui',
       rollupOptions: {
         external: ['element-ui', 'vue']
       },

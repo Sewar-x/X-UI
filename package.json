@@ -1,7 +1,17 @@
 {
-  "name": "xw-ui",
+  "name": "@xw/xw-ui",
   "version": "1.0.0",
-  "description": "配置化组件库",
+  "description": "支持 Vue2/Vue3/React 的配置化组件库",
+  "main": "index.cjs.js",
+  "module": "index.es.js",
+  "unpkg": "index.umd.js",
+  "jsdelivr": "index.umd.js",
+  "files": [
+    "index.cjs.js",
+    "index.es.js",
+    "index.umd.js",
+    "dist"
+  ],
   "scripts": {
     "docs:dev": "pnpm run -C docs docs:dev",
     "docs:build": "pnpm run -C docs docs:build && pnpm run -C packages/element-plus docs:build && pnpm run -C packages/element-ui docs:build &&  pnpm run -C packages/ant-design docs:build",
@@ -10,16 +20,23 @@
     "demo:dev-elu": "pnpm run -C packages/element-ui dev",
     "demo:dev-ant": "pnpm run -C packages/ant-design dev",
     "test:elp": "pnpm run -C test/packages/element-plus dev",
-    "build": "pnpm run build:elp && pnpm run build:elu && pnpm run build:ant && pnpm run build:shared",
+    "build": "pnpm run build:elp && pnpm run build:elu && pnpm run build:ant",
     "build:elp": "pnpm run -C packages/element-plus build",
     "build:elu": "pnpm run -C packages/element-ui build",
     "build:ant": "pnpm run -C packages/ant-design build",
     "build:shared": "pnpm run -C packages/shared build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "xw-ui",
+    "vue",
+    "react",
+    "element",
+    "element-plus",
+    "ant-design"
+  ],
+  "author": "Sewen",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "@types/node": "^18.0.3",
     "chalk": "^4.1.2",
     "execa": "^5.1.0",

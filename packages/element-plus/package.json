@@ -4,12 +4,14 @@
   "description": "二次封装 element-plus",
   "main": "dist/xw-element-plus.cjs.js",
   "moudle": "dist/xw-element-plus.es.js",
+  "unpkg": "dist/xw-element-plus.umd.js",
+  "jsdelivr": "dist/xw-element-plus.umd.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "docs:build": "vite build --mode docs"
   },
-  "author": "",
+  "author": "Sewen",
   "license": "ISC",
   "peerDependencies": {
     "vue": "^3.2.0",
