@@ -28,7 +28,7 @@ export default defineConfig(async ({ command, mode }) => {
       },
       lib: {
         entry: path.resolve(__dirname, './components/index.ts'),
-        name: 'xw-ui-ant',
+        name: 'XWUi',
         fileName: 'xw-ant-design',
         formats: ['es', 'cjs', 'umd', 'iife']
       }

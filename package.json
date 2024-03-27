@@ -1,16 +1,23 @@
 {
-  "name": "@xw/xw-ui",
+  "private": true,
+  "name": "xw-ui",
   "version": "1.0.0",
   "description": "支持 Vue2/Vue3/React 的配置化组件库",
   "main": "index.cjs.js",
   "module": "index.es.js",
   "unpkg": "index.umd.js",
   "jsdelivr": "index.umd.js",
+  "workspaces": [
+    "packages/*",
+    "test",
+    "docs"
+  ],
   "files": [
+    "dist",
     "index.cjs.js",
     "index.es.js",
     "index.umd.js",
-    "dist"
+    "LICENSE"
   ],
   "scripts": {
     "docs:dev": "pnpm run -C docs docs:dev",
