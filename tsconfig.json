@@ -8,7 +8,10 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
@@ -22,8 +25,8 @@
     "packages/*.d.ts",
     "packages/element-plus/components", // element-ui用js开发
     "docs",
-    "types/**/*.d.ts",
-    "types/**/*.ts",
+    "packages/element-plus/types/**/*.d.ts",
+    "packages/element-plus/types/**/*.ts",
   ],
   "exclude": [
     "node_modules",

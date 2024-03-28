@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@element-plus/icons-vue': ^2.0.6
   '@vitejs/plugin-vue': ^2.3.3
+  '@vue/tsconfig': ^0.5.1
   element-plus: ^2.6.2
   less: ^4.1.3
   lodash: ^4.17.21
@@ -19,6 +20,7 @@ dependencies:
 
 devDependencies:
   '@vitejs/plugin-vue': 2.3.4_vue@3.4.21
+  '@vue/tsconfig': 0.5.1
 
 packages:
 
@@ -173,6 +175,10 @@ packages:
 
   /@vue/shared/3.4.21:
     resolution: {integrity: sha512-PuJe7vDIi6VYSinuEbUIQgMIRZGgM8e4R+G+/dQTk0X1NEdvgvvgv7m+rfmDH1gZzyA1OjjoWskvHlfRNfQf3g==}
+
+  /@vue/tsconfig/0.5.1:
+    resolution: {integrity: sha512-VcZK7MvpjuTPx2w6blwnwZAu5/LgBUtejFOi3pPGQFXQN5Ela03FUtd2Qtg4yWGGissVL0dr6Ro1LfOFh+PCuQ==}
+    dev: true
 
   /@vueuse/core/9.13.0_vue@3.4.21:
     resolution: {integrity: sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==}

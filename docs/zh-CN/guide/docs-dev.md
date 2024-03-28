@@ -148,12 +148,12 @@ export default {
 ### 2. 组件加载和源代码导入
 组件加载和组件源码导入通过插件识别 `kebab case` 命名规范的 `sourceCode` 实现。
 
-一下以配置 table 组件为示例。
+一下以配置 form 组件为示例。
 
 ```js
 <xw-demo
     demo-height="550px"
-    source-code="element-plus:::table/table-custom-columns"
+    source-code="element-plus:::form/formDemo"
 />
 
 ```
@@ -164,7 +164,7 @@ export default {
 
   * 必填项
 
-  * 示例： `sourceCode=element-plus:::table/table-custom-columns`
+  * 示例： `sourceCode=element-plus:::form/formDemo`
 
   * > 1. 属性值模式： `项目名:::文件地址` ，通过 `:::` 符号对项目名和文件地址进行分割;
     >
@@ -176,7 +176,7 @@ export default {
     >    详细值通过 docs/ 文件下 .env 和 .env.production 环境变量中配置
     >    ```
     >
-    > 3. 分割得到路径 `table/table-custom-columns` ，插件会到对应项目的 demo 目录下读取源码文件 (源码文件位于`packages/element-plus/demo/table/table-custom-columns`)，并通过 `prismjs` 对源码进行高亮等处理。
+    > 3. 分割得到路径 `form/formDemo` ，插件会到对应项目的 demo 目录下读取源码文件 (源码文件位于`packages/element-plus/demo/form/formDemo`)，并通过 `prismjs` 对源码进行高亮等处理。
     >
     > 4. 注意 **demo 组件的文件名需要和对应的路由path 一致**（对应案例中的：`/table-custom-columns`），插件会根据文件名拼接 dev 环境的 demo 组件访问地址。
 
