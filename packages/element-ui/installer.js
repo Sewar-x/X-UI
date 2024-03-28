@@ -1,13 +1,6 @@
-import { XTable } from './components/table'
-import { XMenu } from './components/menu'
-
-const elmUiComponents = [
-  XTable,
-  XMenu
-]
-
+import components from './components-entry'
 export const installer = (Vue) => {
-  elmUiComponents.forEach((comp) => {
+  components.forEach((comp) => {
     Vue.component(comp.name, comp)
   })
 }

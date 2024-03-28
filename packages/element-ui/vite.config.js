@@ -24,13 +24,22 @@ export default defineConfig(async ({ command, mode }) => {
       createVuePlugin()
     ],
     build: {
-      outDir: '../../dist/element-ui',
       rollupOptions: {
-        external: ['element-ui', 'vue']
+        external: ['element-ui', 'vue'],
+        output: {
+          // 导出为 UMD、ES、CommonJS 格式  
+          globals: {
+            vue: 'Vue',
+            'element': 'Element'
+          },
+          exports: 'named', // 使用命名导出  
+          // 如果你需要自定义的 UMD 名称，可以在这里设置  
+          // umdName: 'xwElementPlus'  
+        }
       },
       lib: { //打包纯组件(供用户在业务项目中安装、导入、使用的组件)，入口是 /components/index.(js/ts)
-        entry: path.resolve(__dirname, './components/index.js'),
-        name: 'XWUi',
+        entry: path.resolve(__dirname, './index.js'),
+        name: 'XwElement',
         fileName: 'xw-element-ui',
         formats: ['es', 'cjs', 'umd', 'iife']
       }

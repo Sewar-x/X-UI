@@ -21,14 +21,24 @@ export default defineConfig(async ({ command, mode }) => {
     },
     plugins: [vue()],
     build: {
-      outDir: '../../dist/element-plus',
       rollupOptions: {
-        external: ['element-plus', 'vue'] // 打包结果排除第三方包
+        // 确保外部化依赖，这样它们不会被打包进你的库中  
+        external: ['vue', 'element-plus'],
+        output: {
+          // 导出为 UMD、ES、CommonJS 格式  
+          globals: {
+            vue: 'Vue',
+            'element-plus': 'ElementPlus'
+          },
+          exports: 'named', // 使用命名导出  
+          // 如果你需要自定义的 UMD 名称，可以在这里设置  
+          // umdName: 'xwElementPlus'  
+        }
       },
       lib: {//打包纯组件(供用户在业务项目中安装、导入、使用的组件)，入口是 /components/index.(js/ts)
-        entry: path.resolve(__dirname, './components/index.ts'),
-        name: 'XWUi',
-        fileName: 'xw-element-plus',
+        entry: path.resolve(__dirname, './index.ts'),
+        name: 'XwElementPlus',
+        fileName: (format) => `xw-element-plus.${format}.js`,
         formats: ['es', 'cjs', 'umd', 'iife'] // 构建输出 es、cjs、umd、iife 格式的包
       }
     },

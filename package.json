@@ -1,23 +1,10 @@
 {
-  "private": true,
   "name": "xw-ui",
-  "version": "1.0.0",
+  "version": "1.0.12",
   "description": "支持 Vue2/Vue3/React 的配置化组件库",
-  "main": "index.cjs.js",
-  "module": "index.es.js",
-  "unpkg": "index.umd.js",
-  "jsdelivr": "index.umd.js",
   "workspaces": [
     "packages/*",
-    "test",
     "docs"
-  ],
-  "files": [
-    "dist",
-    "index.cjs.js",
-    "index.es.js",
-    "index.umd.js",
-    "LICENSE"
   ],
   "scripts": {
     "docs:dev": "pnpm run -C docs docs:dev",
@@ -30,8 +17,7 @@
     "build": "pnpm run build:elp && pnpm run build:elu && pnpm run build:ant",
     "build:elp": "pnpm run -C packages/element-plus build",
     "build:elu": "pnpm run -C packages/element-ui build",
-    "build:ant": "pnpm run -C packages/ant-design build",
-    "build:shared": "pnpm run -C packages/shared build"
+    "build:ant": "pnpm run -C packages/ant-design build"
   },
   "keywords": [
     "xw-ui",

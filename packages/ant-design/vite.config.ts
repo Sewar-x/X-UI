@@ -22,13 +22,22 @@ export default defineConfig(async ({ command, mode }) => {
     },
     plugins: [react()],
     build: {
-      outDir: '../../dist/ant-design',
       rollupOptions: {
-        external: ['react', 'react-dom', 'ant-design']
+        external: ['react', 'react-dom', 'ant-design'],
+        output: {
+          // 导出为 UMD、ES、CommonJS 格式  
+          globals: {
+            react: 'React',
+            'ant-design': 'AntDesign'
+          },
+          exports: 'named', // 使用命名导出  
+          // 如果你需要自定义的 UMD 名称，可以在这里设置  
+          // umdName: 'xwElementPlus'  
+        }
       },
       lib: {
-        entry: path.resolve(__dirname, './components/index.ts'),
-        name: 'XWUi',
+        entry: path.resolve(__dirname, './index.ts'),
+        name: 'XwAntDesign',
         fileName: 'xw-ant-design',
         formats: ['es', 'cjs', 'umd', 'iife']
       }

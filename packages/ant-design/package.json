@@ -1,5 +1,5 @@
 {
-  "name": "@xw-ui/xw-ant-design",
+  "name": "xw-ant-design",
   "version": "1.0.0",
   "description": "二次封装ant-design",
   "main": "dist/xw-ant-design.cjs.js",
