@@ -19,7 +19,7 @@ const makeResolve = (target) => (...args) => path.resolve(__dirname, `../package
 if (RELEASE_VERSION.includes('beta')) {
   DIST_TAG = 'beta'
 } else if (RELEASE_VERSION.includes('rc')) {
-  DIST_TAG = 'rc'
+  DIST_TAG = 'main'
 } else {
   DIST_TAG = 'latest'
 }
@@ -40,7 +40,7 @@ async function changeVersion() {
   }
 }
 
-// 将修改后的版本号提交到gitee
+// 将修改后的版本号提交到 git 仓库
 async function commit() {
   await execa('git', ['add', '.'])
   await execa('git', ['commit', '-m', RELEASE_VERSION])
