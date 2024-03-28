@@ -12,16 +12,16 @@
   "author": "Sewen",
   "license": "ISC",
   "peerDependencies": {
-    "vue": "^3.2.0",
-    "element-plus": "^2.2.0"
+    "element-plus": "^2.2.0",
+    "vue": "^3.2.0"
   },
   "dependencies": {
-    "element-plus": "^2.2.8",
-    "vue": "^3.2.36",
-    "vue-router": "4",
-    "less": "^4.1.3",
     "@element-plus/icons-vue": "^2.0.6",
-    "lodash": "^4.17.21"
+    "element-plus": "^2.6.2",
+    "less": "^4.1.3",
+    "lodash": "^4.17.21",
+    "vue": "^3.2.36",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3"

@@ -1,6 +1,6 @@
 {
   "name": "xw-ui",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "配置化组件库",
   "scripts": {
     "docs:dev": "pnpm run -C docs docs:dev",
