@@ -10,7 +10,7 @@
     "demo:dev-elu": "pnpm run -C packages/element-ui dev",
     "demo:dev-ant": "pnpm run -C packages/ant-design dev",
     "test:elp": "pnpm run -C test/packages/element-plus dev",
-    "build": "pnpm run build:elp && pnpm run build:elu && pnpm run build:ant && pnpm run build:shared",
+    "build": "pnpm run build:elp && pnpm run build:elu && pnpm run build:ant",
     "build:elp": "pnpm run -C packages/element-plus build",
     "build:elu": "pnpm run -C packages/element-ui build",
     "build:ant": "pnpm run -C packages/ant-design build",

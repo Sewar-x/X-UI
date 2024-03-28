@@ -51,17 +51,23 @@ const sourceCode = () => {
       })
       const filesRes = await Promise.all(match)
 
+
       //正则表达式 /source-code="(.*)"/g 可能会匹配到多个匹配项，因此在替换时需要使用 i++ 来确保每次替换都是唯一的。
       let i = 0
       //读取模块代码中的所有文件，并将其内容合并到模块代码中
+
       return src.replace(reg, (str) => {
+
         // 获取示例组件项目名和文件地址，通过 “项目名:::组件路由地址” 进行分割
         const [packageName, compPath] = sourceSplit(str)
         // 获取示例组件地址
         const compPathStrArr = compPath.split('/')
         // iframe src 地址
         const iframeSrc = compPathStrArr[compPathStrArr.length - 1]
-        const file = filesRes[i]
+        // 正则匹配 @xw-ui 路径别名替换为原路径
+        const searchString = new RegExp(`@xw-ui/xw-${packageName}`, 'g')
+        const replaceString = `xw-ui/${packageName}`
+        const file = filesRes[i] ? (filesRes[i] as string).replace(searchString, replaceString) : null
         i++
         // 返回编码后的源码文件内容
         return `source-code="${encodeURIComponent(warp(Prism.highlight(file, Prism.languages.markup, 'markup')))}" raw-source="${encodeURIComponent(file)}" lib-type="${packageName}" iframe-src="${iframeSrc}"`
