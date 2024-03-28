@@ -1,6 +1,6 @@
-import { createDateRangeShortcuts as create } from '@xw-ui/xw-shared'
+import { createDateRangeShortcuts as create } from '../../shared'
 
-export function createDateRangeShortcuts () {
+export function createDateRangeShortcuts() {
   const shortcuts = create()
   return shortcuts.map(item => {
     const { value, ...rest } = item

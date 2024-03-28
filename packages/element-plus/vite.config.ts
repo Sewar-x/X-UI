@@ -26,7 +26,7 @@ export default defineConfig(async ({ command, mode }) => {
       },
       lib: {//打包纯组件(供用户在业务项目中安装、导入、使用的组件)，入口是 /components/index.(js/ts)
         entry: path.resolve(__dirname, './components/index.ts'),
-        name: 'XWUi',
+        name: 'xwElementPlus',
         fileName: 'xw-element-plus',
         formats: ['es', 'cjs', 'umd', 'iife'] // 构建输出 es、cjs、umd、iife 格式的包
       }

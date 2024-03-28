@@ -29,7 +29,7 @@ export default defineConfig(async ({ command, mode }) => {
       },
       lib: { //打包纯组件(供用户在业务项目中安装、导入、使用的组件)，入口是 /components/index.(js/ts)
         entry: path.resolve(__dirname, './components/index.js'),
-        name: 'XWUi',
+        name: 'xwElementUi',
         fileName: 'xw-element-ui',
         formats: ['es', 'cjs', 'umd', 'iife']
       }

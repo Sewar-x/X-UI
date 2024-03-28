@@ -1,6 +1,6 @@
 {
   "name": "xw-ui",
-  "version": "1.0.0",
+  "version": "1.0.16",
   "description": "配置化组件库",
   "scripts": {
     "docs:dev": "pnpm run -C docs docs:dev",
@@ -14,13 +14,12 @@
     "build:elp": "pnpm run -C packages/element-plus build",
     "build:elu": "pnpm run -C packages/element-ui build",
     "build:ant": "pnpm run -C packages/ant-design build",
-    "build:shared": "pnpm run -C packages/shared build",
     "release": "node scripts/release.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "@types/node": "^18.0.3",
     "chalk": "^4.1.2",
     "execa": "^5.1.0",

@@ -16,16 +16,14 @@
     "element-plus": "^2.2.0"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.0.6",
-    "@xw-ui/xw-shared": "workspace:*",
-    "@xw-ui/hooks": "workspace:*",
-    "lodash": "^4.17.21"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.3",
     "element-plus": "^2.2.8",
     "vue": "^3.2.36",
     "vue-router": "4",
-    "less": "^4.1.3"
+    "less": "^4.1.3",
+    "@element-plus/icons-vue": "^2.0.6",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3"
   }
 }
