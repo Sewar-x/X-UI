@@ -10,7 +10,7 @@
     "docs:build": "vite build --mode docs"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sewen",
   "license": "ISC",
   "dependencies": {
     "@vitejs/plugin-react": "^1.0.0",
