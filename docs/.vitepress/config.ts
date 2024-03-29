@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { sitePublic } from '../../config/site'
+import { docsSite } from '../../config/site'
 import nav from './configs/nav'
 import sidebar from './configs/sidebar'
 import footer from './configs/footer'
@@ -7,7 +7,7 @@ export default defineConfig({
   title: 'XW-UI',
   description: '',
   appearance: false,
-  base: `${sitePublic}/`,
+  base: `${docsSite}/`,
   head: [
     [
       'link',

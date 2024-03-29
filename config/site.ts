@@ -1,1 +1,1 @@
-export const sitePublic = '/X-UI'
+export const docsSite = '/X-UI'

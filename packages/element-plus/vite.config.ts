@@ -2,17 +2,17 @@ import path from 'path'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import { alias } from '../../scripts'
-import { sitePublic } from '../../config/site'
+import { docsSite } from '../../config/site'
 
 export default defineConfig(async ({ command, mode }) => {
   let docsBuild = {}
   // 打包组件库文档，打包 demo 组件代码
   if (mode === 'docs') {
-    docsBuild.base = `${sitePublic}/element-plus/`// demo 文档组件代码入口，打包成正常的单页应用，入口是 index.html。
+    docsBuild.base = `${docsSite}/element-plus/`// demo 文档组件代码入口，打包成正常的单页应用，入口是 index.html。
     docsBuild.build = { //  demo 文档示例组件构建输出目录，输出到 vitepress 目录下
       outDir: '../../docs/.vitepress/dist/element-plus',
       // 如果你的资源需要被部署到 CDN，可以设置 publicPath  
-      publicDir: `${sitePublic}/`, // 这将影响所有资源引用的路径  , // 这将影响所有资源引用的路径  
+      publicDir: `${docsSite}/`, // 这将影响所有资源引用的路径  , // 这将影响所有资源引用的路径  
     }
   }
   return {
