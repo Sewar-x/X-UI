@@ -1,10 +1,10 @@
-import { defineConfig } from 'vite'
+import { ConfigEnv, defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from "path";
 import { alias } from "../../scripts";
 import { docsSite } from '../../config/site'
 
-export default defineConfig(async ({ command, mode }) => {
+export default defineConfig(async ({ command, mode }: ConfigEnv) => {
   let docsBuild = {}
   // 打包组件库文档，打包 demo 组件代码
   if (mode === 'docs') {
@@ -16,13 +16,24 @@ export default defineConfig(async ({ command, mode }) => {
     }
   }
   return {
+    base: '',
     server: {
       port: '3933'
     },
     plugins: [react()],
     build: {
       rollupOptions: {
-        external: ['react', 'react-dom', 'ant-design']
+        external: ['react', 'react-dom', 'ant-design'],
+        output: {
+          // 导出为 UMD、ES、CommonJS 格式  
+          globals: {
+            react: 'React',
+            'ant-design': 'AntDesign'
+          },
+          exports: 'named', // 使用命名导出  
+          // 如果你需要自定义的 UMD 名称，可以在这里设置  
+          // umdName: 'xwElementPlus'  
+        }
       },
       lib: {
         entry: path.resolve(__dirname, './components/index.ts'),
@@ -34,6 +45,7 @@ export default defineConfig(async ({ command, mode }) => {
     resolve: {
       alias: await alias()
     },
+
     ...docsBuild
   }
 })

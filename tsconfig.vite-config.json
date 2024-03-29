@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.node.json",
+  "compilerOptions": {
+    "composite": true,
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "**/vite.config.*",
+    "**/vitest.config.*",
+    "**/vite.init.*",
+    "scripts/*",
+    "config/*"
+  ],
+  "exclude": [
+    "docs"
+  ]
+}

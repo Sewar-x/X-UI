@@ -1,35 +1,14 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "react-jsx",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "allowJs": true,
-    "baseUrl": ".",
-    "paths": {
-      "@xw-ui/*": [
-        "./packages/*",
-        "./*"
-      ]
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.web.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.vite-config.json"
     }
-  },
-  "include": [
-    "packages/*.d.ts",
-    "packages/element-plus/components", // element-ui用js开发
-    "docs",
-    "packages/element-plus/types/**/*.d.ts",
-    "packages/element-plus/types/**/*.ts",
-  ],
-  "exclude": [
-    "node_modules",
-    "dist/**"
   ]
 }

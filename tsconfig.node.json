@@ -1,0 +1,30 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "lib": [
+      "ESNext"
+    ],
+    "types": [
+      "node"
+    ],
+    "skipLibCheck": true
+  },
+  "include": [
+    "config/**/*.ts",
+    "scripts/**/*.ts",
+    "packages/ant-design/**/*.ts",
+    "packages/ant-design/package.json",
+    "packages/element-plus/**/*.ts",
+    "packages/element-plus/package.json",
+    "packages/hooks/**/*.ts",
+    "packages/hooks/package.json",
+    "packages/shared/**/*.ts",
+    "packages/shared/package.json"
+  ],
+  "exclude": [
+    "**/__tests__/**",
+    "**/tests/**",
+    "**/dist"
+  ]
+}

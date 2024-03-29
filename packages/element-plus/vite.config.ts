@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import { alias } from '../../scripts'
 import { docsSite } from '../../config/site'
 
-export default defineConfig(async ({ command, mode }) => {
+export default defineConfig(async ({ command, mode }: ConfigEnv) => {
   let docsBuild = {}
   // 打包组件库文档，打包 demo 组件代码
   if (mode === 'docs') {

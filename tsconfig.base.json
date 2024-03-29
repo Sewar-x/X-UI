@@ -1,0 +1,36 @@
+{
+  "compileOnSave": true, //设置保存文件的时候自动编译
+  "include": [
+    "types/*.d.ts",
+    "**/types/*.d.ts",
+    "**/types/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ], //指定编译器需要排除的文件或文件夹
+  "compilerOptions": {
+    //配置编译选项
+    "diagnostics": true, // 打印诊断信息
+    "outDir": "dist",
+    "target": "es2018",
+    "module": "esnext",
+    "baseUrl": ".",
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "allowJs": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "rootDir": ".",
+    "types": [],
+    "paths": {
+      "@xw-ui/*": [
+        "packages/*"
+      ]
+    }
+  }
+}
