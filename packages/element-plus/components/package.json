@@ -1,0 +1,14 @@
+{
+  "name": "@xw-ui/element-plus-components",
+  "version": "1.0.0",
+  "description": "all components are settled here",
+  "main": "index.ts",
+  "module": "index.ts",
+  "unpkg": "index.js",
+  "jsdelivr": "index.js",
+  "peerDependencies": {
+    "vue": ">=3.0.0"
+  },
+  "types": "index.d.ts",
+  "sideEffects": false
+}

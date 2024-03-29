@@ -1,11 +1,17 @@
 {
-  "name": "xw-ant-design",
+  "name": "@xw-ui/ant-design",
   "version": "1.0.0",
   "description": "二次封装ant-design",
   "main": "dist/xw-ant-design.cjs.js",
   "module": "dist/xw-ant-design.es.js",
-  "unpkg": "dist/xw-ant-design.umd.js",
-  "jsdelivr": "dist/xw-ant-design.umd.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "dist/xw-ant-design.cjs.js",
+      "import": "dist/xw-ant-design.es.js",
+      "types": "dist/index.d.ts"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,16 +19,22 @@
   },
   "keywords": [],
   "author": "Sewen",
-  "license": "ISC",
-  "dependencies": {
-    "antd": "^4.21.7",
+  "license": "MIT",
+  "peerDependencies": {
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.22.3"
   },
+  "dependencies": {
+    "antd": "^4.21.7",
+    "@xw-ui/hooks": "workspace:*",
+    "@xw-ui/shared": "workspace:*"
+  },
   "devDependencies": {
-    "@types/react": "^18.0.15",
-    "vite": "^2.9.13",
-    "@vitejs/plugin-react": "^1.0.0"
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^6.22.3",
+    "@vitejs/plugin-react": "^1.0.0",
+    "@types/react": "^18.0.15"
   }
 }

@@ -1,4 +1,3 @@
 
-export * from './table'
-export * from './menu'
-export * from './Button'
+export * from './BasicComponent'
+export * from './Form'

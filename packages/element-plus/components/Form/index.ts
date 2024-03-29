@@ -1,9 +1,9 @@
 import { withInstall } from '../../utils'
 
-import Button from './button.vue'
+import BasicForm from './BasicForm.vue'
 // 使用 withInstall 注册组件并导出组件
-export const XButton = withInstall(Button)
+export const XBasicForm = withInstall(BasicForm)
 // 使用 withInstall 注册组件并导出组件
-export default XButton
+export default XBasicForm
 
-export * from '.'
+export * from './'

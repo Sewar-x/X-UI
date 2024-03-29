@@ -1,4 +1,4 @@
 packages: # pnpm-workspace.yaml 定义了 工作空间 的根目录，并能够使您从工作空间中包含 / 排除目录 。 默认情况下，包含所有子目录。
   - packages/* # 将 packages 目录下所有文件夹项目视为独立项目，能独立安装 node_modules
-  - test/packages/* # 将 test/packages/ 目录下所有文件夹项目视为独立项目，能独立安装 node_modules
+  - test/* # 将 test/ 目录下所有文件夹项目视为独立项目，能独立安装 node_modules
   - docs
