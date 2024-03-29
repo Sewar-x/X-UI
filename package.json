@@ -2,6 +2,20 @@
   "name": "xw-ui",
   "version": "1.0.18",
   "description": "配置化组件库",
+  "exports": {
+    "./element-plus/*": {
+      "require": "./packages/element-plus/dist/xw-element-plus.cjs.js",
+      "import": "./packages/element-plus/dist/xw-element-plus.es.js"
+    },
+    "./element-ui/*": {
+      "require": "./packages/element-ui/dist/xw-element-ui.cjs.js",
+      "import": "./packages/element-ui/dist/xw-element-ui.es.js"
+    },
+    "./ant-design/*": {
+      "require": "./packages/ant-design/dist/xw-ant-design.cjs.js",
+      "import": "./packages/ant-design/dist/xw-ant-design.es.js"
+    }
+  },
   "scripts": {
     "docs:dev": "pnpm run -C docs docs:dev",
     "docs:build": "pnpm run -C docs docs:build && pnpm run -C packages/element-plus docs:build && pnpm run -C packages/element-ui docs:build &&  pnpm run -C packages/ant-design docs:build ",
@@ -16,9 +30,26 @@
     "build:ant": "pnpm run -C packages/ant-design build",
     "release": "node scripts/release.ts"
   },
-  "keywords": [],
+  "publishConfig": {
+    "registry": "http://127.0.0.1:4873/"
+  },
+  "keywords": [
+    "xw-ui",
+    "vue",
+    "react",
+    "element",
+    "element-plus",
+    "ant-design"
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "peerDependencies": {
+    "vue": ">=2.0.0",
+    "vue-router": "4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^6.22.3"
+  },
   "devDependencies": {
     "@types/node": "^18.0.3",
     "chalk": "^4.1.2",

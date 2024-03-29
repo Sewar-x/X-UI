@@ -1,29 +1,39 @@
 {
-  "name": "@xw-ui/xw-element-plus",
+  "name": "@xw-ui/element-plus",
   "version": "1.0.0",
   "description": "二次封装 element-plus",
   "main": "dist/xw-element-plus.cjs.js",
   "moudle": "dist/xw-element-plus.es.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "dist/xw-element-plus.cjs.js",
+      "import": "dist/xw-element-plus.es.js",
+      "types": "dist/index.d.ts"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "docs:build": "vite build --mode docs"
   },
   "author": "Sewen",
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
-    "element-plus": "^2.2.0",
-    "vue": "^3.2.0"
-  },
-  "dependencies": {
-    "@element-plus/icons-vue": "^2.0.6",
-    "element-plus": "^2.6.2",
-    "less": "^4.1.3",
-    "lodash": "^4.17.21",
-    "vue": "^3.2.36",
+    "vue": ">=3.0.0",
     "vue-router": "4"
   },
+  "dependencies": {
+    "element-plus": "^2.6.2",
+    "@element-plus/icons-vue": "^2.0.6",
+    "@xw-ui/hooks": "workspace:*",
+    "@xw-ui/shared": "workspace:*",
+    "less": "^4.1.3",
+    "lodash": "^4.17.21"
+  },
   "devDependencies": {
+    "vue": "^3.2.36",
+    "vue-router": "4",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/tsconfig": "^0.5.1"
   }
