@@ -24,10 +24,11 @@
     "demo:dev-elu": "pnpm run -C packages/element-ui dev",
     "demo:dev-ant": "pnpm run -C packages/ant-design dev",
     "test:elp": "pnpm run -C test/packages/element-plus dev",
-    "build": "pnpm run build:elp && pnpm run build:elu && pnpm run build:ant",
+    "build": "pnpm run build:shared && pnpm run build:elp && pnpm run build:elu && pnpm run build:ant",
     "build:elp": "pnpm run -C packages/element-plus build",
     "build:elu": "pnpm run -C packages/element-ui build",
     "build:ant": "pnpm run -C packages/ant-design build",
+    "build:shared": "pnpm run -C packages/shared build",
     "release": "node scripts/release.ts"
   },
   "publishConfig": {
@@ -44,17 +45,23 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "vue": ">=2.0.0",
-    "vue-router": "4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "vue": ">=2.0.0",
+    "vue-router": "4"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.17.0",
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@types/node": "^18.0.3",
     "chalk": "^4.1.2",
     "execa": "^5.1.0",
     "fs-extra": "^10.1.0",
+    "less": "^4.1.3",
+    "typescript": "^5.4.3",
     "vite": "^2.9.13"
   }
 }

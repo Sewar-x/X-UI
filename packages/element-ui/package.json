@@ -2,12 +2,12 @@
   "name": "@xw-ui/element-ui",
   "version": "1.0.0",
   "description": "二次封装 element-ui",
-  "main": "dist/xw-element-ui.cjs.js",
-  "module": "dist/xw-element-ui.es.js",
+  "main": "./dist/xw-element-ui.cjs.js",
+  "module": "./dist/xw-element-ui.es.js",
   "exports": {
     ".": {
-      "require": "dist/xw-element-ui.cjs.js",
-      "import": "dist/xw-element-ui.es.js"
+      "require": "./dist/xw-element-ui.cjs.js",
+      "import": "./dist/xw-element-ui.es.js"
     }
   },
   "scripts": {
@@ -24,8 +24,6 @@
   },
   "dependencies": {
     "element-ui": "^2.15.6",
-    "less": "^4.1.3",
-    "lodash-es": "^4.17.21",
     "@xw-ui/hooks": "workspace:*",
     "@xw-ui/shared": "workspace:*"
   },

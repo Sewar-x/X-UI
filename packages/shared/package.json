@@ -2,7 +2,17 @@
   "name": "@xw-ui/shared",
   "private": true,
   "license": "MIT",
-  "main": "index.ts",
+  "main": "./dist/xw-ui-shared.umd.js",
+  "module": "./dist/xw-ui-shared.es.js",
+  "exports": {
+    ".": {
+      "require": "./dist/xw-ui-shared.umd.js",
+      "module": "./dist/xw-ui-shared.es.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build"
+  },
   "peerDependencies": {
     "vue": "^3.2.36",
     "react": "18.2.0",
