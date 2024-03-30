@@ -4,7 +4,9 @@
     "types/*.d.ts",
     "**/types/*.d.ts",
     "**/types/*.ts",
-    "**/types/*.vue"
+    "**/types/*.vue",
+    "**/*.ts",
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules",
@@ -18,7 +20,8 @@
     "module": "esnext",
     "lib": [
       "esnext",
-      "dom"
+      "dom",
+      "dom.iterable"
     ],
     "baseUrl": ".",
     "sourceMap": false,
@@ -31,6 +34,7 @@
     "esModuleInterop": true,
     "removeComments": false,
     "rootDir": ".",
+    "jsx": "react",
     "types": [],
     "paths": {
       "@xw-ui/*": [
