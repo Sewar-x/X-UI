@@ -23,7 +23,7 @@
                 formItem.component.event?.reset
               )
             "
-            @change="($evnet:any)=>changeHandler($evnet,formItem.attr?.prop as string)"
+            @change="($evnet: any) => changeHandler($evnet, formItem.attr?.prop as string)"
           />
         </el-form-item>
       </el-col>

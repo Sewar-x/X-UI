@@ -17,6 +17,7 @@
     "packages/ant-design/**/*.tsx",
     "packages/ant-design/package.json",
     "packages/element-plus/**/*.ts",
+    "packages/element-plus/**/*.vue",
     "packages/element-plus/package.json",
     "packages/hooks/**/*.ts",
     "packages/hooks/package.json",

@@ -4,9 +4,9 @@
     "types/*.d.ts",
     "**/types/*.d.ts",
     "**/types/*.ts",
-    "**/types/*.vue",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "**/*.vue",
   ],
   "exclude": [
     "node_modules",
