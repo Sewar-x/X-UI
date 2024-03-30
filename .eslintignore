@@ -1,0 +1,9 @@
+# .eslintignore
+node_modules
+dist
+
+!.eslintrc.js
+!.stylelintrc.js
+!.prettierrc.js
+!.lintstagedrc.js
+!.commitlintrc.js
