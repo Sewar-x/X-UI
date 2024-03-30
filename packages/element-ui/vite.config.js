@@ -6,17 +6,15 @@ import { defineConfig } from 'vite'
 import { docsSite } from '../../config/site'
 
 export default defineConfig(async ({ command, mode }) => {
-  let docsBuild = {}
-  // 打包组件库文档，打包 demo 组件代码
-  if (mode === 'docs') {
-    docsBuild.base = `${docsSite}/element-ui/`// demo 文档组件代码入口，打包成正常的单页应用，入口是 index.html。
-    docsBuild.build = { //  demo 文档示例组件构建输出目录，输出到 vitepress 目录下
+  let docsBuild = {
+    base: `${docsSite}/element-ui/`,// demo 文档组件代码入口，打包成正常的单页应用，入口是 index.html。
+    build: { //  demo 文档示例组件构建输出目录，输出到 vitepress 目录下
       outDir: '../../docs/.vitepress/dist/element-ui',
       // 如果你的资源需要被部署到 CDN，可以设置 publicPath  
       publicDir: `${docsSite}/`, // 这将影响所有资源引用的路径  
     }
   }
-  return {
+  const configs = {
     server: {
       port: '3633'
     },
@@ -34,7 +32,7 @@ export default defineConfig(async ({ command, mode }) => {
           },
           exports: 'named', // 使用命名导出  
           // 如果你需要自定义的 UMD 名称，可以在这里设置  
-          // umdName: 'xwElementPlus'  
+          // umdName: 'xwElementUI'  
         }
       },
       lib: { //打包纯组件(供用户在业务项目中安装、导入、使用的组件)，入口是 /components/index.(js/ts)
@@ -47,7 +45,7 @@ export default defineConfig(async ({ command, mode }) => {
     resolve: {
       alias: await alias()
     },
-    ...docsBuild
   }
+  return mode === 'docs' ? Object.assign(configs, docsBuild) : configs
 })
 
