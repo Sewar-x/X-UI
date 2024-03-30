@@ -21,17 +21,15 @@
 </template>
 
 <script setup lang="ts">
-
-import { toRef } from "vue";
+import { CompType } from "@xw-ui/element-plus/types/gloabl";
+import { defineProps, toRef } from "vue";
 
 const props = defineProps<{
   options: CompType;
 }>();
 
 const compName =
-  typeof props.options.comp === "string"
-    ? `${props.options.comp}`
-    : props.options.comp;
+  typeof props.options.comp === "string" ? `${props.options.comp}` : props.options.comp;
 
 /**
  * 依据 options 中 data 属性和 key 属性确定渲染组件的响应数据

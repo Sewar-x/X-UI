@@ -32,8 +32,9 @@
 </template>
 
 <script setup lang="ts">
+import { defineProps, defineEmits } from "vue";
 import { ref, unref } from "vue";
-import type { FormType, FormItemType } from "./type";
+import { FormType, FormItemType } from "./type";
 import BasicComponent from "../BasicComponent";
 const emit = defineEmits(["changeAfter"]);
 const props = defineProps<{
@@ -80,7 +81,7 @@ const triggerEvent = (val: string | undefined, submit: Function, reset: Function
  * @param formItem { Array<FormItemType> } 表单一行的表单项数组
  * @param val { string | number } 表单项指定的 span 值
  * @return number span的值
- * @author 吴泽鑫 2022-11-12
+ * @author
  */
 const setSpan = (formItem: Array<FormItemType>, val: string | number | undefined) => {
   let spanValue = 24;
