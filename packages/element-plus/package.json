@@ -20,8 +20,7 @@
   "author": "Sewen",
   "license": "MIT",
   "peerDependencies": {
-    "vue": "^3.2.36",
-    "vue-router": "4"
+    "vue": "^3.2.36"
   },
   "dependencies": {
     "element-plus": "^2.6.2",
@@ -30,8 +29,8 @@
     "@xw-ui/shared": "workspace:*"
   },
   "devDependencies": {
-    "vue": "^3.2.36",
-    "vue-router": "4",
+    "vue": "^3.2.37",
+    "vue-router": "^4.0.16",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/tsconfig": "^0.5.1"
   }

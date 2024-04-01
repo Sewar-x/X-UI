@@ -2,6 +2,11 @@
   "name": "xw-ui",
   "version": "1.0.18",
   "description": "配置化组件库",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "docs"
+  ],
   "exports": {
     "./element-plus/*": {
       "require": "./packages/element-plus/dist/xw-element-plus.cjs.js",
@@ -46,11 +51,11 @@
   "author": "",
   "license": "MIT",
   "peerDependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
     "vue": ">=2.0.0",
-    "vue-router": "4"
+    "vue-router": "^4"
   },
   "dependencies": {
     "@types/lodash": "^4.17.0",
