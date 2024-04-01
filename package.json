@@ -18,6 +18,18 @@
     "./ant-design": {
       "require": "./packages/ant-design/dist/xw-ant-design.cjs.js",
       "import": "./packages/ant-design/dist/xw-ant-design.es.js"
+    },
+    "./element-plus/*": {
+      "require": "./packages/element-plus/dist/*",
+      "import": "./packages/element-plus/dist/*"
+    },
+    "./element-ui/*": {
+      "require": "./packages/element-ui/dist/*",
+      "import": "./packages/element-ui/dist/*"
+    },
+    "./ant-design/*": {
+      "require": "./packages/ant-design/*",
+      "import": "./packages/ant-design/*"
     }
   },
   "scripts": {

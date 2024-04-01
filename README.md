@@ -1,8 +1,25 @@
 # XW-UI
 
-  基于 ElementUI、ElementPlus、AntDesign 组件库二次封装，JSON 配置化快速开发中后台组件库
+XW-UI 是基于 [Element](https://element.eleme.cn/#/zh-CN)、[Element Plus ](https://element-plus.org/zh-CN/component/overview.html)、[Ant Design](https://ant-design.antgroup.com/index-cn) 组件库二次封装，使用 JSON 配置快速开发的中后台组件库
 
-## 安装
+
+
+## ✨ 特性
+
+- 📦 开箱即用的 Vue2、Vue3、React 的组件库。
+- 🛡 使用 TypeScript 开发，提供完整的类型定义文件。
+- ⚙️ 使用 JSON 配置快速开发。
+
+
+
+## 🖥 兼容环境
+
+- 现代浏览器。
+
+
+
+## 📦 安装
+
 ```shell
 # NPM
 npm install xw-ui
@@ -14,7 +31,50 @@ yarn install xw-ui
 pnpm install xw-ui
 ```
 
-## 版本规范
+**依赖安装**
+
+XW-UI 是基于 [Element](https://element.eleme.cn/#/zh-CN)、[Element Plus ](https://element-plus.org/zh-CN/component/overview.html)、[Ant Design](https://ant-design.antgroup.com/index-cn) 组件库二次封装，请确保在你的项目需要预先安装以下插件/库：
+
+| 组件库          | 依赖           | 版本      |
+| --------------- | -------------- | --------- |
+| **Element**     |                |           |
+|                 | `vue`          | `~2.6.0`  |
+|                 | `element-ui`   | `^2.15.6` |
+|                 |                |           |
+| **Elment Plus** |                |           |
+|                 | `vue`          | `^3.2.36` |
+|                 | `element-plus` | `^2.6.2`  |
+|                 |                |           |
+| **Ant Design**  |                |           |
+|                 | `react`        | `^18.2.0` |
+|                 | `react-dom`    | `^18.2.0` |
+|                 | `antd`         | `^4.21.7` |
+
+**使用 Element 组件库**：安装 Vue2 和 Element
+
+```shell
+npm install vue@2.6.0  element-ui
+```
+
+
+
+**使用 Element Plus 组件库**：安装 Vue3 和 Element plus
+
+```shell
+npm install vue@3.2.36  element-plus
+```
+
+
+
+**使用 Ant Design 组件库**：安装 React 和 Ant Design
+
+```shell
+npm install react@18.2.0  react-dom@18.2.0 antd
+```
+
+
+
+## 📑 版本规范
 
 **递增已发布包中的语义版本**
 
@@ -34,8 +94,6 @@ pnpm install xw-ui
 - 补丁发布：`1.0` 或 `1.0.x` 或 `~1.0.4`
 
 - 次要版本：`1` 或 `1.x` 或 `^1.0.4`
-
-  ¥Minor releases: `1` or `1.x` or `^1.0.4`
 
 - 主要版本：`*` 或 `x`
 
