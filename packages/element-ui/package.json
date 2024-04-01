@@ -2,19 +2,19 @@
   "name": "@xw-ui/element-ui",
   "version": "1.0.0",
   "description": "二次封装 element-ui",
-  "main": "./dist/xw-element-ui.cjs.js",
-  "module": "./dist/xw-element-ui.es.js",
+  "main": "./index.js",
+  "module": "./index.js",
   "exports": {
     ".": {
-      "require": "./dist/xw-element-ui.cjs.js",
-      "import": "./dist/xw-element-ui.es.js"
+      "require": "./index.js",
+      "import": "./index.js"
+    },
+    "./xw-ui/element-ui/": {
+      "require": "./index.js",
+      "import": "./index.js"
     },
     "./*": "./*"
   },
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",

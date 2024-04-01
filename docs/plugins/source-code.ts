@@ -65,7 +65,7 @@ const sourceCode = () => {
         // iframe src 地址
         const iframeSrc = compPathStrArr[compPathStrArr.length - 1]
         // 正则匹配 @xw-ui 路径别名替换为原路径
-        const searchString = new RegExp(`@xw-ui/xw-${packageName}`, 'g')
+        const searchString = new RegExp(`@/xw-ui/${packageName}`, 'g')
         const replaceString = `xw-ui/${packageName}`
         const file = filesRes[i] ? (filesRes[i] as string).replace(searchString, replaceString) : null
         i++

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { XTable } from "@xw-ui/xw-element-ui";
+import { XTable } from "@/xw-ui/element-ui";
 export default {
   name: "TableCustomColumns",
   components: { XTable },

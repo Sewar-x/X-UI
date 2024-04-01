@@ -1,32 +1,32 @@
 <template>
   <div>
     <el-date-picker
-        ref="datePicker"
-        v-model="dataPicker"
-        type="daterange"
-        align="right"
-        :picker-options="pickerOptions"
-        placeholder="Pick a date"
+      ref="datePicker"
+      v-model="dataPicker"
+      type="daterange"
+      align="right"
+      :picker-options="pickerOptions"
+      placeholder="Pick a date"
     />
   </div>
 </template>
 
 <script>
-import { createDateRangeShortcuts } from '@xw-ui/xw-element-ui'
+import { createDateRangeShortcuts } from "@/xw-ui/element-ui";
 
 export default {
-  name: 'DataPickerShortcuts',
-  data () {
+  name: "DataPickerShortcuts",
+  data() {
     return {
       pickerOptions: {
         shortcuts: createDateRangeShortcuts(),
       },
-      dataPicker: '',
-      dataPicker2: '',
-    }
+      dataPicker: "",
+      dataPicker2: "",
+    };
   },
   mounted() {
-    this.$refs.datePicker.focus()
-  }
-}
+    this.$refs.datePicker.focus();
+  },
+};
 </script>

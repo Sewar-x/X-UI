@@ -2,21 +2,17 @@
   "name": "@xw-ui/element-plus",
   "version": "1.0.0",
   "description": "二次封装 element-plus",
-  "main": "./dist/xw-element-plus.cjs.js",
-  "moudle": "./dist/xw-element-plus.es.js",
-  "types": "./dist/index.d.ts",
+  "main": "./index.ts",
+  "moudle": "./index.ts",
+  "types": "./index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/xw-element-plus.cjs.js",
-      "import": "./dist/xw-element-plus.es.js",
-      "types": "./dist/index.d.ts"
+      "require": "./index.ts",
+      "import": "./index.ts",
+      "types": "./index.d.ts"
     },
     "./*": "./*"
   },
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -34,23 +34,22 @@
         </el-menu-item>
       </x-menu>
     </el-aside>
-    <el-main>
-    </el-main>
+    <el-main> </el-main>
   </el-container>
 </template>
 
 <script>
-import { XMenu } from '@xw-ui/xw-element-ui'
+import { XMenu } from "@/xw-ui/element-ui";
 
 export default {
-  name: 'MenuVoiceCloud',
+  name: "MenuVoiceCloud",
   components: {
-    XMenu
+    XMenu,
   },
-  data () {
+  data() {
     return {
-      collapse: false
-    }
-  }
-}
+      collapse: false,
+    };
+  },
+};
 </script>

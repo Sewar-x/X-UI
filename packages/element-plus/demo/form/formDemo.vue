@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { XBasicForm } from "@xw-ui/xw-element-plus";
+import { XBasicForm } from "@/xw-ui/element-plus";
 // 响应数据
 let obj = {
   username: "kooriookami",

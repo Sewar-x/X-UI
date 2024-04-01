@@ -6,6 +6,7 @@ import { defineConfig } from 'vite'
 import { docsSite } from '../../config/site'
 
 export default defineConfig(async ({ command, mode }) => {
+  const alia = await alias()
   let docsBuild = {
     base: `${docsSite}/element-ui/`,// demo 文档组件代码入口，打包成正常的单页应用，入口是 index.html。
     build: { //  demo 文档示例组件构建输出目录，输出到 vitepress 目录下
@@ -33,7 +34,7 @@ export default defineConfig(async ({ command, mode }) => {
       }
     },
     resolve: {
-      alias: await alias()
+      alias: alia
     },
   }
   return mode === 'docs' ? Object.assign(configs, docsBuild) : configs

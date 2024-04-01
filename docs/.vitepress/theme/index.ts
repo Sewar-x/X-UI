@@ -3,7 +3,7 @@ import Theme from 'vitepress/theme'
 import '../../public/css/custom-style.css'
 import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
-import XWComponents from '@xw-ui/xw-element-plus'
+import XWComponents from '@/xw-ui/element-plus'
 import { globals } from '../components'
 
 export default {

@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { CompType } from "@xw-ui/element-plus/types/gloabl";
+import { CompType } from "@/xw-ui/element-plus/types/gloabl";
 import { defineProps, toRef } from "vue";
 
 const props = defineProps<{
