@@ -1,22 +1,21 @@
 {
   "name": "xw-ui",
-  "version": "1.0.18",
+  "version": "1.0.20",
   "description": "配置化组件库",
-  "private": true,
   "workspaces": [
     "packages/*",
     "docs"
   ],
   "exports": {
-    "./element-plus/*": {
+    "./element-plus": {
       "require": "./packages/element-plus/dist/xw-element-plus.cjs.js",
       "import": "./packages/element-plus/dist/xw-element-plus.es.js"
     },
-    "./element-ui/*": {
+    "./element-ui": {
       "require": "./packages/element-ui/dist/xw-element-ui.cjs.js",
       "import": "./packages/element-ui/dist/xw-element-ui.es.js"
     },
-    "./ant-design/*": {
+    "./ant-design": {
       "require": "./packages/ant-design/dist/xw-ant-design.cjs.js",
       "import": "./packages/ant-design/dist/xw-ant-design.es.js"
     }

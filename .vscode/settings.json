@@ -65,4 +65,7 @@
     "editor.tabSize": 2,
     // 自动补充闭合的 HTML 标签
     "html.autoClosingTags": true,
+    "[ignore]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
 }
