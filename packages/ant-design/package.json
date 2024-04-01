@@ -10,8 +10,13 @@
       "require": "./dist/xw-ant-design.cjs.js",
       "import": "./dist/xw-ant-design.es.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./*": "./*"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -26,8 +31,8 @@
   },
   "dependencies": {
     "antd": "^4.21.7",
-    "@xw-ui/hooks": "workspace:*",
-    "@xw-ui/shared": "workspace:*"
+    "@xw-ui/hooks": "workspace:^",
+    "@xw-ui/shared": "workspace:^"
   },
   "devDependencies": {
     "react": "18.2.0",

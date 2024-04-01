@@ -3,8 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@types/react': ^18.0.15
   '@vitejs/plugin-react': ^1.0.0
-  '@xw-ui/hooks': workspace:*
-  '@xw-ui/shared': workspace:*
+  '@xw-ui/hooks': workspace:^
+  '@xw-ui/shared': workspace:^
   antd: ^4.21.7
   react: 18.2.0
   react-dom: 18.2.0
@@ -499,14 +499,14 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001600
-      electron-to-chromium: 1.4.721
+      caniuse-lite: 1.0.30001603
+      electron-to-chromium: 1.4.722
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13_browserslist@4.23.0
     dev: true
 
-  /caniuse-lite/1.0.30001600:
-    resolution: {integrity: sha512-+2S9/2JFhYmYaDpZvo0lKkfvuKIglrx68MwOBqMGHhQsNkLjB5xtc/TGoEPs+MxjSyN/72qer2g97nzR641mOQ==}
+  /caniuse-lite/1.0.30001603:
+    resolution: {integrity: sha512-iL2iSS0eDILMb9n5yKQoTBim9jMZ0Yrk8g0N9K7UzYyWnfIKzXBZD5ngpM37ZcL/cv0Mli8XtVMRYMQAfFpi5Q==}
     dev: true
 
   /chalk/2.4.2:
@@ -577,8 +577,8 @@ packages:
     resolution: {integrity: sha512-R8LUSEay/68zE5c8/3BDxiTEvgb4xZTF0RKmAHfiEVN3klfIpXfi2/QCoiWPccVQ0J/ZGdz9OjzL4uJEP/MRAw==}
     dev: false
 
-  /electron-to-chromium/1.4.721:
-    resolution: {integrity: sha512-k1x2r6foI8iJOp+1qTxbbrrWMsOiHkzGBYwYigaq+apO1FSqtn44KTo3Sy69qt7CRr7149zTcsDvH7MUKsOuIQ==}
+  /electron-to-chromium/1.4.722:
+    resolution: {integrity: sha512-5nLE0TWFFpZ80Crhtp4pIp8LXCztjYX41yUcV6b+bKR2PqzjskTMOOlBi1VjBHlvHwS+4gar7kNKOrsbsewEZQ==}
     dev: true
 
   /escalade/3.1.2:

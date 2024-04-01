@@ -50,13 +50,7 @@
   ],
   "author": "",
   "license": "MIT",
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3",
-    "vue": ">=2.0.0",
-    "vue-router": "^4"
-  },
+  "peerDependencies": {},
   "dependencies": {
     "@types/lodash": "^4.17.0",
     "lodash-es": "^4.17.21"

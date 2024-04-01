@@ -4,19 +4,26 @@
   "license": "MIT",
   "main": "./dist/xw-ui-shared.umd.js",
   "module": "./dist/xw-ui-shared.es.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/xw-ui-shared.umd.js",
-      "module": "./dist/xw-ui-shared.es.js"
-    }
+      "module": "./dist/xw-ui-shared.es.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": "./*"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "vite build"
   },
   "peerDependencies": {
     "vue": "^3.2.36",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3"
   }
 }

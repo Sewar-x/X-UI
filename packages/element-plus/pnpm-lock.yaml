@@ -4,17 +4,17 @@ specifiers:
   '@element-plus/icons-vue': ^2.0.6
   '@vitejs/plugin-vue': ^2.3.3
   '@vue/tsconfig': ^0.5.1
-  '@xw-ui/hooks': workspace:*
-  '@xw-ui/shared': workspace:*
+  '@xw-ui/hooks': workspace:^
+  '@xw-ui/shared': workspace:^
   element-plus: ^2.6.2
-  vue: ^3.2.36
-  vue-router: '4'
+  vue: ^3.2.37
+  vue-router: ^4.0.16
 
 dependencies:
   '@element-plus/icons-vue': 2.3.1_vue@3.4.21
   '@xw-ui/hooks': link:../hooks
   '@xw-ui/shared': link:../shared
-  element-plus: 2.6.2_vue@3.4.21
+  element-plus: 2.6.3_vue@3.4.21
 
 devDependencies:
   '@vitejs/plugin-vue': 2.3.4_vue@3.4.21
@@ -216,8 +216,8 @@ packages:
     resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
     dev: false
 
-  /element-plus/2.6.2_vue@3.4.21:
-    resolution: {integrity: sha512-WFMv1v83l437Xu+GeeM+ytxd9VUQpR4418BowvTVIPYItsoj6yK0ITIuSv19iCesF405FbAOaCIHXhJch0ilFA==}
+  /element-plus/2.6.3_vue@3.4.21:
+    resolution: {integrity: sha512-U4L/mr+1r+EmAUYUHrs0V/8hHMdBGP07rPymSC72LZCN4jK1UwygQYICegTQ5us4mxeqBvW6wfoEfo003fwCqw==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:

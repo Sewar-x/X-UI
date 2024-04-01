@@ -10,8 +10,13 @@
       "require": "./dist/xw-element-plus.cjs.js",
       "import": "./dist/xw-element-plus.es.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./*": "./*"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -25,8 +30,8 @@
   "dependencies": {
     "element-plus": "^2.6.2",
     "@element-plus/icons-vue": "^2.0.6",
-    "@xw-ui/hooks": "workspace:*",
-    "@xw-ui/shared": "workspace:*"
+    "@xw-ui/hooks": "workspace:^",
+    "@xw-ui/shared": "workspace:^"
   },
   "devDependencies": {
     "vue": "^3.2.37",

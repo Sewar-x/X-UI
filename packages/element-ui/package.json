@@ -8,8 +8,13 @@
     ".": {
       "require": "./dist/xw-element-ui.cjs.js",
       "import": "./dist/xw-element-ui.es.js"
-    }
+    },
+    "./*": "./*"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -22,8 +27,8 @@
   },
   "dependencies": {
     "element-ui": "^2.15.6",
-    "@xw-ui/hooks": "workspace:*",
-    "@xw-ui/shared": "workspace:*"
+    "@xw-ui/hooks": "workspace:^",
+    "@xw-ui/shared": "workspace:^"
   },
   "devDependencies": {
     "vue": "~2.6.0",
