@@ -1,4 +1,4 @@
-# 使用 `xw-ui-ant-design`
+# 使用 XW-UI/Ant-Design
 
 ## 使用包管理器
 

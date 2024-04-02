@@ -1,4 +1,4 @@
-# 使用 `x-element-plus`
+# 使用 XW-UI/Element-Plus
 
 本节将介绍如何在项目中使用 XW-UI Element Plus。
 
