@@ -1,1 +1,79 @@
-[{"text":"Basic 基础组件","collapsible":true,"collapsed":false,"items":[{"text":"BasicComponent","link":"/zh-CN/components/element-plus/Basic 基础组件/BasicComponent"}]},{"text":"Data 数据展示","collapsible":true,"collapsed":false,"items":[{"text":"表格组件","link":"/zh-CN/components/element-plus/Data 数据展示/Table表格"}]},{"text":"Feedback 反馈组件","collapsible":true,"collapsed":false,"items":[{"text":"Dialog弹窗","link":"/zh-CN/components/element-plus/Feedback 反馈组件/Dialog弹窗"}]},{"text":"Form 表单组件","collapsible":true,"collapsed":false,"items":[{"text":"Form表单","link":"/zh-CN/components/element-plus/Form 表单组件/Form表单"}]},{"text":"Navigation 导航","collapsible":true,"collapsed":false,"items":[{"text":"Steps步骤条","link":"/zh-CN/components/element-plus/Navigation 导航/Steps步骤条"}]},{"text":"Overview 组件总览","collapsible":true,"collapsed":false,"items":[{"text":"Overview 组件总览","link":"/zh-CN/components/element-plus/Overview 组件总览/Overview组件总览"}]},{"text":"业务通用组件","collapsible":true,"collapsed":false,"items":[{"text":"任务看板","link":"/zh-CN/components/element-plus/业务通用组件/任务看板"}]}]
+[
+  {
+    "text": "Basic 基础组件",
+    "collapsible": true,
+    "collapsed": false,
+    "items": [
+      {
+        "text": "BasicComponent",
+        "link": "/zh-CN/components/element-plus/Basic 基础组件/BasicComponent"
+      }
+    ]
+  },
+  {
+    "text": "Data 数据展示",
+    "collapsible": true,
+    "collapsed": false,
+    "items": [
+      {
+        "text": "表格组件",
+        "link": "/zh-CN/components/element-plus/Data 数据展示/Table表格"
+      }
+    ]
+  },
+  {
+    "text": "Feedback 反馈组件",
+    "collapsible": true,
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Dialog弹窗",
+        "link": "/zh-CN/components/element-plus/Feedback 反馈组件/Dialog弹窗"
+      }
+    ]
+  },
+  {
+    "text": "Form 表单组件",
+    "collapsible": true,
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Form表单",
+        "link": "/zh-CN/components/element-plus/Form 表单组件/Form表单"
+      }
+    ]
+  },
+  {
+    "text": "Navigation 导航",
+    "collapsible": true,
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Steps步骤条",
+        "link": "/zh-CN/components/element-plus/Navigation 导航/Steps步骤条"
+      }
+    ]
+  },
+  {
+    "text": "Vue3业务通用组件",
+    "collapsible": true,
+    "collapsed": false,
+    "items": [
+      {
+        "text": "任务看板",
+        "link": "/zh-CN/components/element-plus/Vue3业务通用组件/任务看板"
+      }
+    ]
+  },
+  {
+    "text": "XElementPlus组件总览",
+    "collapsible": true,
+    "collapsed": false,
+    "items": [
+      {
+        "text": "XElementPlus 组件总览",
+        "link": "/zh-CN/components/element-plus/XElementPlus组件总览/XElementPlus组件总览"
+      }
+    ]
+  }
+]
