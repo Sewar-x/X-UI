@@ -1,4 +1,16 @@
 ---
+title: XW-UI
+titleTemplate: Vue2 & Vue3 & React JSON configer Component Library
+description: Vue2 & Vue3 & React JSON configer Component Library
+head:
+  - - meta
+    - name: description
+      content: XW-UI is Vue2 & Vue3 & React JSON configer Component Library
+  - - meta
+    - name: keywords
+      content: XW-UI Vue2 Vue3 React Component Library
+
+      
 layout: home
 
 hero:
@@ -18,8 +30,8 @@ hero:
       text:  React
       link: /zh-CN/guide/antd-install
     - theme: alt
-      text:  Gitee
-      link: https://gitee.com/jokerxw/x-component-library
+      text:  GitHub
+      link:  https://github.com/Sewar-x/X-UI
 
 features:
   - icon: ⚡️

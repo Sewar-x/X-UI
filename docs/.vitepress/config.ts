@@ -24,6 +24,9 @@ export default defineConfig({
     footer,
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Sewar-x' },
-    ]
+    ],
+    search: {
+      provider: 'local'
+    }
   }
 })
