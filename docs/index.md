@@ -21,11 +21,11 @@ hero:
     src: /images/xw-ui-icon.svg
   actions:
     - theme: brand
-      text:  Vue3
-      link: /zh-CN/guide/elp-install
-    - theme: brand
       text:  Vue2
       link: /zh-CN/guide/elu-install
+    - theme: brand
+      text:  Vue3
+      link: /zh-CN/guide/elp-install
     - theme: brand
       text:  React
       link: /zh-CN/guide/antd-install
@@ -34,15 +34,15 @@ hero:
       link:  https://github.com/Sewar-x/X-UI
 
 features:
-  - icon: ⚡️
-    title: 便捷
+  - icon:    ⚡️
+    title:   灵活易用
     details: 开箱即用，所有组件支持全量引入和按需引入。
-  - icon: 🤟
-    title: 易用
-    details: 通过 JSON 配置化快速开发，保持组件的原始用法，扩展、沉淀常用基础功能。
-  - icon: 💻
-    title: 业务
-    details: 更贴近业务场景，解决常规业务需求，开发提效。
+  - icon:    💡
+    title:   组件丰富
+    details: 通过 JSON 配置化快速开发，保持组件的原始用法基础上，扩展 JSON 配置模式，更加灵活便捷。
+  - icon:    🗃️
+    title:   业务沉淀
+    details: 沉淀的业务组件，更贴近业务场景，解决常规业务需求，开发提效。
 ---
 
 <script setup>
