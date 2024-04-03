@@ -104,13 +104,9 @@ XW-UI 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
 
 
 
-### 完整引入 XW-UI
+XW-UI 的 Vue3 组件库是基于 [Element Plus](https://element-plus.org/zh-CN/guide/quickstart.html) 进行二次封装，因此在使用 XW-UI 之前，需要将 Element Plus 完整导入到你的项目。
 
-如果你对打包后的文件大小不是很在乎，那么使用完整导入会更方便。
-
-XW-UI 的 Vue3 组件库是基于 [Element Plus](https://element-plus.org/zh-CN/guide/quickstart.html) 进行二次封装，因此在使用 XW-UI 之前，需要将 Element Plus 导入到你的项目。
-
-#### **1. 完整导入 Element Plus**
+**完整导入 Element Plus**
 
 在 main.js 中写入以下内容：
 
@@ -131,10 +127,15 @@ app.mount('#app')
 
 > 详细参考 Element plus 官方文档：[组件 | Element](https://element.eleme.cn/#/zh-CN/component/quickstart)
 
-#### **2. 完整引入 XW-UI**
+
+
+### 完整引入 XW-UI
+
+如果你对打包后的文件大小不是很在乎，那么使用完整导入会更方便。
+
 `x-element-plus` 将会在Vue应用中进行**全局组件注册**。
 
-```ts{5-6,11}
+```ts{5-6,11-13}
 // main.ts
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
@@ -155,291 +156,92 @@ app.mount('#app')
 
 ### 按需引入  XW-UI
 
-#### **1. 自动导入（推荐）**
+需要在使用 `XW-UI ` 组件的地方进行按需引入。
 
-您需要使用额外的插件来导入要使用的 Element Plus 组件。
-
-1. 首先你需要安装`unplugin-vue-components` 和 `unplugin-auto-import`这两款插件
-
-```shell
-# npm
-npm install -D unplugin-vue-components unplugin-auto-import
-
-# pnpm
-pnpm install -D unplugin-vue-components unplugin-auto-import
-```
-
-2. 然后把下列代码插入到你的 `Vite` 或 `Webpack` 的配置文件中
-
-**[Vite](https://element-plus.org/zh-CN/guide/quickstart.html#vite)**
-
-```js
-// vite.config.ts
-import { defineConfig } from 'vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-
-export default defineConfig({
-  // ...
-  plugins: [
-    // ...
-    AutoImport({
-      resolvers: [ElementPlusResolver()],
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()],
-    }),
-  ],
-})
-```
-
-[**Webpack**](https://element-plus.org/zh-CN/guide/quickstart.html#webpack)
-
-```js
-// webpack.config.js
-const AutoImport = require('unplugin-auto-import/webpack')
-const Components = require('unplugin-vue-components/webpack')
-const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
-
-module.exports = {
-  // ...
-  plugins: [
-    AutoImport({
-      resolvers: [ElementPlusResolver()],
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()],
-    }),
-  ],
-}
-```
-
-想了解更多打包 ([Rollup](https://rollupjs.org/), [Vue CLI](https://cli.vuejs.org/)) 和配置工具，请参考 [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components#installation) 和 [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import#install)。
-
-3. 需要在使用 `XW-UI ` 组件的地方进行按需引入。
-
-```vue
+```vue{3,9,12}
 <template>
-  <XBasicForm :options="createForm"></XBasicForm>
+  <div>
+    <x-basic-form :options="createForm" />
+  </div>
 </template>
 
-<script setup lang="ts">
-import { XBasicForm } from "xw-ui/element-plus";
-// 响应数据
-let data = {
-  username: "XW-UI",
-  description: "an vue2/3 & react componet library",
-  place: "huizhou",
-  remarks: "Vue React",
-  github: "https://github.com/Sewar-x/X-UI/",
-};
-// from 表单配置项
-const createForm = {
-  mode: data,
-  attr: {
-    "label-width": "30px",
-  },
-  itemArr: [
-    [
-      {
-        attr: {
-          prop: "username",
-        },
-        component: {
-          comp: "el-input",
-        },
-      },
-    ],
-    [
-      {
-        attr: {
-          prop: "description",
-        },
-        component: {
-          comp: "el-input",
-        },
-      },
-    ],
-    [
-      {
-        attr: {
-          prop: "place",
-        },
-        component: {
-          comp: "el-input",
-        },
-      },
-    ],
-    [
-      {
-        attr: {
-          prop: "remarks",
-        },
-        component: {
-          comp: "el-input",
-        },
-      },
-    ],
-    [
-      {
-        attr: {
-          prop: "github",
-        },
-        component: {
-          comp: "el-input",
-        },
-      },
-    ],
-    [
-      {
-        component: {
-          comp: "el-button",
-          content: {
-            text: "查看",
-          },
-          event: {
-            click: function (val: any) {
-              window.open(data.github);
-            },
-          },
-        },
-      },
-    ],
-  ],
-};
-</script>
-
-<style scoped lang="less"></style>
-
-```
-
-
-
-#### 2. 手动导入
-
-Element Plus 提供了基于 ES Module 的开箱即用的 [Tree Shaking](https://webpack.js.org/guides/tree-shaking/) 功能。
-
-1. 你需要安装 [unplugin-element-plus](https://github.com/element-plus/unplugin-element-plus) 来导入样式。 配置文档参考 [docs](https://github.com/element-plus/unplugin-element-plus#readme).
-
-```js
-// vite.config.ts
-import { defineConfig } from 'vite'
-import ElementPlus from 'unplugin-element-plus/vite'
-
-export default defineConfig({
-  // ...
-  plugins: [ElementPlus()],
-})
-```
-
-::: danger 当前封装所使用的库版本
-如果使用 `unplugin-element-plus` 并且只使用组件 API，你需要手动导入样式。
-
-Example:
-
-```
-import 'element-plus/es/components/message/style/css'
-import { ElMessage } from 'element-plus'
-```
-
-:::
-
-
-
-2. 需要在使用 `XW-UI ` 组件的地方进行按需引入。
-
-```vue
-<template>
-  <XBasicForm :options="createForm"></XBasicForm>
-</template>
 <script>
-    // 使用的文件按需引入 Element Plus 相关组件
-	import { ElForm,ElFormItem } from 'element-plus'
-    // 使用的文件按需引入 XW-UI 相关组件
-	import { XBasicForm } from "xw-ui/element-plus";
-    export default {
-        components: {  ElForm,ElFormItem,XBasicForm },
-    }
-</script>
-<script setup lang="ts">
-// 响应数据
-let obj = {};
-// from 表单配置项
-const createForm = {
-  mode: data,
-  attr: {
-    "label-width": "30px",
+import { defineComponent } from "vue";
+import { XBasicForm } from "xw-ui/element-plus";
+export default defineComponent({
+  components: {
+    XBasicForm,
   },
-  itemArr: [
-    [
-      {
+  setup() {
+    return {
+      createForm: {
+        mode: {
+          username: "XW-UI",
+          description: "an vue2/3 & react componet library",
+          place: "huizhou",
+          remarks: "Vue React",
+          github: "https://github.com/Sewar-x/X-UI/",
+        },
         attr: {
-          prop: "username",
+          "label-width": "30px",
         },
-        component: {
-          comp: "el-input",
-        },
-      },
-    ],
-    [
-      {
-        attr: {
-          prop: "description",
-        },
-        component: {
-          comp: "el-input",
-        },
-      },
-    ],
-    [
-      {
-        attr: {
-          prop: "place",
-        },
-        component: {
-          comp: "el-input",
-        },
-      },
-    ],
-    [
-      {
-        attr: {
-          prop: "remarks",
-        },
-        component: {
-          comp: "el-input",
-        },
-      },
-    ],
-    [
-      {
-        attr: {
-          prop: "github",
-        },
-        component: {
-          comp: "el-input",
-        },
-      },
-    ],
-    [
-      {
-        component: {
-          comp: "el-button",
-          content: {
-            text: "查看",
-          },
-          event: {
-            click: function (val: any) {
-              window.open(data.github);
+        itemArr: [
+          [
+            {
+              attr: {
+                prop: "username",
+              },
+              component: {
+                comp: "el-input",
+              },
             },
-          },
-        },
+          ],
+          [
+            {
+              attr: {
+                prop: "description",
+              },
+              component: {
+                comp: "el-input",
+              },
+            },
+          ],
+          [
+            {
+              attr: {
+                prop: "place",
+              },
+              component: {
+                comp: "el-input",
+              },
+            },
+          ],
+          [
+            {
+              attr: {
+                prop: "remarks",
+              },
+              component: {
+                comp: "el-input",
+              },
+            },
+          ],
+          [
+            {
+              attr: {
+                prop: "github",
+              },
+              component: {
+                comp: "el-input",
+              },
+            },
+          ],
+        ],
       },
-    ],
-  ],
-};
+    };
+  },
+});
 </script>
-<style scoped lang="less"></style>
+
 ```
 
