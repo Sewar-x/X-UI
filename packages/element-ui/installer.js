@@ -1,7 +1,7 @@
 import { XTable } from './components/table'
 import { XMenu } from './components/menu'
 
-const elmUiComponents = [
+export const elmUiComponents = [
   XTable,
   XMenu
 ]
