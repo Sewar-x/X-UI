@@ -1,8 +1,8 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import { XBasicComponent } from './components/BasicComponent'
 import { XBasicForm } from './components/Form'
 // 组件列表
-const elmPlusComponents = [
+export const elmPlusComponents = [
   XBasicComponent,
   XBasicForm
 ]

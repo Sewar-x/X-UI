@@ -139,13 +139,15 @@ app.mount('#app')
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import XWElementPlus from 'xw-ui/element-plus'
+import { XElementPlusInstall } from 'xw-ui/element-plus'
 import 'xw-ui/element-plus/style.css'
 import App from './App.vue'
 
 const app = createApp(App)
 
-app.use(ElementPlus).use(XWElementPlus)
+app.use(ElementPlus)
+// 注册XElementPlus所有组件
+XElementPlusInstall(app)
 app.mount('#app')
 ```
 
@@ -223,20 +225,93 @@ module.exports = {
 </template>
 
 <script setup lang="ts">
-// 使用的文件直接按需引入
 import { XBasicForm } from "xw-ui/element-plus";
 // 响应数据
-let obj = {};
+let data = {
+  username: "XW-UI",
+  description: "an vue2/3 & react componet library",
+  place: "huizhou",
+  remarks: "Vue React",
+  github: "https://github.com/Sewar-x/X-UI/",
+};
 // from 表单配置项
 const createForm = {
-  mode: obj,
+  mode: data,
   attr: {
     "label-width": "30px",
   },
-  itemArr: [],
+  itemArr: [
+    [
+      {
+        attr: {
+          prop: "username",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "description",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "place",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "remarks",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "github",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        component: {
+          comp: "el-button",
+          content: {
+            text: "查看",
+          },
+          event: {
+            click: function (val: any) {
+              window.open(data.github);
+            },
+          },
+        },
+      },
+    ],
+  ],
 };
 </script>
+
 <style scoped lang="less"></style>
+
 ```
 
 
@@ -292,11 +367,77 @@ import { ElMessage } from 'element-plus'
 let obj = {};
 // from 表单配置项
 const createForm = {
-  mode: obj,
+  mode: data,
   attr: {
     "label-width": "30px",
   },
-  itemArr: [],
+  itemArr: [
+    [
+      {
+        attr: {
+          prop: "username",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "description",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "place",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "remarks",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "github",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        component: {
+          comp: "el-button",
+          content: {
+            text: "查看",
+          },
+          event: {
+            click: function (val: any) {
+              window.open(data.github);
+            },
+          },
+        },
+      },
+    ],
+  ],
 };
 </script>
 <style scoped lang="less"></style>
