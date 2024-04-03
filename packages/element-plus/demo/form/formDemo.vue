@@ -5,16 +5,16 @@
 <script setup lang="ts">
 import { XBasicForm } from "@/xw-ui/element-plus";
 // 响应数据
-let obj = {
-  username: "kooriookami",
-  telephone: "18100000000",
-  place: "Suzhou",
-  remarks: "School",
-  address: "No.1188, Wuzhong Avenue, Wuzhong District, Suzhou, Jiangsu Province",
+let data = {
+  username: "XW-UI",
+  description: "an vue2/3 & react componet library",
+  place: "huizhou",
+  remarks: "Vue React",
+  github: "https://github.com/Sewar-x/X-UI/",
 };
 // from 表单配置项
 const createForm = {
-  mode: obj,
+  mode: data,
   attr: {
     "label-width": "30px",
   },
@@ -32,7 +32,7 @@ const createForm = {
     [
       {
         attr: {
-          prop: "telephone",
+          prop: "description",
         },
         component: {
           comp: "el-input",
@@ -62,7 +62,7 @@ const createForm = {
     [
       {
         attr: {
-          prop: "address",
+          prop: "github",
         },
         component: {
           comp: "el-input",
@@ -74,10 +74,12 @@ const createForm = {
         component: {
           comp: "el-button",
           content: {
-            text: "测试",
+            text: "查看",
           },
           event: {
-            submit: function (val: any) {},
+            click: function (val: any) {
+              window.open(data.github);
+            },
           },
         },
       },

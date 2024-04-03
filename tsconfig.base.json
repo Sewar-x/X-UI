@@ -39,6 +39,9 @@
     "paths": {
       "@xw-ui/*": [
         "packages/*"
+      ],
+      "@/xw-ui/*": [
+        "packages/*"
       ]
     }
   }
