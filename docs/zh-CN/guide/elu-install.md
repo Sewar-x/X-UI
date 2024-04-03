@@ -32,15 +32,15 @@ pnpm install xw-ui
 ### 2. 安装相关依赖
 
 ```js [NPM]
-npm install element-UI
+npm install element-ui -S
 ```
 
 ```js [Yarn]
-yarn add element-UI
+yarn add element-ui -S
 ```
 
 ```js [PNPM]
-pnpm install element-UI
+pnpm install element-ui -S
 ```
 
 ### 注意
@@ -91,7 +91,7 @@ XW-UI 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
    # 切换镜像源到 npm 下载相关依赖
    nrm use npm
    # 安装相关依赖
-   npm install element-UI
+   npm install element-ui -S
    ```
 
    
@@ -106,23 +106,24 @@ XW-UI 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
 
 
 
-XW-UI 的 Vue3 组件库是基于 [Element UI](https://element-UI.org/zh-CN/guide/quickstart.html) 进行二次封装，因此在使用 XW-UI 之前，需要将 Element UI 完整导入到你的项目。
+XW-UI 的 Vue2 组件库是基于 [Element UI](https://element.eleme.cn/#/zh-CN/guide/design) 进行二次封装，因此在使用 XW-UI 之前，需要将 Element UI 完整导入到你的项目。
 
 **完整导入 Element UI**
 
 在 main.js 中写入以下内容：
 
-```javascript{3-4,9}
-// main.ts
-import { createApp } from 'vue'
-import ElementUI from 'element-UI'
-import 'element-UI/dist/index.css'
-import App from './App.vue'
+```javascript{2-3,6}
+import Vue from 'vue';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import App from './App.vue';
 
-const app = createApp(App)
+Vue.use(ElementUI);
 
-app.use(ElementUI)
-app.mount('#app')
+new Vue({
+  el: '#app',
+  render: h => h(App)
+});
 ```
 
 以上代码便完成了 Element UI 的导入。需要注意的是，样式文件需要单独引入。
@@ -137,113 +138,132 @@ app.mount('#app')
 
 `x-element-UI` 将会在Vue应用中进行**全局组件注册**。
 
-```ts{5-6,11-13}
-// main.ts
-import { createApp } from 'vue'
-import ElementUI from 'element-UI'
-import 'element-UI/dist/index.css'
-import { XElementUIInstall } from 'xw-ui/element-UI'
-import 'xw-ui/element-UI/style.css'
+```ts{4-7,9-10}
+// main.js
+import Vue from 'vue'
 import App from './App.vue'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import XWUI from 'xw-ui'
+// import 'xw-ui/element-ui/style.css'
+Vue.config.productionTip = false
+Vue.use(ElementUI);
+XWUI.XElementUI.XElementUiInstall(Vue)
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
 
-const app = createApp(App)
+```
 
-app.use(ElementUI)
-// 注册XElementUI所有组件
-XElementUIInstall(app)
-app.mount('#app')
+使用 `XW-UI`:
+
+```vue
+<template>
+  <XTable :data="tableData" :default-columns="defaultColumns">
+    <el-table-column prop="date" label="日期" width="90"> </el-table-column>
+    <el-table-column prop="name" label="姓名" width="90"> </el-table-column>
+    <el-table-column prop="age" label="年龄" width="90"> </el-table-column>
+    <el-table-column prop="address" label="地址"> </el-table-column>
+  </XTable>
+</template>
+
+<script>
+import XWUI from "xw-ui";
+export default {
+  name: "TableCustomColumns",
+  components: { XTable: XWUI.XElementUI.XTable },
+  data() {
+    return {
+      defaultColumns: ["日期", "姓名", "地址"],
+      tableData: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          age: 20,
+          address: "上海市普陀区金沙江路 1518 弄",
+        },
+        {
+          date: "2016-05-04",
+          name: "王小虎",
+          age: 20,
+          address: "上海市普陀区金沙江路 1517 弄",
+        },
+        {
+          date: "2016-05-01",
+          name: "王小虎",
+          age: 20,
+          address: "上海市普陀区金沙江路 1519 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          age: 20,
+          address: "上海市普陀区金沙江路 1516 弄111",
+        },
+      ],
+    };
+  },
+};
+</script>
+
 ```
 
 
 
 ### 按需引入  XW-UI
 
-需要在使用 `XW-UI ` 组件的地方进行按需引入。
+#### **1. 引入按需引入 Element 插件**
 
-```vue{3,9,12}
-<template>
-  <div>
-    <x-basic-form :options="createForm" />
-  </div>
-</template>
+借助 [babel-plugin-component](https://github.com/QingWei-Li/babel-plugin-component)，我们可以只引入需要的组件，以达到减小项目体积的目的。
 
-<script>
-import { defineComponent } from "vue";
-import { XBasicForm } from "xw-ui/element-UI";
-export default defineComponent({
-  components: {
-    XBasicForm,
-  },
-  setup() {
-    return {
-      createForm: {
-        mode: {
-          username: "XW-UI",
-          description: "an vue2/3 & react componet library",
-          place: "huizhou",
-          remarks: "Vue React",
-          github: "https://github.com/Sewar-x/X-UI/",
-        },
-        attr: {
-          "label-width": "30px",
-        },
-        itemArr: [
-          [
-            {
-              attr: {
-                prop: "username",
-              },
-              component: {
-                comp: "el-input",
-              },
-            },
-          ],
-          [
-            {
-              attr: {
-                prop: "description",
-              },
-              component: {
-                comp: "el-input",
-              },
-            },
-          ],
-          [
-            {
-              attr: {
-                prop: "place",
-              },
-              component: {
-                comp: "el-input",
-              },
-            },
-          ],
-          [
-            {
-              attr: {
-                prop: "remarks",
-              },
-              component: {
-                comp: "el-input",
-              },
-            },
-          ],
-          [
-            {
-              attr: {
-                prop: "github",
-              },
-              component: {
-                comp: "el-input",
-              },
-            },
-          ],
-        ],
-      },
-    };
-  },
-});
-</script>
+首先，安装 babel-plugin-component：
 
+```bash
+npm install babel-plugin-component -D
 ```
+
+然后，将 .babelrc 修改为：
+
+```json
+{
+  "presets": [["es2015", { "modules": false }]],
+  "plugins": [
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+      }
+    ]
+  ]
+}
+```
+
+接下来，如果你只希望引入部分组件，比如 Form，那么需要在 main.js 中写入以下内容：
+
+```javascript
+import Vue from 'vue';
+// 引入依赖的 element-ui 组件
+import { Form, FormItem } from 'element-ui';
+// 引入 xw-ui 封装的组件
+import { XForm } from 'xw-ui/element-ui';
+import App from './App.vue';
+
+Vue.component(Form.name, Form);
+Vue.component(FormItem.name, FormItem);
+Vue.component(XForm.name, XForm);
+
+/* 或写为
+ * Vue.use(Form)
+ * Vue.use(FormItem)
+ * Vue.use(XForm)
+ */
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+});
+```
+
+
 

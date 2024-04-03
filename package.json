@@ -1,12 +1,18 @@
 {
   "name": "xw-ui",
-  "version": "1.0.26",
+  "version": "1.0.28",
   "description": "配置化组件库",
   "workspaces": [
     "packages/*",
     "docs"
   ],
+  "main": "./index.js",
+  "module": "./index.mjs",
   "exports": {
+    ".": {
+      "require": "./index.js",
+      "import": "./index.mjs"
+    },
     "./element-plus": {
       "require": "./packages/element-plus/dist/xw-element-plus.cjs.js",
       "import": "./packages/element-plus/dist/xw-element-plus.es.js"
