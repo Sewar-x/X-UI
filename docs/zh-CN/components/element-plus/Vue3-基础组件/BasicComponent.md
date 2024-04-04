@@ -1,7 +1,7 @@
 # BasicComponent  
 ## 文件说明
 
-- 组件: `components/BasicComponent/BasicForm.vue`
+- 组件地址: `components/BasicComponent/BasicForm.vue`
 
 - 组件类型文件: `types/global.d.ts-CompType`
 

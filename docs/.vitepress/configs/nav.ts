@@ -11,7 +11,7 @@ export default [
   },
   {
     text: 'ElementPlus 组件',
-    link: '/zh-CN/components/element-plus/Vue3 组件总览/Vue3 组件总览',
+    link: '/zh-CN/components/element-plus/Vue3-基础组件/Vue3-组件总览',
     activeMatch: '^/zh-CN/components/element-plus'
   },
   {

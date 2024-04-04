@@ -2,11 +2,11 @@
 
 ## 文件说明
 
-- 组件——`components/Form/BasicForm.vue`
+- 组件地址： `components/Form/BasicForm.vue`
 
-- 组件类型文件——`components/Form/types.ts`
+- 组件类型文件：`components/Form/types.ts`
 
-## 特性：
+## 特性
 
   1. 传递指定格式的 `json` 对象给组件`BasicForm`，组件会以此渲染对应的表单
   2. 组件`BasicForm`接收的表单项数据是二维数组，第一层数组的值是表单每一行的表单项数组，第二层数组的值是每一个具体的表单项，这样规定可以做到动态地增加或删除一行中的表单项，只需在改动行对应的表单项数组增删数据
