@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Navigate, useRoutes } from "react-router-dom";
-import lazyLoad from "../utils/lazyLoad";
+import lazyLoad from "../hooks/lazyLoad";
 import { RouteObject } from "../types";
 const router: RouteObject[] = [
   {

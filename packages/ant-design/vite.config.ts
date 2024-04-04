@@ -24,7 +24,7 @@ export default defineConfig(async ({ command, mode }: ConfigEnv) => {
         external: ['react', 'react-dom', 'ant-design']
       },
       lib: {
-        entry: path.resolve(__dirname, './components/index.ts'),
+        entry: path.resolve(__dirname, './index.ts'),
         name: 'xwAntDesign',
         fileName: 'xw-ant-design',
         formats: ['es', 'cjs', 'umd', 'iife']
