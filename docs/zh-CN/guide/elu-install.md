@@ -145,7 +145,7 @@ import App from './App.vue'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import XWUI from 'xw-ui'
-// import 'xw-ui/element-ui/style.css'
+import 'xw-ui/packages/element-ui/dist/style.css'
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 XWUI.XElementUI.XElementUiInstall(Vue)

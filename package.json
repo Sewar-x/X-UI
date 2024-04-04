@@ -1,6 +1,6 @@
 {
   "name": "xw-ui",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "配置化组件库",
   "workspaces": [
     "packages/*",
@@ -36,7 +36,8 @@
     "./ant-design/*": {
       "require": "./packages/ant-design/*",
       "import": "./packages/ant-design/*"
-    }
+    },
+    "./*": "./packages/*"
   },
   "scripts": {
     "docs:dev": "pnpm run -C docs docs:dev",
@@ -65,7 +66,7 @@
     "element-plus",
     "ant-design"
   ],
-  "author": "",
+  "author": "Sewen",
   "license": "MIT",
   "peerDependencies": {},
   "dependencies": {

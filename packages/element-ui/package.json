@@ -9,10 +9,6 @@
       "require": "./index.js",
       "import": "./index.js"
     },
-    "./xw-ui/element-ui/": {
-      "require": "./index.js",
-      "import": "./index.js"
-    },
     "./*": "./*"
   },
   "scripts": {
