@@ -1,8 +1,7 @@
 import { withInstall } from '../../utils'
-
-import BasicComponent from './src/BasicComponent.vue'
+import XButton from "./src/XButton.vue";
 // 使用 withInstall 注册组件并导出组件
-export const BasicComponent = withInstall(BasicComponent)
+export const XButton = withInstall(XButton)
 // 使用 withInstall 注册组件并导出组件
-export default BasicComponent
+export default XButton
 

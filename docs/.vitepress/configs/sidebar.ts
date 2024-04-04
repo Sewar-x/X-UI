@@ -4,7 +4,7 @@ import antDesignSideBar from "../pages/ant-design.json" // antDesign 侧边栏�
 
 export default {
   '/zh-CN/guide/': [
-     // 指南侧边栏
+    // 指南侧边栏
     {
       text: '快速开始',
       "collapsible": true,

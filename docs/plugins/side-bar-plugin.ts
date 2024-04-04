@@ -35,7 +35,7 @@ const getComponentsSideBar = async (path: string) => {
         const regOpt = /^(#+)[ \t]*(.+?)[ \t]*$/
 
 
-        const sideName = (reg.exec(fileStr) && (reg.exec(fileStr) as Array<string>)[0]) || `${fileName.split('.')[0]}`
+        const sideName = `${fileName.split('.')[0]}`|| (reg.exec(fileStr) && (reg.exec(fileStr) as Array<string>)[0])
         return {
           text: sideName,
           link: `/zh-CN/components${path}/${dirItemPath}/${fileName.split('.')[0]}`

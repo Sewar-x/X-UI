@@ -1,8 +1,7 @@
 import { withInstall } from '../../utils'
+import SwiperVue from "./src/Swiper.vue";
 
-import BasicComponent from './src/BasicComponent.vue'
 // 使用 withInstall 注册组件并导出组件
-export const BasicComponent = withInstall(BasicComponent)
+export const XSwiper = withInstall(SwiperVue)
 // 使用 withInstall 注册组件并导出组件
-export default BasicComponent
-
+export default XSwiper

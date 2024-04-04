@@ -1,9 +1,9 @@
 <template>
-  <XBasicForm :options="createForm"></XBasicForm>
+  <XForm :options="createForm"></XForm>
 </template>
 
 <script setup lang="ts">
-import { XBasicForm } from "@/xw-ui/element-plus";
+import { XForm } from "@/xw-ui/element-plus";
 // 响应数据
 let data = {
   username: "XW-UI",

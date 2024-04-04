@@ -26,6 +26,8 @@
   "dependencies": {
     "element-plus": "^2.6.2",
     "@element-plus/icons-vue": "^2.0.6",
+    "swiper": "^8.4.5",
+    "vue-awesome-swiper": "^5.0.1",
     "@xw-ui/hooks": "workspace:^",
     "@xw-ui/shared": "workspace:^"
   },

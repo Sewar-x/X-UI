@@ -34,8 +34,8 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from "vue";
 import { ref, unref } from "vue";
-import { FormType, FormItemType } from "./type";
-import BasicComponent from "../BasicComponent";
+import { FormType, FormItemType } from "../type";
+import BasicComponent from "../../BasicComponent";
 const emit = defineEmits(["changeAfter"]);
 const props = defineProps<{
   // 表单数据
