@@ -20,21 +20,28 @@
     "module": "esnext",
     "lib": [
       "esnext",
-      "dom",
-      "dom.iterable"
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
     ],
+    "skipLibCheck": true,
     "baseUrl": ".",
     "sourceMap": false,
     "moduleResolution": "node",
+    "allowImportingTsExtensions": true, //允许导入.ts和.tsx文件。
     "allowJs": false,
     "strict": true,
     "noUnusedLocals": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": true, //允许从.json文件中导入数据。
+    "isolatedModules": true,
+    "noEmit": true, //编译器不会输出文件。这通常用于与IDE集成，以提供实时错误检查，而不实际生成输出文件。
     "allowSyntheticDefaultImports": true,
+    "noUnusedParameters": true, //分别报告未使用的局部变量和未使用的函数参数。
+    "noFallthroughCasesInSwitch": true, //如果在switch语句中漏掉了break，编译器将报错。
     "esModuleInterop": true,
     "removeComments": false,
     "rootDir": ".",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "types": [],
     "paths": {
       "@xw-ui/*": [

@@ -14,7 +14,8 @@
     "skipLibCheck": true
   },
   "include": [
-    "packages"
+    "packages",
+    "types/vite-env.d.ts"
   ],
   "exclude": [
     "node_modules",
