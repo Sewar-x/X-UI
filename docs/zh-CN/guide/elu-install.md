@@ -239,6 +239,8 @@ npm install babel-plugin-component -D
 }
 ```
 
+#### **2. 按需引入插件**
+
 接下来，如果你只希望引入部分组件，比如 Form，那么需要在 main.js 中写入以下内容：
 
 ```javascript
@@ -246,7 +248,7 @@ import Vue from 'vue';
 // 引入依赖的 element-ui 组件
 import { Form, FormItem } from 'element-ui';
 // 引入 xw-ui 封装的组件
-import { XForm } from 'xw-ui/element-ui';
+import { XForm } from 'xw-ui/packages/element-ui';
 import App from './App.vue';
 
 Vue.component(Form.name, Form);

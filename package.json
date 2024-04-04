@@ -68,7 +68,6 @@
   ],
   "author": "Sewen",
   "license": "MIT",
-  "peerDependencies": {},
   "dependencies": {
     "@types/lodash": "^4.17.0",
     "lodash-es": "^4.17.21"
