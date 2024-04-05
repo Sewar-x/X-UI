@@ -4,11 +4,8 @@
       <BasicComponent :options="header" />
     </template>
     <template v-for="(dialogItem, index) in content" :key="index">
-      <BasicForm
-        v-if="dialogItem.type === 'Form'"
-        :options="<ContentFormType>dialogItem"
-      />
-      <BasicTable
+      <XForm v-if="dialogItem.type === 'Form'" :options="<ContentFormType>dialogItem" />
+      <XTable
         v-else-if="dialogItem.type === 'Table'"
         :options="<ContentTableType>dialogItem"
       />
@@ -22,8 +19,8 @@
 
 <script setup lang="ts">
 import type { Ref } from "vue";
-import { BasicForm } from "../../Form";
-import { BasicTable } from "../../Table";
+import { XForm } from "../../Form";
+import { XTable } from "../../Table";
 import type { ContentType, ContentFormType, ContentTableType } from "../type";
 
 defineProps<{

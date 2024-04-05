@@ -93,7 +93,7 @@
 
 <script setup lang="ts">
 import type { TableType } from "../type";
-import { XSearch } from "../../XSearch";
+import { XSearch } from "../../Search";
 import { ref, watch, onBeforeMount } from "vue";
 
 const props = defineProps<{
