@@ -72,6 +72,7 @@ async function changeVersion(version: string): Promise<void> {
 
   // 获取项目路径
   const projectPath = path.resolve(__dirname, '../packages')
+  console.log("🚀 ~ changeVersion ~ projectPath:", projectPath)
 
   // 读取项目路径下的所有文件/文件夹
   const targets = await fsPromise.readdir(projectPath)
@@ -91,7 +92,7 @@ async function changeVersion(version: string): Promise<void> {
     packageJSON.version = version
 
     // 将更新后的 package.json 文件内容写回文件
-    fs.writeFileSync(packagePath, JSON.stringify(packageJSON, null, 2))
+    // fs.writeFileSync(packagePath, JSON.stringify(packageJSON, null, 2))
   }
 }
 
@@ -133,7 +134,7 @@ async function start() {
   }
   // 将修改后的版本号提交到 github
   gitCommit(version, gitBranch)
-  npmPublish(gitTtag)
+  // npmPublish(gitTtag)
 }
 
 start()
