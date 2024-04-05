@@ -69,13 +69,14 @@ function getCommondParams(): {
 async function changeVersion(version: string): Promise<void> {
   // 输出提示信息
   console.log(chalk.blue('更改版本号...'))
-
-  // 获取项目路径
+  // 获取项目根路径
+  const rootPath = path.resolve(__dirname, '../packages')
+  // 获取项目子项目路径
   const projectPath = path.resolve(__dirname, '../packages')
 
   // 读取项目路径下的所有文件/文件夹
   const targets = await fsPromise.readdir(projectPath)
-  console.log("🚀 ~ changeVersion ~ projectPath:", projectPath,targets)
+  console.log("🚀 ~ changeVersion ~ projectPath:", projectPath,targets,rootPath)
 
   // 遍历每个文件/文件夹
   for (let target of targets) {
