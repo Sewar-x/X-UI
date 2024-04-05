@@ -18,7 +18,7 @@ const pathResolve = (target: string) => (...args: any) => path.resolve(__dirname
 
 /* 
 * 获取命令行参数和分支
-* 执行命令：pnpm run release -- --pv=1.0.30 --t=latest 或 pnpm run release --  --pubversion=1.0.30 --tag=latest
+* 执行命令：pnpm run release -- --pv=1.0.30 --t=latest --npm=false 或 pnpm run release --  --pubversion=1.0.30 --tag=latest
 * version 发布的版本号
 * gitBranch 当前git的分支
 * gitTtag 发布的版本 beta/latest/pre
@@ -26,13 +26,15 @@ const pathResolve = (target: string) => (...args: any) => path.resolve(__dirname
 function getCommondParams(): {
   version: string,
   gitBranch: string,
-  gitTtag: string | undefined
+  gitTtag: string | undefined,
+  npm: boolean
 } {
   // 解析命令行参数
   let argv: {
     pubversion: string,
-    tag: string
-  } = { pubversion: '', tag: '' }
+    tag: string,
+    npm: true
+  } = { pubversion: '', tag: '', npm: true }
   argv = yargs.option('t', {
     alias: 'tag',
     description: 'The tag for the release',
@@ -43,6 +45,11 @@ function getCommondParams(): {
     description: 'The version number of the release',
     type: 'string',
     default: undefined // 确保没有默认值，这样用户不提供值时，它不会被解析为true
+  }).option('npm', {
+    alias: 'npm',
+    description: 'is publish npm registry?',
+    type: 'boolean',
+    default: true // 确保没有默认值，这样用户不提供值时，它不会被解析为true
   }).help()
     .alias('help', 'h')
     .argv;
@@ -60,7 +67,7 @@ function getCommondParams(): {
   } catch (error) {
     console.error('无法获取 Git 分支信息:', error);
   }
-  return { version: argv.pubversion, gitTtag: argv.tag, gitBranch }
+  return { version: argv.pubversion, gitTtag: argv.tag, gitBranch, npm: argv.npm }
 }
 
 /**
@@ -129,10 +136,18 @@ async function npmPublish(gitTtag: string = 'latest') {
     stdio: 'inherit'
 
   })
+  console.log(chalk.blue(`切换当前 npm 镜像源为私有镜像源`))
+  console.log(chalk.blue(`正在发布镜像`))
   // 在目标文件目录下执行发布命令
   await execa('npm', ['publish'], {
     // 继承父进程的stdio流
     stdio: 'inherit'
+  })
+  console.log(chalk.blue(`npm 发布成功! 切换当前 npm 镜像源 npm 镜像源`))
+  await execa('nrm', ['use', 'npm'], {
+    // 继承父进程的stdio流
+    stdio: 'inherit'
+
   })
 }
 
@@ -140,14 +155,17 @@ async function npmPublish(gitTtag: string = 'latest') {
 
 async function start() {
   // 获取发布版本号，标签，分支
-  const { version, gitBranch, gitTtag } = getCommondParams()
+  const { version, gitBranch, gitTtag, npm } = getCommondParams()
   if (version) {
     changeVersion(version)
   }
   // 将修改后的版本号提交到 github
   gitCommit(version, gitBranch)
-  // 发布到 npm
-  npmPublish(gitTtag)
+  if (npm) {
+    // 发布到 npm
+    npmPublish(gitTtag)
+  }
+
 }
 
 start()
