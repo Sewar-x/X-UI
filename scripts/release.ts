@@ -54,7 +54,6 @@ function getCommondParams(): {
     .alias('help', 'h')
     .argv;
 
-  console.log(argv);
   // 获取当前分支，用于后续提交到gitee的分支，如：master/thuo
   let gitBranch: string = ''
   if (!argv.pubversion) {
