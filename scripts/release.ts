@@ -64,38 +64,47 @@ function getCommondParams(): {
 }
 
 /**
+ * 向 package.json 文件写入版本号
+ * @param packagePath 
+ * @param version 
+ */
+function setPackagesVersion(packagePath: string, version: string) {
+  // 读取 package.json 文件内容
+  const packageJSON = require(packagePath)
+
+  // 更新版本号
+  packageJSON.version = version
+
+  // 将更新后的 package.json 文件内容写回文件
+  fs.writeFileSync(packagePath, JSON.stringify(packageJSON, null, 2))
+}
+
+/**
  * 修改所有packages的版本号
  */
 async function changeVersion(version: string): Promise<void> {
   // 输出提示信息
-  console.log(chalk.blue('更改版本号...'))
+  console.log(chalk.blue('正在更改版本号...'))
   // 获取项目根路径
   const rootPackages = path.resolve(__dirname, '../package.json')
+  // 向项目根路径 package.json 文件写入版本号
+  setPackagesVersion(rootPackages, version)
   // 获取项目子项目路径
   const projectPath = path.resolve(__dirname, '../packages')
 
   // 读取项目路径下的所有文件/文件夹
   const targets = await fsPromise.readdir(projectPath)
-  console.log("🚀 ~ changeVersion ~ projectPath:", projectPath,targets,rootPackages)
 
   // 遍历每个文件/文件夹
   for (let target of targets) {
     // 创建解析路径的函数
     const resolve = pathResolve(target)
-
     // 获取 package.json 的路径
     const packagePath = resolve('package.json')
-    console.log("🚀 ~ changeVersion ~ resolve:", packagePath)
-
-    // 读取 package.json 文件内容
-    const packageJSON = require(packagePath)
-
-    // 更新版本号
-    packageJSON.version = version
-
-    // 将更新后的 package.json 文件内容写回文件
-    // fs.writeFileSync(packagePath, JSON.stringify(packageJSON, null, 2))
+    // 向 package.json 文件写入版本号
+    setPackagesVersion(packagePath, version)
   }
+  console.log(chalk.blue(`完成版本号更改,当前把版本号为： ${version}`))
 }
 
 // 将修改后的版本号提交到 github
@@ -107,6 +116,7 @@ async function gitCommit(version: string, gitBranch: string): Promise<void> {
   await execa('git', ['add', '.'])
   await execa('git', ['commit', '-m', ` 发布版本 ${version}`])
   await execa('git', ['push', 'github', gitBranch])
+  console.log(chalk.blue(`完成版本： ${version} github ${gitBranch} 分支推送`))
 }
 
 /**
@@ -136,7 +146,8 @@ async function start() {
   }
   // 将修改后的版本号提交到 github
   gitCommit(version, gitBranch)
-  // npmPublish(gitTtag)
+  // 发布到 npm
+  npmPublish(gitTtag)
 }
 
 start()
