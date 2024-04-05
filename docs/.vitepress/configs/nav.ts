@@ -21,12 +21,12 @@ export default [
   },
   {
     text: 'Echarts 组件',
-    link: '/zh-CN/components/echarts/Echarts组件指南/Echart组件总览',
+    link: '/zh-CN/components/echarts/Echarts-组件指南/Echart组件总览',
     activeMatch: '^/zh-CN/components/echarts'
   },
   {
     text: 'Hooks & Mixins',
-    link: '/zh-CN/components/hooks-mixins/指南/hooks-mixins开发指南',
+    link: '/zh-CN/components/hooks-mixins/指南/Hooks和Mixins开发指南',
     activeMatch: '^/zh-CN/components/hooks-mixins'
   }
 ]
