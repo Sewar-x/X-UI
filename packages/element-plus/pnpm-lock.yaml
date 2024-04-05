@@ -7,7 +7,9 @@ specifiers:
   '@xw-ui/hooks': workspace:^
   '@xw-ui/shared': workspace:^
   element-plus: ^2.6.2
+  swiper: ^8.4.5
   vue: ^3.2.37
+  vue-awesome-swiper: ^5.0.1
   vue-router: ^4.0.16
 
 dependencies:
@@ -15,6 +17,8 @@ dependencies:
   '@xw-ui/hooks': link:../hooks
   '@xw-ui/shared': link:../shared
   element-plus: 2.6.3_vue@3.4.21
+  swiper: 8.4.7
+  vue-awesome-swiper: 5.0.1_swiper@8.4.7+vue@3.4.21
 
 devDependencies:
   '@vitejs/plugin-vue': 2.3.4_vue@3.4.21
@@ -216,6 +220,12 @@ packages:
     resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
     dev: false
 
+  /dom7/4.0.6:
+    resolution: {integrity: sha512-emjdpPLhpNubapLFdjNL9tP06Sr+GZkrIHEXLWvOGsytACUrkbeIdjO5g77m00BrHTznnlcNqgmn7pCN192TBA==}
+    dependencies:
+      ssr-window: 4.0.2
+    dev: false
+
   /element-plus/2.6.3_vue@3.4.21:
     resolution: {integrity: sha512-U4L/mr+1r+EmAUYUHrs0V/8hHMdBGP07rPymSC72LZCN4jK1UwygQYICegTQ5us4mxeqBvW6wfoEfo003fwCqw==}
     peerDependencies:
@@ -306,9 +316,32 @@ packages:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
     engines: {node: '>=0.10.0'}
 
+  /ssr-window/4.0.2:
+    resolution: {integrity: sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==}
+    dev: false
+
+  /swiper/8.4.7:
+    resolution: {integrity: sha512-VwO/KU3i9IV2Sf+W2NqyzwWob4yX9Qdedq6vBtS0rFqJ6Fa5iLUJwxQkuD4I38w0WDJwmFl8ojkdcRFPHWD+2g==}
+    engines: {node: '>= 4.7.0'}
+    requiresBuild: true
+    dependencies:
+      dom7: 4.0.6
+      ssr-window: 4.0.2
+    dev: false
+
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
+
+  /vue-awesome-swiper/5.0.1_swiper@8.4.7+vue@3.4.21:
+    resolution: {integrity: sha512-mWjFJzUqA4lG+DmsmibvMpoiBnl+IH2SSeiiQ3i5M0t1y9FknTxnGT0DsMb2YdJLgjYMEK3sYOWzqgLnZMH8Lg==}
+    peerDependencies:
+      swiper: ^7.0.0  || ^8.0.0
+      vue: 3.x
+    dependencies:
+      swiper: 8.4.7
+      vue: 3.4.21
+    dev: false
 
   /vue-demi/0.14.7_vue@3.4.21:
     resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}
