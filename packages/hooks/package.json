@@ -1,7 +1,7 @@
 {
   "name": "@xw-ui/hooks",
-  "version": "1.0.5",
-  "description": "XwUi composables",
+  "version": "1.0.0",
+  "description": "XW-Ui composables hooks",
   "license": "MIT",
   "main": "index.ts",
   "module": "index.ts",

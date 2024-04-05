@@ -18,5 +18,15 @@ export default [
     text: 'AntDesign 组件',
     link: '/zh-CN/components/ant-design/React 组件总览/React 组件总览',
     activeMatch: '^/zh-CN/components/ant-design'
+  },
+  {
+    text: 'Echarts 组件',
+    link: '/zh-CN/components/echarts/Echarts组件指南/Echart组件总览',
+    activeMatch: '^/zh-CN/components/echarts'
+  },
+  {
+    text: 'Hooks & Mixins',
+    link: '/zh-CN/components/Hooks&Mixins/指南/Hooks&Mixins开发指南',
+    activeMatch: '^/zh-CN/components/Hooks&Mixins'
   }
 ]

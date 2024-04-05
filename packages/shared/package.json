@@ -1,5 +1,6 @@
 {
   "name": "@xw-ui/shared",
+  "description": "XW-Ui composables shared",
   "private": true,
   "license": "MIT",
   "main": "./index.ts",
