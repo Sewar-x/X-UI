@@ -70,7 +70,7 @@ async function changeVersion(version: string): Promise<void> {
   // 输出提示信息
   console.log(chalk.blue('更改版本号...'))
   // 获取项目根路径
-  const rootPath = path.resolve(__dirname, '../packages')
+  const rootPath = path.resolve(__dirname, './')
   // 获取项目子项目路径
   const projectPath = path.resolve(__dirname, '../packages')
 
