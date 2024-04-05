@@ -82,6 +82,7 @@ async function changeVersion(version: string): Promise<void> {
   for (let target of targets) {
     // 创建解析路径的函数
     const resolve = pathResolve(target)
+    console.log("🚀 ~ changeVersion ~ resolve:", resolve)
 
     // 获取 package.json 的路径
     const packagePath = resolve('package.json')
