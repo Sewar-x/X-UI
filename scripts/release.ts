@@ -72,10 +72,10 @@ async function changeVersion(version: string): Promise<void> {
 
   // 获取项目路径
   const projectPath = path.resolve(__dirname, '../packages')
-  console.log("🚀 ~ changeVersion ~ projectPath:", projectPath)
 
   // 读取项目路径下的所有文件/文件夹
   const targets = await fsPromise.readdir(projectPath)
+  console.log("🚀 ~ changeVersion ~ projectPath:", projectPath,targets)
 
   // 遍历每个文件/文件夹
   for (let target of targets) {
