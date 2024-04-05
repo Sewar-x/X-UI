@@ -5,7 +5,7 @@ import sidebar from './configs/sidebar'
 import footer from './configs/footer'
 export default defineConfig({
   title: 'XW-UI',
-  description: '',
+  description: 'XW-UI 是一套基于 Vue3、Vue2、React 的 UI 组件库，主要服务于 PC 界面的中后台产品',
   appearance: false,
   base: `${docsSite}/`,
   head: [

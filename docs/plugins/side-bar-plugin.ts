@@ -45,7 +45,7 @@ const getComponentsSideBar = async (path: string) => {
   }))
 }
 
-const mdFilePath = ['/element-plus', '/element-ui', '/ant-design','/echarts','/Hooks&Mixins']
+const mdFilePath = ['/element-plus', '/element-ui', '/ant-design','/echarts','/hooks-mixins']
 
 export default function sideBarPlugin() {
   return {

@@ -26,7 +26,7 @@ export default [
   },
   {
     text: 'Hooks & Mixins',
-    link: '/zh-CN/components/Hooks&Mixins/指南/Hooks&Mixins开发指南',
-    activeMatch: '^/zh-CN/components/Hooks&Mixins'
+    link: '/zh-CN/components/hooks-mixins/指南/hooks-mixins开发指南',
+    activeMatch: '^/zh-CN/components/hooks-mixins'
   }
 ]
