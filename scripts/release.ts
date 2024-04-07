@@ -207,7 +207,7 @@ async function build(isBuild: boolean): Promise<Boolean | undefined> {
   if (!isBuild) {
     return false
   }
-
+  console.log(chalk.blue(`开始本地构建组件库...`))
   try {
     // 在目标文件目录下执行发布命令
     await execa('npm run build', {
@@ -229,9 +229,10 @@ async function docBuild(isBuild: boolean): Promise<Boolean | undefined> {
   if (!isBuild) {
     return false
   }
+  console.log(chalk.blue(`开始本地构建组件库文档...`))
   try {
     // 在目标文件目录下执行发布命令
-    await execa('npm run docs:build',{
+    await execa('npm run docs:build', {
       // 继承父进程的stdio流
       stdio: 'inherit'
 
@@ -248,15 +249,15 @@ async function start() {
   // 获取发布版本号，标签，分支
   const { version, gitBranch, gitTtag, npm, isBuild, isDocsBuild } = getCommondParams()
   // 修改所有版本号
-  changeVersion(version)
+  await changeVersion(version)
   // 本地构建组件库
-  build(isBuild)
+  await build(isBuild)
   //本地构建组件库文档
-  docBuild(isDocsBuild)
+  await docBuild(isDocsBuild)
   // 将修改后的版本号提交到 github
-  gitCommit(version, gitBranch)
+  await gitCommit(version, gitBranch)
   // 发布到 npm
-  npmPublish(npm, gitTtag)
+  await npmPublish(npm, gitTtag)
 
 }
 
