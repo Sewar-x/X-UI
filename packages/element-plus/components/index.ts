@@ -1,3 +1,12 @@
-
 export * from './BasicComponent'
+export * from './Button'
+export * from './Descriptions'
+export * from './Dialog'
 export * from './Form'
+export * from './Icon'
+export * from './Menu'
+export * from './Popover'
+export * from './Search'
+export * from './Swiper'
+export * from './Table'
+export * from './Upload'

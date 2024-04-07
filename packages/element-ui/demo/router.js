@@ -16,11 +16,6 @@ const router = new VueRouter({
       name: 'DataPickerShortcuts'
     },
     {
-      path: '/menu-voice-cloud',
-      component: () => import('./menu/menu-voice-cloud.vue'),
-      name: 'MenuVoiceCloud'
-    },
-    {
       path: '/:pathMatch(.*)*',
       redirect: '/table-custom-columns'
     },
