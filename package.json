@@ -52,6 +52,7 @@
     "build:elu": "pnpm run -C packages/element-ui build",
     "build:ant": "pnpm run -C packages/ant-design build",
     "build:shared": "pnpm run -C packages/shared build",
+    "build:hooks": "pnpm run -C packages/hooks build",
     "release": "ts-node scripts/release.ts",
     "lint:script": "eslint --ext .js,.jsx,.ts,.tsx,.vue --fix ./"
   },
