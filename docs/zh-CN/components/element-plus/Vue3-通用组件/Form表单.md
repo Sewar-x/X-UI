@@ -96,6 +96,6 @@
 ## 示例
 
 <xw-demo
-    demo-height="500px"
+    demo-height="400px"
     source-code="element-plus:::form/formDemo"
 />

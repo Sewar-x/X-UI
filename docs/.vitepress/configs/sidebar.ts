@@ -13,7 +13,9 @@ export default {
       items: [
         { text: 'XElement 使用', link: '/zh-CN/guide/elu-install' },
         { text: 'XElementPlus 使用', link: '/zh-CN/guide/elp-install' },
-        { text: 'XAntDesign 使用', link: '/zh-CN/guide/antd-install' }
+        { text: 'XAntDesign 使用', link: '/zh-CN/guide/antd-install' },
+        { text: 'XEcharts 使用', link: '/zh-CN/guide/echarts-install' },
+        { text: 'XHooks 使用', link: '/zh-CN/guide/hooks-install' }
       ]
     },
     {
@@ -25,7 +27,9 @@ export default {
         { text: '文档开发', link: '/zh-CN/guide/docs-dev' },
         { text: 'XElementPlus 开发', link: '/zh-CN/guide/elp-dev' },
         { text: 'XElementUI 开发', link: '/zh-CN/guide/elu-dev' },
-        { text: 'XAntDesign 开发', link: '/zh-CN/guide/ant-dev' }
+        { text: 'XAntDesign 开发', link: '/zh-CN/guide/ant-dev' },
+        { text: 'XEcharts 开发', link: '/zh-CN/guide/echarts-dev' },
+        { text: 'XHooks 开发', link: '/zh-CN/guide/hooks-dev' }
       ]
     },
     {
