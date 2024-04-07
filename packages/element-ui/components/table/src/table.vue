@@ -1,23 +1,20 @@
 <template>
   <div class="table-wrapper">
     <div class="table-options">
-      <el-popover
-          popper-class="x-table-popover"
-          placement="bottom"
-      >
+      <el-popover popper-class="x-table-popover" placement="bottom">
         <el-checkbox
-            class="select-all"
-            :indeterminate="isIndeterminate"
-            v-model="checkAll"
-            @change="handleCheckAllChange"
+          class="select-all"
+          :indeterminate="isIndeterminate"
+          v-model="checkAll"
+          @change="handleCheckAllChange"
         >
           全选
         </el-checkbox>
         <el-checkbox-group v-model="checkedColumns" @change="handleChecked">
           <el-checkbox
-              v-for="column in columnsList"
-              :label="column.label"
-              :key="column.label"
+            v-for="column in columnsList"
+            :label="column.label"
+            :key="column.label"
           >
             {{ column.label }}
           </el-checkbox>
@@ -29,12 +26,12 @@
     </div>
 
     <render-el-table
-        ref="renderElTable"
-        v-on="$listeners"
-        v-bind="$attrs"
-        :columns-list.sync="columnsList"
-        :checked-columns="checkedColumns"
-        @updateColumnsList="updateColumnsList"
+      ref="renderElTable"
+      v-on="$listeners"
+      v-bind="$attrs"
+      :columns-list.sync="columnsList"
+      :checked-columns="checkedColumns"
+      @updateColumnsList="updateColumnsList"
     >
       <slot />
     </render-el-table>
@@ -42,18 +39,23 @@
 </template>
 
 <script>
-import { Popover as ElPopover, CheckboxGroup as ElCheckboxGroup, Checkbox as ElCheckbox, Icon as ElIcon } from 'element-ui'
-import renderElTable from './render-el-table.vue'
-let staticOptions = []
+import {
+  Popover as ElPopover,
+  CheckboxGroup as ElCheckboxGroup,
+  Checkbox as ElCheckbox,
+  Icon as ElIcon,
+} from "element-ui";
+import renderElTable from "./render-el-table.vue";
+let staticOptions = [];
 
 export default {
-  name: 'XTable',
+  name: "XTable",
   components: { ElPopover, ElCheckbox, ElCheckboxGroup, ElIcon, renderElTable },
   props: {
     defaultColumns: {
       type: Array,
-      default: []
-    }
+      default: [],
+    },
   },
   data() {
     return {
@@ -61,36 +63,40 @@ export default {
       columnsList: [],
       checkedColumns: [],
       isIndeterminate: false,
-      childrenVNode: []
-    }
+      childrenVNode: [],
+    };
   },
   methods: {
     handleCheckAllChange(val) {
       this.checkedColumns = val ? staticOptions : [];
       this.isIndeterminate = false;
     },
-    handleChecked (value) {
+    handleChecked(value) {
       let checkedCount = value.length;
-      this.checkAll = checkedCount === this.columnsList.length
-      this.isIndeterminate = checkedCount > 0 && checkedCount < this.columnsList.length
+      this.checkAll = checkedCount === this.columnsList.length;
+      this.isIndeterminate = checkedCount > 0 && checkedCount < this.columnsList.length;
     },
-    updateColumnsList (newColumnsList) {
-      this.columnsList = newColumnsList
-      staticOptions = newColumnsList.map(_ => _.label)
+    updateColumnsList(newColumnsList) {
+      this.columnsList = newColumnsList;
+      staticOptions = newColumnsList.map((_) => _.label);
       if (!this.checkedColumns.length) {
-        this.checkedColumns = staticOptions
+        this.checkedColumns = staticOptions;
       } else {
-        this.checkedColumns = this.checkedColumns.filter(_ => staticOptions.includes(_))
+        this.checkedColumns = this.checkedColumns.filter((_) =>
+          staticOptions.includes(_)
+        );
       }
-      this.handleChecked (this.checkedColumns)
-    }
+      this.handleChecked(this.checkedColumns);
+    },
   },
   mounted() {
     if (this.defaultColumns.length) {
-      this.checkedColumns = this.checkedColumns.filter(_ => this.defaultColumns.includes(_))
+      this.checkedColumns = this.checkedColumns.filter((_) =>
+        this.defaultColumns.includes(_)
+      );
     }
-  }
-}
+  },
+};
 </script>
 
 <style scoped lang="less">
@@ -139,4 +145,3 @@ export default {
   }
 }
 </style>
-
