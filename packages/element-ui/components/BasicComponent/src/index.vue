@@ -1,6 +1,5 @@
 <template>
   <component
-    v-if="options.comp"
     :is="typeof options.comp === 'string' ? options.comp : `${options.comp}`"
     :ref="options.ref"
     v-model="options.data"

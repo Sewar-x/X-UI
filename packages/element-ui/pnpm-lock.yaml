@@ -6,6 +6,7 @@ specifiers:
   element-ui: ^2.15.6
   vite-plugin-vue2: ^2.0.1
   vue: ^2.6.0
+  vue-avatar: ^2.3.3
   vue-router: '3'
   vue-template-compiler: ^2.6.0
 
@@ -13,6 +14,7 @@ dependencies:
   '@xw-ui/hooks': link:../hooks
   '@xw-ui/shared': link:../shared
   element-ui: 2.15.14_vue@2.6.14
+  vue-avatar: 2.3.3
 
 devDependencies:
   vite-plugin-vue2: 2.0.3_sbs6or2oam5i4s4vmfp4rzwdnq
@@ -1507,6 +1509,11 @@ packages:
       - walrus
       - whiskers
     dev: true
+
+  /vue-avatar/2.3.3:
+    resolution: {integrity: sha512-Z57ILRTkFIAuCH9JiFBxX74C5zua5ub/jRDM/KZ+QKXNfscvmUOgWBs3kA2+wrpZMowIvfLHIT0gvQu1z+zpLg==}
+    engines: {node: '>= 4.0.0', npm: '>= 3.0.0'}
+    dev: false
 
   /vue-router/3.6.5_vue@2.6.14:
     resolution: {integrity: sha512-VYXZQLtjuvKxxcshuRAwjHnciqZVoXAjTjcqBTz4rKc8qih9g9pI3hbDjmqXaHdgL3v8pV6P8Z335XvHzESxLQ==}
