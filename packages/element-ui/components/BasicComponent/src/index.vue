@@ -21,12 +21,9 @@
 </template>
 
 <script>
-import BasicComponent from "../";
 export default {
   name: "BasicComponent",
-  component: {
-    BasicComponent,
-  },
+  component: {},
   props: {
     options: {
       type: [Object, String],

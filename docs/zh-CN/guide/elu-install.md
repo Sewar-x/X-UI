@@ -113,7 +113,7 @@ XW-UI 的 Vue2 组件库是基于 [Element UI](https://element.eleme.cn/#/zh-CN/
 
 在 main.js 中写入以下内容：
 
-```javascript{2-3,6}
+```javascript {2-3,6}
 import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -139,7 +139,7 @@ new Vue({
 
 `x-element-UI` 将会在Vue应用中进行**全局组件注册**。
 
-```ts{4-7,9-10}
+```ts {4-7,9-10}
 // main.js
 import Vue from 'vue'
 import App from './App.vue'
@@ -169,10 +169,8 @@ new Vue({
 </template>
 
 <script>
-import XWUI from "xw-ui";
 export default {
   name: "TableCustomColumns",
-  components: { XTable: XWUI.XElementUI.XTable },
   data() {
     return {
       defaultColumns: ["日期", "姓名", "地址"],
@@ -206,7 +204,6 @@ export default {
   },
 };
 </script>
-
 ```
 
 
