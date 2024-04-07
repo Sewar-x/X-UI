@@ -210,7 +210,7 @@ async function build(isBuild: boolean): Promise<Boolean | undefined> {
 
   try {
     // 在目标文件目录下执行发布命令
-    await execa('npm', ['run build'], {
+    await execa('npm run build', {
       // 继承父进程的stdio流
       stdio: 'inherit'
 
@@ -231,7 +231,7 @@ async function docBuild(isBuild: boolean): Promise<Boolean | undefined> {
   }
   try {
     // 在目标文件目录下执行发布命令
-    await execa('npm', ['run docs:build'], {
+    await execa('npm run docs:build',{
       // 继承父进程的stdio流
       stdio: 'inherit'
 
