@@ -104,7 +104,7 @@ export const installer = (app: App) => {
 
 **demo 路由作用**：
 
-1. 组件库文档中查找 demo 示例路径：如在 Table 组件路由为 `/table-custom-columns`，则在组件库文档中引入 Form 组件 demo 路由为：`source-code="element-ui:::form/table-custom-columns"`
+1. 组件库文档中查找 demo 示例路径：如在 Table 组件路由为 `/table-custom-columns`，则在组件库文档中引入 Form 组件 demo 路由为：`form/table-custom-columns"`
 
 2. 在开发环境中，通过路由查看 demo 组件示例，对 demo 进行调试预览。
 
