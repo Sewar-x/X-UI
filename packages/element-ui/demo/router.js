@@ -22,7 +22,7 @@ const router = new VueRouter({
     },
     {
       path: '/task-board-advance',
-      component: () => import('./task-board/task-advance-demo.vue'),
+      component: () => import('./task-board/task-board-advance.vue'),
       name: 'TaskBoardAdvance'
     },
     {

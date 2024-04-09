@@ -27,7 +27,7 @@
 <script>
 import DatePickerWrap from "./index.vue";
 export default {
-  name: "DateChanger",
+  name: "DateChangerWrap",
   components: {
     DatePickerWrap,
   },

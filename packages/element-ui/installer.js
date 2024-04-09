@@ -12,7 +12,7 @@ import { FileUploadWrap } from './components/FileUploadWrap'
 import { AdvancedSearchWrap } from './components/AdvancedSearchWrap'
 import { FormWrap } from './components/FormWrap'
 import { RemoteSearchSelector } from './components/RemoteSearchSelector'
-import { DatePickerWrap, DateChanger } from './components/RemoteSearchSelector'
+import { DatePickerWrap, DateChangerWrap } from './components/DatePickerWrap'
 import { SelectorWrap } from './components/SelectorWrap'
 import { DialogWrap } from './components/DialogWrap'
 export const elmUiComponents = [
@@ -30,7 +30,7 @@ export const elmUiComponents = [
   AdvancedSearchWrap,
   RemoteSearchSelector,
   DatePickerWrap,
-  DateChanger,
+  DateChangerWrap,
   SelectorWrap
 ]
 

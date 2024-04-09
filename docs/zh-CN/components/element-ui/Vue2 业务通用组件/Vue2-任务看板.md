@@ -876,9 +876,29 @@ Options: {
 
 ## **示例**
 
+### **纯看板组件**
+
+>  纯看板组件不包含搜索框，新增看板弹窗，需要另外开发新增弹窗
+
+
 <xw-demo
     demo-height="1000px"
     source-code="element-ui:::task-board/task-use-demo"
+/>
+
+
+----
+
+
+### 带搜索看板
+
+> 带搜索看板自带看板内容筛选框，可以新增看板内容
+
+
+
+<xw-demo
+    demo-height="1100px"
+    source-code="element-ui:::task-board/task-board-advance"
 />
 
 
