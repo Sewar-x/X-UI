@@ -1,14 +1,37 @@
 import { BasicComponent } from './components/BasicComponent'
 import { XTable } from './components/table'
-import { XTaskBoard } from './components/Board'
+import {
+  XTaskBoard,
+  TopContent,
+  DialogEdit,
+  DialogAdd,
+  ChildTask,
+} from './components/Board'
 import { Tinymce } from './components/Tinymce'
-import { XFileUpload } from './components/FileUpload'
+import { FileUploadWrap } from './components/FileUploadWrap'
+import { AdvancedSearchWrap } from './components/AdvancedSearchWrap'
+import { FormWrap } from './components/FormWrap'
+import { RemoteSearchSelector } from './components/RemoteSearchSelector'
+import { DatePickerWrap, DateChanger } from './components/RemoteSearchSelector'
+import { SelectorWrap } from './components/SelectorWrap'
+import { DialogWrap } from './components/DialogWrap'
 export const elmUiComponents = [
   BasicComponent,
   XTable,
+  FormWrap,
+  DialogWrap,
   XTaskBoard,
+  TopContent,
+  DialogEdit,
+  DialogAdd,
+  ChildTask,
   Tinymce,
-  XFileUpload
+  FileUploadWrap,
+  AdvancedSearchWrap,
+  RemoteSearchSelector,
+  DatePickerWrap,
+  DateChanger,
+  SelectorWrap
 ]
 
 export const installer = (Vue) => {

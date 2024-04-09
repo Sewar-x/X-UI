@@ -235,7 +235,7 @@
             />
           </template>
           <template slot="attach-slot">
-            <XFileUpload
+            <FileUploadWrap
               class="attach-class"
               :file-list="editData.attachment"
               v-bind="filesUploadAttr"
@@ -264,7 +264,7 @@ import {
   ChildTask,
   DialogAdd,
 } from "@/xw-ui/element-ui/components/Board/index.js";
-import { XFileUpload } from "@/xw-ui/element-ui/components/FileUpload/index.js";
+import { FileUploadWrap } from "@/xw-ui/element-ui/components/FileUploadWrap/index.js";
 import {
   getDiscussionList,
   discussionAdd,
@@ -294,7 +294,7 @@ export default {
     DialogEdit,
     ChildTask,
     DialogAdd,
-    XFileUpload,
+    FileUploadWrap,
   },
   props: {
     // 特定项目
@@ -305,7 +305,7 @@ export default {
   },
   data() {
     return {
-      uid: 47, // 当前登录用户
+      uid: 1, // 当前登录用户
       columnData: {}, // 看板数据
       formData: {
         id: null,

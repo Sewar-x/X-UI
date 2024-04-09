@@ -1,0 +1,189 @@
+//所有项目列表的详情  
+
+@import './variables.scss';
+.header {
+  margin-bottom: 5px;
+  .count-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+.search-con {
+  border: 1px solid $borderBase;
+  color: $regularText;
+  font-size: $fontSizeTitle;
+  padding: 15px 10px 15px 28px;
+  margin-bottom: 15px;
+  .search-cen {
+    display: inline-block;
+    margin: 0px 40px 0px;
+  }
+}
+.row-center {
+  border-left: 1px solid $borderColor;
+  border-right: 1px solid $borderColor;
+}
+.filter-container {
+  padding: 5px;
+  background: #fff;
+  border: 1px solid $borderColor;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: $boxShadow;
+  border-radius: 5px;
+}
+.el-table__body-wrapper{
+
+  &::v-deep .cell {
+      padding: 0px 0px 0px 5px;
+      color:red !important;
+    }
+}
+.outter-table-wrap {
+
+
+  .progress-bar {
+    &::v-deep .el-progress__text {
+      font-size: 12px !important;
+    }
+  }
+  .el-link--primary {
+    font-size: $fontSizePrimary;
+  }
+  .progress-content-wrap,
+  .npi-task-table-progress {
+    cursor: pointer;
+  }
+  &::v-deep .el-progress-bar__innerText {
+    width: 100%;
+    height: 100%;
+    line-height: 10px;
+  }
+}
+.progress-content-wrap {
+  max-height: 500px;
+  min-height: 30px;
+  overflow: auto;
+  ul {
+    padding: 0;
+    margin: 5px 0;
+    li {
+      list-style: none;
+    }
+  }
+
+}
+ .comment-textarea{
+    transition: opacity 4s;
+  }
+  .btn-comment{
+    margin-top: 10px;
+    text-align: right;
+  }
+  .comment-list{
+    &::v-deep ul{
+      padding: 0
+    }
+    .comment-container{
+      margin:2px 0px
+    }
+  }
+.progress-dialog {
+  .comment-list-container {
+    margin: 10px auto;
+    width: 80%;
+  }
+}
+
+.view-con {
+  font-size: $fontSizePrimary;
+  margin: 5px auto;
+}
+
+.add-container-btn {
+  float: right;
+  padding:2px 3px;
+
+}
+.progress-title-container span{
+  // font-weight: bold;
+
+}
+.progress-content-container{
+  margin-top: -13px;
+}
+
+  .dis-btn{
+    height:28px;
+  }
+  .milepost{
+    cursor: pointer;
+
+  }
+  .stage-time-container {
+    .stage-time {
+      display: flex;
+      justify-content: space-between;
+    }
+    span{
+      display: block;
+    }
+  }
+  .stageRed-title {
+    font-size:$fontSizePrimary;
+    margin: 14px 0;
+    color:red;
+  }
+  .stageRed{
+    color:red;
+  }
+.progress-title-container span {
+  font-weight: bold;
+}
+
+.dis-btn {
+  height: 28px;
+}
+.milepost {
+  cursor: pointer;
+}
+.stage-time-container {
+  .stage-time {
+    display: flex;
+    justify-content: space-between;
+  }
+  span {
+    display: block;
+  }
+}
+.stageRed-title {
+  font-size: $fontSizeTitle;
+  margin: 14px 0;
+  color: red;
+}
+.stageRed {
+  color: red;
+}
+.header-align {
+  text-align: center;
+}
+
+  .statistics-actived {
+    color: $primary;
+  }
+
+  .npi-popover-container{
+    padding: 0px;
+
+  }
+.statistics-actived {
+  color: $primary;
+}
+.table-project-number {
+  &::v-deep .el-link--inner {
+    font-size: 12px;
+  }
+}

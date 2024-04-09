@@ -7,7 +7,7 @@
       :title="dialogTitleEdit"
       :visible="dialogVisible"
       top="10vh"
-      width="1250px"
+      width="1400px"
       @close="$emit('close')"
       destroy-on-close
     >
@@ -34,7 +34,7 @@
                 <comments
                   :show-delete="scrop.data.is_oper"
                   :data="scrop.data"
-                  width="550px"
+                  width="600px"
                   @delete="deleteComments(scrop.data)"
                 />
               </div>
@@ -42,8 +42,12 @@
           </infinite-scroll>
           <!-- 添加评论 -->
           <div class="comments-input-wrapper">
-            <!-- 富文本编辑器 -->
-            <Tinymce id="digitalEditor" ref="editor" v-model="comments" height="100px" />
+            <Tinymce
+              id="digitalEditor"
+              key="digitalEditor"
+              ref="editor"
+              v-model="comments"
+            />
             <div class="submit-button-wrapper">
               <el-button
                 class="submit-button"
@@ -116,7 +120,7 @@ export default {
         comment: null,
       },
       comments: null,
-      height: "500px",
+      height: "400px",
     };
   },
   computed: {

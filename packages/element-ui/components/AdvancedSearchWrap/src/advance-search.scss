@@ -1,0 +1,107 @@
+/**
+此处1280不限于mac端
+*/
+// sidebar
+
+
+$sideBarWidth: 190px;
+$primary: #409EFF;
+$success: #67C23A;
+$warning: #E6A23C;
+$danger: #ED1731;
+$info: #909399;
+$primaryText:#222222;
+$regularText: #606266;
+$secondaryText: #909399;
+$placeholder: #C0C4CC;
+$disabled: #bcbec2;
+$borderColor: #cac6c687;
+$borderBase: #DCDFE6;
+$borderLight: #E4E7ED;
+$borderLighter: #EBEEF5;
+$borderExtralight: #F2F6FC;
+
+$fontSizePrimary:12px;
+$fontSizeTitle:14px;
+$fontSizeBiger:16px;
+
+//字体颜色
+
+
+//边框颜色
+$borderPrimary: #F4F4F5;
+
+//表格颜色
+$tableTitleBgColor: #f4f4f5; //标题背景色
+//高级搜索按钮-搜索框长度
+$advancedSearchButtonLength: calc( 100vw - 900px);
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+
+//字体
+$titleBlodFontFamily: 'PingFangSC-Semibold';
+$titleFontFamily: 'PingFang SC';
+$regularFontFamily: 'PingFangSC-Regular';
+
+
+@mixin advanceSearch($screenWidth) {
+    @if ($screenWidth == 1280) {
+        .advaced-search-container {
+            margin-bottom: 5px;
+            font-size: $fontSizePrimary;
+            .advaced-search-buttons {
+                margin-top: 0px;
+            }
+            &::v-deep .el-form-item__label {
+                font-size: $fontSizePrimary;
+            }
+            &::v-deep .el-form-item--medium .el-form-item__label {
+                line-height: 30px;
+            }
+            .search-container {
+                margin: 6px -8px 2px 8px;
+            }
+            .add-button {
+                margin-top: 3px !important;
+            }
+            .advaced-buttons-container,.search-container  {
+                top: 46px !important;
+            }
+        }
+    } @else if($screenWidth== 1920) {
+        .advaced-search-container {
+            margin-bottom: 5px;
+            font-size: $fontSizePrimary;
+            .advaced-search-buttons {
+                margin-top: 5px;
+            }
+            &::v-deep .el-form-item__label {
+                font-size: $fontSizePrimary;
+            }
+            .search-container {
+                margin: 6px  -8px 6px 8px;
+            }
+        }
+    }@else if($screenWidth== 1921) {
+        .advaced-search-container {
+            margin-bottom: 5px;
+            font-size: $fontSizePrimary;
+            .advaced-search-buttons {
+                margin-top: 5px;
+            }
+            &::v-deep .el-form-item__label {
+                font-size: $fontSizePrimary;
+            }
+            .search-container {
+                margin: 6px  -8px 6px 8px;
+            }
+        } 
+        .advaced-buttons-container {
+            top: 46px !important;
+        }
+        .add-button {
+            margin-top: 6px;
+        }
+    }
+
+}

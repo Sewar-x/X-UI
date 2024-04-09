@@ -88,9 +88,13 @@
 </template>
 
 <script>
+import BasicComponent from "@/xw-ui/element-ui/components/BasicComponent";
+
 export default {
   name: "DialogContent",
-  components: {},
+  components: {
+    BasicComponent,
+  },
   props: {
     // 编辑表单数据
     editFormData: {
@@ -135,6 +139,7 @@ export default {
     // 提交编辑
     submitEdit(editFormData) {
       this.$emit("submitEdit", editFormData);
+      this.showEditArea = false;
     },
     // 取消编辑
     closeEdit() {
@@ -187,6 +192,7 @@ export default {
   margin-left: 20px;
   overflow: hidden;
   color: #373737;
+  width: 90%;
 }
 
 .items-img {

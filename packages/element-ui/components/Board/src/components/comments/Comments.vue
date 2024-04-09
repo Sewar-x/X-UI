@@ -201,6 +201,6 @@ export default {
 }
 .el-icon-delete {
   position: relative;
-  left: 260px;
+  left: 360px;
 }
 </style>

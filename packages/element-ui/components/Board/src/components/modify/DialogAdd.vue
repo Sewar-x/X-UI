@@ -49,8 +49,13 @@
 </template>
 
 <script>
+import BasicComponent from "@/xw-ui/element-ui/components/BasicComponent";
+
 export default {
   name: "DialogAdd",
+  components: {
+    BasicComponent,
+  },
   props: {
     // 新增表单配置信息
     dialogAddItems: {
@@ -85,27 +90,33 @@ export default {
   width: 100%;
   height: 700px;
 }
+
 .content-list-area-dialog {
   display: ruby;
   font-size: 15px;
   line-height: 45px;
 }
+
 .icon-class-dialog {
   width: 20px;
   margin-right: 15px;
 }
+
 .label-class {
   width: 100px;
   display: block;
 }
+
 .ul-class {
   list-style: none;
 }
+
 .button-class {
   width: 100%;
   text-align: right;
   padding: 10px 20px;
 }
+
 .el-select {
   width: 220px !important;
 }

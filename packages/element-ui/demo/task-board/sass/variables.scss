@@ -1,0 +1,98 @@
+// sidebar
+
+$menuText:#ffffff;
+$menuActiveText: rgb(255, 208, 75);
+$subMenuActiveText:#f4f4f5; //https://github.com/ElemeFE/element/issues/12951
+
+$menuBg:rgb(42, 131, 249);
+$menuactiveBg:rgba(42, 131, 249, 0.5);
+$menuHover:rgba(153, 204, 255, 0.4);
+$logoMenuBk:#0859bd;
+$subMenuBg:rgb(42, 131, 249, 0.8);
+$subMenuHover:rgba(153, 204, 255, 0.4);
+$sideBarWidth: 190px;
+$primary: #409EFF;
+$success: #67C23A;
+$warning: #E6A23C;
+$danger: #ED1731;
+$info: #909399;
+$primaryText:#222222;
+$regularText: #606266;
+$secondaryText: #909399;
+$placeholder: #C0C4CC;
+$disabled: #bcbec2;
+$borderColor: #cac6c687;
+$borderBase: #DCDFE6;
+$borderLight: #E4E7ED;
+$borderLighter: #EBEEF5;
+$borderExtralight: #F2F6FC;
+$boxShadow:0 2px 12px 0 rgb(0 0 0 / 10%);
+$horizonNavHeight: 50px; //水平导航高度
+$navgatorActiveBackground: rgb(6, 71, 151);
+$chartBackground: #d4dcf1; //统计平台背景
+$sideBarTabHeight: 50px;
+// 系统样式规范
+// 字体大小
+$fontSizePrimary:12px;
+$fontSizeTitle:14px;
+$fontSizeBiger:16px;
+
+//字体颜色
+
+
+//边框颜色
+$borderPrimary: #F4F4F5;
+
+//表格颜色
+$tableTitleBgColor: #f4f4f5; //标题背景色
+//高级搜索按钮-搜索框长度
+$advancedSearchButtonLength: calc( 100vw - 900px);
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+
+//字体
+$titleBlodFontFamily: 'PingFangSC-Semibold';
+$titleFontFamily: 'PingFang SC';
+$regularFontFamily: 'PingFangSC-Regular';
+
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  logoMenuBk:$logoMenuBk;
+  menuactiveBg: $menuactiveBg;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+  horizonNavHeight:$horizonNavHeight;
+  primary: $primary;
+  success: $success;
+  warning: $warning;
+  danger: $danger;
+  info: $info;
+  primaryText: $primaryText;
+  regularText: $regularText;
+  secondaryText: $secondaryText;
+  placeholder: $placeholder;
+  disabled: $disabled;
+  borderColor:$borderColor;
+  borderBase: $borderBase;
+  borderLight: $borderLight;
+  borderLighter: $borderLighter;
+  borderExtralight: $borderExtralight;
+  boxShadow:$boxShadow;
+  fontSizePrimary: $fontSizePrimary;
+  fontSizeTitle: $fontSizeTitle;
+  fontSizeBiger: $fontSizeBiger;
+  tableTitleBgColor: $tableTitleBgColor;
+  borderPrimary: $borderPrimary;
+  advancedSearchButtonLength:$advancedSearchButtonLength;
+  titleBlodFontFamily: $titleBlodFontFamily;
+  titleFontFamily: $titleFontFamily;
+  regularFontFamily:$regularFontFamily;
+  navgatorActiveBackground:$navgatorActiveBackground;
+  sideBarTabHeight:$sideBarTabHeight;
+  chartBackground:$chartBackground;
+}

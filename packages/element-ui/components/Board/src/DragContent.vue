@@ -7,8 +7,21 @@
       @change="$emit('changeCheck', element)"
       class="checkbox-class"
     ></el-checkbox>
-    <div @click="$emit('toShowContent', element)">
-      <slot name="DragContentMsg" />
+    <div class="top-wrap">
+      <div @click="$emit('toShowContent', element)" class="left-content-area">
+        <slot name="DragContentMsg" />
+      </div>
+      <!---------------------- 右侧图片区域---------------------->
+      <div class="image-area" v-if="element.attachment.length !== 0">
+        <div v-for="(item, index) in element.attachment" :key="index" class="items-img">
+          <el-image
+            v-if="item.url && item.type !== 'file'"
+            class="image"
+            :src="item.url"
+            :preview-src-list="element.srcList"
+          />
+        </div>
+      </div>
     </div>
     <!-------------------------下面------------------------->
     <BottomContent :messages="element" v-bind="$attrs" v-on="$listeners" />
@@ -51,5 +64,26 @@ export default {
   display: flex;
   float: inline-start;
   margin-top: 5px;
+  width: 3%;
+}
+.top-wrap {
+  width: 97%;
+  display: flex;
+  margin-top: 10px;
+}
+.left-content-area {
+  width: 100%;
+}
+.image-area {
+  overflow: hidden;
+  max-width: 90px;
+  height: 90px;
+}
+.items-img {
+  display: flex;
+}
+.image {
+  height: 90px;
+  width: 110px;
 }
 </style>

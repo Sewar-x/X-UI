@@ -1,7 +1,16 @@
 <template>
-  <el-upload ref="uploadComponent" :data="formData" :action="doUpload" :headers="headerFiles" :multiple="multiple"
-    :before-upload="beforeUpload" v-bind="$attrs" :accept="acceptType"
-    :class="{ 'file-upload-container': showType === 'icons' }" v-on="$listeners">
+  <el-upload
+    ref="uploadComponent"
+    :data="formData"
+    :action="doUpload"
+    :headers="headerFiles"
+    :multiple="multiple"
+    :before-upload="beforeUpload"
+    v-bind="$attrs"
+    :accept="acceptType"
+    :class="{ 'file-upload-container': showType === 'icons' }"
+    v-on="$listeners"
+  >
     <slot name="pre-content" />
     <div v-if="showType === 'icons' && showUpload" class="file-upload-icons-container">
       <i class="el-icon-upload" :style="styles" />
@@ -11,14 +20,16 @@
       </div>
       <div slot="tip" class="el-upload__tip">支持扩展名:{{ acceptType }}</div>
     </div>
-    <el-button v-if="showType === 'buttons' && showUpload" :size="size" type="primary">上传</el-button>
+    <el-button v-if="showType === 'buttons' && showUpload" :size="size" type="primary"
+      >上传</el-button
+    >
     <slot name="after-content" />
   </el-upload>
 </template>
 
 <script>
 export default {
-  name: "Upload",
+  name: "FileUploadWrap",
   props: {
     baseApi: {
       type: String,
@@ -53,7 +64,7 @@ export default {
     },
     styles: {
       type: Object,
-      default: () => { },
+      default: () => {},
     },
     size: {
       type: String,

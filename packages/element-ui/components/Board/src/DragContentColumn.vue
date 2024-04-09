@@ -154,12 +154,10 @@ export default {
       overflow: auto;
       cursor: pointer;
       width: 100%;
-      height: 180px;
       margin: 5px 0;
       background-color: #fff;
       text-align: left;
-      line-height: 24px;
-      padding: 5px 10px;
+      padding: 1px 10px;
       box-sizing: border-box;
       box-shadow: 0px 1px 3px 0 rgba(0, 0, 0, 0.2);
 

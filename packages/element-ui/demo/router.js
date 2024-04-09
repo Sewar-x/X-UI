@@ -21,13 +21,18 @@ const router = new VueRouter({
       name: 'TaskBoard'
     },
     {
+      path: '/task-board-advance',
+      component: () => import('./task-board/task-advance-demo.vue'),
+      name: 'TaskBoardAdvance'
+    },
+    {
       path: '/tinymc',
       component: () => import('./tinymc/tinymc-demo.vue'),
       name: 'Tinymc'
     },
     {
       path: '/:pathMatch(.*)*',
-      redirect: '/task-board'
+      redirect: '/task-board-advance'
     },
   ]
 })
