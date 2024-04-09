@@ -901,18 +901,50 @@ Options: {
     source-code="element-ui:::task-board/task-board-advance"
 />
 
-
 ## **问题**
 
-1、为什么编辑表单的关闭事件不叫closeEdit而要叫changeEdit呢？
+
+
+为什么编辑表单的关闭事件不叫closeEdit而要叫changeEdit呢？
 
 > 答：因为编辑弹窗中，左侧是一个动态组件，包含①内容展示和②编辑表单，此时的editVisible代表的是编辑区是否可见，并非表示弹窗的关闭与否，可以true变成false，也可以false变成true。
 
 
 
-2、为什么新增表单需要在Board也绑定closeAdd事件？而编辑表单却不需要在Board上也绑定上changeEdit呢？
+为什么新增表单需要在Board也绑定closeAdd事件？而编辑表单却不需要在Board上也绑定上changeEdit呢？
 
 > 答：因为取消新增弹窗时，需要手动清空父组件的表单；而且新增操作是在父组件里的“新增”按钮来触发，需要通过Board来打开里面的弹窗。
 >
 > 编辑表单的每一次弹出，都是通过接口获取最新的一条对应数据并初始化编辑表单，不需要手动清空表单；而且弹窗的开闭整合在了组件内部，编辑区域和内容展示区域的切换逻辑写在dialogEdit中，在父组件中引入时可以直接对其进行事件绑定，不需要通过Board来传递这个事件。
 
+## 贡献者
+
+<script setup>
+import {
+  VPTeamPage,
+  VPTeamPageTitle,
+  VPTeamMembers
+} from 'vitepress/theme'
+
+const members = [
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/95331757?v=4',
+    name: 'Vivien',
+    title: 'Staff Frontend Engineer',
+    links: [
+      { icon: 'github', link: 'https://github.com/yoguoer' }
+    ]
+  }
+]
+</script>
+
+<VPTeamPage>
+  <VPTeamPageTitle>
+    <template #title>
+      组件贡献者
+    </template>
+  </VPTeamPageTitle>
+  <VPTeamMembers
+    :members="members"
+  />
+</VPTeamPage>
