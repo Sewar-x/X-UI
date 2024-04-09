@@ -2,11 +2,11 @@
 
 ## 目录结构
 
-![img](D:\MyData\webInfra\x-component-library\docs\public\docsImages\taskbord.png) 
+![img](../../../../public/docsImages/taskbord.png) 
 
 ## 各组件之间的嵌套关系
 
-![img](D:\MyData\webInfra\x-component-library\docs\public\docsImages\taskbord1.png)
+![img](../../../../public/docsImages/taskbord1.png)
 
 
 

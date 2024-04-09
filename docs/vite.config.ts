@@ -2,9 +2,10 @@ import sideBarPlugin from './plugins/side-bar-plugin'
 import sourceCode from './plugins/source-code'
 import { defineConfig } from 'vite'
 import path from 'path'
-import { alias } from '../scripts'
+import { alias } from './plugins/alias'
 
 export default defineConfig(async ({ command, mode }) => {
+  const alia = await alias()
   return {
     server: {
       proxy: {
@@ -20,7 +21,7 @@ export default defineConfig(async ({ command, mode }) => {
     ],
     resolve: {
       alias: [
-        ...await alias(), // 统一项目包别名
+        ...alia, // 统一项目包别名
         {
           find: '@/',
           replacement: path.join(__dirname, '/')
