@@ -174,7 +174,7 @@ export default {
   .comments-wrap {
     padding: 1px 0px 0px 22px;
     &::v-deep p {
-      font-size: $fontSizePrimary;
+      font-size: 16px;
       margin: 2px 0;
       font-weight: 500;
     }
@@ -195,7 +195,7 @@ export default {
   .el-icon-delete .el-icon-edit {
     font-size: 16px;
     &:hover {
-      color: $primary;
+      color: #409eff;
     }
   }
 }

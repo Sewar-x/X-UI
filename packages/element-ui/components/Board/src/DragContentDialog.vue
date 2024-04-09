@@ -1,118 +1,109 @@
 <!-- 弹框 -->
 <template>
-<div>
-  <el-dialog
-    ref="dragContentDialogWrap"
-    :close-on-click-modal="false"
-    :title="dialogTitleEdit"
-    :visible="dialogVisible"
-    top="10vh"
-    width="1250px"
-    @close="$emit('close')"
-    destroy-on-close
+  <div>
+    <el-dialog
+      ref="dragContentDialogWrap"
+      :close-on-click-modal="false"
+      :title="dialogTitleEdit"
+      :visible="dialogVisible"
+      top="10vh"
+      width="1250px"
+      @close="$emit('close')"
+      destroy-on-close
     >
-    <div class="board-item">
+      <div class="board-item">
+        <!-------------------------左边------------------------->
+        <div class="board-left">
+          <!-- 内容展示区域 -->
+          <slot name="DragContentDialogMsg" />
+        </div>
 
-      <!-------------------------左边------------------------->
-      <div class="board-left">
-        <!-- 内容展示区域 -->
-        <slot name="DragContentDialogMsg" />
-      </div>
-      
-      <!-------------------------右边------------------------->
-      <div class="board-right">
-      <!-- 展示已有评论 -->
-        <infinite-scroll
-          ref="digitalCommentScroll"
-          :list-method="getDiscussionList"
-          :params="commentListParams"
-          :height="height"
-          item-key="id"
-          class="comment-list">
-          <template slot="item" slot-scope="scrop">
-            <div class="comment-container">
-              <comments
-                :show-delete="scrop.data.is_oper"
-                :data="scrop.data"
-                width="550px"
-                @delete="deleteComments(scrop.data)"
-              />
-            </div>
-          </template>
-        </infinite-scroll>
-        <!-- 添加评论 -->
-        <div class="comments-input-wrapper">
-          <!-- <el-input
-            v-model="comments"
-            type="textarea"
-            :rows="4"
-            placeholder="添加评论"/> -->
+        <!-------------------------右边------------------------->
+        <div class="board-right">
+          <!-- 展示已有评论 -->
+          <infinite-scroll
+            ref="digitalCommentScroll"
+            :list-method="getDiscussionList"
+            :params="commentListParams"
+            :height="height"
+            item-key="id"
+            class="comment-list"
+          >
+            <template slot="item" slot-scope="scrop">
+              <div class="comment-container">
+                <comments
+                  :show-delete="scrop.data.is_oper"
+                  :data="scrop.data"
+                  width="550px"
+                  @delete="deleteComments(scrop.data)"
+                />
+              </div>
+            </template>
+          </infinite-scroll>
+          <!-- 添加评论 -->
+          <div class="comments-input-wrapper">
             <!-- 富文本编辑器 -->
-            <Tinymce
-              id="digitalEditor"
-              ref="editor"
-              v-model="comments"
-              height="100px"
-            />
-          <div class="submit-button-wrapper">
-            <el-button
-              class="submit-button"
-              size="mini"
-              type="primary"
-              @click.native="addComments"
-            >{{ $t('systemCommon.submitButon') }}</el-button>
+            <Tinymce id="digitalEditor" ref="editor" v-model="comments" height="100px" />
+            <div class="submit-button-wrapper">
+              <el-button
+                class="submit-button"
+                size="mini"
+                type="primary"
+                @click.native="addComments"
+                >提交</el-button
+              >
+            </div>
           </div>
         </div>
-        </div>
-    </div>
-  </el-dialog>
-</div>
+      </div>
+    </el-dialog>
+  </div>
 </template>
 
 <script>
-import TopContent from './components/card/TopContent.vue'
-import Comments from './components/comments/Comments.vue'
-import InfiniteScroll from './components/comments/InfiniteScrollWrap.vue'
-import Tinymce from './components/Tinymce/index.vue'
+import TopContent from "./components/card/TopContent.vue";
+import Comments from "./components/comments/Comments.vue";
+import InfiniteScroll from "./components/comments/InfiniteScrollWrap.vue";
+import Tinymce from "@/xw-ui/element-ui/components/Tinymce";
 
 export default {
-  name: 'DragContentDialog',
+  name: "DragContentDialog",
   components: {
     TopContent,
     Comments,
     InfiniteScroll,
-    Tinymce
+    Tinymce,
   },
   props: {
     // 元素信息
     element: {
       type: Object,
-      default: null
+      default: null,
     },
     // 是否可见
     dialogVisible: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 弹框标题
     dialogTitleEdit: {
       type: String,
-      default: '反馈内容'
+      default: "反馈内容",
     },
     // 评论区模块类型
     // 1：项目计划、2：项目任务、3：项目子任务、4：软件测试、5：、6：意见箱、7：问题点、8：数字化任务、9：数字化项目、10：硬件开发任务
     discussionType: {
       type: Number,
-      default: null
+      default: null,
     },
     getDiscussionList: {
       type: Function,
-      default: null
+      default: null,
     },
     // 是否刷新评论区
     isRefreshComments: {
       type: Boolean,
-      default: false
+      default: false,
     },
   },
   data() {
@@ -121,68 +112,67 @@ export default {
       commentListParams: {
         link_id: null,
         page_size: 15,
-        type: this.discussionType, 
-        comment: null
+        type: this.discussionType,
+        comment: null,
       },
       comments: null,
-      height: '500px',
-    }
+      height: "500px",
+    };
   },
   computed: {
     dialogItems() {
-      return []
+      return [];
     },
   },
   watch: {
     element: {
       handler(value) {
-        this.commentListParams.link_id = value.id
-        this.refreshComment(true)
+        this.commentListParams.link_id = value.id;
+        this.refreshComment(true);
       },
-      deep:true
+      deep: true,
     },
     isRefreshComments: {
       handler(value) {
-        if(value==true){
-          this.refreshComment()
+        if (value == true) {
+          this.refreshComment();
         }
       },
-      deep:true
+      deep: true,
     },
   },
   created() {},
-  mounted() {
-  },
+  mounted() {},
   methods: {
     // 清空评论框
     clearContent() {
-      this.comments = null
-      this.$refs.editor.clearContent()
+      this.comments = null;
+      this.$refs.editor.clearContent();
     },
     // 刷新评论
     async refreshComment(value) {
       if (value === null) {
-        this.commentListParams.link_id = null
+        this.commentListParams.link_id = null;
       }
-      this.$refs.digitalCommentScroll && this.$refs.digitalCommentScroll.load(true)
+      this.$refs.digitalCommentScroll && this.$refs.digitalCommentScroll.load(true);
     },
     // 添加评论
     async addComments() {
-      this.$emit('addComments',this.commentListParams,this.comments)
-      this.clearContent()
+      this.$emit("addComments", this.commentListParams, this.comments);
+      this.clearContent();
     },
     // 删除评论
     async deleteComments(data) {
-      this.$emit('deleteComments',data.id)
+      this.$emit("deleteComments", data.id);
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.board-left, 
+.board-left,
 .board-right {
-  padding:10px;
+  padding: 10px;
   width: 100%;
   overflow: auto;
   &::-webkit-scrollbar {
@@ -255,10 +245,10 @@ export default {
   &::v-deep .tag-user {
     margin: 5px 0;
   }
-  &::v-deep .project-name{
+  &::v-deep .project-name {
     color: #7c7a7a;
   }
-  &::v-deep .button-class{
+  &::v-deep .button-class {
     display: flex;
     float: inline-end;
   }
@@ -269,17 +259,16 @@ export default {
   }
   .comment-list {
     display: block;
-    width:100%;
+    width: 100%;
   }
   .comment-container {
     margin: 10px 0px;
   }
-  .delete-class{
-    width:100%;
+  .delete-class {
+    width: 100%;
   }
-  .comments-input-wrapper{
+  .comments-input-wrapper {
     margin-top: 10px;
   }
 }
 </style>
-

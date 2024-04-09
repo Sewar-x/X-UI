@@ -19,8 +19,8 @@ export async function alias(): Promise<Array<Alias>> {
   //遍历文件列表，为每个包创建一个别名
   return dirArr.map(packagePath => {
     return {
-      find: new RegExp(`@/xw-ui\\/${packagePath}(\\/(dist))?$`),
-      replacement: path.join(projectPath, `/${packagePath}`)
+      find: new RegExp(`@/xw-ui/${packagePath}`),
+      replacement: path.join(projectPath, `/${packagePath}/`)
     }
   })
 }

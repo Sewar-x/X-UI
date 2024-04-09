@@ -1,3 +1,5 @@
 export * from './BasicComponent'
 export * from './table'
 export * from './Board'
+export * from './Tinymce'
+export * from './FileUpload'

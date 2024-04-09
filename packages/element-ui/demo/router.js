@@ -16,8 +16,18 @@ const router = new VueRouter({
       name: 'DataPickerShortcuts'
     },
     {
+      path: '/task-board',
+      component: () => import('./task-board/task-use-demo.vue'),
+      name: 'TaskBoard'
+    },
+    {
+      path: '/tinymc',
+      component: () => import('./tinymc/tinymc-demo.vue'),
+      name: 'Tinymc'
+    },
+    {
       path: '/:pathMatch(.*)*',
-      redirect: '/table-custom-columns'
+      redirect: '/task-board'
     },
   ]
 })

@@ -1,26 +1,28 @@
 <!-- 一个纵列 -->
 <template>
   <div class="board-column">
-
     <!-- 所在列的标题 -->
-    <div :style="{ background: `${bgColor}`, width: `${headerWidth}` }" class="board-column-header">
+    <div
+      :style="{ background: `${bgColor}`, width: `${headerWidth}` }"
+      class="board-column-header"
+    >
       {{ headerText }}({{ list.length }})
     </div>
     <!-- 各个子元素 -->
-    <draggable :list="list" 
-      v-bind="$attrs" 
-      class="board-column-content" 
-      :set-data="setData" 
-      @change="change">
-      <div v-for="element in list" 
-        :key="element.id" 
-        class="board-item">
-        <DragContent 
-          :element="element" 
-          @toShowContent="showContent(element)" 
+    <draggable
+      :list="list"
+      v-bind="$attrs"
+      class="board-column-content"
+      :set-data="setData"
+      @change="change"
+    >
+      <div v-for="element in list" :key="element.id" class="board-item">
+        <DragContent
+          :element="element"
+          @toShowContent="showContent(element)"
           v-bind="$attrs"
           v-on="$listeners"
-          >
+        >
           <template slot="DragContentMsg">
             <slot name="DragContentItems" :element="element" />
           </template>
@@ -29,26 +31,27 @@
     </draggable>
 
     <!-- 弹框 -->
-    <drag-content-dialog 
-      :dialogVisible="dialogVisible" 
-      :element="showContentsData" 
-      v-bind="$attrs" 
+    <drag-content-dialog
+      :dialogVisible="dialogVisible"
+      :element="showContentsData"
+      v-bind="$attrs"
       v-on="$listeners"
-      @close="dialogVisible = false">
+      @close="dialogVisible = false"
+    >
       <template slot="DragContentDialogMsg">
-        <slot name="DragContentDialogMsg" :element="showContentsData"/>
+        <slot name="DragContentDialogMsg" :element="showContentsData" />
       </template>
     </drag-content-dialog>
   </div>
 </template>
 
 <script>
-import draggable from 'vuedraggable'
-import DragContent from './DragContent'
-import DragContentDialog from './DragContentDialog'
+import draggable from "vuedraggable";
+import DragContent from "./DragContent.vue";
+import DragContentDialog from "./DragContentDialog.vue";
 
 export default {
-  name: 'DragKanbanDemo',
+  name: "DragKanbanDemo",
   components: {
     draggable,
     DragContent,
@@ -58,60 +61,59 @@ export default {
     // 列头部标题内容
     headerText: {
       type: String,
-      default: 'Header'
+      default: "Header",
     },
     // 列头部标题宽度
     headerWidth: {
       type: String,
-      default: ''
+      default: "",
     },
     // 列头部标题背景颜色
     bgColor: {
       type: String,
-      default: '#4A9FF9'
+      default: "#4A9FF9",
     },
     // 每一列的数据
     list: {
       type: Array,
       default() {
-        return []
-      }
+        return [];
+      },
     },
     // 列key
     columnKey: {
       type: Number,
-      default: 0
+      default: 0,
     },
   },
   data() {
-    return {      
+    return {
       dialogVisible: false,
-      showContentsData: {}
-    }
+      showContentsData: {},
+    };
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     // 改变拖拽列
     change(evt) {
       const params = {
         key: this.columnKey,
-        data: evt.added.element
-      }
-      this.$emit('change', params)
+        data: evt.added.element,
+      };
+      this.$emit("change", params);
     },
     // 拖拽结束
     setData(dataTransfer) {
-      dataTransfer.setData('Text', '')
+      dataTransfer.setData("Text", "");
     },
     // 传送element并显示内容
     showContent(element) {
-      this.showContentsData=element
-      this.$emit('showContent', element)
-      this.dialogVisible = true
+      this.showContentsData = element;
+      this.$emit("showContent", element);
+      this.dialogVisible = true;
     },
-  }
-}
+  },
+};
 </script>
 <style lang="scss" scoped>
 .board-column {

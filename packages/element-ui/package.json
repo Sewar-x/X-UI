@@ -22,10 +22,15 @@
     "vue": "^2.6.0"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^3.0.1",
     "@xw-ui/hooks": "workspace:^",
     "@xw-ui/shared": "workspace:^",
     "element-ui": "^2.15.6",
-    "vue-avatar": "^2.3.3"
+    "sass": "^1.74.1",
+    "tinymce": "^5.1.0",
+    "tinymce-placeholder": "^1.0.1",
+    "vue-avatar": "^2.3.3",
+    "vuedraggable": "^2.24.3"
   },
   "devDependencies": {
     "vite-plugin-vue2": "^2.0.1",
