@@ -15,7 +15,7 @@
       />
     </div>
     <template v-if="options.content">
-      {{ options.content.text }}
+      {{ options.content.text ? options.content.text : options.content }}
     </template>
   </component>
 </template>

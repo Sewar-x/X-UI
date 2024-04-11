@@ -1,19 +1,23 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 // import.meta.globEager() 直接引入所有的模块 Vite 独有的功能
 const modules = import.meta.globEager("./routes/**.ts") as any;
-let routeModuleList: Array<any>  = []
+let routeModuleList: Array<any> = []
 
 // 加入到路由集合中
 Object.keys(modules).forEach((key) => {
   const mod = modules[key].default || {};
-  routeModuleList = Array.isArray(mod) ? [...mod] : [mod];
+  if (Array.isArray(mod)) {
+    routeModuleList = [...mod, ...routeModuleList]
+  } else {
+    routeModuleList.push(mod)
+  }
 });
 
 const routes = [
   ...routeModuleList,
   {
     path: '/:pathMatch(.*)*',
-    redirect: '/form-demo'
+    redirect: ''
   },
 ]
 
