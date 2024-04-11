@@ -133,7 +133,7 @@ export const installer = (app: App) => {
 
 1. 组件库文档中查找 demo 示例路径：如在 Form 组件路由为 `/form-demo`，则在组件库文档中引入 Form 组件 demo 路由为：
 
-   `form/formDemo`
+   `form/form-demo`
    
 2. 在开发环境中，通过路由查看 demo 组件示例，对 demo 进行调试预览。
 
@@ -145,11 +145,6 @@ const router = createRouter({
   history: createWebHashHistory(),
   // demo 路由配置，路由的 path 需求和 demo 组件的文件名称一致！
   routes: [
-    {
-      path: '/form-demo',
-      component: () => import('./form/formDemo.vue'),
-      name: 'FormDemo'
-    },
     {
       path: '/:pathMatch(.*)*',
       redirect: '/form-demo'

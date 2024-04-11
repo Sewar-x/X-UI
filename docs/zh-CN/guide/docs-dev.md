@@ -235,7 +235,7 @@ export default [
 ```js
 <xw-demo
     demo-height="550px"
-    source-code="element-plus:::form/formDemo"
+    source-code="element-plus:::form/form-demo"
 />
 
 ```
@@ -246,7 +246,7 @@ export default [
 
   * 必填项
 
-  * 示例： `sourceCode=element-plus:::form/formDemo`：
+  * 示例： `sourceCode=element-plus:::form/form-demo`：
 
     * 属性值模式： `项目名:::文件地址` ，通过 `:::` 符号对项目名和文件地址进行分割;
   
@@ -258,7 +258,7 @@ export default [
       详细值通过 docs/ 文件下 .env 和 .env.production 环境变量中配置
       ```
   
-    * 分割得到路径 `form/formDemo` ，插件会到对应项目的 demo 目录下读取源码文件 (源码文件位于`packages/element-plus/demo/form/formDemo`)，并通过 `prismjs` 对源码进行高亮等处理。
+    * 分割得到路径 `form/form-demo` ，插件会到对应项目的 demo 目录下读取源码文件 (源码文件位于`packages/element-plus/demo/form/form-demo`)，并通过 `prismjs` 对源码进行高亮等处理。
   
     * 注意 **demo 组件的文件名需要和对应的路由path 一致**（对应案例中的：`/table-custom-columns`），插件会根据文件名拼接 dev 环境的 demo 组件访问地址。
 

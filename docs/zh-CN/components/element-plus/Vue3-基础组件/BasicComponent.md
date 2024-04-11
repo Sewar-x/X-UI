@@ -87,14 +87,14 @@ declare interface CompType {
 ### 渲染基础 DOM 元素
 
 <xw-demo
-    demo-height="400px"
+    demo-height="100px"
     source-code="element-plus:::baseComponents/basics-use-demo"
 />
 
 ### 渲染 element plus 组件
 
 <xw-demo
-    demo-height="400px"
+    demo-height="200px"
     source-code="element-plus:::baseComponents/element-use-demo"
 />
 
