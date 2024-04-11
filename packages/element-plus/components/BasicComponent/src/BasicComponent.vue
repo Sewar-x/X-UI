@@ -15,13 +15,13 @@
       />
     </div>
     <template v-if="options.content">
-      {{ content }}
+      {{ options.content.text }}
     </template>
   </component>
 </template>
 
 <script setup lang="ts">
-import { CompType } from "@/xw-ui/element-plus/types/gloabl";
+import { CompType } from "@/xw-ui/element-plus/types/gloabl.d.ts";
 import { defineProps, toRef } from "vue";
 
 const props = defineProps<{
@@ -43,8 +43,8 @@ const value =
 
 /**
  * 依据 options 中 content 属性的 text 属性和 key 属性确定渲染组件的渲染文本内容
- * 1.存在key：渲染文本内容是响应数据对象中的某个属性，需传响应对象 data 和属性名 key
- * 2.不存在key：渲染文本内容类型是除对象类型外的所有类型，但该数据必须是由 ref 或 reactive 包裹形成的响应数据
+ * 1.存在key：如果 props.options 对象存在 key 属性，且为对象自身的属性，则使用 toRef 函数将 props.options.data 对象中 key 属性的值转换为响应式引用（ref）
+ * 2.不存在key：如果 props.options 对象不存在 key 属性，或者 key 属性不是对象自身的属性，则直接将 props.options.data 赋值给 value。
  */
 const content =
   props.options.content && props.options.content?.hasOwnProperty("key")

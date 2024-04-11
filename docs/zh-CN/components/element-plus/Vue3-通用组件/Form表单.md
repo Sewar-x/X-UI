@@ -97,5 +97,5 @@
 
 <xw-demo
     demo-height="400px"
-    source-code="element-plus:::form/formDemo"
+    source-code="element-plus:::form/form-demo"
 />

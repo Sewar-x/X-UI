@@ -1,9 +1,11 @@
 <template>
-  <XForm :options="createForm"></XForm>
+  <div>
+    <BasicComponent :options="element"></BasicComponent>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { XForm } from "@/xw-ui/element-plus";
+import { BasicComponent, XForm } from "@/xw-ui/element-plus";
 // 响应数据
 let data = {
   username: "XW-UI",
@@ -12,8 +14,8 @@ let data = {
   remarks: "Vue React",
   github: "https://github.com/Sewar-x/X-UI/",
 };
-// from 表单配置项
-const createForm = {
+
+const formOptions = {
   mode: data,
   attr: {
     "label-width": "30px",
@@ -85,6 +87,17 @@ const createForm = {
       },
     ],
   ],
+};
+
+const element = {
+  comp: XForm, // 注意直接传入自定义组件对象
+  attr: {
+    style: {
+      width: "100%",
+      height: "100%",
+    },
+    options: formOptions,
+  },
 };
 </script>
 
