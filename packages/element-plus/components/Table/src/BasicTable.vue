@@ -3,7 +3,7 @@
     class="advance-container"
     v-if="options.seachOptions"
     :options="options.seachOptions"
-    @XSearch="advanceSearch"
+    @search="advanceSearch"
   />
   <div class="table-container">
     <el-table
@@ -14,18 +14,21 @@
       v-on="options.event || {}"
     >
       <el-table-column
-        v-for="(tableColumn, index) of options.columnArr"
+        v-for="(tableColumn, index) of options.columns"
         :key="setKey(index, tableColumn.attr?.label)"
         v-bind="tableColumn.attr"
       >
+        <!--如果传入 headerSlotName 或 headerSlotConfig，则显示头部插槽 -->
         <template
           #header
           v-if="tableColumn.headerSlotName || tableColumn.headerSlotConfig"
         >
+          <!--传入 headerSlotConfig 表示头部插槽为 JSON 配置 -->
           <BasicComponent
             v-if="tableColumn.headerSlotConfig"
             :options="tableColumn.headerSlotConfig"
           />
+          <!--传入 headerSlotName 表示头部插槽为 自定义 template -->
           <slot
             v-if="tableColumn.headerSlotName"
             :name="tableColumn.headerSlotName"
@@ -169,7 +172,7 @@ const defaultSlotConfigHandle = function (config: CompType) {
 };
 
 /**
- * 高级搜索内容
+ * 高级搜索事件
  * @param params
  */
 const advanceSearch = function (params: any) {

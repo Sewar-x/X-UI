@@ -6,6 +6,42 @@
 
 组件类型文件：`/element-plus/components/Form/types.ts`
 
+::: details 点我查看代码
+
+```typescript
+import type { Ref } from "vue";
+
+// BasicForm接收参数类型
+export interface FormType {
+  // 响应数据对象
+  mode: Recordable;
+  // el-form 属性对象
+  attr?: Recordable;
+  ref?: Ref<T>;
+  // 表单项数组
+  items: Array<Array<FormItemType>>;
+}
+
+export interface FormItemType {
+  // 表单项占据尺寸
+  span?: number;
+  colAttr?: Recordable;
+  // 表单项 el-form-item 属性对象
+  attr?: Recordable;
+  // 表单项所要渲染的组件
+  component: ComponentType;
+}
+
+export interface ComponentType extends CompType {
+  // 公共事件
+  publicEvent?: string;
+}
+```
+
+:::
+
+
+
 ## 特性
 
   1. **JSON 配置**：传递指定格式的  `json`  对象给组件 `BasicForm`，组件会以此渲染对应的表单；
@@ -25,12 +61,16 @@
   	mode: {},   // Form绑定的数据对象
       attr: { },  // 参考 element-plus el-form 的属性以及HTML元素属性
       ref: ref(), // 组件引用
+      slot: "'插槽名称' | '插槽配置'";
   	items: [ 	// 表单项
       		[
       			{
                       span: 24,	// formItem 所占据的宽度 ，只能为1-24
                       colAttr: {} // 包含 Form-item 的el-col 的属性对象
                       attr: {}    // 参考 element-plus el-form-item 的属性以及 HTML 元素属性
+                      slot:  "'插槽名称' | '插槽配置'";//表单的内容。
+                      labelSlot:  "'插槽名称' | '插槽配置'";//	标签位置显示的内容
+                      errorSlot:  "'插槽名称' | '插槽配置'";//	验证错误信息的显示内容
                       component: {// 渲染组件参数
                           // 所渲染的组件，可渲染原生HTML元素、element-plus组件、自定义组件，所填值皆为元素名
                           // 原生HTML元素、element-plus组件元素名为String，自定义组件为 组件
@@ -66,6 +106,7 @@
 |  attr   | `el-form`的属性对象，值为 `element-plus `中  `el-form` 的属性以及 HTML 元素属性 |    `Record<String, any>`    |   -    |
 |   ref   |                   `el-form`组件的实例对象                    |           `Ref<T> `          |   -    |
 | items |                     表单项数组，二维数组                     | `Array<Array<FormItemType>` |   -    |
+| slot | 自定义表单插槽，该插槽内容会覆盖所有表单配置内容 | `string | object` |  |
 
 ### `FormItemType`
 
@@ -86,6 +127,9 @@
 | publicEvent |                      组件绑定的公共事件                      | `'submit' | 'reset'` |   -    |
 |  children   | 组件内的子元素组件或插槽内容，如`el-check-group`的`el-check` | `Array<ChildrenType>` |   -    |
 |   content   |                       组件包含文本内容                       |         `any`         |   -    |
+| slot | 表单项的插槽内容。该插槽内容会覆盖对应表单项配置内容<br />接收回传数据为 `items`，`items` 为配置项配置内容。 | `string | object` | - |
+| labelSlot | 表单项的 label 插槽内容。该插槽内容会覆盖对应表单项 label  配置内容<br />接收回传数据为 `items`，`items` 为配置项配置内容。 | `string | object` | - |
+| errorSlot | 表单项的 error 消息插槽。该插槽内容会覆盖对应表单项 error 配置内容<br />接收回传数据为 `items`，`items` 为配置项配置内容。 | `string | object` | - |
 
 ### **方法**
 
@@ -104,4 +148,11 @@
 <xw-demo
     demo-height="400px"
     source-code="element-plus:::form/form-demo"
+/>
+
+### 插槽示例
+
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::form/form-slot-demo"
 />

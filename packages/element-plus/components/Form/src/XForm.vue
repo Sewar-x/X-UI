@@ -1,5 +1,12 @@
 <template>
   <el-form :model="data" v-bind="options.attr" :ref="setRef()">
+    <!--如果传入 options.slot 则使用默认插槽,该插槽内容会将所有配置项内容覆盖 -->
+    <template #default v-if="options.slot">
+      <!--传入 slot 为对象表示插槽为 JSON 配置 -->
+      <BasicComponent v-if="typeof options.slot === 'object'" :options="options.slot" />
+      <!--传入 slot 为字符串表示插槽为 自定义 template -->
+      <slot v-if="typeof options.slot === 'string'" :name="options.slot"></slot>
+    </template>
     <!--form 表单内置组件是一个二维数组排列-->
     <el-row
       v-for="(item, index) of options.items"
@@ -26,6 +33,50 @@
             "
             @change="($evnet: any) => changeHandler($evnet, formItem.attr?.prop as string)"
           />
+          <!--如果传入 el-form-item formItem.slot 则使用默认插槽 -->
+          <template #default v-if="formItem.slot">
+            <!--传入 slot 为对象表示插槽为 JSON 配置 -->
+            <BasicComponent
+              v-if="typeof formItem.slot === 'object'"
+              :options="formItem.slot"
+            />
+            <!--传入 slot 为字符串表示插槽为 自定义 template -->
+            <slot
+              v-if="typeof formItem.slot === 'string'"
+              :name="formItem.slot"
+              :items="formItem"
+            ></slot>
+          </template>
+
+          <!--如果传入 options.labelSlot 则使用 label 插槽 -->
+          <template #label v-if="formItem.labelSlot">
+            <!--传入 slot 为对象表示插槽为 JSON 配置 -->
+            <BasicComponent
+              v-if="typeof formItem.labelSlot === 'object'"
+              :options="formItem.labelSlot"
+            />
+            <!--传入 slot 为字符串表示插槽为 自定义 template -->
+            <slot
+              v-if="typeof formItem.labelSlot === 'string'"
+              :name="formItem.labelSlot"
+              :items="formItem"
+            ></slot>
+          </template>
+
+          <!--如果传入 options.errorSlot 则使用 error 插槽 -->
+          <template #error v-if="formItem.errorSlot">
+            <!--传入 slot 为对象表示插槽为 JSON 配置 -->
+            <BasicComponent
+              v-if="typeof formItem.errorSlot === 'object'"
+              :options="formItem.errorSlot"
+            />
+            <!--传入 slot 为字符串表示插槽为 自定义 template -->
+            <slot
+              v-if="typeof formItem.errorSlot === 'string'"
+              :name="formItem.errorSlot"
+              :items="formItem"
+            ></slot>
+          </template>
         </el-form-item>
       </el-col>
     </el-row>

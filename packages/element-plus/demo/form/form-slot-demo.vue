@@ -1,5 +1,16 @@
 <template>
-  <XForm :options="options"></XForm>
+  <XForm :options="options">
+    <template #formItemRemarksLabelSlot="items">
+      <el-tag type="danger" effect="plain"> 标签插槽 </el-tag>
+      <div>这是传入插槽：{{ items.items.attr.label }}</div>
+    </template>
+    <template #formItemStartSlot>
+      <div>
+        <span>评分内容插槽: </span>
+        <el-rate v-model="data.start" size="large" />
+      </div>
+    </template>
+  </XForm>
 </template>
 
 <script setup lang="ts">
@@ -135,6 +146,7 @@ const options = {
           prop: "remarks",
           label: "标签",
         },
+        labelSlot: "formItemRemarksLabelSlot", //该插槽内容会将配置项目内容覆盖
         component: {
           comp: "el-input",
         },
@@ -153,12 +165,12 @@ const options = {
       {
         attr: {
           prop: "start",
-          label: "关注",
+          label: "评分",
         },
-        component: {
-          comp: "el-switch",
-        },
+        slot: "formItemStartSlot", //该插槽内容会将配置项目内容覆盖
       },
+    ],
+    [
       {
         span: 2,
         component: {
@@ -176,9 +188,8 @@ const options = {
           },
         },
       },
-    ],
-    [
       {
+        span: 2,
         component: {
           comp: "el-button",
           content: {
