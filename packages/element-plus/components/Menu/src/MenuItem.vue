@@ -1,7 +1,7 @@
 <template>
   <!-- 没有子节点，使用 el-menu-item 渲染 -->
   <el-menu-item
-    v-if="!menuItemInfo.itemArr || !menuItemInfo.itemArr.length"
+    v-if="!menuItemInfo.items || !menuItemInfo.items.length"
     v-bind="menuItemInfo.attr"
     v-on="menuItemInfo.event || {}"
   >
@@ -31,7 +31,7 @@
     </template>
     <!-- 循环渲染 -->
     <MenuItem
-      v-for="(subMenuItem, index) in menuItemInfo.itemArr"
+      v-for="(subMenuItem, index) in menuItemInfo.items"
       :key="index + subMenuItem.attr?.index"
       :menuItemInfo="subMenuItem"
     />

@@ -20,7 +20,7 @@ const formOptions = {
   attr: {
     "label-width": "30px",
   },
-  itemArr: [
+  items: [
     [
       {
         attr: {

@@ -8,7 +8,7 @@ export interface FormType {
   attr?: Recordable;
   ref?: Ref<T>;
   // 表单项数组
-  itemArr: Array<Array<FormItemType>>;
+  items: Array<Array<FormItemType>>;
 }
 
 export interface FormItemType {

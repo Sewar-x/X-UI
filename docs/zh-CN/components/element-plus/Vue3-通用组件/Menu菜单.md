@@ -16,7 +16,7 @@
     attr: {}, // el-menu的属性对象
     event: {}, // el-menu的事件对象
     ref：ref(), // el-menu组件的实例对象
-    itemArr: [  
+    items: [  
       // el-menu-item
       {
         attr: {},	// el-menu-item的属性对象
@@ -35,7 +35,7 @@
         event: {}, // el-sub-menu的事件对象
         icon: {}, // el-sub-menu的图标
         text: '', // el-sub-menu的文本内容
-        itemArr: [ // 2
+        items: [ // 2
           // el-menu-item
           {
             attr: {},
@@ -49,7 +49,7 @@
             event: {},
             icon: {},
         	  text: '',
-            itemArr: [ // 3
+            items: [ // 3
   			      // el-menu-item
               {
                 attr: {},
@@ -74,7 +74,7 @@
 |  attr   | `el-menu`的属性对象，值为`element-plus`中 `el-menu` 的属性以及 HTML 属性 | `Record<String, any>` |   -    |
 |  event  | `el-menu`的事件对象，值为`element-plus`中 `el-menu` 的事件以及 HTML事件 | `Record<String, any>` |   -    |
 |   ref   |                   `el-menu`组件的实例对象                    |       `Ref<T>`        |   -    |
-| itemArr |                          菜单项数组                          | `Array<MenuItemType>` |   -    |
+| items |                          菜单项数组                          | `Array<MenuItemType>` |   -    |
 
   2. `MenuItemType`
 
@@ -82,7 +82,7 @@
 | :-----: | :----------------------------------------------------------: | :-------------------: | :----: |
 |  attr   | `el-menu-item`的属性对象，值为`element-plus`中 `el-menu-item` 的属性以及 HTML属性 | `Record<String, any>` |   -    |
 |  event  | `el-menu-item`的事件对象，值为`element-plus`中 `el-menu-item` 的事件以及 HTML事件 | `Record<String, any>` |   -    |
-| itemArr |              `el-sub-menu`的`el-menu-item`数组               | `Array<MenuItemType>` |   -    |
+| items |              `el-sub-menu`的`el-menu-item`数组               | `Array<MenuItemType>` |   -    |
 |  icon   |                       菜单项的前缀图标                       |      `IconType`       |   -    |
 |  text   |                       菜单项的文本内容                       |       `String`        |   -    |
 

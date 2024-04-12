@@ -3,7 +3,7 @@ export interface DescriptionsType {
   attr?: Recordable; // 属性对象
   event?: Recordable; // 事件对象
   ref?: Ref<T>; // 实例引用
-  itemArr: Array<DescriptionsItemType>; // 子组件列表
+  items: Array<DescriptionsItemType>; // 子组件列表
   titleSlotConfig?: CompType; // 描述列表标题插槽配置对象（使用配置对象方式生成插槽组件）
   titleSlotName?: string; // 描述列表标题插槽名称（使用模板插入插槽方式）
   extraSlotConfig?: CompType; // 	自定义操作区配置对象，显示在右上方

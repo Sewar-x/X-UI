@@ -1,7 +1,8 @@
 <template>
   <el-form :model="data" v-bind="options.attr" :ref="setRef()">
+    <!--form 表单内置组件是一个二维数组排列-->
     <el-row
-      v-for="(item, index) of options.itemArr"
+      v-for="(item, index) of options.items"
       :key="index"
       justify="space-between"
       class="default-form"
@@ -42,11 +43,12 @@ const props = defineProps<{
   options: FormType;
 }>();
 
+// Form 表单数据
 const data = props.options.mode;
 
 // 表单Ref
 const formRef = ref();
-
+// 设置表单的引用，如果配置参数没传入，则使用默认的表单引用，否则使用配置参数的引用
 const setRef = function () {
   return typeof props.options.ref === "undefined" ? formRef : props.options.ref;
 };
@@ -60,6 +62,7 @@ const setRef = function () {
 const triggerEvent = (val: string | undefined, submit: Function, reset: Function) => {
   if (val === "submit" || submit) {
     (function () {
+      // 表单验证
       setRef().value.validate((valid: boolean) => {
         if (!valid) return;
         submit && submit(unref(data));
@@ -69,6 +72,7 @@ const triggerEvent = (val: string | undefined, submit: Function, reset: Function
       });
     })();
   } else if (val === "reset" || reset) {
+    // 重置表单
     (function () {
       reset && reset();
       setRef().value.resetFields();

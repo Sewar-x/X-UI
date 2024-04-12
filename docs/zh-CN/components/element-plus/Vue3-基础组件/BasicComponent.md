@@ -1,12 +1,31 @@
 # BasicComponent  
-## 文件说明
 
-- 文件目录: `element-plus/components/BasicComponent/BasicForm.vue`
+一个用于渲染动态组件或元素的“元组件”。
+
+通用的 JSON 配置组件，通过配置 Virtual DOM 结构，渲染组件列表，提供 Form、Table、Dialog 等基础组件 JSON 配置功能的基础组件，也可以直接使用 JSON 描述 Virtual DOM 结构，渲染组件。
+
+该组件支持原生 DOM 元素节点和 Element Plus 元素节点，也支持使用自定义组件作为元素节点。
+
+底层采用 Vue 的 [`<component/>`](https://cn.vuejs.org/api/built-in-special-elements.html#component) 组件二次封装。
+
+
+
+## 说明
+
+文件目录: `/element-plus/components/BasicComponent/BasicForm.vue`
+
+::: tip
+
+BasicComponent  是基于`<component>`进行二次封装，使该组件具备递归循环渲染的特性；
+
+而 `<component>`具有类似组件的特性，也是模板语法的一部分。但它们并非真正的组件，同时在模板编译期间会被编译掉。因此，它们通常在模板中用小写字母书写。
+
+:::
 
 ## 特性
 
-  1. 通用性强，可设置`comp`对象属性`component`的值为原生HTML元素或Element-plus的字符串形式和自定义组件来渲染
-  2. 采用了递归的方法，可以依据渲染数据对象进行循环渲染
+  1. **通用性强**：可设置 `comp` 对象属性 `component` 的值为原生HTML元素或 Element Plus 的字符串形式和自定义组件来渲染;
+  2. **支持递归循环组件**：采用了递归的方法，可以依据渲染数据对象进行循环渲染，底层对  [`<component/>`](https://cn.vuejs.org/api/built-in-special-elements.html#component) 组件二次封装。可以使   [`<component/>`](https://cn.vuejs.org/api/built-in-special-elements.html#component) 组件具有递归渲染的能力。如递归渲染侧边栏菜单。
 
 ## 参数格式
 
@@ -32,7 +51,7 @@
         attr: "",
         event: "",
         ref: ref()
-        content: "",
+        content: {},
         children: [],
       }
     ], // 渲染组件的子组件
@@ -45,7 +64,7 @@
 
 ### `CompType`
 
-类型: `element-plus/types/global.d.ts-CompType`
+类型:  （文件`/element-plus/types/global.d.ts`）
 
 ```typescript
 declare interface CompType {

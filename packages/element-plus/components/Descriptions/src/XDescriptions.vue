@@ -13,7 +13,7 @@
       <slot v-if="options.extraSlotName" :name="options.extraSlotName"></slot>
     </template>
     <el-descriptions-item
-      v-for="(descriptionsItem, index) of options.itemArr"
+      v-for="(descriptionsItem, index) of options.items"
       :key="index + `${descriptionsItem.attr?.label}`"
       v-bind="descriptionsItem.attr"
       v-on="descriptionsItem.event || {}"

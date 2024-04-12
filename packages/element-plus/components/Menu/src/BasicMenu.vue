@@ -1,7 +1,7 @@
 <template>
   <el-menu v-bind="options.attr" v-on="options.event || {}" :ref="options.ref">
     <MenuItem
-      v-for="(menuItem, index) in options.itemArr"
+      v-for="(menuItem, index) in options.items"
       :key="index + menuItem.attr?.index"
       :menuItemInfo="menuItem"
     />

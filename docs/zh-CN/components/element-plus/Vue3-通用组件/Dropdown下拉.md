@@ -20,7 +20,7 @@
     attr: {}, // 参考 element-plus el-dropdown 的属性以及HTML元素属性
     event: {}, // 参考 element-plus el-dropdown 的事件以及HTML事件属性
     ref: ref(), // ekl-dropdown组件的实例对象
-    itemArr: [  // 渲染的下拉菜单项数组
+    items: [  // 渲染的下拉菜单项数组
       {
         attr：{}， // 参考 element-plus el-dropdown-item 的属性以及HTML元素属性
   	  icon: {},
@@ -41,7 +41,7 @@
 |    attr     | `el-dropdown`的属性对象，参考 element-plus el-dropdown 的属性以及HTML元素属性 |   `Record<String, any>`   |   -    |
 |    event    | `el-dropdown`的事件对象，参考 element-plus el-dropdown 的事件以及HTML事件属性 |   `Record<String, any>`   |   -    |
 |     ref     |                 `el-dropdown`组件的实例对象                  |         `Ref<T>`          |   -    |
-|   itemArr   |                     渲染的下拉菜单项数组                     | `Array<DropdownItemType>` |   -    |
+|   items   |                     渲染的下拉菜单项数组                     | `Array<DropdownItemType>` |   -    |
 
   2. `DropdownItemType`
 
