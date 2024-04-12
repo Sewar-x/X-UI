@@ -8,17 +8,15 @@ export interface TableType {
   ref?: Ref<T>;       //  el-table组件的实例对象
   loading?: Ref<boolean>;
   columns: Array<TableColumnType>; // 所要渲染的表格列的数组
-  appendSlotConfig?: CompType; // 表格最后一行插槽的配置对象
-  emptySlotConfig?: CompType; // 表格数据为空时插槽的配置对象
+  appendSlot?: string | CompType; // 尾部插槽名称 或配置对象
+  emptySlot?: string | CompType; // 表格数据为空时插槽名称或配置对象
   pagination?: CompType; // 表格分页的配置对象
-  seachOptions?: FormType;  // 高级搜索配置
+  seach?: FormType;  // 高级搜索配置
   [x: string]: any;
 }
 
 interface TableColumnType {
-  headerSlotName?: string;
-  headerSlotConfig?: CompType;
-  defaultSlotName?: string;
-  defaultSlotConfig?: CompType | Array<CompType>;
-  attr?: Recordable;
+  headerSlot?: string; // 表头插槽名称 或 配置
+  defaultSlot?: string | CompType | Array<CompType>; // 默认插槽名称 或配置
+  attr?: Recordable; // 参考 element-plus el-table-column 的属性以及HTML元素属性
 }

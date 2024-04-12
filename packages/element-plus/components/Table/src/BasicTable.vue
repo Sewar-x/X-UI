@@ -1,95 +1,96 @@
 <template>
-  <XSearch
-    class="advance-container"
-    v-if="options.seachOptions"
-    :options="options.seachOptions"
-    @search="advanceSearch"
-  />
-  <div class="table-container">
-    <el-table
-      v-loading="loading"
-      :data="data"
-      :ref="options.ref"
-      v-bind="options.attr"
-      v-on="options.event || {}"
-    >
-      <el-table-column
-        v-for="(tableColumn, index) of options.columns"
-        :key="setKey(index, tableColumn.attr?.label)"
-        v-bind="tableColumn.attr"
+  <div>
+    <XSearch
+      class="advance-container"
+      v-if="options.seachOptions"
+      :options="options.seach"
+      @search="advanceSearch"
+    />
+    <div class="table-container">
+      <el-table
+        v-loading="loading"
+        :data="data"
+        :ref="options.ref"
+        v-bind="options.attr"
+        v-on="options.event || {}"
       >
-        <!--如果传入 headerSlotName 或 headerSlotConfig，则显示头部插槽 -->
-        <template
-          #header
-          v-if="tableColumn.headerSlotName || tableColumn.headerSlotConfig"
+        <el-table-column
+          v-for="(tableColumn, index) of options.columns"
+          :key="setKey(index, tableColumn.attr?.label)"
+          v-bind="tableColumn.attr"
         >
-          <!--传入 headerSlotConfig 表示头部插槽为 JSON 配置 -->
+          <!--如果传入 headerSlot 或 headerSlot，则显示头部插槽 -->
+          <template #header v-if="tableColumn.headerSlot">
+            <!--传入 headerSlot 表示头部插槽为 JSON 配置 -->
+            <BasicComponent
+              v-if="tableColumn.headerSlot && typeof options.headerSlot === 'object'"
+              :options="tableColumn.headerSlot"
+            />
+            <!--传入 headerSlot 表示头部插槽为 自定义 template -->
+            <slot
+              v-if="tableColumn.headerSlot && typeof options.headerSlot === 'string'"
+              :name="tableColumn.headerSlot"
+              :currentCellData="tableColumn"
+            >
+            </slot>
+          </template>
+          <!--默认插槽-->
+          <template #default="scope" v-if="tableColumn.defaultSlot">
+            <BasicComponent
+              v-if="
+                tableColumn.defaultSlot && typeof tableColumn.defaultSlot === 'object'
+              "
+              :options="defaultSlotHandle(tableColumn.defaultSlot as CompType)"
+              v-model="scope.row[tableColumn.attr?.prop]"
+              v-on="eventHandle(scope, tableColumn.defaultSlot as CompType) || {}"
+            />
+            <BasicComponent
+              v-if="tableColumn.defaultSlot && Array.isArray(tableColumn.defaultSlot)"
+              v-for="config of tableColumn.defaultSlot"
+              :options="defaultSlotHandle(config as CompType)"
+              v-on="eventHandle(scope, config as CompType) || {}"
+            />
+            <slot
+              v-if="
+                tableColumn.defaultSlot && typeof tableColumn.defaultSlot === 'string'
+              "
+              :name="tableColumn.defaultSlot"
+              :currentCellData="scope"
+            >
+            </slot>
+          </template>
+        </el-table-column>
+        <!--append 	插入至表格最后一行之后的内容-->
+        <template #append v-if="options.appendSlot">
           <BasicComponent
-            v-if="tableColumn.headerSlotConfig"
-            :options="tableColumn.headerSlotConfig"
+            v-if="options.appendSlot && typeof options.appendSlot === 'object'"
+            :options="options.appendSlot"
           />
-          <!--传入 headerSlotName 表示头部插槽为 自定义 template -->
           <slot
-            v-if="tableColumn.headerSlotName"
-            :name="tableColumn.headerSlotName"
+            v-if="options.appendSlot && typeof options.appendSlot === 'string'"
+            :name="options.appendSlot"
+            :options="options"
           ></slot>
         </template>
-
-        <template
-          #default="scope"
-          v-if="tableColumn.defaultSlotName || tableColumn.defaultSlotConfig"
-        >
+        <template #empty v-if="options.emptySlot">
           <BasicComponent
-            v-if="
-              tableColumn.defaultSlotConfig &&
-              typeof tableColumn.defaultSlotConfig === 'object'
-            "
-            :options="defaultSlotConfigHandle(tableColumn.defaultSlotConfig as CompType)"
-            v-model="scope.row[tableColumn.attr?.prop]"
-            v-on="eventHandle(scope, tableColumn.defaultSlotConfig as CompType) || {}"
-          />
-          <BasicComponent
-            v-if="
-              tableColumn.defaultSlotConfig &&
-              Array.isArray(tableColumn.defaultSlotConfig)
-            "
-            v-for="config of tableColumn.defaultSlotConfig"
-            :options="defaultSlotConfigHandle(config as CompType)"
-            v-on="eventHandle(scope, config as CompType) || {}"
+            v-if="options.emptySlot && typeof options.emptySlot === 'object'"
+            :options="options.emptySlot"
           />
           <slot
-            v-if="tableColumn.defaultSlotName"
-            :name="tableColumn.defaultSlotName"
-            :currentCellData="scope"
+            v-if="options.emptySlot && typeof options.emptySlot === 'string'"
+            :name="options.emptySlot"
+            :options="options"
           ></slot>
         </template>
-      </el-table-column>
-      <template #append>
-        <BasicComponent
-          v-if="options.appendSlotConfig"
-          :options="options.appendSlotConfig"
+      </el-table>
+      <div class="pagination-container">
+        <el-pagination
+          v-if="options.pagination"
+          v-bind="getPaginationAttr()"
+          v-on="getPaginationEvent()"
         />
-        <slot v-else name="tableAppend"></slot>
-      </template>
-      <template #empty>
-        <BasicComponent
-          v-if="options.emptySlotConfig"
-          :options="options.emptySlotConfig"
-        />
-        <slot v-else name="tableEmpty"></slot>
-      </template>
-    </el-table>
-    <div class="pagination-container">
-      <el-pagination
-        v-if="options.pagination"
-        v-model:page-size="options.pagination.attr.per_page"
-        v-model:current-page="options.pagination.attr.current_page"
-        layout="sizes, prev, pager, next, jumper"
-        :total="options?.pagination?.attr?.total"
-        :background="true"
-        v-bind="options?.pagination?.attr"
-        v-on="options?.pagination?.event || {}"
-      />
+      </div>
     </div>
   </div>
 </template>
@@ -98,6 +99,7 @@
 import type { TableType } from "../type";
 import { XSearch } from "../../Search";
 import { ref, watch, onBeforeMount } from "vue";
+import { CompType } from "@xw-ui/element-plus/types/gloabl";
 
 const props = defineProps<{
   options: TableType;
@@ -135,7 +137,7 @@ const setKey = (index: number, label: string | undefined) => {
   }
 };
 /**
- * 处理defaultSlotConfig的事件对象
+ * 处理defaultSlot的事件对象
  * @param currentCellData { Object } 当前行数据对象
  * @param events { Object } 当前列的事件对象
  * @return Object 事件对象
@@ -153,12 +155,12 @@ const eventHandle = function (currentCellData: any, config: any) {
 };
 
 /**
- * 处理defaultSlotConfig
+ * 处理defaultSlot
  * @param config { Object } 当前列的配置对象
  * @return Object 除去事件对象的当前列配置对象
  * @author
  */
-const defaultSlotConfigHandle = function (config: CompType) {
+const defaultSlotHandle = function (config: CompType) {
   const { comp, data, key, attr, content, children, ref } = config;
   return {
     comp,
@@ -179,15 +181,31 @@ const advanceSearch = function (params: any) {
   const initTable = props.options?.tableEvent?.initTable;
   initTable && initTable(params);
 };
+
+/**
+ * 获取分页属性
+ */
+const getPaginationAttr = function () {
+  return props.options?.pagination?.attr || {};
+};
+
+/**
+ * 获取分页事件
+ */
+const getPaginationEvent = function () {
+  return props.options?.pagination?.event || {};
+};
 </script>
 
 <style scoped lang="less">
 .advance-container {
   margin-bottom: 10px;
+
   :deep(.el-card__body) {
     padding: 15px 20px;
   }
 }
+
 .pagination-container {
   margin: 10px auto 0 auto;
   display: flex;
