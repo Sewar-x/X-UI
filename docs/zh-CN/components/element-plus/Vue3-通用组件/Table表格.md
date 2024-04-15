@@ -4,18 +4,13 @@
 
 组件文件：`/element-plus/components/Table/src/BasicTable.vue`
 
-
-
 组件类型文件： `/element-plus/components/Table/types.ts`
 
-::: details 点我查看代码
+::: details  组件类型定义
 
 ```typescript
-import type { Ref } from "vue";
-import type { FormType } from "@/components/Form/type";
-
 export interface TableType {
-  data: Array<any>;   // 表格显示的数据
+  data: PaginationParamsType | Array<any>;   // 表格显示的数据
   attr?: Recordable;  // 参考 element-plus el-table 的属性以及HTML元素属性
   event?: Recordable; // 参考 element-plus el-table 的事件以及HTML事件属性
   ref?: Ref<T>;       //  el-table组件的实例对象
@@ -23,15 +18,33 @@ export interface TableType {
   columns: Array<TableColumnType>; // 所要渲染的表格列的数组
   appendSlot?: string | CompType; // 尾部插槽名称 或配置对象
   emptySlot?: string | CompType; // 表格数据为空时插槽名称或配置对象
-  pagination?: CompType; // 表格分页的配置对象
+  pagination?: PaginationType; // 表格分页的配置对象
   seach?: FormType;  // 高级搜索配置
   [x: string]: any;
 }
 
-interface TableColumnType {
+export interface TableColumnType {
   headerSlot?: string; // 表头插槽名称 或 配置
   defaultSlot?: string | CompType | Array<CompType>; // 默认插槽名称 或配置
   attr?: Recordable; // 参考 element-plus el-table-column 的属性以及HTML元素属性
+}
+
+// 分页参数类型
+export interface PaginationParamsType {
+  currentPage: number, // 当前页数的默认初始值，不设置时默认为 1
+  data: Array<any>, // 表格数据
+  pageSize: number, //每页数量
+  total: number, // 总数量
+}
+
+export interface PaginationType {
+  show: boolean, // 是否显示分页
+  className?: string, // 组件类名称
+  key?: string; // 组件 key 
+  attr?: Recordable; // 组件属性
+  event?: Recordable; // 组件事件
+  children?: Array<CompType> | []; //组件子节点 dom 
+  ref?: Ref<T>; // 组件 ref 引用
 }
 
 ```
@@ -85,7 +98,8 @@ interface TableColumnType {
 
 | 属性名       | 说明                                                         |           类型           | 默认值  |
 | :----------- | :----------------------------------------------------------- | :----------------------: | :-----: |
-| `data`       | 表格显示的数据                                               |         `Array`          |    -    |
+| `pagination` | 分页配置项：默认使用表格分页，如果不使用表格分页，传入 false;<br /> | `PaginationType` | `{currentPage: 1,data:[], pageSize: 10,total: 外部传入}` |
+| `data`       | 表格显示的数据，根据是否使用分页传入不同的data格式：<br />当使用分页时候，传入 `PaginationParamsType` 类型参数（类型见下面说明）；<br />当不使用分页时候，传入数据对象 |         `PaginationParamsType`或`Array`         |    -    |
 | `attr`       | `el-table`的属性对象，值为`element-plus`中 `el-table` 的属性以及 HTML 元素属性 |  `Record<String, any>`   |    -    |
 | `event`      | `el-table`的事件对象，值为`element-plus`中 `el-table` 的事件以及 HTML 事件属性 |  `Record<String, any>`   |    -    |
 | `ref`        | `el-table`组件的实例对象                                     |         `Ref<T>`         |    -    |
@@ -95,6 +109,28 @@ interface TableColumnType {
 | `emptySlot`  | 表格数据为空时插槽名称或配置对象<br />当传入插槽名称时候，可以在模板中使用对应具名插槽，插入内容到表格数据为空时内容；<br />当使用 JSON 对象时，则通过 `basicComponent` 组件渲染插槽内容 | `string`或`CompType` | -  |
 | `pagination` | 表格分页的配置对象                                           |        `CompType`        | - |
 | `seach`      | 高级搜索配置                                                 |        `FormType`        | - |
+
+::: details PaginationType类型
+
+```typescript
+//当使用分页时候，传入的数据格式
+export interface PaginationParamsType {
+  currentPage: number, // 当前页数的默认初始值，不设置时默认为 1
+  data: Array<any>, // 表格数据
+  pageSize: number, //每页数量
+  total: number, // 总数量
+}
+
+//当使用分页时候，传入的数据格式示例如下
+const data = {
+  currentPage: 1,
+  data: tableData,
+  pageSize: 20,
+  total: 25,
+};
+```
+
+:::
 
 
 
@@ -110,22 +146,34 @@ interface TableColumnType {
 
 ## 方法
 
+### **Table 方法**
+
 
 | 方法名               | 说明                                                         |                          参数                          |
 | :------------------- | :----------------------------------------------------------- | :----------------------------------------------------: |
 | `clearSelection`     | 用于多选表格，清空用户的选择                                 |                          `—`                           |
 | `getSelectionRows`   | 返回当前选中的行                                             |                                                        |
-| `toggleRowSelection` | 用于多选表格，切换某一行的选中状态， 如果使用了第二个参数，则可直接设置这一行选中与否 |                    `row, selected`                     |
+| `toggleRowSelection` | 用于多选表格，切换某一行的选中状态，<br /> 如果使用了第二个参数，则可直接设置这一行选中与否 |                    `row, selected`                     |
 | `toggleAllSelection` | 用于多选表格，切换全选和全不选                               |                          `—`                           |
-| `toggleRowExpansion` | 用于可扩展的表格或树表格，如果某行被扩展，则切换。 使用第二个参数，您可以直接设置该行应该被扩展或折叠。 |                    `row, expanded`                     |
-| `setCurrentRow`      | 用于单选表格，设定某一行为选中行， 如果调用时不加参数，则会取消目前高亮行的选中状态。 |                         `row`                          |
+| `toggleRowExpansion` | 用于可扩展的表格或树表格，<br />如果某行被扩展，则切换。 使用第二个参数，您可以直接设置该行应该被扩展或折叠。 |                    `row, expanded`                     |
+| `setCurrentRow`      | 用于单选表格，设定某一行为选中行，<br /> 如果调用时不加参数，则会取消目前高亮行的选中状态。 |                         `row`                          |
 | `clearSort`          | 用于清空排序条件，数据会恢复成未排序的状态                   |                          `—`                           |
 | `clearFilter`        | 传入由`columnKey` 组成的数组以清除指定列的过滤条件。 如果没有参数，清除所有过滤器 |                      `columnKeys`                      |
-| `doLayout`           | 对 Table 进行重新布局。 当表格可见性变化时，您可能需要调用此方法以获得正确的布局 |                          `—`                           |
-| `sort`               | 手动排序表格。 参数 `prop` 属性指定排序列，`order` 指定排序顺序。 |             `prop: String, order: String`              |
+| `doLayout`           | 对 Table 进行重新布局。 <br />当表格可见性变化时，您可能需要调用此方法以获得正确的布局 |                          `—`                           |
+| `sort`               | 手动排序表格。 <br />参数 `prop` 属性指定排序列，`order` 指定排序顺序。 |             `prop: String, order: String`              |
 | `scrollTo`           | 滚动到一组特定坐标                                           | `(options: ScrollToOptions | Number, yCoord?: Number)` |
 | `setScrollTop`       | 设置垂直滚动位置                                             |                         `top`                          |
 | `setScrollLeft`      | 设置水平滚动位置                                             |                         `left`                         |
+
+### **pagination 方法**
+
+| 方法名           | 说明                                                  | 参数                                              |
+| ---------------- | ----------------------------------------------------- | ------------------------------------------------- |
+| `size-change`    | 改变时触发<br />对应 ElmentPlus Pagination 同名方法   | `(value: number) => void`                         |
+| `current-change` | 改变时触发，<br />对应 ElmentPlus Pagination 同名方法 | `(value: number) => void`                         |
+| `page-change`    | `current-page` 或 `page-size` 更改时触发              | `(currentPage: number, pageSize: number) => void` |
+| `prev-click`     | 用户点击上一页按钮改变当前页时触发                    | `(value: number) => void`                         |
+| `next-click`     | 用户点击下一页按钮改变当前页时触发                    | `(value: number) => void`                         |
 
 
 
@@ -153,3 +201,17 @@ interface TableColumnType {
 | ------------- | ------------ | ---- |
 | `handleOpen`  | 打开下拉菜单 | `—`  |
 | `handleClose` | 关闭下拉菜单 | `—`  |
+
+## 示例
+
+<xw-demo
+    demo-height="450px"
+    source-code="element-plus:::table/table-demo"
+/>
+
+### 分页示例
+
+<xw-demo
+    demo-height="870px"
+    source-code="element-plus:::table/table-pagination-demo"
+/>

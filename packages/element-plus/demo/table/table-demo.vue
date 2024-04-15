@@ -96,6 +96,7 @@ const columns = [
         comp: "el-button",
         attr: {
           type: "primary",
+          size: "small",
         },
         content: {
           text: "提交",
@@ -110,6 +111,7 @@ const columns = [
         comp: "el-button",
         attr: {
           type: "danger",
+          size: "small",
         },
         content: {
           text: "删除",

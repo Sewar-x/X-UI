@@ -1,6 +1,6 @@
 <template>
   <div>
-    <XTable :options="options" @pageChange="pageChange"></XTable>
+    <XTable :options="options" @page-change="pageChange"></XTable>
   </div>
 </template>
 
@@ -142,6 +142,7 @@ const tableColumns = [
         comp: "el-button",
         attr: {
           type: "primary",
+          size: "small",
         },
         content: {
           text: "提交",
@@ -156,6 +157,7 @@ const tableColumns = [
         comp: "el-button",
         attr: {
           type: "danger",
+          size: "small",
         },
         content: {
           text: "删除",

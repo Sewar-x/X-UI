@@ -4,7 +4,7 @@ import { CompType } from "../../types/gloabl.d.ts";
 
 
 export interface TableType {
-  data:PaginationParamsType |  Array<any>;   // 表格显示的数据
+  data: PaginationParamsType | Array<any>;   // 表格显示的数据
   attr?: Recordable;  // 参考 element-plus el-table 的属性以及HTML元素属性
   event?: Recordable; // 参考 element-plus el-table 的事件以及HTML事件属性
   ref?: Ref<T>;       //  el-table组件的实例对象
