@@ -215,3 +215,10 @@ const data = {
     demo-height="870px"
     source-code="element-plus:::table/table-pagination-demo"
 />
+
+### 高级搜索示例
+
+<xw-demo
+    demo-height="550px"
+    source-code="element-plus:::table/table-search-demo"
+/>

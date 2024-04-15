@@ -8,5 +8,10 @@ export default [
     path: '/table-pagination-demo',
     component: () => import('../../table/table-pagination-demo.vue'),
     name: 'tablePaginationDemo'
+  },
+  {
+    path: '/table-search-demo',
+    component: () => import('../../table/table-search-demo.vue'),
+    name: 'tableSearchDemo'
   }
 ]

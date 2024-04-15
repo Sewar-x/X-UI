@@ -36,12 +36,19 @@ const search = function (params: any) {
   });
 };
 
+interface formChangeParams {
+  prop: string;
+  value: any;
+}
 /**
  * form 数据统一修改事件
  */
-const formChangeHandler = function (params: any) {
-  const formData = props.options?.mode.value;
-  formData[params.prop] = params.value;
+const formChangeHandler = function (params: formChangeParams) {
+  const { prop, value } = params;
+  const formData = props.options?.mode;
+  if (formData) {
+    formData[prop] = value;
+  }
   emit("search", formData);
 };
 </script>
