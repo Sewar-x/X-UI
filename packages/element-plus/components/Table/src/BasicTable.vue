@@ -2,7 +2,7 @@
   <div>
     <XSearch
       class="advance-container"
-      v-if="options.seachOptions"
+      v-if="options.seach"
       :options="options.seach"
       @search="advanceSearch"
     />
@@ -86,9 +86,9 @@
       </el-table>
       <div class="pagination-container">
         <el-pagination
-          v-if="options.pagination"
-          v-bind="getPaginationAttr()"
-          v-on="getPaginationEvent()"
+          v-if="paginationConfig().show"
+          v-bind="paginationConfig().attr"
+          v-on="paginationConfig().event"
         />
       </div>
     </div>
@@ -96,15 +96,88 @@
 </template>
 
 <script setup lang="ts">
-import type { TableType } from "../type";
+import type { TableType, PaginationType } from "../type";
 import { XSearch } from "../../Search";
-import { ref, watch, onBeforeMount } from "vue";
-import { CompType } from "@xw-ui/element-plus/types/gloabl";
+import { ref, watch, onBeforeMount, defineEmits } from "vue";
+import { CompType } from "@/xw-ui/element-plus/types/gloabl.d.ts";
+import { deepMerge } from "@/xw-ui/element-plus/utils";
+import BasicComponent from "../../BasicComponent";
 
 const props = defineProps<{
   options: TableType;
 }>();
-const data = props.options.data;
+const emit = defineEmits([
+  "sizeChange",
+  "currentChange",
+  "pageChange ",
+  "prevClick",
+  "nextClick",
+]);
+
+/**
+ * 获取分页默认配置
+ */
+
+const paginationConfig = function (): PaginationType {
+  // 默认分页配置
+  const defalutConfig = {
+    // 是否显示分页
+    show: true,
+    // 默认属性
+    attr: {
+      pageSizes: [5, 10, 15, 20, 100, 200, 500],
+      layout: "prev, pager, next,jumper, sizes,total",
+      total: props.options?.data?.total || 0,
+      "default-current-page": props.options?.data?.currentPage || 1,
+      "default-page-size": props.options?.data?.pageSize || 10,
+    },
+    //默认事件
+    event: {
+      "size-change": (value: number) => {
+        emit("sizeChange", value);
+      },
+      "current-change": (value: number) => {
+        emit("currentChange", value);
+      },
+      change: (currentPage: number, pageSize: number) => {
+        emit("pageChange", currentPage, pageSize);
+      },
+      "prev-click": (value: number) => {
+        emit("prevClick", value);
+      },
+      "next-click": (value: number) => {
+        emit("nextClick", value);
+      },
+    },
+  };
+  // 如果没有配置分页，则返回默认选项
+  if (!props.options.hasOwnProperty("pagination")) {
+    return defalutConfig;
+  }
+  // 如果配置为 false,则不显示分页
+  if (
+    props.options.hasOwnProperty("pagination") &&
+    typeof props.options.pagination === "boolean" &&
+    !props.options.pagination
+  ) {
+    return {
+      show: false,
+      attr: {},
+      event: {},
+    };
+  }
+  // 如果存在 pagination 配置，则合并默认配置项和传入配置项
+  if (
+    props.options.hasOwnProperty("pagination") &&
+    typeof props.options.pagination === "object"
+  ) {
+    return deepMerge(defalutConfig, props.options.pagination) as object;
+  }
+
+  return deepMerge(defalutConfig, props.options.pagination) as object;
+};
+// 获取表格数据，当使用分页时候，data 表示分页数据和数据，data.data 表示表格数据，当使用分页时，data 表示表格数据
+const data = paginationConfig().show ? props.options.data.data : props.options.data;
 const loading = ref(false);
 
 onBeforeMount(() => {
@@ -180,20 +253,6 @@ const defaultSlotHandle = function (config: CompType) {
 const advanceSearch = function (params: any) {
   const initTable = props.options?.tableEvent?.initTable;
   initTable && initTable(params);
-};
-
-/**
- * 获取分页属性
- */
-const getPaginationAttr = function () {
-  return props.options?.pagination?.attr || {};
-};
-
-/**
- * 获取分页事件
- */
-const getPaginationEvent = function () {
-  return props.options?.pagination?.event || {};
 };
 </script>
 

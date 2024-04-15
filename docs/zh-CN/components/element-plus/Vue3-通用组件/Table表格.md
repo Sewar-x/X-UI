@@ -43,12 +43,14 @@ interface TableColumnType {
 ## 特性
 
 1. **JSON 配置**：传递指定格式的  `json`  对象给组件 `BasicTable`，组件会以此渲染对应的表格
-2. **自定义插槽**：通过设置每一列的渲染属性对象中的 `headerSlotName`、`defaultSlotName`，可以指定每一列各自的表头插槽和内容插槽，再由父组件传递指定插槽内容就可以单独为每一列实现表头、内容，且每一个内容插槽都会返回给父组件当前行数据对象`CurrentRowData`，也可以通过渲染属性对象中的`headerSlotConfig`、`defaultSlotConfig`将插槽配置化
-3. 当表格列的内容为一系列输入框时，会依据当前列的属性对象`attr`中的`prop`绑定当前行响应式数据对象`scope.row`中对应的属性值
-4. 当为一列单元格的内容设置`defalutSlotConfig`配置时，`defaultSlotConfig`的事件对象是在`BaiscTable`进行绑定，而不是在`BasicComponent`，且为`defaultSlotConfig`的事件对象中的所有事件传递了当前单元格所在行和列的数据对象作为事件的第一个参数，则在配置对象中便可使用单元格所在行和列的数据对象`currentCellData`，若事件为组件事件，则组件事件的回调参数将会排在`currentCellData`后面，所以当无需使用`currentCellData`但要使用组件事件的回调参数时，都必须在事件的参数列表的第一个参数写上一个变量来接收`currentCellData`
-5. 当一列的内容单元格为多个元素时，可以将`defaultSlotConfig`定义成一个对象
 
+2. **自定义插槽**：
 
+   * 通过设置每一列的渲染属性对象中的 `headerSlot`、`defaultSlot`，可以指定每一列各自的表头插槽和内容插槽，再由父组件传递指定插槽内容就可以单独为每一列实现表头、内容，且每一个内容插槽都会返回给父组件当前行数据对象`CurrentRowData`，也可以传入对象将插槽 JSON 配置化。
+
+3. **自动绑定表格数据**：当表格列的内容为一系列输入框时，会依据当前列的属性对象`attr`中的`prop`绑定当前行响应式数据对象`scope.row`中对应的属性值。
+
+   
 
 ##  参数 `JSON  `格式
 
@@ -89,10 +91,10 @@ interface TableColumnType {
 | `ref`        | `el-table`组件的实例对象                                     |         `Ref<T>`         |    -    |
 | `loading`    | 表格 loading                                                 |        `boolean`         | `false` |
 | `columns`    | 渲染的表格列的数组                                           | `Array<TableColumnType>` |    -    |
-| `appendSlot` | 尾部插槽名称或配置对象                                       |  `string` | `CompType`   |         |
-| `emptySlot`  | 表格数据为空时插槽名称或配置对象                             |  `string` | `CompType`   |         |
-| `pagination` | 表格分页的配置对象                                           |        `CompType`        |         |
-| `seach`      | 高级搜索配置                                                 |        `FormType`        |         |
+| `appendSlot` | 尾部插槽名称或配置对象<br />当传入插槽名称时候，可以在模板中使用对应具名插槽，插入内容到表格尾部；<br />当使用 JSON 对象时，则通过 `basicComponent` 组件渲染插槽内容 | `string`或`CompType` | -  |
+| `emptySlot`  | 表格数据为空时插槽名称或配置对象<br />当传入插槽名称时候，可以在模板中使用对应具名插槽，插入内容到表格数据为空时内容；<br />当使用 JSON 对象时，则通过 `basicComponent` 组件渲染插槽内容 | `string`或`CompType` | -  |
+| `pagination` | 表格分页的配置对象                                           |        `CompType`        | - |
+| `seach`      | 高级搜索配置                                                 |        `FormType`        | - |
 
 
 
@@ -100,9 +102,9 @@ interface TableColumnType {
 
 | 属性名              | 说明                                                         |             类型             | 默认值 |
 | ------------------- | :----------------------------------------------------------- | :--------------------------: | :----: |
-| `headerSlot`    | 表格列的表头插槽名 或 配置对象                              |           `String` | `CompType`           |        |
-| `defaultSlot`   | 表格列的内容插槽名 或 配置对象                                    |           `String` 或 `CompType`  或 `Array<CompType>`           |        |
-| `attr`              | 参考 `element-plus` `el-table-column` 的属性以及 HTML 元素属性 |    `Record<String, any>`     |        |
+| `headerSlot`    | 表格列的表头插槽名 或 配置对象<br />当传入插槽名称时候，可以在模板中使用对应具名插槽，插入内容到表格头部；<br />当使用 JSON 对象时，则通过 `basicComponent` 组件渲染插槽内容 | `String`或`CompType` | -          |
+| `defaultSlot`   | 表格列的内容插槽名 或 配置对象<br /> 当为一列单元格的内容设置`defalutSlotConfig`配置时，`defaultSlot`的事件对象是在`BaiscTable`进行绑定，而不是在`BasicComponent`，且为`defaultSlot`的事件对象中的所有事件传递了当前单元格所在行和列的数据对象作为事件的第一个参数，则在配置对象中便可使用单元格所在行和列的数据对象`currentCellData`，若事件为组件事件，则组件事件的回调参数将会排在`currentCellData`后面，所以当无需使用`currentCellData`但要使用组件事件的回调参数时，都必须在事件的参数列表的第一个参数写上一个变量来接收`currentCellData`。 <br />当一列的内容单元格为多个元素时，可以将`defaultSlot`定义成一个对象 |           `String` 或 `CompType`  或 `Array<CompType>`           | - |
+| `attr`              | 参考 `element-plus` `el-table-column` 的属性以及 HTML 元素属性 |    `Record<String, any>`     | - |
 
 
 

@@ -106,7 +106,7 @@ export interface ComponentType extends CompType {
 |  attr   | `el-form`的属性对象，值为 `element-plus `中  `el-form` 的属性以及 HTML 元素属性 |    `Record<String, any>`    |   -    |
 |   ref   |                   `el-form`组件的实例对象                    |           `Ref<T> `          |   -    |
 | items |                     表单项数组，二维数组                     | `Array<Array<FormItemType>` |   -    |
-| slot | 自定义表单插槽，该插槽内容会覆盖所有表单配置内容 | `string | object` |  |
+| slot | 自定义表单插槽，该插槽内容会覆盖所有表单配置内容 | `string`或`object` |- |
 
 ### `FormItemType`
 
@@ -121,15 +121,15 @@ export interface ComponentType extends CompType {
 
 |   属性名    |                             说明                             |        类型         | 默认值 |
 | :---------- | :----------------------------------------------------------- | :-----------------: | :----: |
-|    comp     |                           渲染组件                           | `String` \| `Component` |   -    |
+|    comp     |                           渲染组件                           | `String` 或 `Component` |   -    |
 |    attr     | 组件的属性对象，值为组件自身的属性以及 HTML 元素属性以及事件 | `Record<String, any>` |   -    |
 |    event    |               组件事件对象，值为组件自身的事件               | `Record<String, any>` |   -    |
-| publicEvent |                      组件绑定的公共事件                      | `'submit' | 'reset'` |   -    |
+| publicEvent |                      组件绑定的公共事件                      | `submit`或`reset` |- |
 |  children   | 组件内的子元素组件或插槽内容，如`el-check-group`的`el-check` | `Array<ChildrenType>` |   -    |
 |   content   |                       组件包含文本内容                       |         `any`         |   -    |
-| slot | 表单项的插槽内容。该插槽内容会覆盖对应表单项配置内容<br />接收回传数据为 `items`，`items` 为配置项配置内容。 | `string | object` | - |
-| labelSlot | 表单项的 label 插槽内容。该插槽内容会覆盖对应表单项 label  配置内容<br />接收回传数据为 `items`，`items` 为配置项配置内容。 | `string | object` | - |
-| errorSlot | 表单项的 error 消息插槽。该插槽内容会覆盖对应表单项 error 配置内容<br />接收回传数据为 `items`，`items` 为配置项配置内容。 | `string | object` | - |
+| slot | 表单项的插槽内容。该插槽内容会覆盖对应表单项配置内容<br />接收回传数据为 `items`，`items` 为配置项配置内容。 | `string`或`object` | - |
+| labelSlot | 表单项的 label 插槽内容。该插槽内容会覆盖对应表单项 label  配置内容<br />接收回传数据为 `items`，`items` 为配置项配置内容。 | `string`或`object` | - |
+| errorSlot | 表单项的 error 消息插槽。该插槽内容会覆盖对应表单项 error 配置内容<br />接收回传数据为 `items`，`items` 为配置项配置内容。 | `string`或`object` | - |
 
 ### **方法**
 
@@ -153,6 +153,6 @@ export interface ComponentType extends CompType {
 ### 插槽示例
 
 <xw-demo
-    demo-height="400px"
+    demo-height="500px"
     source-code="element-plus:::form/form-slot-demo"
 />

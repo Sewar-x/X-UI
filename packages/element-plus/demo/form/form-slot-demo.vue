@@ -162,6 +162,8 @@ const options = {
           comp: "el-input",
         },
       },
+    ],
+    [
       {
         attr: {
           prop: "start",
