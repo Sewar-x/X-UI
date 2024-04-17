@@ -1,5 +1,18 @@
 # 表格组件
 
+表格组件是对 [Element Plus 的表格组件](https://element-plus.org/zh-CN/component/table.html)进行二次封装成 JSON 配置模式，除了支持 Element Plus 的 table 基本功能之外还扩展了其他功能：表格内置组件
+
+## 功能
+
+| 功能             | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| 表格单元内置组件 | 通过配置表格 `defaultSlot` 配置，可以在表格内配置自定义组件  |
+| 自定义分页       | 默认支持表格分页，如果不使用分页，则 `pagination` 设置为 false |
+| 高级搜索         | 支持表格的高级搜索联动，传入 `seach` 配置，则自动显示高级搜索，配置项可参考高级搜索组件 |
+| 其他功能         | 参考 [Element Plus 表格组件 ](https://element-plus.org/zh-CN/component/table.html)功能 |
+
+
+
 ## 文件说明
 
 组件文件：`/element-plus/components/Table/src/BasicTable.vue`
@@ -190,10 +203,10 @@ const data = {
 
 ### table-column
 
-| 插槽名              | 说明                                                  |
-| :------------------ | :---------------------------------------------------- |
-| `<headerSlotName>`  | 自定义表头的内容， 作用域参数为 `{ column, $index }`  |
-| `<defaultSlotName>` | 自定义列的内容 作用域参数为 `{ row, column, $index }` |
+| 插槽名          | 说明                                                  |
+| :-------------- | :---------------------------------------------------- |
+| `<headerSlot>`  | 自定义表头的内容， 作用域参数为 `{ column, $index }`  |
+| `<defaultSlot>` | 自定义列的内容 作用域参数为 `{ row, column, $index }` |
 
 ### 方法
 
@@ -201,6 +214,90 @@ const data = {
 | ------------- | ------------ | ---- |
 | `handleOpen`  | 打开下拉菜单 | `—`  |
 | `handleClose` | 关闭下拉菜单 | `—`  |
+
+## 接口格式
+
+### 分页表格
+
+默认情况下表格为分页模式，分页模式下，需要返回分页相关数据和表格数据。
+
+::: details 分页表格接口格式示例
+
+```js
+//  分页配置
+const data = {
+  currentPage: 1, // 当前页码
+  pageSize: 20, // 每页数量
+  total: 25, // 所有数据总数
+  data: [ // 当前页面数据
+      {
+        date: "2016-05-02",
+        name: "王小虎",
+        address: "上海市普陀区金沙江路 1518 弄",
+        select: "送货上门",
+      },
+      {
+        date: "2016-05-04",
+        name: "王小虎",
+        address: "上海市普陀区金沙江路 1517 弄",
+        select: "自取",
+      },
+      {
+        date: "2016-05-01",
+        name: "王小虎",
+        address: "上海市普陀区金沙江路 1519 弄",
+        select: "自取",
+      },
+      {
+        date: "2016-05-03",
+        name: "王小虎",
+        address: "上海市普陀区金沙江路 1516 弄",
+        select: "自取",
+      },
+  ],
+};
+```
+
+:::
+
+
+
+### 不分页表格
+
+不分页的表格接口，默认返回的 data 为数组，数组内为表格每一列数据组成的对象。
+
+::: details 不分页表格接口格式示例
+
+```js
+const tableData = [
+  {
+    date: "2016-05-02",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路 1518 弄",
+    select: "送货上门",
+  },
+  {
+    date: "2016-05-04",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路 1517 弄",
+    select: "自取",
+  },
+  {
+    date: "2016-05-01",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路 1519 弄",
+    select: "自取",
+  },
+  {
+    date: "2016-05-03",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路 1516 弄",
+    select: "自取",
+  },
+];
+```
+
+:::
 
 ## 示例
 
@@ -214,6 +311,13 @@ const data = {
 <xw-demo
     demo-height="870px"
     source-code="element-plus:::table/table-pagination-demo"
+/>
+
+### 插槽示例
+
+<xw-demo
+    demo-height="870px"
+    source-code="element-plus:::table/table-slot-demo"
 />
 
 ### 高级搜索示例

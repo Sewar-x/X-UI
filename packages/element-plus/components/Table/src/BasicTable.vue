@@ -21,25 +21,31 @@
         >
           <!--如果传入 headerSlot 或 headerSlot，则显示头部插槽 -->
           <template #header v-if="tableColumn.headerSlot">
-            <!--传入 headerSlot 表示头部插槽为 JSON 配置 -->
-            <BasicComponent
-              v-if="tableColumn.headerSlot && typeof options.headerSlot === 'object'"
-              :options="tableColumn.headerSlot"
-            />
             <!--传入 headerSlot 表示头部插槽为 自定义 template -->
             <slot
-              v-if="tableColumn.headerSlot && typeof options.headerSlot === 'string'"
+              v-if="tableColumn.headerSlot && typeof tableColumn.headerSlot === 'string'"
               :name="tableColumn.headerSlot"
-              :currentCellData="tableColumn"
+              :header="tableColumn"
             >
+              <!--传入 headerSlot 表示头部插槽为 JSON 配置 -->
+              <BasicComponent
+                v-if="tableColumn.headerSlot && typeof options.headerSlot === 'object'"
+                :options="tableColumn.headerSlot"
+              />
             </slot>
           </template>
           <!--默认插槽-->
           <template #default="scope" v-if="tableColumn.defaultSlot">
+            <slot
+              v-if="tableColumn.defaultSlot && typeof tableColumn.defaultSlot == 'string'"
+              :name="tableColumn.defaultSlot"
+              :row="scope.row"
+              :columns="scope.column"
+              :index="scope.$index"
+            >
+            </slot>
             <BasicComponent
-              v-if="
-                tableColumn.defaultSlot && typeof tableColumn.defaultSlot === 'object'
-              "
+              v-if="tableColumn.defaultSlot && typeof tableColumn.defaultSlot == 'object'"
               :options="defaultSlotHandle(tableColumn.defaultSlot as CompType)"
               v-model="scope.row[tableColumn.attr?.prop]"
               v-on="eventHandle(scope, tableColumn.defaultSlot as CompType) || {}"
@@ -50,38 +56,30 @@
               :options="defaultSlotHandle(config as CompType)"
               v-on="eventHandle(scope, config as CompType) || {}"
             />
-            <slot
-              v-if="
-                tableColumn.defaultSlot && typeof tableColumn.defaultSlot === 'string'
-              "
-              :name="tableColumn.defaultSlot"
-              :currentCellData="scope"
-            >
-            </slot>
           </template>
         </el-table-column>
         <!--append 	插入至表格最后一行之后的内容-->
         <template #append v-if="options.appendSlot">
-          <BasicComponent
-            v-if="options.appendSlot && typeof options.appendSlot === 'object'"
-            :options="options.appendSlot"
-          />
           <slot
             v-if="options.appendSlot && typeof options.appendSlot === 'string'"
             :name="options.appendSlot"
             :options="options"
           ></slot>
+          <BasicComponent
+            v-if="options.appendSlot && typeof options.appendSlot === 'object'"
+            :options="options.appendSlot"
+          />
         </template>
         <template #empty v-if="options.emptySlot">
-          <BasicComponent
-            v-if="options.emptySlot && typeof options.emptySlot === 'object'"
-            :options="options.emptySlot"
-          />
           <slot
             v-if="options.emptySlot && typeof options.emptySlot === 'string'"
             :name="options.emptySlot"
             :options="options"
           ></slot>
+          <BasicComponent
+            v-if="options.emptySlot && typeof options.emptySlot === 'object'"
+            :options="options.emptySlot"
+          />
         </template>
       </el-table>
       <div class="pagination-container">
@@ -211,17 +209,17 @@ const setKey = (index: number, label: string | undefined) => {
 };
 /**
  * 处理defaultSlot的事件对象
- * @param currentCellData { Object } 当前行数据对象
+ * @param row { Object } 当前行数据对象
  * @param events { Object } 当前列的事件对象
  * @return Object 事件对象
  * @author
  */
-const eventHandle = function (currentCellData: any, config: any) {
+const eventHandle = function (row: any, config: any) {
   if (!config.event) return;
   const eventObj = {};
   Object.keys(config.event).forEach((event) => {
     eventObj[event] = function () {
-      config.event[event](currentCellData, ...arguments);
+      config.event[event](row, ...arguments);
     };
   });
   return eventObj;
