@@ -28,6 +28,9 @@
           <div v-for="(row, rowIndex) in dialogEditItems" :key="rowIndex">
             <li v-for="(item, index) in row" :key="index">
               <div class="content-list-area-dialog" v-if="!item.noShow">
+                <span class="require-class" :class="{ 'hidden-star': !item.required }">
+                  *
+                </span>
                 <i :class="item.icon" class="icon-class-dialog" />
                 <span class="label-class">{{ item.label }}</span>
                 <span v-if="!item.slotName">{{ editFormData[item.props] }}</span>
@@ -41,6 +44,9 @@
           <div v-for="(row, rowIndex) in dialogEditItems" :key="rowIndex">
             <li v-for="(item, index) in row" :key="index">
               <div class="content-list-area-dialog" v-if="!item.noChange">
+                <span class="require-class" :class="{ 'hidden-star': !item.required }">
+                  *
+                </span>
                 <i :class="item.icon" class="icon-class-dialog" />
                 <span class="label-class">{{ item.label }}</span>
                 <div>
@@ -120,14 +126,14 @@ export default {
   },
   computed: {},
   created() {},
-  mounted() {
-    this.showEditArea = this.editVisible;
-  },
+  mounted() {},
   watch: {
     editVisible: {
       handler(value) {
         this.showEditArea = value;
       },
+      deep: true,
+      immediate: true,
     },
   },
   methods: {
@@ -139,7 +145,6 @@ export default {
     // 提交编辑
     submitEdit(editFormData) {
       this.$emit("submitEdit", editFormData);
-      this.showEditArea = false;
     },
     // 取消编辑
     closeEdit() {
@@ -188,7 +193,7 @@ export default {
 }
 
 .header-title {
-  font-size: 20px;
+  font-size: 18px;
   margin-left: 20px;
   overflow: hidden;
   color: #373737;
@@ -213,8 +218,8 @@ export default {
 
 .content-list-area-dialog {
   display: ruby-text;
-  font-size: 15px;
-  line-height: 45px;
+  font-size: 13px;
+  line-height: 35px;
 }
 
 .icon-class-dialog {
@@ -240,5 +245,13 @@ export default {
 }
 .el-select {
   width: 220px !important;
+}
+.require-class {
+  color: red;
+  display: inline-block;
+  width: 10px;
+}
+.hidden-star {
+  opacity: 0;
 }
 </style>

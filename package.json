@@ -1,6 +1,6 @@
 {
   "name": "xw-ui",
-  "version": "1.0.39",
+  "version": "1.0.41",
   "description": "配置化组件库",
   "workspaces": [
     "packages/*",
@@ -55,9 +55,6 @@
     "build:hooks": "pnpm run -C packages/hooks build",
     "release": "ts-node scripts/release.ts",
     "lint:script": "eslint --ext .js,.jsx,.ts,.tsx,.vue --fix ./"
-  },
-  "publishConfig": {
-    "registry": "http://127.0.0.1:4873/"
   },
   "keywords": [
     "xw-ui",

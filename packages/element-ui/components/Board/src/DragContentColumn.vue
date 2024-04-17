@@ -36,7 +36,7 @@
       :element="showContentsData"
       v-bind="$attrs"
       v-on="$listeners"
-      @close="dialogVisible = false"
+      @close="close"
     >
       <template slot="DragContentDialogMsg">
         <slot name="DragContentDialogMsg" :element="showContentsData" />
@@ -112,6 +112,10 @@ export default {
       this.$emit("showContent", element);
       this.dialogVisible = true;
     },
+    close() {
+      this.$emit("update:editVisible", false);
+      this.dialogVisible = false;
+    },
   },
 };
 </script>
@@ -126,8 +130,8 @@ export default {
   flex: 1;
 
   .board-column-header {
-    height: 50px;
-    line-height: 50px;
+    height: 30px;
+    line-height: 30px;
     overflow: hidden;
     padding: 0 20px;
     text-align: center;
@@ -147,7 +151,7 @@ export default {
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 25px;
 
     .board-item {
       border-radius: 10px;

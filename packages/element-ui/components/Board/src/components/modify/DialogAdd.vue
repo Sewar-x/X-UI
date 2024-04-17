@@ -5,6 +5,9 @@
         <li v-for="(item, index) in row" :key="index">
           <div class="content-list-area-dialog" v-if="!item.noChange">
             <!-- 图标 + label 区域 -->
+            <span class="require-class" :class="{ 'hidden-star': !item.required }">
+              *
+            </span>
             <i :class="item.icon" class="icon-class-dialog" />
             <span class="label-class">{{ item.label }}</span>
             <!-- 表单控件设置区域 -->
@@ -90,34 +93,36 @@ export default {
   width: 100%;
   height: 700px;
 }
-
 .content-list-area-dialog {
   display: ruby;
   font-size: 15px;
   line-height: 45px;
 }
-
 .icon-class-dialog {
   width: 20px;
   margin-right: 15px;
 }
-
 .label-class {
   width: 100px;
   display: block;
 }
-
 .ul-class {
   list-style: none;
 }
-
 .button-class {
   width: 100%;
   text-align: right;
   padding: 10px 20px;
 }
-
 .el-select {
   width: 220px !important;
+}
+.require-class {
+  color: red;
+  display: inline-block;
+  width: 10px;
+}
+.hidden-star {
+  opacity: 0;
 }
 </style>

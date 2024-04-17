@@ -1,4 +1,5 @@
 export function getDiscussionList() {
+  console.log("🚀 ~ 进度评论列表 ~ :")
   return {
     "code": 200,
     "msg": "OK",
@@ -8,12 +9,25 @@ export function getDiscussionList() {
       "per_page": 15,
       "current_page": 1,
       "last_page": 0,
-      "data": []
+      "data": [
+        {
+          "id": 3182,
+          "project_id": 0,
+          "type": 8,
+          "link_id": 24,
+          "user_id": 1165,
+          "user": "sewen",
+          "comment": "<p>目前正在研究amis 低代码框架，考虑使用 amis 的设计模式封装 element plus<\/p>\n<p>&nbsp;<\/p>",
+          "time": "2024-04-17 15:51",
+          "is_oper": true
+        }
+      ]
     },
     "time": "2024-04-09 14:34"
   }
 }
 export function discussionAdd() {
+  console.log("🚀 ~ 添加进度评论 ~ :")
   return {
     "code": 200,
     "msg": "OK",
@@ -23,6 +37,7 @@ export function discussionAdd() {
   }
 }
 export function discussionDel() {
+  console.log("🚀 ~ 删除进度评论 ~:")
   return {
     "code": 200,
     "msg": "OK",
@@ -32,216 +47,351 @@ export function discussionDel() {
   }
 }
 export function digitalTaskList() {
+  console.log("🚀 ~ 任务列表 ~:")
   return {
     "code": 200,
     "msg": "OK",
-    "requestId": "6614da38debd2",
+    "requestId": "661f7dbfb07c9",
     "data": {
-      "total": 7,
+      "total": 13,
       "per_page": 2000,
       "current_page": 1,
       "last_page": 1,
       "data": [
         {
-          "id": 4,
-          "status": 2,
-          "title": "A项目1-1",
-          "content":"A项目1-1",
-          "project_id": 64,
-          "project_name": "重构",
+          "id": 20,
+          "status": 1,
+          "title": "组件自动化测试项目搭建",
+          "content": "组件自动化测试项目搭建",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
           "type": 1,
           "priority": 3,
-          "responsible_uid": 7216,
-          "plan_time": "2024-03-04",
-          "start_time": 1712489825,
+          "responsible_uid": 1165,
+          "plan_time": "2024-04-30",
+          "start_time": null,
           "complete_time": null,
-          "create_uid": 7216,
-          "create_time": "2024-04-07",
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
           "attachment": [],
-          "responsible_name": "小人",
-          "create_name": "小人",
+          "responsible_name": "sewen",
+          "create_name": "sewen",
           "attachment_num": 0,
           "comment_num": 0,
-          "subtask_num": 4,
+          "subtask_num": 2,
           "check": false,
           "type_text": "新功能",
-          "duration": "1天"
+          "duration": "7天"
         },
         {
-          "id": 3,
-          "status": 3,
-          "title": "A项目。",
-          "content": "A项目。",
+          "id": 27,
+          "status": 1,
+          "title": "Ant Design React 组件封装",
+          "content": "封装 Ant Design React 基础组件库",
           "project_id": 58,
-          "project_name": "设计开发",
-          "type": 2,
-          "priority": 3,
-          "responsible_uid": 8214,
-          "plan_time": "2024-03-28",
-          "start_time": 1711607745,
-          "complete_time": "2024-04-09",
-          "create_uid": 8214,
-          "create_time": "2024-03-28",
-          "attachment": [
-            {
-              "id": 87890,
-              "name": "各组件之间的嵌套关系.png",
-              "type": "png",
-              "create_time": "2024-04-09 09:24",
-              "url": "\/srdpm-api\/storage\/temp\/20240409\/aa28c4d696f618573b065a27f0f7c0ae.png",
-              "size": "31.35KB",
-              "cn_name": "大人"
-            },
-            {
-              "id": 87889,
-              "name": "测试.png",
-              "type": "png",
-              "create_time": "2024-04-09 09:24",
-              "url": "\/srdpm-api\/storage\/temp\/20240409\/c2b68849e9779b034a7ae631d71614a6.png",
-              "size": "27.82KB",
-              "cn_name": "大人"
-            }
-          ],
-          "responsible_name": "大人",
-          "create_name": "大人",
-          "attachment_num": 2,
-          "comment_num": 1,
-          "subtask_num": 2,
-          "check": true,
-          "type_text": "优化",
-          "duration": "11天"
-        },
-        {
-          "id": 1,
-          "status": 3,
-          "title": "B项目",
-          "content": null,
-          "project_id": 62,
-          "project_name": "B项目",
+          "project_name": "前端公共组件库设计开发",
           "type": 1,
           "priority": 3,
-          "responsible_uid": 7216,
-          "plan_time": "2024-03-29",
-          "start_time": 1711937053,
-          "complete_time": "2024-04-07",
-          "create_uid": 7216,
-          "create_time": "2024-03-27",
+          "responsible_uid": 1165,
+          "plan_time": "2024-05-30",
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
           "attachment": [],
-          "responsible_name": "小人",
-          "create_name": "小人",
+          "responsible_name": "sewen",
+          "create_name": "sewen",
           "attachment_num": 0,
           "comment_num": 0,
           "subtask_num": 0,
-          "check": true,
+          "check": false,
           "type_text": "新功能",
           "duration": "6天"
         },
         {
-          "id": 2,
+          "id": 15,
           "status": 3,
-          "title": "C项目",
-          "content": null,
-          "project_id": 62,
-          "project_name":"C项目",
-          "type": 2,
-          "priority": 3,
-          "responsible_uid": 7216,
-          "plan_time": "2024-03-29",
-          "start_time": 1711535832,
-          "complete_time": "2024-04-07",
-          "create_uid": 7216,
-          "create_time": "2024-03-27",
-          "attachment": [],
-          "responsible_name": "小人",
-          "create_name": "小人",
-          "attachment_num": 0,
-          "comment_num": 0,
-          "subtask_num": 0,
-          "check": true,
-          "type_text": "优化",
-          "duration": "11天"
-        },
-        {
-          "id": 5,
-          "status": 3,
-          "title": "C项目2",
-          "content": "C项目2",
-          "project_id": 67,
-          "project_name":"C项目2",
+          "title": "文档库搭建",
+          "content": "搭建组件文档库",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
           "type": 1,
           "priority": 4,
-          "responsible_uid": 173,
-          "plan_time": "2024-04-08",
-          "start_time": 1712489825,
-          "complete_time": "2024-04-08",
-          "create_uid": 173,
-          "create_time": "2024-04-09",
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": "2024-04-10 15:36",
+          "complete_time": "2024-04-12 09:57",
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
           "attachment": [],
-          "responsible_name": "好名字",
-          "create_name": "好名字",
+          "responsible_name": "sewen",
+          "create_name": "sewen",
           "attachment_num": 0,
           "comment_num": 0,
-          "subtask_num": 0,
+          "subtask_num": 2,
           "check": true,
           "type_text": "新功能",
-          "duration": "4小时"
+          "duration": "1天"
         },
         {
-          "id": 6,
-          "status": 3,
-          "title":  "C项目3",
-          "content": "C项目3",
-          "project_id": 23,
-          "project_name": "用户日常反馈以及异常处理",
-          "type": 3,
-          "priority": 1,
-          "responsible_uid": 173,
-          "plan_time": "2024-04-08",
-          "start_time": 1712489825,
-          "complete_time": "2024-04-08",
-          "create_uid": 173,
-          "create_time": "2024-04-09",
+          "id": 17,
+          "status": 1,
+          "title": "文档库编写",
+          "content": "组件库开发手册和各项指南编写、组件文档编写",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 3,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
           "attachment": [],
-          "responsible_name": "好名字",
-          "create_name": "好名字",
+          "responsible_name": "sewen",
+          "create_name": "sewen",
           "attachment_num": 0,
           "comment_num": 0,
-          "subtask_num": 0,
-          "check": true,
-          "type_text": "BUG",
-          "duration": "4小时"
+          "subtask_num": 8,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "7天"
         },
         {
-          "id": 7,
+          "id": 18,
           "status": 1,
-          "title":  "C项目4",
-          "content": "",
-          "project_id": 67,
-          "project_name":  "C项目4",
+          "title": "文档库站点搭建",
+          "content": "docker + nginx 文档库站点",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
           "type": 1,
           "priority": 4,
-          "responsible_uid": 173,
-          "plan_time": "2024-04-12",
-          "start_time": 0,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
           "complete_time": null,
-          "create_uid": 173,
-          "create_time": "2024-04-09",
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
           "attachment": [],
-          "responsible_name": "好名字",
-          "create_name": "好名字",
+          "responsible_name": "sewen",
+          "create_name": "sewen",
           "attachment_num": 0,
           "comment_num": 0,
           "subtask_num": 0,
           "check": false,
           "type_text": "新功能",
-          "duration": "3小时"
+          "duration": "7天"
+        },
+        {
+          "id": 19,
+          "status": 3,
+          "title": "组件库框架搭建",
+          "content": "Element Plus、Element UI、Ant Design  组件库框架搭建",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 4,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": "2024-04-10 15:41",
+          "complete_time": "2024-04-12 09:58",
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 3,
+          "check": true,
+          "type_text": "新功能",
+          "duration": "1天"
+        },
+        {
+          "id": 21,
+          "status": 1,
+          "title": "CICD持续部署持续集成自动化流程搭建",
+          "content": "使用 docker + Jenkins 搭建CICD工具、编写发布分支流程规范代码、编写文档自动构建脚本、编写组件库自动构建脚本、编写npm 自动发布脚本、分支管理 + 文档\/组件自动构建 + 项目\/npm 自动发布脚本联调",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 3,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 6,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "7天"
+        },
+        {
+          "id": 22,
+          "status": 1,
+          "title": "NPM私有仓库搭建",
+          "content": "使用docker + Verdaccio 搭建 npm私有仓库",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 4,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 2,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "7天"
+        },
+        {
+          "id": 24,
+          "status": 2,
+          "title": "ElementPlus 组件库封装",
+          "content": "对ElementPlus 基础组件进行封装到组件库",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 4,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": "2024-04-12 09:58",
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 13,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "5天"
+        },
+        {
+          "id": 25,
+          "status": 1,
+          "title": "ElementUI 组件封装",
+          "content": "封装 ElementUI 基础组件库",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 4,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 9,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "7天"
+        },
+        {
+          "id": 26,
+          "status": 1,
+          "title": "Echarts 封装",
+          "content": "Echarts 封装 Vue2、Vue3、React 组件封装",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 3,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 0,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "6天"
+        },
+        {
+          "id": 41,
+          "status": 1,
+          "title": "aims 研究和组件库整合",
+          "content": "研究aims 原理，整合 aims 到组件库",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 3,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-17",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 0,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "6小时"
+        },
+        {
+          "id": 42,
+          "status": 1,
+          "title": "甘特图研究",
+          "content": "",
+          "project_id": 18,
+          "project_name": "xxxx",
+          "type": 4,
+          "priority": 4,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-17",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 0,
+          "check": false,
+          "type_text": "需求",
+          "duration": "6小时"
         }
       ]
     },
-    "time": "2024-04-09 14:03"
+    "time": "2024-04-17 15:43"
   }
 }
+
 export function digitalTaskSearch() {
+  console.log("🚀 ~ 高级搜索下拉接口 ~:")
+
   return {
     "code": 200,
     "msg": "OK",
@@ -284,32 +434,32 @@ export function digitalTaskSearch() {
           "value": 10,
           "label": "I"
         },
-       
+
       ],
       "responsible_uid": [
         {
           "value": 1,
-          "label": "一个名字"
+          "label": "用户A"
         },
         {
           "value": 2,
-          "label": "好名字"
+          "label": "sewen"
         },
         {
           "value": 3,
-          "label": "烂人"
+          "label": "用户B"
         },
         {
           "value": 4,
-          "label": "好人"
+          "label": "用户C"
         },
         {
           "value": 5,
-          "label": "上帝"
+          "label": "用户D"
         },
         {
           "value": 6,
-          "label": "小人"
+          "label": "用户E"
         },
         {
           "value": 7,
@@ -393,6 +543,8 @@ export function digitalTaskSearch() {
   }
 }
 export function digitalTaskModify() {
+  console.log("🚀 ~ 修改任务 ~:")
+
   return {
     "code": 200,
     "msg": "OK",
@@ -402,6 +554,7 @@ export function digitalTaskModify() {
   }
 }
 export function digitalTaskComplete() {
+  console.log("🚀 ~ 完成任务 ~ :")
   return {
     "code": 200,
     "msg": "OK",
@@ -411,6 +564,7 @@ export function digitalTaskComplete() {
   }
 }
 export function digitalTaskDrag() {
+  console.log("🚀 ~拖动状态修改 ~:")
   return {
     "code": 200,
     "msg": "OK",
@@ -420,6 +574,7 @@ export function digitalTaskDrag() {
   }
 }
 export function digitalTaskDelete() {
+  console.log("🚀 ~ 删除任务 ~:")
   return {
     "code": 200,
     "msg": "OK",
@@ -429,6 +584,7 @@ export function digitalTaskDelete() {
   }
 }
 export function digitalTaskCopy() {
+  console.log("🚀 ~ 复制任务 ~ :")
   return {
     "code": 200,
     "msg": "OK",
@@ -438,6 +594,7 @@ export function digitalTaskCopy() {
   }
 }
 export function digitalTaskInfo() {
+  console.log("🚀 ~ 任务详细信息 ~ :")
   return {
     "code": 200,
     "msg": "OK",
@@ -460,8 +617,8 @@ export function digitalTaskInfo() {
       "create_time": "2024-04-09",
       "attachment": [],
       "work_level_text": "L5",
-      "responsible_name": "好名字",
-      "create_name": "好名字",
+      "responsible_name": "sewen",
+      "create_name": "sewen",
       "subtask": [],
       "check": false,
       "type_text": "新功能",
@@ -471,6 +628,7 @@ export function digitalTaskInfo() {
   }
 }
 export function digitalizeTask() {
+  console.log("🚀 ~ 提交工时单 ~:")
   return {
     "code": 200,
     "msg": "OK",
@@ -482,6 +640,7 @@ export function digitalizeTask() {
 
 
 export function digitalTaskArchive() {
+  console.log("🚀 ~ 归档任务 ~:")
   return {
     "code": 200,
     "msg": "OK",

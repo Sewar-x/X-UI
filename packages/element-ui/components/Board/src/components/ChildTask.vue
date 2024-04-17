@@ -10,19 +10,31 @@
             :disabled="!showEdit"
           ></el-checkbox>
           <!-- content -->
-          <el-popover placement="top-start" width="235" trigger="click">
+          <el-popover
+            placement="top-start"
+            width="235"
+            :disabled="!showEdit"
+            trigger="click"
+          >
             <span class="items" slot="reference">
               {{ item.content }}
               <i class="el-icon-edit edit-class" v-if="showEdit" />
             </span>
             <el-input
               type="textarea"
+              :rows="2"
+              size="mini"
               v-model="item.content"
               @blur="editContent(item.content)"
             />
           </el-popover>
           <!-- date -->
-          <el-popover placement="top-start" width="235" trigger="click">
+          <el-popover
+            placement="top-start"
+            width="235"
+            :disabled="!showEdit"
+            trigger="click"
+          >
             <span class="items-date" slot="reference">
               <span v-if="item.plan_time">{{ item.plan_time }}</span>
               <i v-else class="el-icon-date date-class" />
@@ -31,6 +43,7 @@
               v-model="item.plan_time"
               value-format="yyyy-MM-dd"
               type="date"
+              size="mini"
               placeholder="选择日期"
               @blur="editDate(item.plan_time)"
             >
@@ -115,6 +128,7 @@ export default {
 }
 .list-area {
   display: block;
+  font-size: 13px;
 }
 .task-item {
   width: 100%;
@@ -129,7 +143,7 @@ export default {
   display: flex;
   float: inline-start;
   margin-right: 10px;
-  margin-top: 5px;
+  margin-top: 7px;
 }
 .items-date {
   width: 200px;

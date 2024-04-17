@@ -119,6 +119,7 @@ export default {
 .top-content-header {
   display: flex;
   justify-content: space-between;
+  height: 90px;
 }
 .content-list-area {
   display: ruby;
@@ -141,5 +142,6 @@ export default {
 .content-detail-area {
   margin-left: -30px;
   width: 280px;
+  margin-top: -13px;
 }
 </style>

@@ -37,6 +37,12 @@
 
 ### **数据结构**
 
+
+
+::: details columnItems 结构
+
+
+
 ```js
 // 状态列表配置项
 columnItems(){
@@ -70,7 +76,7 @@ columnData:{
 // 注意：columnItems中所配置到的props，必须与columnData中的key一一对应。  
 ```
 
-
+:::
 
 ## **任务卡片列表**
 
@@ -125,6 +131,10 @@ columnData:{
 
 ### **数据结构**
 
+::: details contentItems 结构
+
+
+
 ```js
 // 卡片上部信息配置项
 contentItems(){ 
@@ -149,7 +159,7 @@ element: {
 // 注意：contentItems中所配置到的props(如有配)，必须与element中的key一一对应。
 ```
 
-
+:::
 
 ## 任务卡片下部
 
@@ -179,6 +189,10 @@ element: {
 
 ### **数据结构**
 
+::: details statisticItems 结构
+
+
+
 ```js
 / 卡片下部统计列表配置项
 statisticItems(){
@@ -207,7 +221,7 @@ statisticButtons(){
 },
 ```
 
-
+:::
 
 ## **新增弹窗**
 
@@ -241,6 +255,10 @@ statisticButtons(){
 | closeAdd  | 取消新增 | 无          |
 
 ### **数据结构**
+
+::: details dialogAddItems 结构
+
+
 
 ```js
 / 新增表单配置项
@@ -481,6 +499,8 @@ addFormData: {
 // 注意：dialogAddItems中所配置到的props，必须与addFormData中的key一一对应。
 ```
 
+:::
+
 ## **编辑弹窗**
 
 文件：`DragContentDialog.vue`
@@ -531,7 +551,11 @@ addFormData: {
 | closeEdit    | 取消编辑     | showEditArea，editFormData |
 | openEditArea | 显示编辑区域 | showEditArea，editFormData |
 
-***\*数据结构\****
+### 数据结构
+
+::: details dialogEditItems 结构
+
+
 
 ```js
 / 编辑表单配置项
@@ -772,6 +796,10 @@ editFormData: {
 // 注意：dialogEditItems中所配置到的props，必须与editFormData中的key一一对应。
 ```
 
+:::
+
+
+
 ## **评论区列表**
 
 文件：`InfiniteScrollWrap.vue`
@@ -853,6 +881,10 @@ editFormData: {
 
 ### **数据结构**
 
+::: details Options 结构
+
+
+
 ```js
 Options: {
   comp: null, // 组件标签
@@ -873,6 +905,998 @@ Options: {
   ]
 }
 ```
+
+:::
+
+## 接口
+
+在看板组件中，接口数据采用 mock 形式返回固定对象，没有接口服务，因此部分功能无法 demo 组件中查看；
+
+在 demo看板组件涉及以下接口：
+
+| 接口功能     | 接口demo函数        |
+| ------------ | ------------------- |
+| 高级搜索下拉 | digitalTaskSearch   |
+| 任务列表     | digitalTaskList     |
+| 修改任务     | digitalTaskModify   |
+| 完成任务     | digitalTaskComplete |
+| 拖动状态修改 | digitalTaskDrag     |
+| 删除任务     | digitalTaskDelete   |
+| 复制任务     | digitalTaskCopy     |
+| 任务详细信息 | digitalTaskInfo     |
+| 归档任务     | digitalTaskArchive  |
+| 提交工时单   | digitalizeTask      |
+| 进度评论列表 | getDiscussionList   |
+| 添加进度评论 | discussionAdd       |
+| 删除进度评论 | discussionDel       |
+
+### 高级搜索下拉
+
+::: details 高级搜索下拉接收格式
+
+
+
+```json
+export function digitalTaskSearch() {
+  console.log("🚀 ~ 高级搜索下拉接口 ~:")
+
+  return {
+    "code": 200,
+    "msg": "OK",
+    "requestId": "6614ddb884daa",
+    "data": {
+      "project_id": [
+        {
+          "value": 1,
+          "label": "A"
+        },
+        {
+          "value": 2,
+          "label": "B"
+        },
+        {
+          "value": 3,
+          "label": "C"
+        },
+        {
+          "value": 4,
+          "label": "D"
+        },
+        {
+          "value": 6,
+          "label": "E"
+        },
+        {
+          "value": 7,
+          "label": "F"
+        },
+        {
+          "value": 8,
+          "label": "G"
+        },
+        {
+          "value": 9,
+          "label": "H"
+        },
+        {
+          "value": 10,
+          "label": "I"
+        },
+
+      ],
+      "responsible_uid": [
+        {
+          "value": 1,
+          "label": "用户A"
+        },
+        {
+          "value": 2,
+          "label": "sewen"
+        },
+        {
+          "value": 3,
+          "label": "用户B"
+        },
+        {
+          "value": 4,
+          "label": "用户C"
+        },
+        {
+          "value": 5,
+          "label": "用户D"
+        },
+        {
+          "value": 6,
+          "label": "用户E"
+        },
+        {
+          "value": 7,
+          "label": "大人"
+        }
+      ],
+      "work_level": [
+        {
+          "value": 728,
+          "label": "L1",
+          "hours": "2.00",
+          "desc": "快速"
+        },
+        {
+          "value": 729,
+          "label": "L2",
+          "hours": "4.00",
+          "desc": "半天"
+        },
+        {
+          "value": 730,
+          "label": "L3",
+          "hours": "8.00",
+          "desc": "1个工作日"
+        },
+        {
+          "value": 731,
+          "label": "L4",
+          "hours": "16.00",
+          "desc": "2个工作日"
+        },
+        {
+          "value": 732,
+          "label": "L5",
+          "hours": "24.00",
+          "desc": "3个工作日"
+        },
+        {
+          "value": 733,
+          "label": "L6",
+          "hours": "32.00",
+          "desc": "4个工作日"
+        },
+        {
+          "value": 734,
+          "label": "L7",
+          "hours": "40.00",
+          "desc": "一周"
+        }
+      ],
+      "type": [
+        {
+          "value": 1,
+          "label": "新功能"
+        },
+        {
+          "value": 2,
+          "label": "优化"
+        },
+        {
+          "value": 3,
+          "label": "BUG"
+        }
+      ],
+      "status": [
+        {
+          "value": 1,
+          "label": "待领取"
+        },
+        {
+          "value": 2,
+          "label": "进行中"
+        },
+        {
+          "value": 3,
+          "label": "已完成"
+        }
+      ]
+    },
+    "time": "2024-04-09 14:18"
+  }
+}
+```
+
+::: 
+
+
+
+### 任务列表
+
+::: details 任务列表接口接收格式
+
+```json
+export function digitalTaskList() {
+  console.log("🚀 ~ 任务列表 ~:")
+  return {
+    "code": 200,
+    "msg": "OK",
+    "requestId": "661f7dbfb07c9",
+    "data": {
+      "total": 13,
+      "per_page": 2000,
+      "current_page": 1,
+      "last_page": 1,
+      "data": [
+        {
+          "id": 20,
+          "status": 1,
+          "title": "组件自动化测试项目搭建",
+          "content": "组件自动化测试项目搭建",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 3,
+          "responsible_uid": 1165,
+          "plan_time": "2024-04-30",
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 2,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "7天"
+        },
+        {
+          "id": 27,
+          "status": 1,
+          "title": "Ant Design React 组件封装",
+          "content": "封装 Ant Design React 基础组件库",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 3,
+          "responsible_uid": 1165,
+          "plan_time": "2024-05-30",
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 0,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "6天"
+        },
+        {
+          "id": 15,
+          "status": 3,
+          "title": "文档库搭建",
+          "content": "搭建组件文档库",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 4,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": "2024-04-10 15:36",
+          "complete_time": "2024-04-12 09:57",
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 2,
+          "check": true,
+          "type_text": "新功能",
+          "duration": "1天"
+        },
+        {
+          "id": 17,
+          "status": 1,
+          "title": "文档库编写",
+          "content": "组件库开发手册和各项指南编写、组件文档编写",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 3,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 8,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "7天"
+        },
+        {
+          "id": 18,
+          "status": 1,
+          "title": "文档库站点搭建",
+          "content": "docker + nginx 文档库站点",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 4,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 0,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "7天"
+        },
+        {
+          "id": 19,
+          "status": 3,
+          "title": "组件库框架搭建",
+          "content": "Element Plus、Element UI、Ant Design  组件库框架搭建",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 4,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": "2024-04-10 15:41",
+          "complete_time": "2024-04-12 09:58",
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 3,
+          "check": true,
+          "type_text": "新功能",
+          "duration": "1天"
+        },
+        {
+          "id": 21,
+          "status": 1,
+          "title": "CICD持续部署持续集成自动化流程搭建",
+          "content": "使用 docker + Jenkins 搭建CICD工具、编写发布分支流程规范代码、编写文档自动构建脚本、编写组件库自动构建脚本、编写npm 自动发布脚本、分支管理 + 文档\/组件自动构建 + 项目\/npm 自动发布脚本联调",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 3,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 6,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "7天"
+        },
+        {
+          "id": 22,
+          "status": 1,
+          "title": "NPM私有仓库搭建",
+          "content": "使用docker + Verdaccio 搭建 npm私有仓库",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 4,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 2,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "7天"
+        },
+        {
+          "id": 24,
+          "status": 2,
+          "title": "ElementPlus 组件库封装",
+          "content": "对ElementPlus 基础组件进行封装到组件库",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 4,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": "2024-04-12 09:58",
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 13,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "5天"
+        },
+        {
+          "id": 25,
+          "status": 1,
+          "title": "ElementUI 组件封装",
+          "content": "封装 ElementUI 基础组件库",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 4,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 9,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "7天"
+        },
+        {
+          "id": 26,
+          "status": 1,
+          "title": "Echarts 封装",
+          "content": "Echarts 封装 Vue2、Vue3、React 组件封装",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 3,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-10",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 0,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "6天"
+        },
+        {
+          "id": 41,
+          "status": 1,
+          "title": "aims 研究和组件库整合",
+          "content": "研究aims 原理，整合 aims 到组件库",
+          "project_id": 58,
+          "project_name": "前端公共组件库设计开发",
+          "type": 1,
+          "priority": 3,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-17",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 0,
+          "check": false,
+          "type_text": "新功能",
+          "duration": "6小时"
+        },
+        {
+          "id": 42,
+          "status": 1,
+          "title": "甘特图研究",
+          "content": "",
+          "project_id": 18,
+          "project_name": "xxxx",
+          "type": 4,
+          "priority": 4,
+          "responsible_uid": 1165,
+          "plan_time": null,
+          "start_time": null,
+          "complete_time": null,
+          "create_uid": 1165,
+          "create_time": "2024-04-17",
+          "attachment": [],
+          "responsible_name": "sewen",
+          "create_name": "sewen",
+          "attachment_num": 0,
+          "comment_num": 0,
+          "subtask_num": 0,
+          "check": false,
+          "type_text": "需求",
+          "duration": "6小时"
+        }
+      ]
+    },
+    "time": "2024-04-17 15:43"
+  }
+}
+```
+
+:::
+
+
+
+### 修改任务
+
+::: details 修改任务发送格式
+
+```js
+// 修改任务主要需要了解 发送给服务端数据格式
+{
+    "id": 24,
+    "status": 2,
+    "title": "ElementPlus 组件库封装",
+    "content": "对ElementPlus 基础组件进行封装到组件库",
+    "project_id": 58,
+    "project_name": "前端公共组件库设计开发",
+    "type": 1,
+    "priority": 4,
+    "work_level": 734,
+    "responsible_uid": 1165,
+    "plan_time": null,
+    "start_time": "2024-04-12 09:58",
+    "complete_time": null,
+    "create_uid": 1165,
+    "create_time": "2024-04-10",
+    "attachment": [],
+    "work_level_text": "L7",
+    "responsible_name": "sewen",
+    "create_name": "sewen",
+    "subtask": [
+        {
+            "sub_id": 1,
+            "content": "BasicComponents ——通用组件",
+            "plan_time": "2024-04-30",
+            "complete_time": 1712887102,
+            "check": true
+        },
+        {
+            "sub_id": 2,
+            "content": "Form ——通用组件",
+            "plan_time": "2024-04-30",
+            "complete_time": 1713316563,
+            "check": false
+        },
+        {
+            "sub_id": 3,
+            "content": "Table ——通用组件",
+            "plan_time": "2024-04-30",
+            "complete_time": 0,
+            "check": false
+        },
+        {
+            "sub_id": 4,
+            "content": "Dialog ——通用组件",
+            "plan_time": "2024-04-30",
+            "complete_time": 0,
+            "check": false
+        },
+        {
+            "sub_id": 5,
+            "content": "Descriptions ——通用组件",
+            "plan_time": "2024-04-30",
+            "complete_time": 0,
+            "check": false
+        },
+        {
+            "sub_id": 6,
+            "content": "Upload ——通用组件",
+            "plan_time": "2024-04-30",
+            "complete_time": 0,
+            "check": false
+        },
+        {
+            "sub_id": 7,
+            "content": "Search ——通用组件",
+            "plan_time": "2024-04-30",
+            "complete_time": 0,
+            "check": false
+        },
+        {
+            "sub_id": 8,
+            "content": "Menu ——通用组件",
+            "plan_time": "2024-04-30",
+            "complete_time": 0,
+            "check": false
+        },
+        {
+            "sub_id": 9,
+            "content": "Popover ——通用组件",
+            "plan_time": "2024-04-30",
+            "complete_time": 0,
+            "check": false
+        },
+        {
+            "sub_id": 10,
+            "content": "Swiper ——通用组件",
+            "plan_time": "2024-04-30",
+            "complete_time": 0,
+            "check": false
+        },
+        {
+            "sub_id": 11,
+            "content": "Icon、SvgIcon ——通用组件",
+            "plan_time": "2024-04-30",
+            "complete_time": 0,
+            "check": false
+        },
+        {
+            "sub_id": 12,
+            "content": "Task Board 任务看板 ——通用业务组件",
+            "plan_time": "2024-04-30",
+            "complete_time": 0,
+            "check": false
+        },
+        {
+            "sub_id": 13,
+            "content": "Vue3 Hooks",
+            "plan_time": "2024-04-30",
+            "complete_time": 0,
+            "check": false
+        }
+    ],
+    "check": false,
+    "type_text": "新功能",
+    "duration": "5天"
+}
+```
+
+:::
+
+
+
+### 新增任务
+
+::: details 新增任务发送格式
+
+```js
+{
+  "id": null,
+  "title": "测试",
+  "content": "测试",
+  "project_id": 58,
+  "type": 1,
+  "priority": 1,
+  "work_level": 728,
+  "responsible_uid": 1165,
+  "plan_time": "2024-03-31T16:00:00.000Z",
+  "attachment": [],
+  "subtask": [
+    {
+      "id": "7adbc7c0fc9311eea322bdcd4b4c6c0f",
+      "content": "测试",
+      "check": null,
+      "plan_time": "2024-04-01"
+    }
+  ]
+}
+```
+
+:::
+
+
+
+### 完成任务
+
+::: details 完成任务发送格式
+
+```js
+{
+  "id": 15,
+  "check": false
+}
+```
+
+:::
+
+### 拖动状态修改
+
+::: details 拖动状态修改发送格式
+
+```js
+{
+  "id": 15,
+  "status": 3
+}
+```
+
+:::
+
+### 删除任务
+
+::: details 删除任务发送格式
+
+```js
+{
+  "id": 43
+}
+```
+
+:::
+
+### 复制任务
+
+::: details 复制任务发送格式
+
+```js
+{
+  "id": 43
+}
+```
+
+:::
+
+### 任务详细信息
+
+::: details 任务详细信息接收格式
+
+```js
+发送格式：
+{
+  "id": 24
+}
+返回格式：
+{
+  "code": 200,
+  "msg": "OK",
+  "requestId": "661f877222e8b",
+  "data": {
+    "id": 24,
+    "status": 2,
+    "title": "ElementPlus 组件库封装",
+    "content": "对ElementPlus 基础组件进行封装到组件库",
+    "project_id": 58,
+    "project_name": "前端公共组件库设计开发",
+    "type": 1,
+    "priority": 4,
+    "work_level": 734,
+    "responsible_uid": 1165,
+    "plan_time": null,
+    "start_time": "2024-04-12 09:58",
+    "complete_time": null,
+    "create_uid": 1165,
+    "create_time": "2024-04-10",
+    "attachment": [],
+    "work_level_text": "L7",
+    "responsible_name": "sewen",
+    "create_name": "sewen",
+    "subtask": [
+      {
+        "sub_id": 1,
+        "content": "BasicComponents ——通用组件",
+        "plan_time": "2024-04-30",
+        "complete_time": 1712887102,
+        "check": true
+      },
+      {
+        "sub_id": 2,
+        "content": "Form ——通用组件",
+        "plan_time": "2024-04-30",
+        "complete_time": 0,
+        "check": false
+      },
+      {
+        "sub_id": 3,
+        "content": "Table ——通用组件",
+        "plan_time": "2024-04-30",
+        "complete_time": 0,
+        "check": false
+      },
+      {
+        "sub_id": 4,
+        "content": "Dialog ——通用组件",
+        "plan_time": "2024-04-30",
+        "complete_time": 0,
+        "check": false
+      },
+      {
+        "sub_id": 5,
+        "content": "Descriptions ——通用组件",
+        "plan_time": "2024-04-30",
+        "complete_time": 0,
+        "check": false
+      },
+      {
+        "sub_id": 6,
+        "content": "Upload ——通用组件",
+        "plan_time": "2024-04-30",
+        "complete_time": 0,
+        "check": false
+      },
+      {
+        "sub_id": 7,
+        "content": "Search ——通用组件",
+        "plan_time": "2024-04-30",
+        "complete_time": 0,
+        "check": false
+      },
+      {
+        "sub_id": 8,
+        "content": "Menu ——通用组件",
+        "plan_time": "2024-04-30",
+        "complete_time": 0,
+        "check": false
+      },
+      {
+        "sub_id": 9,
+        "content": "Popover ——通用组件",
+        "plan_time": "2024-04-30",
+        "complete_time": 0,
+        "check": false
+      },
+      {
+        "sub_id": 10,
+        "content": "Swiper ——通用组件",
+        "plan_time": "2024-04-30",
+        "complete_time": 0,
+        "check": false
+      },
+      {
+        "sub_id": 11,
+        "content": "Icon、SvgIcon ——通用组件",
+        "plan_time": "2024-04-30",
+        "complete_time": 0,
+        "check": false
+      },
+      {
+        "sub_id": 12,
+        "content": "Task Board 任务看板 ——通用业务组件",
+        "plan_time": "2024-04-30",
+        "complete_time": 0,
+        "check": false
+      },
+      {
+        "sub_id": 13,
+        "content": "Vue3 Hooks",
+        "plan_time": "2024-04-30",
+        "complete_time": 0,
+        "check": false
+      }
+    ],
+    "check": false,
+    "type_text": "新功能",
+    "duration": "5天"
+  },
+  "time": "2024-04-17 16:25"
+}
+```
+
+:::
+
+
+
+### 归档任务
+
+::: details 归档任务发送格式
+
+```js
+{
+  "id": 44
+}
+```
+
+:::
+
+
+
+### 提交工时单
+
+::: details 提交工时单发送格式
+
+```js
+{
+  "id": 24,
+  "work_hours": "8",
+  "content": "对ElementPlus 基础组件进行封装到组件库",
+  "submit_time": "2024-04-15T16:00:00.000Z"
+}
+```
+
+:::
+
+
+
+### 进度评论列表
+
+::: details 进度评论列表接收格式
+
+```js
+{
+  "code": 200,
+  "msg": "OK",
+  "requestId": "661f87722a88e",
+  "data": {
+    "total": 1,
+    "per_page": 15,
+    "current_page": 1,
+    "last_page": 1,
+    "data": [
+      {
+        "id": 3182,
+        "project_id": 0,
+        "type": 8,
+        "link_id": 24,
+        "user_id": 1165,
+        "user": "sewen",
+        "comment": "<p>目前正在研究amis 低代码框架，考虑使用 amis 的设计模式封装 element plus</p>\n<p>&nbsp;</p>",
+        "time": "2024-04-17 15:51",
+        "is_oper": true
+      }
+    ]
+  },
+  "time": "2024-04-17 16:25"
+}
+```
+
+:::
+
+
+
+### 添加进度评论
+
+::: details 添加进度评论发送格式
+
+```js
+{
+  "link_id": 24,
+  "page_size": 15,
+  "type": 8,
+  "comment": "<p>测试</p>"
+}
+```
+
+:::
+
+
+
+### 删除进度评论
+
+::: details 删除进度评论发送格式
+
+```js
+{
+  "id": 3182
+}
+```
+
+:::
+
+
+
+
 
 ## **示例**
 

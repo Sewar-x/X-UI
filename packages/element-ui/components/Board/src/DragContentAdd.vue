@@ -1,10 +1,11 @@
 <template>
   <el-dialog
+    v-el-drag-dialog
     ref="dragContentDialogAdd"
     :close-on-click-modal="false"
     :title="dialogTitleAdd"
     :visible="addVisible"
-    top="10vh"
+    top="5vh"
     width="700px"
     @close="$emit('closeAdd')"
     destroy-on-close
@@ -15,9 +16,11 @@
 
 <script>
 import DialogAdd from "./components/modify/DialogAdd.vue";
+import elDragDialog from "@/xw-ui/element-ui/directive/el-drag-dialog"; // base on element-ui
 
 export default {
   name: "DragContentAdd",
+  directives: { elDragDialog },
   components: {
     DialogAdd,
   },

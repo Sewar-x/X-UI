@@ -2,11 +2,12 @@
 <template>
   <div>
     <el-dialog
+      v-el-drag-dialog
       ref="dragContentDialogWrap"
       :close-on-click-modal="false"
       :title="dialogTitleEdit"
       :visible="dialogVisible"
-      top="10vh"
+      top="3vh"
       width="1400px"
       @close="$emit('close')"
       destroy-on-close
@@ -42,6 +43,12 @@
           </infinite-scroll>
           <!-- 添加评论 -->
           <div class="comments-input-wrapper">
+            <!-- <el-input
+              v-model="comments"
+              type="textarea"
+              :rows="4"
+              placeholder="添加评论"/> -->
+            <!-- 富文本编辑器 -->
             <Tinymce
               id="digitalEditor"
               key="digitalEditor"
@@ -69,9 +76,11 @@ import TopContent from "./components/card/TopContent.vue";
 import Comments from "./components/comments/Comments.vue";
 import InfiniteScroll from "./components/comments/InfiniteScrollWrap.vue";
 import Tinymce from "@/xw-ui/element-ui/components/Tinymce";
+import elDragDialog from "@/xw-ui/element-ui/directive/el-drag-dialog"; // base on element-ui
 
 export default {
   name: "DragContentDialog",
+  directives: { elDragDialog },
   components: {
     TopContent,
     Comments,
@@ -120,7 +129,7 @@ export default {
         comment: null,
       },
       comments: null,
-      height: "400px",
+      height: "370px",
     };
   },
   computed: {

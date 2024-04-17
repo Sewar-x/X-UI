@@ -77,13 +77,13 @@ export default {
 .image-area {
   overflow: hidden;
   max-width: 90px;
-  height: 90px;
+  height: 80px;
 }
 .items-img {
   display: flex;
 }
 .image {
-  height: 90px;
-  width: 110px;
+  height: 80px;
+  width: 100px;
 }
 </style>
