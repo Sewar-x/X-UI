@@ -9,7 +9,7 @@ export interface FormType {
   ref?: Ref<T>;
   // 表单项数组
   items: Array<Array<FormItemType>>;
-  slot: string | object; // 自定义表单插槽
+  slot?: string | object; // 自定义表单插槽
 }
 
 export interface FormItemType {
@@ -20,9 +20,9 @@ export interface FormItemType {
   attr?: Recordable;
   // 表单项所要渲染的组件
   component: ComponentType;
-  slot: string | object;//表单的内容。
-  labelSlot: string | object;//	标签位置显示的内容
-  errorSlot: string | object;//	验证错误信息的显示内容
+  slot?: string | object;//表单的内容。
+  labelSlot?: string | object;//	标签位置显示的内容
+  errorSlot?: string | object;//	验证错误信息的显示内容
 }
 
 export interface ComponentType extends CompType {

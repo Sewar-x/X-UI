@@ -17,3 +17,20 @@
 | 列固定筛选按钮 | 列固定筛选按钮用于筛选固定的表格列                           |
 | 自定义按钮组   | 自定义按钮组通过传入 `buttons` 配置项，可以自定义按钮列表    |
 
+
+
+## 示例
+
+### 基本示例
+
+<xw-demo
+    demo-height="200px"
+    source-code="element-plus:::search/search-demo"
+/>
+
+### 带搜索框和自定义按钮组
+
+<xw-demo
+    demo-height="280px"
+    source-code="element-plus:::search/search-input-demo"
+/>

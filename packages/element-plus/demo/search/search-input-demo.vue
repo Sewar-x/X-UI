@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { XSearch } from "@/xw-ui/element-plus";
 import { reactive } from "vue";
+import { Search, Delete, Share } from "@element-plus/icons-vue";
 //下拉选项
 const selectOpt = ["送货上门", "自取"].map((option) => {
   return {
@@ -30,10 +31,13 @@ let seachData = reactive<{
 });
 // 高级搜索配置项
 const seachOptions = {
+  cardAttr: {
+    shadow: "none",
+  },
   form: {
     mode: seachData,
     attr: {
-      "label-width": "50px",
+      "label-width": "80px",
     },
     items: [
       [
@@ -61,7 +65,6 @@ const seachOptions = {
           attr: {
             prop: "select",
             label: "配送方式",
-            "label-width": "100px",
           },
           component: {
             comp: "el-select",
@@ -71,27 +74,51 @@ const seachOptions = {
             children: selectOpt,
           },
         },
-        {
-          component: {
-            comp: "el-button",
-            attr: {
-              type: "primary",
-            },
-            content: {
-              text: "搜索",
-            },
-            event: {
-              submit: (val: any) => {
-                // 表单提交事件
-                alert(`提交表单：${JSON.stringify(val)}`);
-              },
-            },
-          },
-        },
       ],
     ],
   },
+  inputShow: {
+    attr: {
+      class: "input-container",
+    },
+  },
+  buttons: [
+    {
+      tip: "搜索",
+      text: "搜索",
+      attr: {
+        type: "primary",
+        icon: Search,
+      },
+      event: {
+        click: (val: any) => {
+          // 表单提交事件
+          alert(`提交表单：${JSON.stringify(seachData)}`);
+        },
+      },
+    },
+    {
+      tip: "分享",
+      text: "分享",
+      attr: {
+        type: "primary",
+        icon: Share,
+      },
+    },
+    {
+      tip: "删除",
+      text: "删除",
+      attr: {
+        type: "primary",
+        icon: Delete,
+      },
+    },
+  ],
 };
 </script>
 
-<style scoped lang="less"></style>
+<style lang="less">
+.input-container {
+  width: 60%;
+}
+</style>
