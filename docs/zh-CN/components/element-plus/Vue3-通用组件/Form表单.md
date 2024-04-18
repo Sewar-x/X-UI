@@ -150,6 +150,14 @@ export interface ComponentType extends CompType {
     source-code="element-plus:::form/form-demo"
 />
 
+### 表单项联动
+> 在以下示例中，请尝试选择不同的项目，查看表单中其他字段的变化。
+
+<xw-demo
+    demo-height="450px"
+    source-code="element-plus:::form/form-cascade-demo"
+/>
+
 ### 插槽示例
 
 <xw-demo

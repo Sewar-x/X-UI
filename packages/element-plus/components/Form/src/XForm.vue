@@ -2,14 +2,14 @@
   <el-form :model="data" v-bind="options.attr" :ref="setRef()">
     <!--如果传入 options.slot 则使用默认插槽,该插槽内容会将所有配置项内容覆盖 -->
     <template #default v-if="options.slot">
-      <!--传入 slot 为对象表示插槽为 JSON 配置 -->
-      <BasicComponent v-if="typeof options.slot === 'object'" :options="options.slot" />
       <!--传入 slot 为字符串表示插槽为 自定义 template -->
       <slot v-if="typeof options.slot === 'string'" :name="options.slot"></slot>
+      <!--传入 slot 为对象表示插槽为 JSON 配置 -->
+      <BasicComponent v-if="typeof options.slot === 'object'" :options="options.slot" />
     </template>
     <!--form 表单内置组件是一个二维数组排列-->
     <el-row
-      v-for="(item, index) of options.items"
+      v-for="(item, index) of items"
       :key="index"
       justify="space-between"
       class="default-form"
@@ -84,8 +84,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue";
-import { ref, unref } from "vue";
+import { ref, unref, defineProps, defineEmits, computed, reactive, watch } from "vue";
 import { FormType, FormItemType } from "../type";
 import BasicComponent from "../../BasicComponent";
 const emit = defineEmits(["changeAfter"]);
@@ -93,9 +92,9 @@ const props = defineProps<{
   // 表单数据
   options: FormType;
 }>();
-
+let items = computed(() => props.options.items);
 // Form 表单数据
-const data = props.options.mode;
+const data = reactive(props.options.mode);
 
 // 表单Ref
 const formRef = ref();

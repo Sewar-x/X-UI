@@ -8,5 +8,10 @@ export default [
     path: '/form-slot-demo',
     component: () => import('../../form/form-slot-demo.vue'),
     name: 'formSlotDemo'
+  },
+  {
+    path: '/form-cascade-demo',
+    component: () => import('../../form/form-cascade-demo.vue'),
+    name: 'formCascadeDemo'
   }
 ]
