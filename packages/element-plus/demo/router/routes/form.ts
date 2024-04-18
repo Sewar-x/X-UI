@@ -13,5 +13,10 @@ export default [
     path: '/form-cascade-demo',
     component: () => import('../../form/form-cascade-demo.vue'),
     name: 'formCascadeDemo'
+  },
+  {
+    path: '/form-link-demo',
+    component: () => import('../../form/form-link-demo.vue'),
+    name: 'formLinkDemo'
   }
 ]

@@ -158,6 +158,11 @@ export interface ComponentType extends CompType {
     source-code="element-plus:::form/form-cascade-demo"
 />
 
+<xw-demo
+    demo-height="550px"
+    source-code="element-plus:::form/form-link-demo"
+/>
+
 ### 插槽示例
 
 <xw-demo
