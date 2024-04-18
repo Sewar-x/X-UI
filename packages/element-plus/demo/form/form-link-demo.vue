@@ -1,10 +1,11 @@
 <template>
-  <XForm :options="options"></XForm>
+  <XForm v-loading="loading" :options="options"></XForm>
 </template>
 
 <script setup lang="ts">
-import { reactive, watchEffect, onMounted } from "vue";
+import { reactive, watch, onMounted, ref } from "vue";
 import { XForm } from "@/xw-ui/element-plus";
+const loading = ref(false);
 // 异步获取下拉选项
 const getOptions = (
   arr: Array<string>
@@ -44,10 +45,12 @@ let data = {
 };
 // 获取 form 表单配置项
 const getItmes = async (type: string): Promise<Array<object>> => {
+  loading.value = true;
   const blogFllower = ["A", "B", "C"];
   const uiFllower = ["D", "E", "F"];
   const projOpt = await getOptions(["XW-UI", "BLOG"]);
   const follwerOpt = await getOptions(type === "BLOG" ? blogFllower : uiFllower);
+  loading.value = false;
   return [
     [
       {
@@ -222,17 +225,11 @@ onMounted(async () => {
  * （注意不能监听 data 的变化，因为 data 不是响应式的，data 在 options 内部才被 XForm 定义为响应式）
  * 当 options.mode 中数据的变化时候，需要手动修改 options.items 的值,从而达到动态下拉的效果
  */
-watchEffect(
-  async (onInvalidate) => {
-    await onInvalidate;
-    const newVal = options.mode.project;
-    try {
-      options.items = await getItmes(newVal);
-    } catch (error) {
-      console.error("Failed to update form items: ", error);
-    }
-  },
-  { flush: "post", immediate: true }
+watch(
+  () => options.mode.project,
+  async (newVal: string) => {
+    options.items = await getItmes(newVal);
+  }
 );
 </script>
 
