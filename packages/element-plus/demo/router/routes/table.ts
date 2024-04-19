@@ -18,6 +18,11 @@ export default [
     path: '/table-slot-demo',
     component: () => import('../../table/table-slot-demo.vue'),
     name: 'tableSlotClickShowDemo'
+  },
+  {
+    path: '/table-search-link-demo',
+    component: () => import('../../table/table-search-link-demo.vue'),
+    name: 'tableSearchLinkDemo'
   }
  
 ]
