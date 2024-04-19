@@ -143,6 +143,22 @@ export interface ComponentType extends CompType {
 | `scrollToField` | 滚动到指定的字段                                             |                `(prop: FormItemProp) => void`                |
 | `clearValidate` | 清理某个字段的表单验证信息。                                 |         `(props?: Arrayable<FormItemProp>) => void`          |
 
+## 接口
+> form 表单主要用于接收用户输入数据传输给服务端，因此主要关注传输给服务端接口格式
+
+::: details form 表单默认格式示例
+```javascript
+ // 根据表单项内容，传入所有表单项的值
+ {
+    "name": "张三",
+    "age": 18,
+    "sex": "男",
+    "hobby": ["篮球", "足球", "乒乓球"],
+    "address": "北京市朝阳区"
+ }
+```
+:::
+
 ## 示例
 
 <xw-demo
