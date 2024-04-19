@@ -154,12 +154,17 @@ export interface ComponentType extends CompType {
 > 在以下示例中，请尝试选择不同的项目，查看表单中其他字段的变化。
 
 <xw-demo
-    demo-height="450px"
+    demo-height="400px"
     source-code="element-plus:::form/form-cascade-demo"
 />
 
 <xw-demo
-    demo-height="550px"
+    demo-height="310px"
+    source-code="element-plus:::form/form-cross-cascade-demo"
+/>
+
+<xw-demo
+    demo-height="530px"
     source-code="element-plus:::form/form-link-demo"
 />
 
