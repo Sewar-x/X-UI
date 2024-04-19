@@ -105,6 +105,7 @@ const props = defineProps<{
   options: TableType;
 }>();
 const emit = defineEmits([
+  "search",
   "sizeChange",
   "currentChange",
   "pageChange ",
@@ -249,6 +250,7 @@ const defaultSlotHandle = function (config: CompType) {
  * @param params
  */
 const advanceSearch = function (params: any) {
+  emit("search", params);
   const initTable = props.options?.tableEvent?.initTable;
   initTable && initTable(params);
 };

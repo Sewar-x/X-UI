@@ -3,7 +3,7 @@
     <XForm
       v-if="options.form"
       class="search-form-container"
-      :options="options.form"
+      :options="formOptions"
       @changeAfter="formBlurSearchHandler"
     />
     <div class="search-item-container" v-if="showInputs()">
@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed, reactive, watch } from "vue";
 import { XForm } from "../../Form";
 import type { SearchType } from "../type.d.ts";
 import { Search, Delete } from "@element-plus/icons-vue";
@@ -46,6 +46,7 @@ const props = defineProps<{
   options: SearchType;
 }>();
 let keyword = ref("");
+let formOptions = reactive(props.options?.form || {});
 
 /**
  * 输入框配置项目，配置是否显示输入框
@@ -104,15 +105,18 @@ const getButtons = function (): object {
       },
     },
   };
-  let butsConfigs = [];
-  if (props.options.hasOwnProperty("buttons") && props.options.buttons.button) {
+  let butsConfigs: Array<any> = [];
+  if (!props.options.hasOwnProperty("buttons")) {
+    return butsConfigs;
+  }
+  if (props.options.buttons.button) {
     butsConfigs = JSON.parse(JSON.stringify(props.options.buttons.button));
-    if (props.options.buttons.clear) {
-      butsConfigs.unshift(clearBut);
-    }
-    if (props.options.buttons.search) {
-      butsConfigs.unshift(searchBut);
-    }
+  }
+  if (props.options.buttons.clear) {
+    butsConfigs.unshift(clearBut);
+  }
+  if (props.options.buttons.search) {
+    butsConfigs.unshift(searchBut);
   }
   return butsConfigs;
 };
@@ -182,5 +186,8 @@ const clearSearchData = function () {
 
 .buttons-group-container {
   margin-left: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

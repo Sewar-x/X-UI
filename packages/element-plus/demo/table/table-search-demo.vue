@@ -1,6 +1,6 @@
 <template>
   <div>
-    <XTable :options="options"></XTable>
+    <XTable :options="options" @search="advanceSearch"></XTable>
   </div>
 </template>
 
@@ -144,65 +144,63 @@ let seachData = reactive<{
 
 // 高级搜索配置项
 const seachOptions = {
-  mode: seachData,
-  attr: {
-    "label-width": "50px",
+  cardAttr: {
+    shadow: "none",
   },
-  items: [
-    [
-      {
-        attr: {
-          prop: "date",
-          label: "日期",
-        },
-        component: {
-          comp: "el-date-picker",
-        },
-      },
-
-      {
-        attr: {
-          prop: "name",
-          label: "姓名",
-        },
-        component: {
-          comp: "el-input",
-        },
-      },
-
-      {
-        attr: {
-          prop: "select",
-          label: "配送方式",
-          "label-width": "100px",
-        },
-        component: {
-          comp: "el-select",
+  form: {
+    mode: seachData,
+    blurSearch: false, // 是否失去焦点时触发搜索
+    attr: {
+      "label-width": "auto",
+    },
+    items: [
+      [
+        {
           attr: {
-            placeholder: "项目地址",
+            prop: "date",
+            label: "日期",
           },
-          children: selectOpt,
+          component: {
+            comp: "el-date-picker",
+          },
         },
-      },
-      {
-        component: {
-          comp: "el-button",
+
+        {
           attr: {
-            type: "primary",
+            prop: "name",
+            label: "姓名",
           },
-          content: {
-            text: "搜索",
+          component: {
+            comp: "el-input",
           },
-          event: {
-            submit: (val: any) => {
-              // 表单提交事件
-              alert(`提交表单：${JSON.stringify(val)}`);
+        },
+
+        {
+          attr: {
+            prop: "select",
+            label: "配送方式",
+            "label-width": "70px",
+          },
+          component: {
+            comp: "el-select",
+            attr: {
+              placeholder: "项目地址",
             },
+            children: selectOpt,
           },
         },
-      },
+      ],
     ],
-  ],
+  },
+  inputShow: {
+    attr: {
+      class: "input-container",
+    },
+  },
+  buttons: {
+    search: true, // 显示搜索框搜索按钮
+    clear: true, // 显示清除搜索按钮
+  },
 };
 // 表格配置
 const options = {
@@ -210,6 +208,10 @@ const options = {
   seach: seachOptions,
   pagination: false, //不使用分页模式，需要显示配置 false (默认使用分页模式)
   columns: columns,
+};
+
+const advanceSearch = (params: any) => {
+  console.log("🚀 ~ advanceSearch ~ params:", params);
 };
 </script>
 
