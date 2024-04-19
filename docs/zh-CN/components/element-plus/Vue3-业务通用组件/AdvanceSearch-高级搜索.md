@@ -44,3 +44,10 @@
     demo-height="200px"
     source-code="element-plus:::search/search-input-demo"
 />
+
+### 搜索项联动
+
+<xw-demo
+    demo-height="200px"
+    source-code="element-plus:::search/search-cascade-demo"
+/>

@@ -1,5 +1,5 @@
 <template>
-  <XSearch :options="options"></XSearch>
+  <XSearch :options="options" @search="searchHandler"></XSearch>
 </template>
 
 <script setup lang="ts">
@@ -17,6 +17,7 @@ const deliverOpt = ["送货上门", "自取"].map((option) => {
     },
   };
 });
+//搜索类型下拉选项
 const typeOpt = ["搜索1", "搜索2"].map((option) => {
   return {
     comp: "el-option",
@@ -36,7 +37,7 @@ let seachData = reactive({
   address: "",
   select: "送货上门",
 });
-
+// 获取搜索项配置
 const getItmes = (type: string): Array<object> => {
   const typeItem = [
     {
@@ -91,24 +92,25 @@ const getItmes = (type: string): Array<object> => {
       },
     ],
   };
-  const append = cascadeItem[type];
-  typeItem.splice(1, 0, ...append);
-  return reactive([reactive(typeItem)]);
+  const append = type ? cascadeItem[type] : [];
+  return reactive([[...typeItem, ...append]]);
 };
 
+// 高级搜索配置项，注意要定义成响应式对象，表单才能联动
+let formOptions = reactive({
+  mode: seachData,
+  blurSearch: false, // 是否失去焦点时触发搜索
+  attr: {
+    "label-width": "80px",
+  },
+  items: getItmes(seachData.type),
+});
 // 高级搜索配置项
 const options = {
   cardAttr: {
     shadow: "none",
   },
-  form: {
-    mode: seachData,
-    blurSearch: false, // 是否失去焦点时触发搜索
-    attr: {
-      "label-width": "80px",
-    },
-    items: getItmes(seachData.type),
-  },
+  form: formOptions,
   inputShow: {
     attr: {
       class: "input-container",
@@ -137,12 +139,18 @@ const options = {
  */
 watch(
   () => options.form.mode.type,
-  async (newVal: string) => {
-    console.log("🚀 ~ newVal:", newVal);
-    options.form.items = getItmes(newVal);
+  (newVal: string) => {
+    formOptions.items = getItmes(newVal);
+    // 高级搜索配置项，注意要定义成响应式对象，表单才能联动
+    options.form = reactive(formOptions);
   },
   { deep: true }
 );
+
+// 搜索事件
+const searchHandler = (val: any) => {
+  console.log(`搜索事件:`, val);
+};
 </script>
 
 <style lang="less">
