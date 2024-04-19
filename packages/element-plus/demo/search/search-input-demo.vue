@@ -1,11 +1,11 @@
 <template>
-  <XSearch :options="seachOptions"></XSearch>
+  <XSearch :options="seachOptions" @search="searchHandler"></XSearch>
 </template>
 
 <script setup lang="ts">
 import { XSearch } from "@/xw-ui/element-plus";
 import { reactive } from "vue";
-import { Search, Delete, Share } from "@element-plus/icons-vue";
+import { Share } from "@element-plus/icons-vue";
 //下拉选项
 const selectOpt = ["送货上门", "自取"].map((option) => {
   return {
@@ -36,8 +36,9 @@ const seachOptions = {
   },
   form: {
     mode: seachData,
+    blurSearch: false, // 是否失去焦点时触发搜索
     attr: {
-      "label-width": "80px",
+      "label-width": "auto",
     },
     items: [
       [
@@ -65,6 +66,7 @@ const seachOptions = {
           attr: {
             prop: "select",
             label: "配送方式",
+            "label-width": "70px",
           },
           component: {
             comp: "el-select",
@@ -82,43 +84,29 @@ const seachOptions = {
       class: "input-container",
     },
   },
-  buttons: [
-    {
-      tip: "搜索",
-      text: "搜索",
-      attr: {
-        type: "primary",
-        icon: Search,
-      },
-      event: {
-        click: (val: any) => {
-          // 表单提交事件
-          alert(`提交表单：${JSON.stringify(seachData)}`);
+  buttons: {
+    search: true, // 显示搜索框搜索按钮
+    clear: true, // 显示清除搜索按钮
+    button: [
+      {
+        tip: "过滤",
+        text: "过滤",
+        attr: {
+          type: "primary",
+          icon: Share,
         },
       },
-    },
-    {
-      tip: "分享",
-      text: "分享",
-      attr: {
-        type: "primary",
-        icon: Share,
-      },
-    },
-    {
-      tip: "删除",
-      text: "删除",
-      attr: {
-        type: "primary",
-        icon: Delete,
-      },
-    },
-  ],
+    ],
+  },
+};
+// 搜索事件
+const searchHandler = (val: any) => {
+  alert(`搜索事件: ${JSON.parse(JSON.stringify(val))}`);
 };
 </script>
 
 <style lang="less">
 .input-container {
-  width: 60%;
+  width: 50%;
 }
 </style>

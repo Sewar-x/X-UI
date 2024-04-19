@@ -302,27 +302,27 @@ const tableData = [
 ## 示例
 
 <xw-demo
-    demo-height="450px"
+    demo-height="350px"
     source-code="element-plus:::table/table-demo"
 />
 
 ### 分页示例
 
 <xw-demo
-    demo-height="870px"
+    demo-height="770px"
     source-code="element-plus:::table/table-pagination-demo"
 />
 
 ### 插槽示例
 
 <xw-demo
-    demo-height="870px"
+    demo-height="770px"
     source-code="element-plus:::table/table-slot-demo"
 />
 
 ### 高级搜索示例
 
 <xw-demo
-    demo-height="550px"
+    demo-height="450px"
     source-code="element-plus:::table/table-search-demo"
 />

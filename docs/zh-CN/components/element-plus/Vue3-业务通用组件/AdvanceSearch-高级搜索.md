@@ -23,6 +23,8 @@
 
 ### 基本示例
 
+> 默认高级搜索项失去焦点时会自动触发 search 事件，如果不需要，请配置 `form.blurSearch` 字段为 false
+
 <xw-demo
     demo-height="200px"
     source-code="element-plus:::search/search-demo"
@@ -30,7 +32,15 @@
 
 ### 带搜索框和自定义按钮组
 
+> 自定义搜索按钮位于搜索框右侧，使用者可以通过配置 buttons 字段来配置按钮：
+>
+> 格式参考以上自定义按钮组
+>
+> * `search` ： 表示是否显示搜索按钮
+> * `clear`： 表示是否显示重置按钮
+> * `button`： 为自定义按钮组配置
+
 <xw-demo
-    demo-height="280px"
+    demo-height="200px"
     source-code="element-plus:::search/search-input-demo"
 />

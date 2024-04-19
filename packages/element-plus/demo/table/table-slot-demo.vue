@@ -168,6 +168,7 @@ const tableColumns = [
     attr: {
       prop: "",
       label: "操作",
+      width: "150",
     },
     defaultSlot: "operateSlot",
   },

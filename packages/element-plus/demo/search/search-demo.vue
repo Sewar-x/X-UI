@@ -1,5 +1,5 @@
 <template>
-  <XSearch :options="seachOptions"></XSearch>
+  <XSearch :options="seachOptions" @search="searchHandler"></XSearch>
 </template>
 
 <script setup lang="ts">
@@ -32,8 +32,9 @@ let seachData = reactive<{
 const seachOptions = {
   form: {
     mode: seachData,
+    blurSearch: false, // 是否失去焦点时触发搜索
     attr: {
-      "label-width": "50px",
+      "label-width": "auto",
     },
     items: [
       [
@@ -42,6 +43,7 @@ const seachOptions = {
             prop: "date",
             label: "日期",
           },
+          span: 7,
           component: {
             comp: "el-date-picker",
           },
@@ -52,6 +54,7 @@ const seachOptions = {
             prop: "name",
             label: "姓名",
           },
+          span: 7,
           component: {
             comp: "el-input",
           },
@@ -61,8 +64,9 @@ const seachOptions = {
           attr: {
             prop: "select",
             label: "配送方式",
-            "label-width": "100px",
+            "label-width": "70px",
           },
+          span: 8,
           component: {
             comp: "el-select",
             attr: {
@@ -72,6 +76,10 @@ const seachOptions = {
           },
         },
         {
+          span: 2,
+          attr: {
+            "label-width": "10%",
+          },
           component: {
             comp: "el-button",
             attr: {
@@ -91,6 +99,11 @@ const seachOptions = {
       ],
     ],
   },
+};
+
+// 搜索事件
+const searchHandler = (val: any) => {
+  alert(`搜索事件: ${JSON.parse(JSON.stringify(val))}`);
 };
 </script>
 
