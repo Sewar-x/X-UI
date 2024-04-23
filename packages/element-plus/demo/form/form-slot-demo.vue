@@ -4,6 +4,9 @@
       <el-tag type="danger" effect="plain"> 标签插槽 </el-tag>
       <div>这是传入插槽：{{ items.items.attr.label }}</div>
     </template>
+    <template #labelSlot="items">
+      <el-tag type="warning" effect="plain"> {{ items.data }} </el-tag>
+    </template>
     <template #formItemStartSlot>
       <div>
         <span>评分内容插槽: </span>
@@ -146,6 +149,7 @@ const options = {
           prop: "remarks",
           label: "标签",
         },
+        slot: "labelSlot",
         labelSlot: "formItemRemarksLabelSlot", //该插槽内容会将配置项目内容覆盖
         component: {
           comp: "el-input",

@@ -39,12 +39,14 @@
             <BasicComponent
               v-if="typeof formItem.slot === 'object'"
               :options="formItem.slot"
+              :data="data[formItem.attr.prop]"
             />
             <!--传入 slot 为字符串表示插槽为 自定义 template -->
             <slot
               v-if="typeof formItem.slot === 'string'"
               :name="formItem.slot"
               :items="formItem"
+              :data="data[formItem.attr.prop]"
             ></slot>
           </template>
 
@@ -54,12 +56,14 @@
             <BasicComponent
               v-if="typeof formItem.labelSlot === 'object'"
               :options="formItem.labelSlot"
+              :data="data[formItem.attr.prop]"
             />
             <!--传入 slot 为字符串表示插槽为 自定义 template -->
             <slot
               v-if="typeof formItem.labelSlot === 'string'"
               :name="formItem.labelSlot"
               :items="formItem"
+              :data="data[formItem.attr.prop]"
             ></slot>
           </template>
 
@@ -69,12 +73,14 @@
             <BasicComponent
               v-if="typeof formItem.errorSlot === 'object'"
               :options="formItem.errorSlot"
+              :data="data[formItem.attr.prop]"
             />
             <!--传入 slot 为字符串表示插槽为 自定义 template -->
             <slot
               v-if="typeof formItem.errorSlot === 'string'"
               :name="formItem.errorSlot"
               :items="formItem"
+              :data="data[formItem.attr.prop]"
             ></slot>
           </template>
         </el-form-item>
