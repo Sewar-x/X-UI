@@ -5,66 +5,105 @@
       v-if="options.seach"
       :options="options.seach"
       @search="advanceSearch"
-    />
+    >
+      <template #buttonPrefix>
+        <slot name="buttonPrefix" />
+        <el-popover
+          v-if="showColFilter()"
+          :persistent="false"
+          placement="bottom-start"
+          trigger="hover"
+        >
+          <template #reference>
+            <el-button :icon="Filter">筛选</el-button>
+          </template>
+          <el-checkbox-group class="selectCheck" v-model="selectColumns">
+            <el-checkbox
+              v-for="item in options.columns"
+              :label="item.attr.label"
+              :id="item.attr.prop"
+              :key="item.attr.prop"
+              :checked="!!item.isShow"
+              @change="() => changeColumns(item)"
+            />
+          </el-checkbox-group>
+        </el-popover>
+      </template>
+    </XSearch>
     <div class="table-container">
       <el-table
         v-loading="loading"
         :data="data"
         :ref="options.ref"
-        v-bind="options.attr"
+        v-bind="getTableHeaderAttr()"
         v-on="options.event || {}"
       >
-        <el-table-column
+        <template
           v-for="(tableColumn, index) of options.columns"
           :key="setKey(index, tableColumn.attr?.label)"
-          v-bind="tableColumn.attr"
         >
-          <!--如果传入 headerSlot 或 headerSlot，则显示头部插槽 -->
-          <template #header v-if="tableColumn.headerSlot">
-            <!--传入 headerSlot 表示头部插槽为 自定义 template -->
-            <slot
-              v-if="tableColumn.headerSlot && typeof tableColumn.headerSlot === 'string'"
-              :name="tableColumn.headerSlot"
-              :header="tableColumn"
-            >
+          <el-table-column
+            :key="setKey(index, tableColumn.attr?.label)"
+            v-if="
+              tableColumn.isShow == null || tableColumn.isShow == undefined
+                ? true
+                : tableColumn.isShow
+            "
+            v-bind="tableColumn.attr"
+            v-on="tableColumn.event || {}"
+          >
+            <!--如果传入 headerSlot 或 headerSlot，则显示头部插槽 -->
+            <template #header v-if="tableColumn.headerSlot">
+              <!--传入 headerSlot 表示头部插槽为 自定义 template -->
+              <slot
+                v-if="
+                  tableColumn.headerSlot && typeof tableColumn.headerSlot === 'string'
+                "
+                :name="tableColumn.headerSlot"
+                :header="tableColumn"
+              />
               <!--传入 headerSlot 表示头部插槽为 JSON 配置 -->
               <BasicComponent
                 v-if="tableColumn.headerSlot && typeof options.headerSlot === 'object'"
                 :options="tableColumn.headerSlot"
               />
-            </slot>
-          </template>
-          <!--默认插槽-->
-          <template #default="scope" v-if="tableColumn.defaultSlot">
-            <slot
-              v-if="tableColumn.defaultSlot && typeof tableColumn.defaultSlot == 'string'"
-              :name="tableColumn.defaultSlot"
-              :row="scope.row"
-              :columns="scope.column"
-              :index="scope.$index"
-            >
-            </slot>
-            <BasicComponent
-              v-if="tableColumn.defaultSlot && typeof tableColumn.defaultSlot == 'object'"
-              :options="defaultSlotHandle(tableColumn.defaultSlot as CompType)"
-              v-model="scope.row[tableColumn.attr?.prop]"
-              v-on="eventHandle(scope, tableColumn.defaultSlot as CompType) || {}"
-            />
-            <BasicComponent
-              v-if="tableColumn.defaultSlot && Array.isArray(tableColumn.defaultSlot)"
-              v-for="config of tableColumn.defaultSlot"
-              :options="defaultSlotHandle(config as CompType)"
-              v-on="eventHandle(scope, config as CompType) || {}"
-            />
-          </template>
-        </el-table-column>
+            </template>
+            <!--默认插槽-->
+            <template #default="scope" v-if="tableColumn.defaultSlot">
+              <slot
+                v-if="
+                  tableColumn.defaultSlot && typeof tableColumn.defaultSlot == 'string'
+                "
+                :name="tableColumn.defaultSlot"
+                :row="scope.row"
+                :columns="scope.column"
+                :index="scope.$index"
+              />
+
+              <BasicComponent
+                v-if="
+                  tableColumn.defaultSlot && typeof tableColumn.defaultSlot == 'object'
+                "
+                :options="defaultSlotHandle(tableColumn.defaultSlot as CompType)"
+                v-model="scope.row[tableColumn.attr?.prop]"
+                v-on="eventHandle(scope, tableColumn.defaultSlot as CompType) || {}"
+              />
+              <BasicComponent
+                v-if="tableColumn.defaultSlot && Array.isArray(tableColumn.defaultSlot)"
+                v-for="config of tableColumn.defaultSlot"
+                :options="defaultSlotHandle(config as CompType)"
+                v-on="eventHandle(scope, config as CompType) || {}"
+              />
+            </template>
+          </el-table-column>
+        </template>
         <!--append 	插入至表格最后一行之后的内容-->
         <template #append v-if="options.appendSlot">
           <slot
             v-if="options.appendSlot && typeof options.appendSlot === 'string'"
             :name="options.appendSlot"
             :options="options"
-          ></slot>
+          />
           <BasicComponent
             v-if="options.appendSlot && typeof options.appendSlot === 'object'"
             :options="options.appendSlot"
@@ -75,7 +114,7 @@
             v-if="options.emptySlot && typeof options.emptySlot === 'string'"
             :name="options.emptySlot"
             :options="options"
-          ></slot>
+          />
           <BasicComponent
             v-if="options.emptySlot && typeof options.emptySlot === 'object'"
             :options="options.emptySlot"
@@ -84,9 +123,9 @@
       </el-table>
       <div class="pagination-container">
         <el-pagination
-          v-if="paginationConfig().show"
-          v-bind="paginationConfig().attr"
-          v-on="paginationConfig().event"
+          v-if="paginationConfig.show"
+          v-bind="paginationConfig.attr"
+          v-on="paginationConfig.event"
         />
       </div>
     </div>
@@ -94,13 +133,13 @@
 </template>
 
 <script setup lang="ts">
-import type { TableType, PaginationType } from "../type";
+import { ref, watch, onBeforeMount, defineEmits, reactive } from "vue";
+import type { TableType, columnsType, PaginationType } from "../type";
 import { XSearch } from "../../Search";
-import { ref, watch, onBeforeMount, defineEmits } from "vue";
 import { CompType } from "@/xw-ui/element-plus/types/gloabl.d.ts";
 import { deepMerge } from "@/xw-ui/element-plus/utils";
 import BasicComponent from "../../BasicComponent";
-
+import { Filter } from "@element-plus/icons-vue";
 const props = defineProps<{
   options: TableType;
 }>();
@@ -117,7 +156,7 @@ const emit = defineEmits([
  * 获取分页默认配置
  */
 
-const paginationConfig = function (): PaginationType {
+const getPaginationConfig = function (): PaginationType {
   // 默认分页配置
   const defalutConfig = {
     // 是否显示分页
@@ -175,24 +214,46 @@ const paginationConfig = function (): PaginationType {
 
   return deepMerge(defalutConfig, props.options.pagination) as object;
 };
+// 分页配置项
+const paginationConfig = getPaginationConfig();
+// 所有表格列配置项
+props.options.columns = reactive(
+  props.options.columns.map((col) => {
+    if (!col.hasOwnProperty("isShow")) {
+      col.isShow = true;
+    }
+    return col;
+  })
+);
+//选中显示的列
+const selectColumns: Array<columnsType> = ref([]);
+/**
+ * 设置是否显示列筛选器
+ */
+const showColFilter = function (): boolean {
+  if (
+    props?.options?.seach?.buttons &&
+    props?.options?.seach?.buttons.hasOwnProperty("colFilter") &&
+    props?.options?.seach?.buttons.colFilter == false
+  ) {
+    return props?.options?.seach?.buttons.colFilter;
+  }
+  return true;
+};
+
 // 获取表格数据，当使用分页时候，data 表示分页数据和数据，data.data 表示表格数据，当使用分页时，data 表示表格数据
-const data = paginationConfig().show ? props.options.data.data : props.options.data;
+const data = paginationConfig.show ? props.options.data.data : props.options.data;
 const loading = ref(false);
 
-onBeforeMount(() => {
-  if (props.options.loading) {
-    loading.value = props.options.loading.value;
-  }
-});
-watch(
-  () => props.options.loading,
-  () => {
-    if (props.options.loading) {
-      loading.value = props.options.loading.value;
-    }
-  },
-  { deep: true }
-);
+/**
+ * 获取表格头配置属性
+ */
+const getTableHeaderAttr = function (): object {
+  const defalutAttr = {
+    "header-cell-class-name": "x-table-header-row-class",
+  };
+  return deepMerge(props.options.attr || {}, defalutAttr);
+};
 
 /**
  * 设置表格列的 key 值
@@ -254,6 +315,28 @@ const advanceSearch = function (params: any) {
   const initTable = props.options?.tableEvent?.initTable;
   initTable && initTable(params);
 };
+
+/**
+ * 修改显示列
+ */
+const changeColumns = (value: any) => {
+  value.isShow = !value.isShow;
+};
+
+onBeforeMount(() => {
+  if (props.options.loading) {
+    loading.value = props.options.loading.value;
+  }
+});
+watch(
+  () => props.options.loading,
+  () => {
+    if (props.options.loading) {
+      loading.value = props.options.loading.value;
+    }
+  },
+  { deep: true }
+);
 </script>
 
 <style scoped lang="less">
@@ -274,5 +357,8 @@ const advanceSearch = function (params: any) {
 .table-container {
   background-color: white;
   padding: 20px 5px;
+  :deep(.x-table-header-row-class) {
+    background-color: rgb(242, 242, 242);
+  }
 }
 </style>

@@ -18,6 +18,7 @@
       >
       </el-input>
       <el-button-group class="buttons-group-container">
+        <slot name="buttonPrefix" />
         <el-tooltip
           v-for="(but, butIndex) in getButtons()"
           :key="butIndex"
@@ -26,6 +27,7 @@
         >
           <el-button v-bind="but.attr" v-on="but.event">{{ but.text }}</el-button>
         </el-tooltip>
+        <slot name="buttonAppend" />
       </el-button-group>
     </div>
   </el-card>
@@ -80,7 +82,6 @@ const getButtons = function (): object {
     tip: "搜索",
     text: "搜索",
     attr: {
-      type: "primary",
       icon: Search,
     },
     event: {
@@ -96,7 +97,6 @@ const getButtons = function (): object {
     tip: "重置",
     text: "重置",
     attr: {
-      type: "primary",
       icon: Delete,
     },
     event: {

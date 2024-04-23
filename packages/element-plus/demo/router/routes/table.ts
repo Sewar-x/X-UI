@@ -15,6 +15,11 @@ export default [
     name: 'tableSearchDemo'
   },
   {
+    path: '/table-search-col-filter-demo',
+    component: () => import('../../table/table-search-col-filter-demo.vue'),
+    name: 'tableSearchColFilterDemo'
+  },
+  {
     path: '/table-slot-demo',
     component: () => import('../../table/table-slot-demo.vue'),
     name: 'tableSlotClickShowDemo'

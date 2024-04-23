@@ -330,3 +330,12 @@ const tableData = [
     demo-height="450px"
     source-code="element-plus:::table/table-search-demo"
 />
+
+
+### 高级搜索-表格列筛选示例
+> 默认在表格的高级搜索框中显示表格列筛选按钮，如果不需要显示，则配置 `options.seach.buttons.colFilter` 为 false 即可
+
+<xw-demo
+    demo-height="450px"
+    source-code="element-plus:::table/table-search-col-filter-demo"
+/>

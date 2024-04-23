@@ -21,6 +21,7 @@ export interface TableColumnType {
   headerSlot?: string; // 表头插槽名称 或 配置
   defaultSlot?: string | CompType | Array<CompType>; // 默认插槽名称 或配置
   attr?: Recordable; // 参考 element-plus el-table-column 的属性以及HTML元素属性
+  isShow?: boolean; // 是否显示该列
 }
 
 // 分页参数类型
