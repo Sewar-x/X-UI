@@ -10,9 +10,9 @@
 | 表格列操作自定义    | 通过配置表格操作列按钮可以自定义表格操作列                   | todo |
 | 自定义分页          | 默认支持表格分页，如果不使用分页，则 `pagination` 设置为 false | done |
 | 高级搜索            | 支持表格的高级搜索联动，传入 `seach` 配置，则自动显示高级搜索，配置项可参考高级搜索组件 |      |
-| 高级搜索-显示列过滤 | 通过配置字段即可默认 显示/关闭 表格列显示过滤                | todo |
+| 高级搜索-显示列过滤 | 通过配置字段即可默认 显示/关闭 表格列显示过滤                | done |
 | 高级搜索-固定列过滤 | 通过配置字段即可默认 显示/关闭 表格列固定过滤                | todo |
-| 高级搜索联动        | 通过配置项进行高级搜索联动                                   | todo |
+| 高级搜索联动        | 通过配置项进行高级搜索联动                                   | done |
 | 其他功能            | 参考 [Element Plus 表格组件 ](https://element-plus.org/zh-CN/component/table.html)功能 | done |
 
 
@@ -339,3 +339,45 @@ const tableData = [
     demo-height="450px"
     source-code="element-plus:::table/table-search-col-filter-demo"
 />
+
+
+
+### 表格操作列
+
+> 通过配置 `options.operations ` 给表格添加默认操作，操作列默认固定在表格右侧，默认使用下拉操作
+>
+> `operations` 字段参数：
+>
+> ```js
+> [ // 默认传入操作数组
+>  {
+>    text: "查看",  // 操作名称
+>    icon: null, // 操作按钮图标
+>    disabled: false, // 是否禁用按钮
+>    divided: false, //是否显示分隔符
+>    command: { // 操作列自定义参数, 通过事件回调返回
+>      name: "查看name参数", // 自定义参数
+>    },
+>  }
+> ]
+> ```
+>
+> 点击操作列按钮时，表格使用 `operate` 事件监听点击的按钮，并在回调中接收操作类型、行参数、操作列自定义参数等。`operate` 事件回调参数
+>
+> ```js
+> {
+>  operation: "查看", // 操作类型
+>  params:  value.command,  // 操作列自定义参数 command, 通过事件回调参数params返回
+>  data: props.slotScope.row, // 操作的表格行数据
+>  colum: props.slotScope.column, // 操作的表格列
+>  row: props.slotScope.$index, // 操作的表格行
+> }
+> ```
+
+
+
+<xw-demo
+    demo-height="350px"
+    source-code="element-plus:::table/table-operate-col-demo"
+/>
+

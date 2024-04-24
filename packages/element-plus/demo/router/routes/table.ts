@@ -28,6 +28,11 @@ export default [
     path: '/table-search-link-demo',
     component: () => import('../../table/table-search-link-demo.vue'),
     name: 'tableSearchLinkDemo'
+  },
+  {
+    path: '/table-operate-col-demo',
+    component: () => import('../../table/table-operate-col-demo.vue'),
+    name: 'tableOperateColDemo'
   }
  
 ]

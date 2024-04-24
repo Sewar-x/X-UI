@@ -41,3 +41,12 @@ export interface PaginationType {
   children?: Array<CompType> | []; //组件子节点 dom 
   ref?: Ref<T>; // 组件 ref 引用
 }
+
+export interface OperateColType {
+  className?: string, // 组件类名称
+  key?: string; // 组件 key 
+  attr?: Recordable; // 组件属性
+  event?: Recordable; // 组件事件
+  children?: Array<CompType> | []; //组件子节点 dom 
+  ref?: Ref<T>; // 组件 ref 引用
+}

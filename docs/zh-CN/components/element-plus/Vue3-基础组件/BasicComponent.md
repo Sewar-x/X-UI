@@ -77,19 +77,22 @@ declare interface CompType {
   content?: CompContentType; // 组件内容
   children?: Array<CompType> | []; //组件子节点 dom 
   ref?: Ref<T>; // 组件 ref 引用
+  slotScope?: any // 作用域插槽参数
 }
+
 ```
 
 |  属性名  |                             说明                             |        类型         | 默认值 |
 | :------- | :----------------------------------------------------------- | :------------------ | :----: |
-|   comp   |                          渲染的组件                          | `String \| Component` |   -    |
-|   data   | 绑定的响应式数据，当响应数据为对象时，必须以`reactive`创建响应式对象，且必须搭配`key`作为响应的对象属性名 |         any         |   -    |
-|   key    |                 绑定的响应式数据对象的属性名                 |       String        |        |
+|   comp   |                          渲染的组件                          | `String 或 Component` |   -    |
+|   data   | 绑定的响应式数据，当响应数据为对象时，必须以`reactive`创建响应式对象，且必须搭配`key`作为响应的对象属性名 |         `any`         |   -    |
+|   key    |                 绑定的响应式数据对象的属性名                 |       `String`      |        |
 |   attr   |                        渲染组件的属性                        | `Record<String, any>` |   -    |
 |  event   |                        渲染组件的事件                        | `Record<String, any>`|   -    |
 | content  |                      渲染组件的文本内容                      |   `CompContentType`   |   -    |
 | children |                       渲染组件的子组件                       |   `Array<CompType>`   |   -    |
 |   ref    |                      渲染组件的实例对象                      |       `Ref<T>`        |   -    |
+| slotScope | 作用域插槽参数 | `any` |  |
 
 ### `CompContentType`
 

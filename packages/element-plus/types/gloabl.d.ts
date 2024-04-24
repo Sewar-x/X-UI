@@ -28,4 +28,5 @@ declare interface CompType {
   content?: CompContentType; // 组件内容
   children?: Array<CompType> | []; //组件子节点 dom 
   ref?: Ref<T>; // 组件 ref 引用
+  slotScope?: any // 作用域插槽参数
 }

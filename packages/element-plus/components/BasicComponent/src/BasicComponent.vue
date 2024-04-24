@@ -6,6 +6,7 @@
     v-on="options.event || {}"
     :ref="options.ref"
     :class="options.className"
+    :slotScope="options.slotScope || {}"
   >
     <div v-if="options.children && options.children.length !== 0">
       <BasicComponent

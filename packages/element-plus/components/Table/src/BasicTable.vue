@@ -84,14 +84,14 @@
                 v-if="
                   tableColumn.defaultSlot && typeof tableColumn.defaultSlot == 'object'
                 "
-                :options="defaultSlotHandle(tableColumn.defaultSlot as CompType)"
+                :options="defaultSlotHandle(tableColumn.defaultSlot as CompType, scope)"
                 v-model="scope.row[tableColumn.attr?.prop]"
                 v-on="eventHandle(scope, tableColumn.defaultSlot as CompType) || {}"
               />
               <BasicComponent
                 v-if="tableColumn.defaultSlot && Array.isArray(tableColumn.defaultSlot)"
                 v-for="config of tableColumn.defaultSlot"
-                :options="defaultSlotHandle(config as CompType)"
+                :options="defaultSlotHandle(config as CompType, scope)"
                 v-on="eventHandle(scope, config as CompType) || {}"
               />
             </template>
@@ -140,6 +140,7 @@ import { CompType } from "@/xw-ui/element-plus/types/gloabl.d.ts";
 import { deepMerge } from "@/xw-ui/element-plus/utils";
 import BasicComponent from "../../BasicComponent";
 import { Filter } from "@element-plus/icons-vue";
+import OperateCol from "./OperateCol.vue";
 const props = defineProps<{
   options: TableType;
 }>();
@@ -150,6 +151,7 @@ const emit = defineEmits([
   "pageChange ",
   "prevClick",
   "nextClick",
+  "operate",
 ]);
 
 /**
@@ -209,13 +211,27 @@ const getPaginationConfig = function (): PaginationType {
     props.options.hasOwnProperty("pagination") &&
     typeof props.options.pagination === "object"
   ) {
-    return deepMerge(defalutConfig, props.options.pagination) as object;
+    return deepMerge(defalutConfig, props.options.pagination) as PaginationType;
   }
 
-  return deepMerge(defalutConfig, props.options.pagination) as object;
+  return deepMerge(defalutConfig, props.options.pagination) as PaginationType;
 };
 // 分页配置项
 const paginationConfig = getPaginationConfig();
+// 获取表格数据，当使用分页时候，data 表示分页数据和数据，data.data 表示表格数据，当使用分页时，data 表示表格数据
+const data = paginationConfig.show ? props.options.data.data : props.options.data;
+const loading = ref(false);
+//选中显示的列
+const selectColumns: Array<columnsType> = ref([]);
+/**
+ * 获取表格头配置属性
+ */
+const getTableHeaderAttr = function (): object {
+  const defalutAttr = {
+    "header-cell-class-name": "x-table-header-row-class",
+  };
+  return deepMerge(props.options.attr || {}, defalutAttr);
+};
 // 所有表格列配置项
 props.options.columns = reactive(
   props.options.columns.map((col) => {
@@ -225,8 +241,7 @@ props.options.columns = reactive(
     return col;
   })
 );
-//选中显示的列
-const selectColumns: Array<columnsType> = ref([]);
+
 /**
  * 设置是否显示列筛选器
  */
@@ -241,19 +256,40 @@ const showColFilter = function (): boolean {
   return true;
 };
 
-// 获取表格数据，当使用分页时候，data 表示分页数据和数据，data.data 表示表格数据，当使用分页时，data 表示表格数据
-const data = paginationConfig.show ? props.options.data.data : props.options.data;
-const loading = ref(false);
-
 /**
- * 获取表格头配置属性
+ * 设置默认操作列
  */
-const getTableHeaderAttr = function (): object {
-  const defalutAttr = {
-    "header-cell-class-name": "x-table-header-row-class",
-  };
-  return deepMerge(props.options.attr || {}, defalutAttr);
+const setShowDefaultOperateCol = function (): void {
+  if (
+    props.options.hasOwnProperty("operations") &&
+    Object.prototype.toString.call(props.options.operations) === "[object Array]"
+  ) {
+    props.options.columns.push({
+      attr: {
+        prop: "",
+        label: "操作",
+        width: "80",
+        fixed: "right",
+      },
+      // todo: 把默认插槽的行数据和外部传入的 common 对象传入 OperateCol 组件
+      defaultSlot: {
+        comp: OperateCol, // 使用 basicCponent渲染自定义组件
+        attr: {
+          // 自定义组件的 options 属性通过 attr 传入
+          options: {
+            operations: props.options.operations,
+          },
+        },
+        event: {
+          command: (row: any, data: any) => {
+            emit("operate", data);
+          },
+        },
+      },
+    });
+  }
 };
+setShowDefaultOperateCol();
 
 /**
  * 设置表格列的 key 值
@@ -269,6 +305,7 @@ const setKey = (index: number, label: string | undefined) => {
     return index + label;
   }
 };
+
 /**
  * 处理defaultSlot的事件对象
  * @param row { Object } 当前行数据对象
@@ -293,7 +330,7 @@ const eventHandle = function (row: any, config: any) {
  * @return Object 除去事件对象的当前列配置对象
  * @author
  */
-const defaultSlotHandle = function (config: CompType) {
+const defaultSlotHandle = function (config: CompType, slotScope: any) {
   const { comp, data, key, attr, content, children, ref } = config;
   return {
     comp,
@@ -303,6 +340,7 @@ const defaultSlotHandle = function (config: CompType) {
     content,
     children,
     ref,
+    slotScope,
   };
 };
 
@@ -357,7 +395,11 @@ watch(
 .table-container {
   background-color: white;
   padding: 20px 5px;
+
   :deep(.x-table-header-row-class) {
+    background-color: rgb(242, 242, 242);
+  }
+  :deep(th.el-table-fixed-column--right) {
     background-color: rgb(242, 242, 242);
   }
 }
