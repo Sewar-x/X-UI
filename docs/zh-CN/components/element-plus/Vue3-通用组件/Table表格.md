@@ -349,39 +349,43 @@ const tableData = [
 
 ---
 
+
+
 ### 表格操作列
 
-> 通过配置 `options.operations ` 给表格添加默认操作，操作列默认整合在更多操作按钮组中，并固定在表格右侧，默认使用下拉操作
->
-> `operations` 字段参数：
->
-> ```js
-> [ // 默认传入操作数组
->     {
->         text: "查看",  // 操作名称
->         icon: null, // 操作按钮图标
->         disabled: false, // 是否禁用按钮
->         divided: false, //是否显示分隔符
->         notGroup：false, // 是否单独显示，不整合到按钮组中
->         //... 其余属性可以参数 element plus buttton 组件属性
->         command: { // 操作列自定义参数, 通过事件回调返回
->           name: "查看name参数", // 自定义参数
->         },
-> 	}
-> ]
-> ```
->
-> 点击操作列按钮时，表格使用 `operate` 事件监听点击的按钮，并在回调中接收操作类型、行参数、操作列自定义参数等。`operate` 事件回调参数
->
-> ```js
-> {
->     operation: "查看", // 操作类型
->     params:  value.command,  // 操作列自定义参数 command, 通过事件回调参数params返回
->     data: props.slotScope.row, // 操作的表格行数据
->     colum: props.slotScope.column, // 操作的表格列
->     row: props.slotScope.$index, // 操作的表格行
-> }
-> ```
+通过配置 `options.operations ` 给表格添加默认操作，操作列默认整合在更多操作按钮组中，并固定在表格右侧，默认使用下拉操作
+
+`operations` 字段参数：
+
+```javascript
+[ // 默认传入操作数组
+    {
+        text: "查看",  // 操作名称
+        icon: null, // 操作按钮图标
+        disabled: false, // 是否禁用按钮
+        divided: false, //是否显示分隔符
+        notGroup：false, // 是否单独显示，不整合到按钮组中
+        //... 其余属性可以参数 element plus buttton 组件属性
+        command: { // 操作列自定义参数, 通过事件回调返回
+          name: "查看name参数", // 自定义参数
+        },
+	}
+]
+```
+
+点击操作列按钮时，表格使用 `operate` 事件监听点击的按钮，并在回调中接收操作类型、行参数、操作列自定义参数等。`operate` 事件回调参数：
+
+```javascript
+{
+    operation: "查看", // 操作类型
+    params:  value.command,  // 操作列自定义参数 command, 通过事件回调参数params返回
+    data: props.slotScope.row, // 操作的表格行数据
+    colum: props.slotScope.column, // 操作的表格列
+    row: props.slotScope.$index, // 操作的表格行
+}
+```
+
+
 
 <xw-demo
     demo-height="350px"
@@ -390,7 +394,7 @@ const tableData = [
 
 
 
-> 如果不希望把按钮整合到按钮组中，则需要配置 `notGroup` 为 true, 表示不把操作整合到按钮组中
+如果不希望把按钮整合到按钮组中，则需要配置 `notGroup` 为 true, 表示不把操作整合到按钮组中
 
 <xw-demo
     demo-height="350px"
