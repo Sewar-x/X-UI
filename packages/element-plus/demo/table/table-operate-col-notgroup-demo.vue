@@ -116,6 +116,15 @@ const options = {
       },
     },
     {
+      text: "审核",
+      disabled: false,
+      type: "warning",
+      notGroup: true,
+      command: {
+        id: "审核id参数",
+      },
+    },
+    {
       text: "删除",
       icon: null,
       command: {
@@ -134,6 +143,10 @@ const addHandler = (params: any) => {
   alert(`🚀 您点击新增操作,参数是:${JSON.stringify(params)}`);
 };
 
+// 审核处理方法
+const approvalHandler = (params: any) => {
+  alert(`🚀 您点击审核操作,参数是:${JSON.stringify(params)}`);
+};
 // 删除处理方法
 const delHandler = (params: any) => {
   alert(`🚀 您点击删除操作,参数是:${JSON.stringify(params)}`);
@@ -145,6 +158,7 @@ const operateHandler = (params: any) => {
   const handlerMap = {
     查看: viewHandler,
     新增: addHandler,
+    审核: approvalHandler,
     删除: delHandler,
   };
   const handler = handlerMap[params.operation as string];

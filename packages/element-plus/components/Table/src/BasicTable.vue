@@ -268,7 +268,7 @@ const setShowDefaultOperateCol = function (): void {
       attr: {
         prop: "",
         label: "操作",
-        width: "80",
+        minWidth: "80",
         fixed: "right",
       },
       // todo: 把默认插槽的行数据和外部传入的 common 对象传入 OperateCol 组件

@@ -33,6 +33,11 @@ export default [
     path: '/table-operate-col-demo',
     component: () => import('../../table/table-operate-col-demo.vue'),
     name: 'tableOperateColDemo'
+  },
+  {
+    path: '/table-operate-col-notgroup-demo',
+    component: () => import('../../table/table-operate-col-notgroup-demo.vue'),
+    name: 'tableoperatecolnotroupdemo'
   }
  
 ]
