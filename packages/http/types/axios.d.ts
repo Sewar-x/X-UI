@@ -78,9 +78,20 @@ export interface ErrorLogInfo {
 }
 
 export interface transformOptType {
-  useMessage: Fcuntion,
+  Modal: Fcuntion,
+  Message: Fcuntion,
   getToken: Function,
   setToken: Function,
   logout: Function,
   addAjaxErrorInfo: Function,
+  statusMap?: Record<number, any>
+}
+
+export interface checkStatusOptType {
+  status: number,
+  msg: string,
+  errorMessageMode: ErrorMessageMode,
+  statusMap: Record<number, any>,
+  Modal: Fcuntion,
+  Message: Fcuntion
 }

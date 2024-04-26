@@ -1,10 +1,9 @@
-import type { ErrorMessageMode } from '../types/axios';
-import { useMessage } from '../plugin/useMessage';
+import type { checkStatusOptType } from '../types/axios';
 import { apiEnum } from '../enums/messageEnum';
-import { setToken, logout } from '../plugin/user';
-import { isEmpty } from '../utils/is';
-const { createMessage, createErrorModal } = useMessage();
-const error = createMessage.error!;
+import { logout } from '../plugin/user';
+import { setToken } from '../plugin/auth';
+import { deepMerge } from '../utils/index.ts';
+
 
 /**
  * 
@@ -13,12 +12,8 @@ const error = createMessage.error!;
  * @param errorMessageMode 错误模态提示
  * @param statusMap 响应状态消息和回调 map
  */
-export function checkStatus(
-  status: number,
-  msg: string,
-  errorMessageMode: ErrorMessageMode = 'message',
-  statusMap: Record<number, any> = {},
-): void {
+export function checkStatus(opt: checkStatusOptType): void {
+  const { status, msg, errorMessageMode = 'message', statusMap = {}, Message, Modal } = opt;
   const statusDefaultMap = {
     400: {
       msg: msg,
@@ -62,15 +57,17 @@ export function checkStatus(
     }
   }
 
+  const statusMaps = deepMerge(statusDefaultMap, statusMap || {})
 
-  const err = isEmpty(statusMap) ? statusDefaultMap[status] : statusMap[status]
+
+  const err = statusMaps[status]
   if (err) {
     if (errorMessageMode === 'modal') {
-      createErrorModal({
+      Modal.error({
         title: apiEnum.errorTip, content: err.msg
       });
     } else if (errorMessageMode === 'message') {
-      error({ content: err.msg, key: `global_error_message_status_${status}` });
+      Message.error({ content: err.msg, key: `global_error_message_status_${status}` });
     }
   }
 }

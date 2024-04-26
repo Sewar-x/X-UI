@@ -1,5 +1,5 @@
 {
-  "name": "xw-http",
+  "name": "xhttp",
   "version": "1.0.0",
   "description": "基于 axios 二次封装的 http ",
   "main": "index.ts",
@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^1.6.8",
     "dayjs": "^1.11.10",
+    "element-plus": "^2.6.2",
     "qs": "^6.12.1"
   }
 }

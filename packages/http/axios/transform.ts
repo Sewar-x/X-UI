@@ -19,8 +19,7 @@ import axios from 'axios';
  */
 
 export function createTransform(transformOpt: transformOptType,): AxiosTransform {
-  const { useMessage, getToken, setToken, logout, addAjaxErrorInfo } = transformOpt
-  const { createMessage, createErrorModal, createSuccessModal } = useMessage();
+  const { Modal, Message, getToken, setToken, logout, addAjaxErrorInfo, statusMap = {} } = transformOpt
   return {
     /**
      * @description: 处理响应数据。如果数据不是预期格式，可直接抛出错误
@@ -56,9 +55,9 @@ export function createTransform(transformOpt: transformOptType,): AxiosTransform
         }
 
         if (options.successMessageMode === 'modal') {
-          createSuccessModal({ title: apiEnum.successTip, content: successMsg });
+          Modal.success({ title: apiEnum.successTip, content: successMsg });
         } else if (options.successMessageMode === 'message') {
-          createMessage.success(successMsg);
+          Message.success(successMsg);
         }
         return result;
       }
@@ -82,9 +81,9 @@ export function createTransform(transformOpt: transformOptType,): AxiosTransform
       // errorMessageMode='modal'的时候会显示modal错误弹窗，而不是消息提示，用于一些比较重要的错误
       // errorMessageMode='none' 一般是调用时明确表示不希望自动弹出错误提示
       if (options.errorMessageMode === 'modal') {
-        createErrorModal({ title: apiEnum.errorTip, content: timeoutMsg });
+        Modal.error({ title: apiEnum.errorTip, content: timeoutMsg });
       } else if (options.errorMessageMode === 'message') {
-        createMessage.error(timeoutMsg);
+        Message.error(timeoutMsg);
       }
 
       throw new Error(timeoutMsg || apiEnum.apiRequestFailed);
@@ -192,9 +191,9 @@ export function createTransform(transformOpt: transformOptType,): AxiosTransform
 
         if (errMessage) {
           if (errorMessageMode === 'modal') {
-            createErrorModal({ title: apiEnum.errorTip, content: errMessage });
+            Modal.error({ title: apiEnum.errorTip, content: errMessage });
           } else if (errorMessageMode === 'message') {
-            createMessage.error(errMessage);
+            Message.error(errMessage);
           }
           return Promise.reject(error);
         }
@@ -202,7 +201,14 @@ export function createTransform(transformOpt: transformOptType,): AxiosTransform
         throw new Error(error as unknown as string);
       }
 
-      checkStatus(error?.response?.status, msg, errorMessageMode);
+      checkStatus({
+        status: error?.response?.status,
+        msg,
+        errorMessageMode,
+        statusMap,
+        Modal,
+        Message
+      });
 
       // 添加自动重试机制 保险起见 只针对GET请求
       const retryRequest = new AxiosRetry();

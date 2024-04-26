@@ -1,17 +1,19 @@
-import { useMessage } from '../plugin/useMessage.ts';
-import { setToken, logout } from '../plugin/user.ts';
+import { Message, Modal } from '../plugin/useMessage.ts';
+import { logout } from '../plugin/user.ts';
 import { addAjaxErrorInfo } from '../plugin/errorLog.ts';
-import { getToken } from '../plugin/auth.ts';
+import { setToken, getToken } from '../plugin/auth.ts';
 import { createAxios } from './createAxios';
 import { createTransform } from './transform';
 
 
 const transform = createTransform({
-  useMessage,
+  Message,
+  Modal,
+  getToken,
   setToken,
   logout,
   addAjaxErrorInfo,
-  getToken
+  statusMap: {}
 });
 
 

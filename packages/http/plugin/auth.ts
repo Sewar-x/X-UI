@@ -3,8 +3,12 @@
  *  
  */
 
+export function setToken(token: string) {
+  console.log('设置用户 token', token)
+}
+
 export function getToken() {
-   console.log('getToken...')
+  console.log('getToken...')
 }
 
 export function getAuthCache<T>(key: string) {

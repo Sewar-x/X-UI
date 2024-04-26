@@ -2,51 +2,30 @@
  * 消息提示框，待完善...
  *  
  */
+import { ElMessageBox, ElMessage } from 'element-plus'
 
-function Message() {
-  return {
-    success: (msg: string) => alert(`${msg} 成功`),
-    error: (msg: string) => alert(`${msg} 失败`),
-  }
 
-}
-
-function notification(msg: string) {
-  return alert(msg)
-}
-
-function createConfirm(msg: string) {
-  return alert(msg)
-}
-
-function createSuccessModal({ title, content }: { title: string, content: string }) {
-  return alert(title)
-}
-
-function createErrorModal({ title, content }: { title: string, content: string }) {
-  return alert(title)
-}
-
-function createInfoModal({ title, content }: { title: string, content: string }) {
-  return alert(title)
+export const Message = {
+  success: (options: Object) => ElMessageBox({
+    type: 'success',
+    ...options,
+  }),
+  error: (options: Object) => ElMessageBox({
+    type: 'error',
+    ...options,
+  }),
 }
 
 
-function createWarningModal({ title, content }: { title: string, content: string }) {
-  return alert(title)
+export const Modal = {
+  success: (options: Object) => ElMessage({
+    type: 'success',
+    ...options,
+  }),
+  error: (options: Object) => ElMessage({
+    type: 'error',
+    ...options,
+  }),
 }
 
-/**
- * @description: message
- */
-export function useMessage() {
-  return {
-    createMessage: Message(),
-    notification: notification,
-    createConfirm: createConfirm,
-    createSuccessModal,
-    createErrorModal,
-    createInfoModal,
-    createWarningModal,
-  };
-}
+
