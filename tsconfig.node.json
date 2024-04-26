@@ -23,6 +23,8 @@
     "packages/hooks/package.json",
     "packages/shared/**/*.ts",
     "packages/shared/package.json",
+    "packages/http/**/*.ts",
+    "packages/http/package.json",
     "types/vite-env.d.ts"
   ],
   "exclude": [
