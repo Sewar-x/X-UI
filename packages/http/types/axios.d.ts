@@ -85,6 +85,7 @@ export interface transformOptType {
   storageType?: 'localStorage' | 'sessionStorage' | 'cookie',
   getToken?: Function,
   setToken?: Function,
+  clearToken?: Function,
   logout?: Function,
   addAjaxErrorInfo?: Function,
   statusMap?: Record<number, any>

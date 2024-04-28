@@ -25,6 +25,10 @@
       "require": "./packages/ant-design/dist/xw-ant-design.cjs.js",
       "import": "./packages/ant-design/dist/xw-ant-design.es.js"
     },
+    "./xhttp": {
+      "require": "./packages/http/dist/xw-http.cjs.js",
+      "import": "./packages/http/dist/xw-http.es.js"
+    },
     "./element-plus/*": {
       "require": "./packages/element-plus/dist/*",
       "import": "./packages/element-plus/dist/*"
@@ -36,6 +40,10 @@
     "./ant-design/*": {
       "require": "./packages/ant-design/*",
       "import": "./packages/ant-design/*"
+    },
+    "./xhttp/*": {
+      "require": "./packages/http/*",
+      "import": "./packages/http/*"
     },
     "./*": "./packages/*"
   },
