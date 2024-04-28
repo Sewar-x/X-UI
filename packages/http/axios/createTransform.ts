@@ -3,7 +3,7 @@ import { Message } from '../plugin/Message.ts';
 import { logout } from '../plugin/user.ts';
 import { addAjaxErrorInfo } from '../plugin/errorLog.ts';
 import { transform } from './transform';
-import { TokenEnum } from "../enums/httpEnum"
+import { TokenEnum, LocalStorageEnum } from "../enums/httpEnum"
 import { deepMerge } from '../utils/index.ts';
 import { setToken, getToken, clearToken } from '../plugin/auth.ts';
 import type { transformOptType } from '../types/axios';
@@ -24,19 +24,19 @@ const transformDefOptions = {
  */
 export function createTransform(transformOpt: transformOptType) {
   // 获取传入参数
-  const { tokenKey, storageType, tokenExpires, logout } = transformOpt
+  const { token = '', tokenKey, storageType, tokenExpires, logout } = transformOpt
   const opt: transformOptType = {}
   // 传入参数中存在 tokenKey 参数，则默认使用传入参数的 tokenKey 重置所有 token 相关方法参数
   if (tokenKey) {
     opt.getToken = () => getToken(tokenKey, {
-      type: storageType
+      type: storageType || LocalStorageEnum.localStorage
     })
-    opt.setToken = () => setToken(tokenKey, {
-      type: storageType,
-      expires: tokenExpires
+    opt.setToken = () => setToken(tokenKey, token, {
+      type: storageType || LocalStorageEnum.localStorage,
+      expires: tokenExpires || TokenEnum.TOKEN_EXPIRES
     })
     opt.clearToken = () => clearToken(tokenKey, {
-      type: storageType
+      type: storageType || LocalStorageEnum.localStorage,
     })
   }
 

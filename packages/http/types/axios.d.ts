@@ -80,6 +80,7 @@ export interface ErrorLogInfo {
 export interface transformOptType {
   Modal?: Fcuntion,
   Message?: Fcuntion,
+  token?: string,
   tokenKey?: string,
   tokenExpires?: number,
   storageType?: 'localStorage' | 'sessionStorage' | 'cookie',
