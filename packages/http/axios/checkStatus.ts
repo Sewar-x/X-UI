@@ -1,7 +1,5 @@
 import type { checkStatusOptType } from '../types/axios';
 import { apiEnum } from '../enums/messageEnum';
-import { logout } from '../plugin/user';
-import { setToken } from '../plugin/auth';
 import { deepMerge } from '../utils/index.ts';
 
 
@@ -13,7 +11,7 @@ import { deepMerge } from '../utils/index.ts';
  * @param statusMap 响应状态消息和回调 map
  */
 export function checkStatus(opt: checkStatusOptType): void {
-  const { status, msg, errorMessageMode = 'message', statusMap = {}, Message, Modal } = opt;
+  const { status, msg, errorMessageMode = 'message', statusMap = {}, Message, Modal, clearToken, logout } = opt;
   const statusDefaultMap = {
     400: {
       msg: msg,
@@ -21,8 +19,8 @@ export function checkStatus(opt: checkStatusOptType): void {
     401: {
       msg: msg || apiEnum.errMsg401,
       callback: () => {
-        setToken('');
-        logout();
+        clearToken && clearToken();
+        logout && logout();
       }
     },
     403: {

@@ -1,4 +1,5 @@
 
+import axios from 'axios';
 import type { AxiosResponse } from 'axios';
 import type { RequestOptions, Result, Recordable, transformOptType } from '../types/axios';
 import type { AxiosTransform } from './axiosTransform.ts';
@@ -9,7 +10,7 @@ import { setObjToUrlParams } from '../utils/index.ts';
 import { apiEnum } from '../enums/messageEnum.ts';
 import { joinTimestamp, formatRequestDate } from './helper.ts';
 import { AxiosRetry } from './axiosRetry.ts';
-import axios from 'axios';
+
 
 
 
@@ -18,8 +19,8 @@ import axios from 'axios';
  * @description: 数据处理，方便区分多种处理方式
  */
 
-export function createTransform(transformOpt: transformOptType,): AxiosTransform {
-  const { Modal, Message, getToken, setToken, logout, addAjaxErrorInfo, statusMap = {} } = transformOpt
+export function transform(transformOpt: transformOptType): AxiosTransform {
+  const { Modal, Message, getToken, clearToken, logout, addAjaxErrorInfo, statusMap = {} } = transformOpt
   return {
     /**
      * @description: 处理响应数据。如果数据不是预期格式，可直接抛出错误
@@ -69,8 +70,8 @@ export function createTransform(transformOpt: transformOptType,): AxiosTransform
         // 请求超时，提出登录
         case ResultEnum.TIMEOUT:
           timeoutMsg = apiEnum.timeoutMessage;
-          setToken('');
-          logout();
+          clearToken && clearToken();
+          logout && logout();
           break;
         default:
           if (message) {
@@ -207,7 +208,9 @@ export function createTransform(transformOpt: transformOptType,): AxiosTransform
         errorMessageMode,
         statusMap,
         Modal,
-        Message
+        Message,
+        clearToken,
+        logout
       });
 
       // 添加自动重试机制 保险起见 只针对GET请求

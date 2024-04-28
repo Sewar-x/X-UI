@@ -29,3 +29,25 @@ export enum ContentTypeEnum {
   // form-data  upload
   FORM_DATA = 'multipart/form-data;charset=UTF-8',
 }
+
+/**
+ * @description:  token 
+ */
+export enum TokenEnum {
+  // token key
+  TOKEN_KEY = 'Bearer',
+  // token 默认过期时间
+  TOKEN_EXPIRES = 7,
+}
+
+/**
+ * @description:  本地存儲枚舉 
+ */
+export enum LocalStorageEnum {
+  localStorage = 'localStorage',
+  sessionStorage = 'sessionStorage',
+  cookie = 'cookie'
+}
+
+
+

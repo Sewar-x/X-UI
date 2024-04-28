@@ -1,24 +1,51 @@
 /**
- * token 缓存，待完善...
+ * token 缓存
  *  
  */
+import { TokenEnum } from "../enums/httpEnum"
+import { tokenOptType } from "../types/axios.d"
+import { LocalStorageWrapper } from "./storage"
 
-export function setToken(token: string) {
-  console.log('设置用户 token', token)
+/**
+ * 设置 token
+ * @param token 
+ * @param options 
+ */
+export function setToken(key: string, token: string, options: tokenOptType = {
+  type: 'localStorage',
+  expires: TokenEnum.TOKEN_EXPIRES as number
+}) {
+  const { type, expires } = options
+  const storageWrapper = new LocalStorageWrapper(type);
+  const keyName = key || TokenEnum.TOKEN_KEY as string
+  storageWrapper.setItem(keyName, token, expires); // 过期时间为 7 天  setToken()
 }
 
-export function getToken() {
-  console.log('getToken...')
+
+/**
+ * 获取 token
+ * @param key 
+ * @param options 
+ */
+export function getToken(key: string, options: tokenOptType = {
+  type: 'localStorage',
+}) {
+  const { type } = options
+  const storageWrapper = new LocalStorageWrapper(type);
+  const keyName = key || TokenEnum.TOKEN_KEY as string
+  storageWrapper.getItem(keyName);
 }
 
-export function getAuthCache<T>(key: string) {
-  console.log('getAuthCache...')
-}
-
-export function setAuthCache(key: string, value) {
-  console.log('setAuthCache...')
-}
-
-export function clearAuthCache(immediate = true) {
-  console.log('clearAuthCache...')
+/**
+ * 清除token
+ * @param key 
+ * @param options 
+ */
+export function clearToken(key: string, options: tokenOptType = {
+  type: 'localStorage',
+}) {
+  const { type } = options
+  const storageWrapper = new LocalStorageWrapper(type);
+  const keyName = key || TokenEnum.TOKEN_KEY as string
+  storageWrapper.removeItem(keyName);
 }

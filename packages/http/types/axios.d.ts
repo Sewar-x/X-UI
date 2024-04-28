@@ -78,12 +78,15 @@ export interface ErrorLogInfo {
 }
 
 export interface transformOptType {
-  Modal: Fcuntion,
-  Message: Fcuntion,
-  getToken: Function,
-  setToken: Function,
-  logout: Function,
-  addAjaxErrorInfo: Function,
+  Modal?: Fcuntion,
+  Message?: Fcuntion,
+  tokenKey?: string,
+  tokenExpires?: number,
+  storageType?: 'localStorage' | 'sessionStorage' | 'cookie',
+  getToken?: Function,
+  setToken?: Function,
+  logout?: Function,
+  addAjaxErrorInfo?: Function,
   statusMap?: Record<number, any>
 }
 
@@ -94,4 +97,10 @@ export interface checkStatusOptType {
   statusMap: Record<number, any>,
   Modal: Fcuntion,
   Message: Fcuntion
+}
+
+
+export interface tokenOptType {
+  type: 'localStorage' | 'sessionStorage' | 'cookie',
+  expires?: number | undefined
 }

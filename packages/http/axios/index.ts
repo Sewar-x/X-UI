@@ -1,20 +1,15 @@
-import { Message, Modal } from '../plugin/useMessage.ts';
-import { logout } from '../plugin/user.ts';
-import { addAjaxErrorInfo } from '../plugin/errorLog.ts';
-import { setToken, getToken } from '../plugin/auth.ts';
 import { createAxios } from './createAxios';
-import { createTransform } from './transform';
+import { createTransform } from './createTransform';
+import type { CreateAxiosOptions } from './axiosTransform';
+import type { transformOptType } from '../types/axios';
 
-
-const transform = createTransform({
-  Message,
-  Modal,
-  getToken,
-  setToken,
-  logout,
-  addAjaxErrorInfo,
-  statusMap: {}
-});
-
-
-export const defHttp = createAxios(transform);
+/**
+ * 创建 xhttp 实例
+ * @param transformOpt 
+ * @param opts 
+ * @returns 
+ */
+export function createXhttp(transformOpt: transformOptType, opts: Partial<CreateAxiosOptions>) {
+  const transform = createTransform(transformOpt);
+  return createAxios(transform, opts);
+}
