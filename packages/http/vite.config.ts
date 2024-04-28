@@ -12,7 +12,7 @@ export default defineConfig({
     // 参考：https://cn.vitejs.dev/config/build-options.html#build-lib
     lib: {
       // 构建的入口文件
-      entry: './index.ts',
+      entry: './axios/index.ts',
 
       // 产物的生成格式，默认为 ['es', 'umd']。我们使用默认值
       formats: ['es', 'cjs', 'umd', 'iife'],

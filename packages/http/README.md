@@ -41,9 +41,76 @@ xhttp 除了支持 axios 的基础功能之外，封装了以下功能：
 
 
 
-## 配置
 
-| 配置                                      | 功能                                                | 类型 | 默认值                                                       |
+
+## 安装
+
+
+
+## 使用
+
+### TypeScript
+
+```	typescript
+import {createXhttp} from 'xw-ui/xhttp'
+
+const defhttp = createXhttp();
+
+interface AccountInfoModel {
+  email: string;
+  name: string;
+  introduction: string;
+  phone: string;
+  address: string;
+}
+
+defHttp.post<AccountInfoModel>(
+    {
+      url: '/acount/post',
+      params,
+    },
+    {
+      errorMessageMode: 'modal',
+    },
+);
+
+defHttp.get<AccountInfoModel>(
+    {
+      url: '/acount/get',
+    },
+    {
+      errorMessageMode: 'none',
+    },
+);
+
+```
+
+
+
+## 参数
+
+`createXhttp(transformOpt: transformOptType, axiosOpt: Partial<CreateAxiosOptions>) ` 方法参数
+
+### transformOpt 参数
+
+| 参数                       | 功能                      | 类型                                           | 默认值         |
+| -------------------------- | ------------------------- | ---------------------------------------------- | -------------- |
+| `Message`（可选）          | 消息提示组件              | `Fcuntion`                                     |                |
+| `Modal`（可选）            | 模态弹窗提示组件          | `Fcuntion`                                     |                |
+| `tokenKey`（可选）         | 登录 token Key 值         | `string`                                       | `Bearer`       |
+| `tokenExpires`（可选）     | 登录 token 过期时间       | `number`                                       | 7 天           |
+| `storageType`（可选）      | token 存储类型            | `localStorage` 或 `sessionStorage` 或 `cookie` | `localStorage` |
+| `getToken`（可选）         | 获取 token 方法           | `Function`                                     |                |
+| `setToken`（可选）         | 设置 token 方法           | `Function`                                     |                |
+| `logout`（可选）           | 退出登录方法              | `Function`                                     |                |
+| `addAjaxErrorInfo`（可选） | 添加 ajax 错误日志方法    | `Function`                                     |                |
+| `statusMap`（可选）        | 状态码和处理方法 map 对象 | ` Record<number, any>`                         |                |
+
+
+
+### axiosOpt 参数
+
+| 参数                                      | 功能                                                | 类型 | 默认值                                                       |
 | ----------------------------------------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | axios 配置                                |                                                     |      |                                                              |
 | `authenticationScheme`                    | HTTP 验证                                           |      | authentication schemes，e.g: Bearer <br />authenticationScheme: 'Bearer', |

@@ -61,11 +61,9 @@ export function checkStatus(opt: checkStatusOptType): void {
   const err = statusMaps[status]
   if (err) {
     if (errorMessageMode === 'modal') {
-      Modal.error({
-        title: apiEnum.errorTip, content: err.msg
-      });
+      Modal.error(err.msg, apiEnum.errorTip);
     } else if (errorMessageMode === 'message') {
-      Message.error({ content: err.msg, key: `global_error_message_status_${status}` });
+      Message.error({ message: err.msg, key: `global_error_message_status_${status}` });
     }
   }
 }

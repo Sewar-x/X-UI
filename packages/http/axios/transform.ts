@@ -56,9 +56,9 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
         }
 
         if (options.successMessageMode === 'modal') {
-          Modal.success({ title: apiEnum.successTip, content: successMsg });
+          Modal.success(successMsg, apiEnum.successTip);
         } else if (options.successMessageMode === 'message') {
-          Message.success(successMsg);
+          Message.success({ message: successMsg });
         }
         return result;
       }
@@ -82,9 +82,9 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
       // errorMessageMode='modal'的时候会显示modal错误弹窗，而不是消息提示，用于一些比较重要的错误
       // errorMessageMode='none' 一般是调用时明确表示不希望自动弹出错误提示
       if (options.errorMessageMode === 'modal') {
-        Modal.error({ title: apiEnum.errorTip, content: timeoutMsg });
+        Modal.error(timeoutMsg, apiEnum.errorTip);
       } else if (options.errorMessageMode === 'message') {
-        Message.error(timeoutMsg);
+        Message.error({ message: timeoutMsg });
       }
 
       throw new Error(timeoutMsg || apiEnum.apiRequestFailed);
@@ -192,9 +192,9 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
 
         if (errMessage) {
           if (errorMessageMode === 'modal') {
-            Modal.error({ title: apiEnum.errorTip, content: errMessage });
+            Modal.error(errMessage, apiEnum.errorTip);
           } else if (errorMessageMode === 'message') {
-            Message.error(errMessage);
+            Message.error({ message: errMessage });
           }
           return Promise.reject(error);
         }

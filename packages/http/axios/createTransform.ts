@@ -1,4 +1,5 @@
-import { Message, Modal } from '../plugin/useMessage.ts';
+import { Modal } from '../plugin/Modal.ts';
+import { Message } from '../plugin/Message.ts';
 import { logout } from '../plugin/user.ts';
 import { addAjaxErrorInfo } from '../plugin/errorLog.ts';
 import { createAxios } from './createAxios';
