@@ -3,6 +3,7 @@ import elementUiSideBar from "../pages/element-ui.json" // elementUI 侧边栏�
 import antDesignSideBar from "../pages/ant-design.json" // antDesign 侧边栏配置
 import HooksSideBar from "../pages/hooks-mixins.json" // hooks 侧边栏配置
 import EchartsSideBar from "../pages/echarts.json" // echart 侧边栏配置
+import LibraryBar from "../pages/library.json" // 插件或工具 侧边栏配置
 export default {
   '/zh-CN/guide/': [
     // 指南侧边栏
@@ -55,5 +56,6 @@ export default {
   '/zh-CN/components/element-ui': elementUiSideBar,// elementUI 侧边栏配置
   '/zh-CN/components/ant-design': antDesignSideBar,// antDesign 侧边栏配置
   '/zh-CN/components/echarts': EchartsSideBar,// echarts 侧边栏配置
-  '/zh-CN/components/hooks-mixins': HooksSideBar// hooks 侧边栏配置
+  '/zh-CN/components/hooks-mixins': HooksSideBar,// hooks 侧边栏配置
+  '/zh-CN/components/library': LibraryBar// 插件或工具 侧边栏配置
 }

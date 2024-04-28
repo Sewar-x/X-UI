@@ -1,0 +1,24 @@
+[
+  {
+    "text": "指南",
+    "collapsible": true,
+    "collapsed": false,
+    "items": [
+      {
+        "text": "插件或工具总览",
+        "link": "/zh-CN/components/library/指南/插件或工具总览"
+      }
+    ]
+  },
+  {
+    "text": "xhttp",
+    "collapsible": true,
+    "collapsed": false,
+    "items": [
+      {
+        "text": "介绍",
+        "link": "/zh-CN/components/library/xhttp/介绍"
+      }
+    ]
+  }
+]
