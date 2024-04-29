@@ -13,3 +13,8 @@ export function createXhttp(transformOpt: transformOptType, opts: Partial<Create
   const transform = createTransform(transformOpt);
   return createAxios(transform, opts);
 }
+
+export {
+  createTransform,
+  createAxios
+}
