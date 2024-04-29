@@ -22,7 +22,7 @@ export class Modal {
     // 添加类型图标
     if (type) {
       const iconEl = document.createElement('i');
-      iconEl.className = `xw-ui-icon xw-ui-icon-${type}`;
+      iconEl.className = `xw-ui-icon el-icon-${type}`;
       titleContainer.appendChild(iconEl);
     }
 
@@ -167,19 +167,19 @@ style.textContent = `
   display: inline-block;
 }
 
-.xw-ui-icon-success {
+.el-icon-success {
   color: #67C23A;
 }
 
-.xw-ui-icon-error {
+.el-icon-error {
   color: #f56c6c;
 }
 
-.xw-ui-icon-info {
+.el-icon-info {
   color: #909399;
 }
 
-.xw-ui-icon-warning {
+.el-icon-warning {
   color: #E6A23C;
 }
 `;
