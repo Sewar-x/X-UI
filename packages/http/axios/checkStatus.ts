@@ -1,6 +1,7 @@
 import type { checkStatusOptType } from '../types/axios';
 import { apiEnum } from '../enums/messageEnum';
 import { deepMerge } from '../utils/index.ts';
+import { isFunction } from '../utils/is';
 
 
 /**
@@ -19,8 +20,12 @@ export function checkStatus(opt: checkStatusOptType): void {
     401: {
       msg: msg || apiEnum.errMsg401,
       callback: () => {
-        clearToken && clearToken();
-        logout && logout();
+        if (clearToken && isFunction(clearToken)) {
+          clearToken();
+        }
+        if (logout && isFunction(logout)) {
+          clearToken();
+        }
       }
     },
     403: {

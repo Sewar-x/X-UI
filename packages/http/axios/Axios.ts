@@ -74,7 +74,7 @@ export class VAxios {
       responseInterceptors,
       responseInterceptorsCatch,
     } = transform;
-
+    // 创建取消请求对象，用于忽略重复请求
     const axiosCanceler = new AxiosCanceler();
 
     // Request interceptor configuration processing

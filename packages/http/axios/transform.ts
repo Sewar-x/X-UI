@@ -5,7 +5,7 @@ import type { RequestOptions, Result, Recordable, transformOptType } from '../ty
 import type { AxiosTransform } from './axiosTransform.ts';
 import { checkStatus } from './checkStatus.ts';
 import { RequestEnum, ResultEnum } from '../enums/httpEnum.ts';
-import { isString, isUnDef, isNull, isEmpty } from '../utils/is.ts';
+import { isString, isUnDef, isNull, isEmpty, isFunction } from '../utils/is.ts';
 import { setObjToUrlParams } from '../utils/index.ts';
 import { apiEnum } from '../enums/messageEnum.ts';
 import { joinTimestamp, formatRequestDate } from './helper.ts';
@@ -70,8 +70,12 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
         // 请求超时，提出登录
         case ResultEnum.TIMEOUT:
           timeoutMsg = apiEnum.timeoutMessage;
-          clearToken && clearToken();
-          logout && logout();
+          if (clearToken && isFunction(clearToken)) {
+            clearToken();
+          }
+          if (logout && isFunction(logout)) {
+            logout();
+          }
           break;
         default:
           if (message) {
@@ -150,7 +154,10 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
      */
     requestInterceptors: (config, options) => {
       // 请求之前处理config
-      const token = getToken();
+      let token = null
+      if (getToken && isFunction(getToken)) {
+        token = getToken();
+      }
       if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
         // jwt token
         (config as Recordable).headers.Authorization = options.authenticationScheme
@@ -171,7 +178,9 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
      * @description: 响应错误处理
      */
     responseInterceptorsCatch: (axiosInstance: AxiosResponse, error: any) => {
-      addAjaxErrorInfo(error);
+      if (addAjaxErrorInfo && isFunction(addAjaxErrorInfo)) {
+        addAjaxErrorInfo(error);
+      }
       const { response, code, message, config } = error || {};
       const errorMessageMode = config?.requestOptions?.errorMessageMode || 'none';
       const msg: string = response?.data?.error?.message ?? '';

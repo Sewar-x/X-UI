@@ -98,7 +98,9 @@ export interface checkStatusOptType {
   errorMessageMode: ErrorMessageMode,
   statusMap: Record<number, any>,
   Modal: Fcuntion,
-  Message: Fcuntion
+  Message: Fcuntion,
+  clearToken: Fcuntion,
+  logout: Fcuntion,
 }
 
 
