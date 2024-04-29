@@ -8,7 +8,7 @@ import { TokenEnum } from "../enums/httpEnum"
 export async function logout(tokenKey?: string) {
   console.log('===退出登录===')
   const keyName = tokenKey || TokenEnum.TOKEN_KEY as string
-  clearToken(keyName)
+  return clearToken(keyName)
 }
 
 

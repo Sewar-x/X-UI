@@ -11,20 +11,20 @@ import { isFunction } from '../utils/is';
  * @param errorMessageMode 错误模态提示
  * @param statusMap 响应状态消息和回调 map
  */
-export function checkStatus(opt: checkStatusOptType): void {
+export function checkStatus(opt: checkStatusOptType): string {
   const { status, msg, errorMessageMode = 'message', statusMap = {}, Message, Modal, clearToken, logout } = opt;
   const statusDefaultMap = {
     400: {
       msg: msg,
     },
     401: {
-      msg: msg || apiEnum.errMsg401,
+      msg: apiEnum.errMsg401,
       callback: () => {
         if (clearToken && isFunction(clearToken)) {
           clearToken();
         }
         if (logout && isFunction(logout)) {
-          clearToken();
+          logout();
         }
       }
     },
@@ -64,11 +64,18 @@ export function checkStatus(opt: checkStatusOptType): void {
 
 
   const err = statusMaps[status]
+
   if (err) {
     if (errorMessageMode === 'modal') {
       Modal.error(err.msg, apiEnum.errorTip);
     } else if (errorMessageMode === 'message') {
       Message.error({ message: err.msg, key: `global_error_message_status_${status}` });
     }
+
+    const callback = err.callback
+    if (callback && isFunction(callback)) {
+      callback()
+    }
   }
+  return err.msg
 }

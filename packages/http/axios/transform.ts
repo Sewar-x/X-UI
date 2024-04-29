@@ -65,31 +65,17 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
 
       // 在此处根据自己项目的实际情况对不同的code执行不同的操作
       // 如果不希望中断当前请求，请return数据，否则直接抛出异常即可
-      let timeoutMsg = '';
-      switch (code) {
-        // 请求超时，提出登录
-        case ResultEnum.TIMEOUT:
-          timeoutMsg = apiEnum.timeoutMessage;
-          if (clearToken && isFunction(clearToken)) {
-            clearToken();
-          }
-          if (logout && isFunction(logout)) {
-            logout();
-          }
-          break;
-        default:
-          if (message) {
-            timeoutMsg = message;
-          }
-      }
+      let timeoutMsg = checkStatus({
+        status: code,
+        msg: apiEnum.errorTip,
+        errorMessageMode: options.errorMessageMode,
+        statusMap,
+        Modal,
+        Message,
+        clearToken,
+        logout
+      });
 
-      // errorMessageMode='modal'的时候会显示modal错误弹窗，而不是消息提示，用于一些比较重要的错误
-      // errorMessageMode='none' 一般是调用时明确表示不希望自动弹出错误提示
-      if (options.errorMessageMode === 'modal') {
-        Modal.error(timeoutMsg, apiEnum.errorTip);
-      } else if (options.errorMessageMode === 'message') {
-        Message.error({ message: timeoutMsg });
-      }
 
       throw new Error(timeoutMsg || apiEnum.apiRequestFailed);
     },

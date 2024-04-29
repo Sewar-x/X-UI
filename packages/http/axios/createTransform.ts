@@ -42,7 +42,10 @@ export function createTransform(transformOpt: transformOptType) {
 
   // 如果传入参数不存在 logout , 则使用默认 logout 方法和传入的 tokenKey 参数
   if (!logout) {
-    opt.logout = () => transformDefOptions.logout(tokenKey)
+    opt.logout = () => {
+      const keyName = tokenKey || TokenEnum.TOKEN_KEY as string
+      return clearToken(keyName)
+    }
   }
   // 返回 transform 对象, 合并参数和默认参数
   return transform(deepMerge(
