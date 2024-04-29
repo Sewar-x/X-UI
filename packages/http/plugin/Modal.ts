@@ -16,10 +16,22 @@ export class Modal {
     Modal.style.transform = 'translate(-50%, -50%)';
     Modal.style.zIndex = 1000;
 
+    // 创建标题容器
+    const titleContainer = document.createElement('div');
+    
+    // 添加类型图标
+    if (type) {
+      const iconEl = document.createElement('i');
+      iconEl.className = `xw-ui-icon xw-ui-icon-${type}`;
+      titleContainer.appendChild(iconEl);
+    }
+
     // 创建标题
     const titleEl = document.createElement('h2');
     titleEl.textContent = title;
-    Modal.appendChild(titleEl);
+    titleContainer.appendChild(titleEl);
+    Modal.appendChild(titleContainer);
+
 
     // 创建消息内容
     const messageEl = document.createElement('p');
@@ -40,18 +52,12 @@ export class Modal {
 
     // 确认按钮
     const confirmButton = document.createElement('button');
-    confirmButton.textContent = 'Confirm';
+    confirmButton.textContent = '确认';
     confirmButton.onclick = () => this.close('confirm');
     buttonsEl.appendChild(confirmButton);
 
     Modal.appendChild(buttonsEl);
 
-    // 添加类型图标
-    if (type) {
-      const iconEl = document.createElement('i');
-      iconEl.className = `el-icon-${type}`;
-      Modal.appendChild(iconEl);
-    }
 
     // 将模态框添加到页面中
     document.body.appendChild(Modal);
@@ -124,7 +130,8 @@ style.textContent = `
 }
 
 .xw-ui-http-modal-box h2 {
-  margin: 0;
+  display: inline-block;
+  margin: 0 0 0 5px;
   font-size: 16px;
   font-weight: 700;
   color: #303133;
@@ -142,7 +149,7 @@ style.textContent = `
 }
 
 .xw-ui-http-modal-box__buttons button {
-  padding: 10px 15px;
+  padding: 5px 12px;
   margin-left: 10px;
   border: none;
   border-radius: 4px;
@@ -156,20 +163,24 @@ style.textContent = `
   opacity: 0.9;
 }
 
-.el-icon-success {
-  color: #67c23a;
+.xw-ui-icon {
+  display: inline-block;
 }
 
-.el-icon-error {
+.xw-ui-icon-success {
+  color: #67C23A;
+}
+
+.xw-ui-icon-error {
   color: #f56c6c;
 }
 
-.el-icon-info {
+.xw-ui-icon-info {
   color: #909399;
 }
 
-.el-icon-warning {
-  color: #e6a23c;
+.xw-ui-icon-warning {
+  color: #E6A23C;
 }
 `;
 

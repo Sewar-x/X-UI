@@ -11,6 +11,11 @@ export class Message {
     // 创建消息容器
     const messageEl = document.createElement('div');
     messageEl.classList.add('xw-ui-http-message', `xw-ui-http-message__${type || 'info'}`, 'xw-ui-http-message--info');
+    messageEl.style.position = 'fixed';
+    messageEl.style.top = '5%';
+    messageEl.style.left = '50%';
+    messageEl.style.transform = 'translate(-50%, -50%)';
+    messageEl.style.zIndex = 1000;
 
     if (showClose) {
       const closeBtn = document.createElement('button');
@@ -85,6 +90,43 @@ export class Message {
     });
   }
 }
+
+// 添加一些简单的样式
+const style = document.createElement('style');
+style.textContent = `
+.xw-ui-http-message {
+  border: 1px solid #dcdfe6;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  width: 40vw;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+.xw-ui-http-message__close-btn {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+.xw-ui-http-message__success {
+  background-color: #67C23A;
+}
+
+.xw-ui-http-message__error {
+  background-color: #F56C6C;
+}
+
+.xw-ui-http-message__info {
+  background-color: #909399;
+}
+
+.xw-ui-http-message__warning {
+  background-color: #E6A23C;
+}
+`;
+
+document.head.appendChild(style);
 
 /**
  * 
