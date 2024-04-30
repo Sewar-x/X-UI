@@ -12,7 +12,7 @@ const transformDefOptions = {
   Message,
   Modal,
   tokenExpires: TokenEnum.TOKEN_EXPIRES as number,
-  storageType: 'localStorage',
+  storageType: 'cookie',
   logout,
   addAjaxErrorInfo
 }
@@ -29,14 +29,14 @@ export function createTransform(transformOpt: transformOptType) {
   // 传入参数中存在 tokenKey 参数，则默认使用传入参数的 tokenKey 重置所有 token 相关方法参数
   if (tokenKey) {
     opt.getToken = () => getToken(tokenKey, {
-      type: storageType || LocalStorageEnum.localStorage
+      type: storageType || LocalStorageEnum.cookie
     })
     opt.setToken = () => setToken(tokenKey, token, {
-      type: storageType || LocalStorageEnum.localStorage,
+      type: storageType || LocalStorageEnum.cookie,
       expires: tokenExpires || TokenEnum.TOKEN_EXPIRES
     })
     opt.clearToken = () => clearToken(tokenKey, {
-      type: storageType || LocalStorageEnum.localStorage,
+      type: storageType || LocalStorageEnum.cookie,
     })
   }
 
@@ -44,12 +44,14 @@ export function createTransform(transformOpt: transformOptType) {
   if (!logout) {
     opt.logout = () => {
       const keyName = tokenKey || TokenEnum.TOKEN_KEY as string
-      return clearToken(keyName)
+      return clearToken(keyName, {
+        type: storageType || LocalStorageEnum.cookie,
+      })
     }
   }
   // 返回 transform 对象, 合并参数和默认参数
   return transform(deepMerge(
-    transformOpt,
-    Object.assign(transformDefOptions, opt))
-  )
+    Object.assign(transformDefOptions, opt),
+    transformOpt
+  ))
 }

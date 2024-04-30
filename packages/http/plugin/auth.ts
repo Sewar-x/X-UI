@@ -12,7 +12,7 @@ import { LocalStorageWrapper } from "./storage"
  * @param options 
  */
 export function setToken(key: string, token: string, options: tokenOptType = {
-  type: 'localStorage',
+  type: "cookie",
   expires: TokenEnum.TOKEN_EXPIRES as number
 }) {
   const { type, expires } = options
@@ -28,12 +28,12 @@ export function setToken(key: string, token: string, options: tokenOptType = {
  * @param options 
  */
 export function getToken(key: string, options: tokenOptType = {
-  type: 'localStorage',
-}) {
+  type: "cookie",
+}): string | null {
   const { type } = options
   const storageWrapper = new LocalStorageWrapper(type);
   const keyName = key || TokenEnum.TOKEN_KEY as string
-  storageWrapper.getItem(keyName);
+  return storageWrapper.getItem(keyName);
 }
 
 /**
@@ -42,7 +42,7 @@ export function getToken(key: string, options: tokenOptType = {
  * @param options 
  */
 export function clearToken(key: string, options: tokenOptType = {
-  type: 'localStorage',
+  type: "cookie",
 }) {
   const { type } = options
   const storageWrapper = new LocalStorageWrapper(type);
