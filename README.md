@@ -1,14 +1,40 @@
 # XW-UI
 
-XW-UI 是基于 [Element](https://element.eleme.cn/#/zh-CN)、[Element Plus ](https://element-plus.org/zh-CN/component/overview.html)、[Ant Design](https://ant-design.antgroup.com/index-cn) 组件库二次封装，使用 JSON 配置快速开发的中后台组件库
+> 官方文档：[XW-UI | Vue2 & Vue3 & React JSON configer Component Library (sewar-x.github.io)](https://sewar-x.github.io/X-UI/)
+
+
+
+* 通用组件库：基于 [Element](https://element.eleme.cn/#/zh-CN)、[Element Plus ](https://element-plus.org/zh-CN/component/overview.html)、[Ant Design](https://ant-design.antgroup.com/index-cn) 组件库二次封装，使用 JSON 配置快速开发的中后台组件库。
+* Echart 组件
+* 插件：
+  * xhttp 插件： 基于 axios 二次封装 http 请求插件，在 axios 基础上扩展功能；
+  * vivien-permission：一个基于后台管理系统中的路由菜单权限控制系统，通过 vue-router 全局控制后台管理系统的菜单权限。
 
 
 
 ## ✨ 特性
 
+- ✂ 支持按需引入组件/插件。
 - 📦 开箱即用的 Vue2、Vue3、React 的组件库。
 - 🛡 使用 TypeScript 开发，提供完整的类型定义文件。
-- ⚙️ 使用 JSON 配置快速开发。
+- ⚙️ 通用组件库使用 JSON 配置快速开发。
+
+
+
+## 🛠 组件和插件列表
+
+该库目前包含以下组件和插件：
+
+| 组件                                                         | 介绍                                                         | 插件                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------- |
+| [XElement](https://sewar-x.github.io/X-UI/zh-CN/components/element-ui/Vue2%20%E7%BB%84%E4%BB%B6%E6%80%BB%E8%A7%88/Vue2%20%E7%BB%84%E4%BB%B6%E6%80%BB%E8%A7%88.html) | 基于 element-ui  二次封装的通用组件库                        | `xw-ui/element-ui`   |
+| [XElementPlus](https://sewar-x.github.io/X-UI/zh-CN/components/element-plus/Vue3-%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/Vue3-%E7%BB%84%E4%BB%B6%E6%80%BB%E8%A7%88.html) | 基于 element-plus  二次封装的通用组件库                      | `xw-ui/element-plus` |
+| [XAntDesign](https://sewar-x.github.io/X-UI/zh-CN/components/ant-design/React%20%E7%BB%84%E4%BB%B6%E6%80%BB%E8%A7%88/React%20%E7%BB%84%E4%BB%B6%E6%80%BB%E8%A7%88.html) | 基于 ant-design  二次封装的通用组件库                        | `xw-ui/ant-design`   |
+| [XEchart](https://sewar-x.github.io/X-UI/zh-CN/components/echarts/Vue2-Echarts/Bar%20%E6%9D%A1%E5%BD%A2%E5%9B%BE.html) | 基于 echarts 封装的 echarts  组件库                          |                      |
+| [Xhttp](https://sewar-x.github.io/X-UI/zh-CN/components/library/xhttp/%E4%BD%BF%E7%94%A8.html) | 基于 [axios](https://www.axios-http.cn/docs/intro) 二次封装，在 axios 的基础上增加了一些功能的 http 请求库 | `xw-ui/xhttp`        |
+| [vivien-permission](https://sewar-x.github.io/X-UI/zh-CN/components/library/vivien-permission/%E4%BD%BF%E7%94%A8.html) | 基于后台管理系统中的路由菜单权限控制系统，通过 vue-router 全局控制后台管理系统的菜单权限插件 | `xw-ui/permission`   |
+
+
 
 
 
@@ -74,27 +100,3 @@ npm install react@18.2.0  react-dom@18.2.0 antd
 
 
 
-## 📑 版本规范
-
-**递增已发布包中的语义版本**
-
-为了帮助依赖你的代码的开发者，我们建议你从 `1.0.0` 开始你的包版本并按如下方式递增：
-
-| 代码状态             | 阶段     | 规则                                         | 示例版本 |
-| -------------------- | -------- | -------------------------------------------- | -------- |
-| 首次发布             | 新产品   | 从 1.0.0 开始                                | 1.0.0    |
-| 向后兼容的缺陷修复   | 补丁版本 | 增加第三个数字                               | 1.0.1    |
-| 向后兼容的新功能     | 次要版本 | 增加中间数字并将最后一位重置为零             | 1.1.0    |
-| 破坏向后兼容性的更改 | 主要版本 | 增加第一位数字并将中间和最后一位数字重置为零 | 2.0.0    |
-
-你可以从包的 `package.json` 文件中的依赖中指定包可以接受的更新类型。
-
-例如，要指定最高 1.0.4 的可接受版本范围，请使用以下语法：
-
-- 补丁发布：`1.0` 或 `1.0.x` 或 `~1.0.4`
-
-- 次要版本：`1` 或 `1.x` 或 `^1.0.4`
-
-- 主要版本：`*` 或 `x`
-
-有关语义版本控制语法的更多信息，请参阅 [npm semver 计算器](https://semver.npmjs.com/)。

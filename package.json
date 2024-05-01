@@ -29,6 +29,10 @@
       "require": "./packages/http/dist/xw-http.cjs.js",
       "import": "./packages/http/dist/xw-http.es.js"
     },
+    "./permission": {
+      "require": "./packages/http/dist/permission.cjs.js",
+      "import": "./packages/http/dist/permission.es.js"
+    },
     "./element-plus/*": {
       "require": "./packages/element-plus/dist/*",
       "import": "./packages/element-plus/dist/*"
@@ -44,6 +48,10 @@
     "./xhttp/*": {
       "require": "./packages/http/*",
       "import": "./packages/http/*"
+    },
+    "./permission/*": {
+      "require": "./packages/permission/*",
+      "import": "./packages/permission/*"
     },
     "./*": "./packages/*"
   },
