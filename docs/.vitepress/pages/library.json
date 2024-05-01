@@ -16,8 +16,23 @@
     "collapsed": false,
     "items": [
       {
-        "text": "介绍",
-        "link": "/zh-CN/components/library/xhttp/介绍"
+        "text": "使用",
+        "link": "/zh-CN/components/library/xhttp/使用"
+      },
+      {
+        "text": "指南",
+        "link": "/zh-CN/components/library/xhttp/指南"
+      }
+    ]
+  },
+  {
+    "text": "vivien-permission",
+    "collapsible": true,
+    "collapsed": false,
+    "items": [
+      {
+        "text": "使用",
+        "link": "/zh-CN/components/library/vivien-permission/使用"
       }
     ]
   }
