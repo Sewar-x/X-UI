@@ -1,8 +1,8 @@
-import { routesStoreWithOut } from "@/store/routes";
-import { useUserStoreWithOut } from "@/store/user";
-import { authorityType, TokenType } from "@/types/token";
+import { routesStoreWithOut } from "../../store/routes";
+import { useUserStoreWithOut } from "../../store/user";
+import { authorityType, TokenType } from "../../types/token";
 import type {  RouteItem } from 'vue-router';
-import type { AppRouteModule } from "@/types/router";
+import type { AppRouteModule } from "../../types/router";
 
 const routeStore = routesStoreWithOut();
 const userStore = useUserStoreWithOut();

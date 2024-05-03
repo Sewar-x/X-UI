@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, type RouteRecordRaw } from "vue-router";
-import type { AppRouteModule } from "@/types/router";
-import type { SetupRouterOptions } from "@/types/store";
+import type { AppRouteModule } from "../types/router";
+import type { SetupRouterOptions } from "../types/store";
 import type { App } from "vue";
 
 // 创建一个可以被 Vue 应用程序使用的路由实例

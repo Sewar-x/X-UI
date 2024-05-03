@@ -1,9 +1,9 @@
-import Storage from "@/utils/storage";
+import Storage from "../utils/storage";
 import { defineStore } from "pinia";
-import { store } from "@/store";
-import { getToken, setToken, removeToken, getOAToken } from "@/utils/token";
-import storageOptions from "@/utils/storage/setStorage";
-import { authorityType, TokenType } from "@/types/token";
+import { store } from "../store";
+import { getToken, setToken, removeToken, getOAToken } from "../utils/token";
+import storageOptions from "../utils/storage/setStorage";
+import { authorityType, TokenType } from "../types/token";
 
 interface UserState {
   authority: authorityType, // 用户所有权限

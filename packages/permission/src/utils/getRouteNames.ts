@@ -1,4 +1,4 @@
-import { getChildValue } from "@/utils/index";
+import { getChildValue } from "../utils/index";
 
 export function getRouteNames(data){
     let menuNames: Array<T> = []

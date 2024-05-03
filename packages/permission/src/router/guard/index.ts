@@ -1,6 +1,6 @@
-import { createPermissionGuard } from '@/router/guard/permissionGuard';
-import  exportFunctions  from '@/router/guard/exportFunctions';
-import type { PermissionGuardOptions } from "@/types/store";
+import { createPermissionGuard } from '../../router/guard/permissionGuard';
+import  exportFunctions  from '../../router/guard/exportFunctions';
+import type { PermissionGuardOptions } from "../../types/store";
 
 
 // 使用接口作为函数参数的类型 

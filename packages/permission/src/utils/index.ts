@@ -1,10 +1,3 @@
-interface IframeType {
-  dom: Element,
-  src: string,
-  onload: Function,
-  onerror: Function,
-  hidden: Boolean
-}
 
 /**
  * 判断变量是否为函数

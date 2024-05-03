@@ -1,4 +1,4 @@
-import type { TokenKeyOptions } from "@/types/token"; // 确保类型名称与导入的类型匹配  
+import type { TokenKeyOptions } from "../../types/token"; // 确保类型名称与导入的类型匹配  
   
 // 创建一个对象来存储key值，这样我们可以动态地修改它们，也可以使用默认值  
 const tokenkeys = {  

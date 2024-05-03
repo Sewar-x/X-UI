@@ -1,6 +1,6 @@
-import Storage from "@/utils/storage";
-import tokenkeys from "@/utils/token/tokenKey";
-import storageOptions from "@/utils/storage/setStorage";
+import Storage from "../../utils/storage";
+import tokenkeys from "../../utils/token/tokenKey";
+import storageOptions from "../../utils/storage/setStorage";
 
 // oa 中单点登录使用 token 可能存在两个 key 值，需要循环使用两个 key 获取 cookies 中的 token
 // 旧 OA 使用 SIAMJWT, 新 OA 使用 SIAMTGT 和 LtpaToken

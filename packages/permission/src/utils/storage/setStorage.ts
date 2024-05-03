@@ -1,4 +1,4 @@
-import type { StorageOptions } from "@/types/token";
+import type { StorageOptions } from "../../types/token";
 
 const storageOptions: StorageOptions = {
     type: "cookie",
