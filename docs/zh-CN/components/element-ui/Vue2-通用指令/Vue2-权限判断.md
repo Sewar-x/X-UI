@@ -13,7 +13,12 @@
 ```javascript
 import Vue from 'vue'
 import { directive } from 'xw-ui/element-ui'
-Vue.use(directive.permission)
+import permissionList from './permission/index.js'
+import permissions from '服务端返回的用户权限列表接口数组'
+Vue.use(directive.permission, {
+    permissionList, // 预配置的权限列表
+    permissions
+})
 ```
 
 2. 创建按钮权限管理文件
