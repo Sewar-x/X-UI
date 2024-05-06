@@ -89,7 +89,8 @@ export interface transformOptType {
   clearToken?: Function,
   logout?: Function,
   addAjaxErrorInfo?: Function,
-  statusMap?: Record<number, any>
+  statusMap?: Record<number, any>,
+  formatResponse?:  Function // 转换响应数据格式函数
 }
 
 export interface checkStatusOptType {

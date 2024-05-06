@@ -20,7 +20,7 @@ import { AxiosRetry } from './axiosRetry.ts';
  */
 
 export function transform(transformOpt: transformOptType): AxiosTransform {
-  const { Modal, Message, getToken, clearToken, logout, addAjaxErrorInfo, statusMap = {} } = transformOpt
+  const { Modal, Message, getToken, clearToken, logout, addAjaxErrorInfo, formatResponse, statusMap = {} } = transformOpt
   return {
     /**
      * @description: 处理响应数据。如果数据不是预期格式，可直接抛出错误
@@ -43,8 +43,8 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
         // return '[HTTP] Request has no return value';
         throw new Error(apiEnum.apiRequestFailed);
       }
-      //  这里 code，result，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
-      const { code, result, message } = data;
+      //  这里 code，result，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式, 如果不需要统一的格式，需要传入 formatResponse 函数，将服务端返回格式进行转换
+      const { code, result, message } = (formatResponse && isFunction(formatResponse)) ? formatResponse(data) : data;
 
       // 这里逻辑可以根据项目进行修改,响应结果为成功状态
       const hasSuccess = data && Reflect.has(data, 'code') && code === ResultEnum.SUCCESS;
