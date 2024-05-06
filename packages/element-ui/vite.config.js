@@ -24,13 +24,23 @@ export default defineConfig(async ({ command, mode }) => {
     ],
     build: {
       rollupOptions: {
+        output: {
+          // 根据不同的格式设置不同的目录  
+          entryFileNames: '[name].[format].js', // 为每种格式指定不同的文件名模板  
+          chunkFileNames: '[name]-[hash].[format].js', // 同样为chunks指定不同的文件名模板  
+        },
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'xw-element-vendor'
+          }
+        },
         external: ['element-ui', 'vue']
       },
       lib: { //打包纯组件(供用户在业务项目中安装、导入、使用的组件)，入口是 /components/index.(js/ts)
         entry: path.resolve(__dirname, './index.js'),
         name: 'xwElementUi',
-        fileName: 'xw-element-ui',
-        formats: ['es', 'cjs', 'umd', 'iife']
+        fileName: (format) => `xw-element-ui.${format}.js`, // 根据格式自定义文件名
+        formats: ['es', 'cjs']
       }
     },
     resolve: {

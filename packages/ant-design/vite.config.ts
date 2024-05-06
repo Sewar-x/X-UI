@@ -21,13 +21,23 @@ export default defineConfig(async ({ command, mode }: ConfigEnv) => {
     plugins: [react()],
     build: {
       rollupOptions: {
+        output: {
+          // 根据不同的格式设置不同的目录  
+          entryFileNames: '[name].[format].js', // 为每种格式指定不同的文件名模板  
+          chunkFileNames: '[name]-[hash].[format].js', // 同样为chunks指定不同的文件名模板  
+        },
+        manualChunks(id: string) {
+          if (id.includes('node_modules')) {
+            return 'xw-ant-design-vendor'
+          }
+        },
         external: ['react', 'react-dom', 'ant-design']
       },
       lib: {
         entry: path.resolve(__dirname, './index.ts'),
         name: 'xwAntDesign',
-        fileName: 'xw-ant-design',
-        formats: ['es', 'cjs', 'umd', 'iife']
+        fileName: (format: string) => `xw-ant-design.${format}.js`, // 根据格式自定义文件名
+        formats: ['es', 'cjs']
       }
     },
     resolve: {

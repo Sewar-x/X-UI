@@ -14,24 +14,24 @@
       "import": "./index.mjs"
     },
     "./element-plus": {
-      "require": "./packages/element-plus/dist/xw-element-plus.cjs.js",
-      "import": "./packages/element-plus/dist/xw-element-plus.es.js"
+      "require": "./packages/element-plus/dist/index.cjs.js",
+      "import": "./packages/element-plus/dist/index.es.js"
     },
     "./element-ui": {
-      "require": "./packages/element-ui/dist/xw-element-ui.cjs.js",
-      "import": "./packages/element-ui/dist/xw-element-ui.es.js"
+      "require": "./packages/element-ui/dist/index.cjs.js",
+      "import": "./packages/element-ui/dist/index.es.js"
     },
     "./ant-design": {
-      "require": "./packages/ant-design/dist/xw-ant-design.cjs.js",
-      "import": "./packages/ant-design/dist/xw-ant-design.es.js"
+      "require": "./packages/ant-design/dist/index.cjs.js",
+      "import": "./packages/ant-design/dist/index.es.js"
     },
     "./xhttp": {
-      "require": "./packages/http/dist/xw-http.cjs.js",
-      "import": "./packages/http/dist/xw-http.es.js"
+      "require": "./packages/http/dist/index.cjs.js",
+      "import": "./packages/http/dist/index.es.js"
     },
     "./permission": {
-      "require": "./packages/http/dist/permission.cjs.js",
-      "import": "./packages/http/dist/permission.es.js"
+      "require": "./packages/http/dist/index.cjs.js",
+      "import": "./packages/http/dist/index.es.js"
     },
     "./element-plus/*": {
       "require": "./packages/element-plus/dist/*",

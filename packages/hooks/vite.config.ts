@@ -3,6 +3,11 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   build: {
     rollupOptions: {
+      manualChunks(id) {
+        if (id.includes('node_modules')) {
+          return 'vendor'
+        }
+      },
       // 确保外部化依赖，这样它们不会被打包进你的库中  
       external: []
     },

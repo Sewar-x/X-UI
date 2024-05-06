@@ -3,6 +3,16 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   build: {
     rollupOptions: {
+      output: {
+        // 根据不同的格式设置不同的目录  
+        entryFileNames: '[name].[format].js', // 为每种格式指定不同的文件名模板  
+        chunkFileNames: '[name]-[hash].[format].js', // 同样为chunks指定不同的文件名模板  
+      },
+      manualChunks(id) {
+        if (id.includes('node_modules')) {
+          return 'xw-ui-shared'
+        }
+      },
       // 确保外部化依赖，这样它们不会被打包进你的库中  
       external: ['lodash']
     },
