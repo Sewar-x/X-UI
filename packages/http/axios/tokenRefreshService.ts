@@ -62,7 +62,7 @@ export async function refreshToken(
     // 调用刷新token的接口  
     axios.post(url, {
       token: refreshToken,
-      refreshId: storageWrapper.getItem(refreshIdKey as string),
+      refreshId: refreshIdKey ? storageWrapper.getItem(refreshIdKey as string) : null,
       ...params,
     })
       .then(response => {
@@ -175,10 +175,9 @@ export async function refreshTokenCheck(
 
 
   //========检查刷新 token 接口参数：refreshId =========
-  let refreshId = storageWrapper.getItem(refreshIdKey as string);
+  let refreshId = refreshIdKey ? storageWrapper.getItem(refreshIdKey as string) : null;
   if (!refreshId) {
-    console.log('========刷新 Token id 不存在!=============');
-    return false
+    console.log('========刷新 Token id 不存在! 不需要 刷新 token id =============');
   }
 
 
