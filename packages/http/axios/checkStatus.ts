@@ -76,6 +76,8 @@ export function checkStatus(opt: checkStatusOptType): string {
     if (callback && isFunction(callback)) {
       callback()
     }
+  } else {
+    Modal.error('未定义的状态码！', '未定义的状态码！');
   }
-  return err.msg
+  return err?.msg
 }
