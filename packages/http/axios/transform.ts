@@ -47,7 +47,7 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
       const { code, result, message } = (formatResponse && isFunction(formatResponse)) ? formatResponse(data) : data;
 
       // 这里逻辑可以根据项目进行修改,响应结果为成功状态
-      const hasSuccess = data && Reflect.has(data, 'code') && code === ResultEnum.SUCCESS;
+      const hasSuccess = data && code === ResultEnum.SUCCESS;
       if (hasSuccess) {
         let successMsg = message;
 

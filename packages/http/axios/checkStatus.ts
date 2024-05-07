@@ -14,8 +14,14 @@ import { isFunction } from '../utils/is';
 export function checkStatus(opt: checkStatusOptType): string {
   const { status, msg, errorMessageMode = 'message', statusMap = {}, Message, Modal, clearToken, logout } = opt;
   const statusDefaultMap = {
+    "-1": {
+      msg,
+    },
+    0: {
+      msg,
+    },
     400: {
-      msg: msg,
+      msg,
     },
     401: {
       msg: apiEnum.errMsg401,
