@@ -10,7 +10,7 @@ import { setObjToUrlParams } from '../utils/index.ts';
 import { apiEnum } from '../enums/messageEnum.ts';
 import { joinTimestamp, formatRequestDate } from './helper.ts';
 import { AxiosRetry } from './axiosRetry.ts';
-
+import { refreshTokenCheck } from './tokenRefreshService.ts'
 
 
 
@@ -20,7 +20,7 @@ import { AxiosRetry } from './axiosRetry.ts';
  */
 
 export function transform(transformOpt: transformOptType): AxiosTransform {
-  const { Modal, Message, getToken, clearToken, logout, addAjaxErrorInfo, formatResponse, statusMap = {} } = transformOpt
+  const { Modal, Message, tokenKey, storageType, getToken, clearToken, logout, addAjaxErrorInfo, formatResponse, refreshTokenConfig, statusMap = {} } = transformOpt
   return {
     /**
      * @description: 处理响应数据。如果数据不是预期格式，可直接抛出错误
@@ -141,6 +141,13 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
     requestInterceptors: (config, options) => {
       // 请求之前处理config
       let token = null
+      if (refreshTokenConfig && !isEmpty(refreshTokenConfig)) {
+        refreshTokenCheck(config, options, refreshTokenConfig, {
+          getToken,
+          tokenKey,
+          storageType,
+        });
+      }
       if (getToken && isFunction(getToken)) {
         token = getToken();
       }

@@ -1,6 +1,6 @@
 export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined;
 export type SuccessMessageMode = ErrorMessageMode;
-
+export type storageType = 'localStorage' | 'sessionStorage' | 'cookie'
 export interface RequestOptions {
   // Splicing request parameters to url
   joinParamsToUrl?: boolean;
@@ -77,20 +77,31 @@ export interface ErrorLogInfo {
   time?: string;
 }
 
+// 刷新 token 配置
+export interface refreshTokenType {
+  url: string, // 刷新地址
+  interval: number, // 刷新间隔
+  tokenExpiresKey: string, // token 过期时间 key
+  refreshIdKey: string, // 刷新id key
+  expires?: number, // 过期时间
+  refreshId?: string, // 刷新id
+  params?: object
+}
 export interface transformOptType {
   Modal?: Fcuntion,
   Message?: Fcuntion,
   token?: string,
   tokenKey?: string,
   tokenExpires?: number,
-  storageType?: 'localStorage' | 'sessionStorage' | 'cookie',
+  storageType?: storageType,
   getToken?: Function,
   setToken?: Function,
   clearToken?: Function,
   logout?: Function,
   addAjaxErrorInfo?: Function,
   statusMap?: Record<number, any>,
-  formatResponse?:  Function // 转换响应数据格式函数
+  formatResponse?: Function // 转换响应数据格式函数
+  refreshTokenConfig?: refreshTokenType // 刷新 token 配置
 }
 
 export interface checkStatusOptType {
