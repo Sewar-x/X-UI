@@ -146,6 +146,7 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
           getToken,
           tokenKey,
           storageType,
+          formatResponse
         });
       }
       if (getToken && isFunction(getToken)) {
