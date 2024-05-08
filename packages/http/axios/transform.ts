@@ -142,12 +142,7 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
       // 请求之前处理config
       let token = null
       if (refreshTokenConfig && !isEmpty(refreshTokenConfig)) {
-        refreshTokenCheck(config, options, refreshTokenConfig, {
-          getToken,
-          tokenKey,
-          storageType,
-          formatResponse
-        });
+        refreshTokenCheck(config, options, transformOpt);
       }
       if (getToken && isFunction(getToken)) {
         token = getToken();

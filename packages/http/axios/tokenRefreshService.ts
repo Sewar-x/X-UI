@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { refreshTokenType, Recordable, storageType } from '../types/axios.d.ts'
+import type { refreshTokenType, Recordable, storageType, transformOptType } from '../types/axios.d.ts'
 import { isFunction } from '../utils/is.ts';
 import { Message } from '../plugin/Message'; // 假设这些是处理token的工具函数  
 import { setToken, clearToken } from "../plugin/auth"
@@ -7,12 +7,6 @@ import { LocalStorageWrapper } from "../plugin/storage"
 import { formatToDateTime } from "../utils/dateUtil.ts"
 import { ResultEnum } from '../enums/httpEnum.ts';
 
-interface configType {
-  getToken: Function | undefined,
-  tokenKey: string | undefined,
-  storageType: string | undefined,
-  formatResponse?: Function,
-}
 
 let requests: Array<any> = [];
 let isRefreshing = false;
@@ -29,19 +23,19 @@ let isRefreshing = false;
 export async function refreshToken(
   config: object,
   options: object,
-  refreshTokenConfig: refreshTokenType,
+  transformOpt: transformOptType,
   refreshToken: string,
-  configs: configType,
   storageWrapper: LocalStorageWrapper,
   storageWrapType: storageType
 ) {
+  const { tokenKey, formatResponse, refreshTokenConfig } = transformOpt
+
   const {
     url, // 刷新地址
     tokenExpiresKey, // token 过期时间 key
     refreshIdKey, // 刷新id key
     params
-  } = refreshTokenConfig
-  const { tokenKey, formatResponse } = configs
+  } = refreshTokenConfig as refreshTokenType
   return new Promise((resolve, reject) => {
     if (isRefreshing) {
       // 如果正在刷新，将resolve存入数组，等待刷新后再执行  
@@ -138,20 +132,18 @@ export async function refreshToken(
 export async function refreshTokenCheck(
   config: object,
   options: object,
-  refreshTokenConfig: refreshTokenType,
-  configs: configType
+  transformOpt: transformOptType
 ) {
-
+  const { tokenKey, storageType, getToken, refreshTokenConfig } = transformOpt
   const {
     expires, //过期时间
     interval, // 刷新间隔
     tokenExpiresKey, // token 过期时间存储 key 
     refreshIdKey // 刷新 token id 存储key
-  } = refreshTokenConfig
+  } = refreshTokenConfig as refreshTokenType
 
 
-  // 外部传入的获取 token 方法
-  const { getToken, tokenKey, storageType } = configs
+
   const storageWrapType = (storageType as storageType) || 'cookie'
   const storageWrapper = new LocalStorageWrapper(storageWrapType);
 
@@ -208,7 +200,7 @@ export async function refreshTokenCheck(
 
   try {
     // 刷新 token
-    await refreshToken(config, options, refreshTokenConfig, token, configs, storageWrapper, storageWrapType);
+    await refreshToken(config, options, transformOpt, token, storageWrapper, storageWrapType);
     return true;
   } catch (error) {
     // 刷新 token 失败处理
