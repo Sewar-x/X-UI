@@ -141,7 +141,7 @@ export async function refreshTokenCheck(
 
   //========检查刷新 token 接口参数：expires, token 过期时间 =========
   let expiresAt = null // 传入或本地过期时间
-  if (!expires) {
+  if (expires) {
     expiresAt = expires
   } else if (tokenExpiresKey) { // 获取本地保存 token 过期时间
     //expires 是 一个UNIX时间戳，表示 token 过期时间
