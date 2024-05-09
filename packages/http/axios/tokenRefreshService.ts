@@ -175,10 +175,9 @@ export default class TokenRefreshService {
 
     try {
       if (this.isRefreshing) {
-        // 如果正在刷新，将resolve存入数组，等待刷新后再执行  
-        return new Promise(resolve => {
-          // 用函数形式将 resolve 存入，等待刷新后再执行
-          this.requests.push((token: string) => {
+        // 将往后的请求包装成异步 axios 请求，并存入队列
+        this.requests.push((token: string) => {
+          return new Promise(resolve => {
             if (token && (this.config as Recordable)?.requestOptions?.withToken !== false) {
               // jwt token
               (this.config as Recordable).headers.Authorization = this.options.authenticationScheme
@@ -186,16 +185,18 @@ export default class TokenRefreshService {
                 : token;
             }
             resolve(axios(this.config))
-          })
-        });
+          });
+        })
+
       }
       // 刷新 token
       await this.refreshToken(token, storageWrapper, storageWrapType);
       this.isRefreshing = false;
       // 执行所有等待的请求, 并传入新的 token 参数  
       if (this.requests.length > 0) {
-        this.requests.forEach(resolve => {
-          resolve(token);
+        // 遍历队列，调用队列中所有异步方法，并传入新的 token 作为参数
+        this.requests.forEach(callback => {
+          callback(token);
         });
         this.requests = []; // 清空队列  
       }
