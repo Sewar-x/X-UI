@@ -63,7 +63,10 @@ export default class TokenRefreshService {
         console.log('===重置前 this.isRefreshing===', this.isRefreshing)
         // 设置为正在刷新
         this.isRefreshing = true;
-
+        if (!refreshToken) {
+          console.log('========refreshToken 不存在!=============');
+          return false
+        }
         // 调用刷新token的接口  
         axios.post(url, {
           token: refreshToken,
@@ -197,12 +200,13 @@ export default class TokenRefreshService {
     let token = null
     if (getToken && isFunction(getToken)) {
       token = getToken();
-      if (!token) {
-        console.log('========Token 不存在!=============');
-        return false
-      }
+    } else if (tokenKey) {
+      token = storageWrapper.getItem(tokenKey);
     }
-
+    if (!token) {
+      console.log('========Token 不存在!=============');
+      return false
+    }
 
     //========检查刷新 token 接口参数：refreshId =========
     let refreshId = refreshIdKey ? storageWrapper.getItem(refreshIdKey as string) : null;

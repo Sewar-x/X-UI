@@ -148,7 +148,7 @@ export function transform(transformOpt: transformOptType, refreshTokenInst: Toke
           console.log('=======不存在refreshTokenInst实例，创建实例=======')
           refreshTokenInst = new TokenRefreshService(transformOpt)
         } else {
-          console.log('=======存在refreshTokenInst实例，调用refreshTokenCheck=======')
+          console.log('=======存在refreshTokenInst实例，调用refreshTokenCheck=======',refreshTokenInst.isRefreshing)
           // 检查是否需要刷新token
           refreshTokenInst.refreshTokenCheck(config, options)
         }
