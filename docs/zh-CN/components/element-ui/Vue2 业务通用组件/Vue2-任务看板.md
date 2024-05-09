@@ -938,7 +938,6 @@ Options: {
 
 ```json
 export function digitalTaskSearch() {
-  console.log("🚀 ~ 高级搜索下拉接口 ~:")
 
   return {
     "code": 200,
@@ -1102,7 +1101,6 @@ export function digitalTaskSearch() {
 
 ```json
 export function digitalTaskList() {
-  console.log("🚀 ~ 任务列表 ~:")
   return {
     "code": 200,
     "msg": "OK",
