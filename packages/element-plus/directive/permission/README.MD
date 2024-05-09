@@ -1,9 +1,9 @@
 # 权限判断
 
 ## hasPermission 指令
- 这是一个基于 Vue3 进行封装的自定义指令，在这个插件中，你可以检查传入的系统权限列表和用户拥有的权限列表，来确定用户是否具有某个组件/按钮级别的权限，实现更细粒度的权限控制。
+ 	这是一个基于 Vue3 进行封装的自定义指令，在这个插件中，你可以检查传入的系统权限列表和用户拥有的权限列表，来确定用户是否具有某个组件/按钮级别的权限，实现更细粒度的权限控制。
 
-## 使用方法
+ ## 使用方法
 
 1. 在你的项目根目录中新建一个permission文件夹，并在文件夹下新建一个index.ts文件和一个modules文件夹。
 
@@ -125,30 +125,3 @@ app.mount('#app')
     console.log("用户没有权限");
   }
   ```
-
-  ## 贡献者
-
-<script setup>
-import {
-  VPTeamPage,
-  VPTeamPageTitle,
-  VPTeamMembers
-} from 'vitepress/theme'
-
-const members = [
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/95331757?v=4',
-    name: 'Vivien',
-    title: 'Staff Frontend Engineer',
-    links: [
-      { icon: 'github', link: 'https://github.com/yoguoer' }
-    ]
-  }
-]
-</script>
-
-<VPTeamPage>
-  <VPTeamMembers
-    :members="members"
-  />
-</VPTeamPage>
