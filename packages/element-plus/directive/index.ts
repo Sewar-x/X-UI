@@ -1,0 +1,1 @@
+export * as permission from './permission'

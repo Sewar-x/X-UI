@@ -80,18 +80,16 @@ import permissions from '存放服务端返回接口权限列表数据的地方'
 ```javascript
 import { createApp } from 'vue'
 import App from './views/App.vue'
-import permission from "v-permission" 
+import { directive } from 'xw-ui/element-ui'
 import permissionList from './permission'
 import permissions from '存放服务端返回接口权限列表数据的地方'
 
 const app = createApp(App);
 
-const options = {
+app.use(directive.permission, {
     permissionList,
     permissions
-}
-
-app.use(permission, options)
+})
 
 app.mount('#app')
 ```

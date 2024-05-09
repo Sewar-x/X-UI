@@ -89,3 +89,41 @@ export default {
   ```
 
   
+
+
+## 贡献者
+<script setup>
+import {
+  VPTeamPage,
+  VPTeamPageTitle,
+  VPTeamMembers
+} from 'vitepress/theme'
+
+const xhttpMembers = [
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/28383640?v=4',
+    name: 'Sewen',
+    title: 'Creator',
+    links: [
+      { icon: 'github', link: 'https://github.com/Sewar-x' }
+    ]
+  }
+]
+
+const permissionMembers = [
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/95331757?v=4',
+    name: 'Vivien',
+    title: 'Staff Frontend Engineer',
+    links: [
+      { icon: 'github', link: 'https://github.com/yoguoer' }
+    ]
+  }
+]
+</script>
+
+<VPTeamPage>
+  <VPTeamMembers
+    :members="xhttpMembers"
+  />
+</VPTeamPage>
