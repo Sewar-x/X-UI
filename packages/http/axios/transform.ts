@@ -10,7 +10,7 @@ import { setObjToUrlParams } from '../utils/index.ts';
 import { apiEnum } from '../enums/messageEnum.ts';
 import { joinTimestamp, formatRequestDate } from './helper.ts';
 import { AxiosRetry } from './axiosRetry.ts';
-import { refreshTokenCheck } from './tokenRefreshService.ts'
+import TokenRefreshService from './tokenRefreshService.ts'
 
 
 
@@ -19,8 +19,8 @@ import { refreshTokenCheck } from './tokenRefreshService.ts'
  * @description: 数据处理，方便区分多种处理方式
  */
 
-export function transform(transformOpt: transformOptType): AxiosTransform {
-  const { Modal, Message, tokenKey, storageType, getToken, clearToken, logout, addAjaxErrorInfo, formatResponse, refreshTokenConfig, statusMap = {} } = transformOpt
+export function transform(transformOpt: transformOptType, refreshTokenInst: TokenRefreshService | null): AxiosTransform {
+  const { Modal, Message, getToken, clearToken, logout, addAjaxErrorInfo, formatResponse, refreshTokenConfig, statusMap = {} } = transformOpt
   return {
     /**
      * @description: 处理响应数据。如果数据不是预期格式，可直接抛出错误
@@ -141,8 +141,18 @@ export function transform(transformOpt: transformOptType): AxiosTransform {
     requestInterceptors: (config, options) => {
       // 请求之前处理config
       let token = null
+
       if (refreshTokenConfig && !isEmpty(refreshTokenConfig)) {
-        refreshTokenCheck(config, options, transformOpt);
+        // 如果没有创建 token 刷新类则创建，使用单例模式
+        if (!refreshTokenInst) {
+          console.log('=======不存在refreshTokenInst实例，创建实例=======')
+          refreshTokenInst = new TokenRefreshService(transformOpt)
+        } else {
+          console.log('=======存在refreshTokenInst实例，调用refreshTokenCheck=======')
+          // 检查是否需要刷新token
+          refreshTokenInst.refreshTokenCheck(config, options)
+        }
+
       }
       if (getToken && isFunction(getToken)) {
         token = getToken();

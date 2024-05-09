@@ -7,7 +7,7 @@ import { TokenEnum, LocalStorageEnum } from "../enums/httpEnum"
 import { deepMerge } from '../utils/index.ts';
 import { setToken, getToken, clearToken } from '../plugin/auth.ts';
 import type { transformOptType } from '../types/axios';
-
+import TokenRefreshService from './tokenRefreshService.ts'
 const transformDefOptions = {
   Message,
   Modal,
@@ -22,7 +22,7 @@ const transformDefOptions = {
  * @param transformOpt 
  * @returns 
  */
-export function createTransform(transformOpt: transformOptType) {
+export function createTransform(transformOpt: transformOptType, refreshTokenInst: TokenRefreshService | null) {
   // 获取传入参数
   const { token = '', tokenKey, storageType, tokenExpires, logout } = transformOpt
   const opt: transformOptType = {}
@@ -53,5 +53,5 @@ export function createTransform(transformOpt: transformOptType) {
   return transform(deepMerge(
     Object.assign(transformDefOptions, opt),
     transformOpt
-  ))
+  ), refreshTokenInst)
 }
