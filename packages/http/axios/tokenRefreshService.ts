@@ -145,12 +145,16 @@ export default class TokenRefreshService {
     // 检查是否需要刷新 token
     const currentTime = Date.now();
 
-
+    console.log('当前时间：', formatToDateTime(currentTime))
+    console.log('token 过期时间点：', formatToDateTime(expiresAt))
+    console.log('token 刷新时间点：', formatToDateTime(expiresAt - interval))
     // 如果当前时间与过期时间大于间隔时间，不刷新 token
     if (currentTime < expiresAt - interval) {
+      console.log('===还没有到刷新时间间隔，不刷新 token===')
       return false;
     }
     if (currentTime > expiresAt) {
+      console.log('===token 已经过期了，不刷新 token===')
       return false
     }
 
@@ -176,7 +180,7 @@ export default class TokenRefreshService {
     try {
       if (this.isRefreshing) {
         // 将往后的请求包装成异步 axios 请求，并存入队列
-        this.requests.push((token: string) => {
+        return this.requests.push((token: string) => {
           return new Promise(resolve => {
             if (token && (this.config as Recordable)?.requestOptions?.withToken !== false) {
               // jwt token
