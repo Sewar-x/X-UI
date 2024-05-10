@@ -120,7 +120,6 @@ export default class TokenRefreshService {
       expires, //过期时间
       interval, // 刷新间隔
       tokenExpiresKey, // token 过期时间存储 key 
-      refreshIdKey // 刷新 token id 存储key
     } = refreshTokenConfig as refreshTokenType
 
 
@@ -155,6 +154,11 @@ export default class TokenRefreshService {
     }
     if (currentTime > expiresAt) {
       console.log('===token 已经过期了，不刷新 token===')
+      if(tokenKey){
+        clearToken(tokenKey, {
+          type: storageWrapType,
+        });
+      }
       return false
     }
 
@@ -169,12 +173,6 @@ export default class TokenRefreshService {
     if (!token) {
       return false
     }
-
-    //========检查刷新 token 接口参数：refreshId =========
-    // let refreshId = refreshIdKey ? await storageWrapper.getItem(refreshIdKey as string) : null;
-    // if (!refreshId) {
-    //   console.log('========刷新 Token id 不存在! 不需要 刷新 token id =============');
-    // }
 
 
     try {
