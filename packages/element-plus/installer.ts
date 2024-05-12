@@ -3,7 +3,7 @@ import { BasicComponent } from './components/BasicComponent'
 import { XForm } from './components/Form'
 import { XButton } from './components/Button'
 import { XDescriptions } from './components/Descriptions'
-import { XDialog, XModal } from './components/Dialog'
+import { XDialog } from './components/Dialog'
 import { XSvgIcon, XIcon } from './components/Icon'
 import { XMenu, MenuItem } from './components/Menu'
 import { XPopover } from './components/Popover'
@@ -18,7 +18,6 @@ export const elmPlusComponents = [
   XButton,
   XDescriptions,
   XDialog,
-  XModal,
   XSvgIcon,
   XIcon,
   XMenu,

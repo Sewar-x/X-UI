@@ -1,4 +1,5 @@
 import type { Ref } from "vue";
+import type { CompType } from "../../types/gloabl.d";
 export interface DescriptionsType {
   attr?: Recordable; // 属性对象
   event?: Recordable; // 事件对象

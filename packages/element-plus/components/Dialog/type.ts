@@ -1,6 +1,7 @@
 import type { AppContext, Ref } from "vue";
-import type { FormType } from "@/components/Form/type";
-import type { TableType } from "@/components/Table/type";
+import type { FormType } from "../Form/type";
+import type { TableType } from "../Table/type";
+import type { CompType } from "../../types/gloabl.d";
 
 export interface ContentFormType extends FormType {
   type: "Form"
@@ -17,8 +18,8 @@ interface ContentCompType extends CompType {
 export type ContentType = ContentFormType | ContentTableType | ContentCompType
 
 export interface OptionType {
-  id: string; //唯一id 删除组件时用于定位
-  dialogVisible: Ref<Boolean>;
+  visible: Ref<Boolean>;
+  id?: string; //唯一id 删除组件时用于定位
   attr?: Recordable;
   event?: Recordable;
   content?: Array<ContentType>;

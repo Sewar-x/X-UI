@@ -45,7 +45,7 @@
     },
     // volar 可以处理 vue 文件的格式化
     "[vue]": {
-        "editor.defaultFormatter": "Vue.volar"
+        "editor.defaultFormatter": "Wscats.vue"
     },
     // json、yaml 等配置文件保存时自动格式化
     "[json]": {
