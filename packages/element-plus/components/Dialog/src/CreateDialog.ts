@@ -1,71 +1,95 @@
-import { createApp, h, VNode, ref } from 'vue';
+import { createApp, h, ref } from 'vue';
+import type { Ref } from 'vue';
 import Dialog from './XDialog.vue';
-import type { OptionType } from "../type";
-
+import type { OptionType } from "../type"; // 假设 OptionType 包含了 id 和其他必要的 props  
+import ElementPlus from 'element-plus'
+// 用于存储 DialogInstance 实例的 Map  
+const dialogInstances = new Map<string, DialogInstance>();
 
 // Dialog 实例类  
 class DialogInstance {
   el: HTMLElement;
-  vnode: VNode;
   options: OptionType;
   app: ReturnType<typeof createApp>;
+  visible: Ref<boolean>; // 假设 OptionType 包含了 visible 属性  
 
-  constructor(el: HTMLElement, vnode: VNode, options: OptionType) {
+  constructor(el: HTMLElement, options: OptionType) {
+    let that = this
     this.el = el;
-    this.vnode = vnode;
     this.options = options;
+    this.visible = ref(false); // 初始时不可见  
+
     this.app = createApp({
+      // 使用 render 函数来动态渲染弹窗组件  
       render() {
-        return vnode;
+        // 处理插槽内容（如果需要的话）  
+        let slots = {};
+        if (options.slots) {
+          // 根据 DialogComponent 的需求调整插槽的处理  
+          slots = options.slots;
+        }
+        // 返回弹窗组件的 VNode  
+        // 注意：这里传递 visible 作为 prop  
+        return h(Dialog, {
+          options: {
+            ...options, // 假设 options 包含了除插槽之外的所有 props  
+            visible: that.visible, // 使用响应式引用的值  
+          }
+        }, slots.default ? slots.default() : []);
       }
     });
-
+    this.app.use(ElementPlus)
     // 挂载到 DOM  
     this.app.mount(this.el);
   }
 
-  // 打开弹窗（这里可能不需要，因为通常创建即打开）  
-  open() {
-    // 如果需要额外的打开逻辑，可以在这里添加  
-    this.options.visible = ref(true)
+  // 打开弹窗  
+  public show() {
+    document.body.appendChild(this.el);
+    this.visible.value = true; // 设置为可见  
   }
 
   // 关闭弹窗  
-  close() {
-    this.options.visible = ref(false)
-
+  public close() {
+    this.visible.value = false; // 设置为不可见  
+    this.el.remove();
   }
 
-  // 销毁弹窗（同 close）  
+  // 销毁弹窗  
   destroy() {
-    // 清理逻辑，如移除事件监听器等  
+    // 清理逻辑，如移除事件监听器等（如果有的话）  
     this.app.unmount();
     this.el.remove();
   }
 }
 
+// 创建或获取 DialogInstance 的工厂函数  
+function getInstanceOrCreate(id: string, options: OptionType): DialogInstance {
+  let instance = dialogInstances.get(id);
+  if (!instance) {
+    // 创建新的 div 元素作为挂载点  
+    const dialogNode = document.createElement('div');
+    dialogNode.id = id;
+
+    // 创建新的 DialogInstance 实例  
+    instance = new DialogInstance(dialogNode, options);
+
+    // 将实例添加到 Map 中  
+    dialogInstances.set(id, instance);
+  }
+
+  // 返回找到的或创建的实例  
+  return instance;
+}
+
 // createDialog 函数  
-export default function createDialog(options: OptionType): DialogInstance | null {
+export default function CreateDialog(options: OptionType): DialogInstance | null {
   if (!options.id) {
     console.error('使用 createDialog 方法需要传入 dialog id!');
     return null;
   }
 
-  // 检查是否已存在相同 id 的弹窗  
-  if (document.getElementById(options.id)) {
-    console.error('已存在相同 id 的弹窗!');
-    return null;
-  }
-
-  const dialogNode = document.createElement('div');
-  dialogNode.id = options.id;
-  document.body.appendChild(dialogNode);
-
-  const vnode = h(Dialog, options);
-
-  // 创建并返回 DialogInstance 实例  
-  return new DialogInstance(dialogNode, vnode, options);
+  // 获取或创建 DialogInstance 实例  
+  const instance = getInstanceOrCreate(options.id, options);
+  return instance
 }
-
-
-

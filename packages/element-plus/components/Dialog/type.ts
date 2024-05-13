@@ -25,6 +25,7 @@ export interface OptionType {
   content?: Array<ContentType>;
   header?: CompType;
   footer?: CompType;
+  slots?: Function
 }
 
 export interface ModalType {

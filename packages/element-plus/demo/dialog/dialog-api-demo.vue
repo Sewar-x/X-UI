@@ -1,9 +1,10 @@
 <template>
   <el-button type="primary" @click="openDialog">Open Dialog</el-button>
+  <el-button @click="closeDialog">Close Dialog</el-button>
 </template>
 
 <script setup lang="ts">
-import { createDialog } from "@/xw-ui/element-plus/components";
+import { CreateDialog } from "@/xw-ui/element-plus";
 import { ref, reactive } from "vue";
 
 interface RuleForm {
@@ -143,6 +144,8 @@ const dialogOptions = {
   attr: {
     title: "基础弹窗",
     draggable: true,
+    modal: false,
+    "close-on-click-modal": false,
   },
   content: [
     {
@@ -153,9 +156,13 @@ const dialogOptions = {
   ],
 };
 
-const dialogInst = createDialog(dialogOptions);
+const dialogInst = CreateDialog(dialogOptions);
 const openDialog = () => {
-  dialogInst.open();
+  dialogInst?.show();
+};
+
+const closeDialog = () => {
+  dialogInst?.close();
 };
 </script>
 

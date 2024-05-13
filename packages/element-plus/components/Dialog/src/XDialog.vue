@@ -1,5 +1,10 @@
 <template>
-  <el-dialog v-model="dialogVisible" v-bind="options.attr" v-on="options.event || {}">
+  <el-dialog
+    v-if="options"
+    v-model="dialogVisible"
+    v-bind="options.attr"
+    v-on="options.event || {}"
+  >
     <template v-if="options.header" #header>
       <BasicComponent :options="options.header" />
     </template>
@@ -19,7 +24,6 @@
 
 <script setup lang="ts">
 import { ref, isRef } from "vue";
-import type { Ref } from "vue";
 import { XForm } from "../../Form";
 import { XTable } from "../../Table";
 import type { OptionType } from "../type";
@@ -29,11 +33,11 @@ const props = defineProps<{
   options: OptionType;
 }>();
 
-const dialogVisible = isRef(props.options.visible)
+let dialogVisible = isRef(props.options?.visible)
   ? props.options.visible
   : ref(props.options.visible);
 
-const content = props.options.content ? props.options.content : [];
+const content = props.options?.content ? props.options.content : [];
 </script>
 
 <style lang="less"></style>
