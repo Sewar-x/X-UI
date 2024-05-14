@@ -1,4 +1,4 @@
-import { createApp, h, ref } from 'vue';
+import { createApp, h, ref, reactive } from 'vue';
 import type { Ref } from 'vue';
 import Dialog from './XDialog.vue';
 import type { OptionType } from "../type"; // 假设 OptionType 包含了 id 和其他必要的 props  
@@ -10,37 +10,47 @@ const dialogInstances = new Map<string, DialogInstance>();
 class DialogInstance {
   el: HTMLElement;
   options: OptionType;
+  content: Array<any>;
   app: ReturnType<typeof createApp>;
   visible: Ref<boolean>; // 假设 OptionType 包含了 visible 属性  
 
   constructor(el: HTMLElement, options: OptionType) {
-    let that = this
+
     this.el = el;
     this.options = options;
+    this.content = reactive(options.content || [])
     this.visible = ref(false); // 初始时不可见  
+    this.app = this.createVue();
 
-    this.app = createApp({
+  }
+  // 创建 Vue 弹窗实例
+  createVue() {
+    let that = this
+    const app = createApp({
       // 使用 render 函数来动态渲染弹窗组件  
       render() {
         // 处理插槽内容（如果需要的话）  
         let slots = {};
-        if (options.slots) {
+        if (that.options.slots) {
           // 根据 DialogComponent 的需求调整插槽的处理  
-          slots = options.slots;
+          slots = that.options.slots;
         }
         // 返回弹窗组件的 VNode  
         // 注意：这里传递 visible 作为 prop  
         return h(Dialog, {
           options: {
-            ...options, // 假设 options 包含了除插槽之外的所有 props  
+            ...that.options, // 假设 options 包含了除插槽之外的所有 props  
+            content: that.content,
             visible: that.visible, // 使用响应式引用的值  
           }
         }, slots.default ? slots.default() : []);
       }
-    });
-    this.app.use(ElementPlus)
+    })
+
+    app.use(ElementPlus)
     // 挂载到 DOM  
-    this.app.mount(this.el);
+    app.mount(this.el);
+    return app
   }
 
   // 打开弹窗  
@@ -55,11 +65,19 @@ class DialogInstance {
     this.el.remove();
   }
 
+  // 重置弹窗内容
+  public resetContent(content: Array<any>) {
+    this.app.unmount()
+    this.content = reactive(content || [])
+    this.app = this.createVue();
+  }
+
+
   // 销毁弹窗  
   destroy() {
     // 清理逻辑，如移除事件监听器等（如果有的话）  
     this.app.unmount();
-    this.el.remove();
+
   }
 }
 

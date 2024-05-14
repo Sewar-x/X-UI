@@ -12,9 +12,9 @@
       <XForm v-if="dialogItem.type === 'Form'" :options="dialogItem.options" />
       <XTable
         v-else-if="dialogItem.type === 'Table'"
-        :options="<ContentTableType>dialogItem"
+        :options="<ContentTableType>dialogItem.options"
       />
-      <BasicComponent v-else :options="dialogItem" />
+      <BasicComponent v-else :options="dialogItem.options" />
     </template>
     <template v-if="options.footer" #footer>
       <BasicComponent :options="options.footer" />
@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, isRef } from "vue";
+import { ref, isRef, reactive } from "vue";
 import { XForm } from "../../Form";
 import { XTable } from "../../Table";
 import type { OptionType } from "../type";

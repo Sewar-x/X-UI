@@ -1,47 +1,143 @@
 # 弹窗
 
+弹窗组件是对 [Element Plus 的弹窗组件](https://element-plus.org/zh-CN/component/dialog.html) 进行二次封装成 JSON 配置模式，除了支持 Element Plus 的 弹窗基本功能之外还扩展了其他功能：
+
+- 弹窗配置内置 Form 表单
+- 弹窗配置内置 table 表格
+- 弹窗配置内置 自定义组件
+- 操作按钮按钮配置
+- 快速配置预定义操作按钮
+- 函数式调用弹窗
+
+## 功能
+
+| 功能                    | 说明 | 状态 |
+| ----------------------- | ---- | ---- |
+| 弹窗配置内置 Form 表单  |      |      |
+| 弹窗配置内置 table 表格 |      |      |
+| 弹窗配置内置 自定义组件 |      |      |
+| 操作按钮按钮配置        |      |      |
+| 快速配置预定义操作按钮  |      |      |
+| 函数式调用弹窗          |      |      |
+|                         |      |      |
+
 ## 文件说明
 
-- 组件地址：`components/Dialog/src/Dialog.vue`
+- 组件地址：`/element-plus/components/Dialog/src/XDialog.vue`
 
 - 组件类型：`components/Dialog/types.ts`
 
+::: details 点我查看代码
+
+```typescript
+interface OptionType {
+  visible: Ref<Boolean>;
+  id?: string; //唯一id 删除组件时用于定位
+  attr?: Recordable;
+  event?: Recordable;
+  content?: Array<ContentType>;
+  header?: CompType;
+  footer?: CompType;
+  slots?: Function;
+}
+```
+
+:::
+
 ## 特性：
 
-  1. 对公共组件Dialog进行了函数化，即通过函数的方式进行创建，为创建Dialog的函数``传配置对象参数
+对公共组件 Dialog 进行了函数化，即通过函数的方式进行创建，为创建 Dialog的函数 传配置对象参数
 
-- 参数`json`格式
+参数`json`格式
 
-  ```json
-  // 函数createDialog的参数对象
-  {
-    id: "", // Dialog的唯一Id，用于定位同一个方法创建的Dialog
-    dialogVisible: ref(Boolean), // 判断所创建的Dialog的打开关闭
-    attr: {}, // el-dialog的属性对象
-    event: {}, // el-dialog的事件对象
-    content: [], // dialog的内容对象数组
-    header: {}, // 对话框标题的内容插槽配置对象
-    footer: {}, // Dialog 按钮操作区的内容插槽配置对象
-  }
-  ```
+```json
+// 函数createDialog的参数对象
+{
+  id: "", // Dialog的唯一Id，用于定位同一个方法创建的Dialog
+  visible: ref(Boolean), // 判断所创建的Dialog的打开关闭
+  attr: {}, // el-dialog的属性对象
+  event: {}, // el-dialog的事件对象
+  content: [], // dialog的内容对象数组
+  header: {}, // 对话框标题的内容插槽配置对象
+  footer: {}, // Dialog 按钮操作区的内容插槽配置对象
+}
+```
 
 ### 参数说明
 
-|    属性名     |                     说明                     |                             类型                             | 默认值 |
-| :-----------: | :------------------------------------------: | :----------------------------------------------------------: | :----: |
-|      id       | alog的唯一Id，用于定位同一个方法创建的Dialog |                           `String`                           |   -    |
-| dialogVisible |         判断所创建的Dialog的打开关闭         |                        `Ref<Boolean>`                        |   -    |
-|     attr      |             el-dialog的属性对象              |                    `Record<String, any>`                     |   -    |
-|     event     |             el-dialog的事件对象              |                    `Record<String, any>`                     |   -    |
-|    content    |             dialog的内容对象数组             | `Array<ContentFormType \| ContentTableType \| ContentCompType>` |   -    |
-|    header     |         Dialog标题的内容插槽配置对象         |                          `CompType`                          |   -    |
-|    footer     |        Dialog 按钮操作区插槽配置对象         |                          `CompType`                          |   -    |
+| 属性名  | 说明                                            |                             类型                              | 默认值 |
+| :-----: | :---------------------------------------------- | :-----------------------------------------------------------: | :----: |
+|   id    | dialog的唯一 Id，用于定位同一个方法创建的Dialog |                           `String`                            |   -    |
+| visible | 判断所创建的 Dialog 的打开关闭                  |                        `Ref<Boolean>`                         |   -    |
+|  attr   | el-dialog的属性对象                             |                     `Record<String, any>`                     |   -    |
+|  event  | el-dialog的事件对象                             |                     `Record<String, any>`                     |   -    |
+| content | dialog的内容对象数组                            | `Array<ContentFormType 或 ContentTableType  ContentCompType>` |   -    |
+| header  | Dialog标题的内容插槽配置对象                    |                          `CompType`                           |   -    |
+| footer  | Dialog 按钮操作区插槽配置对象                   |                          `CompType`                           |   -    |
+|  slots  | 自定义插槽                                      |                                                               |        |
 
-  `ContentFormType | ContentTableType | ContentComponentType`
+`ContentFormType | ContentTableType | ContentComponentType`
 
-|  属性名  |                        说明                         |   类型   |               默认值               |
-| :------: | :-------------------------------------------------: | :------: | :--------------------------------: |
-|   type   |            指定Dialog内容区所渲染的组件             | `String` | `"Form" \| "Table" \| "Component"` |
-| 其余属性 | 依照对应的`FormType\| TableType\| CompType`自行定义 |          |                                    |
+| 属性名  | 说明                                                  |   类型   |               默认值               |
+| :-----: | :---------------------------------------------------- | :------: | :--------------------------------: |
+|  type   | 指定Dialog内容区所渲染的组件                          | `String` | `"Form" 或 "Table" 或 "Component"` |
+| options | 依照对应的`FormType 或 TableType 或 CompType`自行定义 | `Object` |                                    |
 
-  
+## 示例
+
+### 弹窗内置 Form 表单配置
+
+弹窗可以通过配置 `options.content[i].type` 为 Form，并传入 form 表单配置项 `options.content[i].options` 既可在弹窗中显示 form 表单
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::dialog/dialog-demo"
+/>
+
+### 弹窗内置 Table 表格配置
+
+弹窗可以通过配置 `options.content[i].type` 为 Table，并传入 table 表单配置项 `options.content[i].options` 既可在弹窗中显示 table 表单
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::dialog/dialog-table-demo"
+/>
+
+### 弹窗内置表格和表单配置
+
+弹窗可以通过配置 `options.content[i].type` 为 Form，并传入 form 表单配置项 `options.content[i].options` 既可在弹窗中显示 form 表单
+弹窗可以通过配置 `options.content[i].type` 为 Table，并传入 table 表单配置项 `options.content[i].options` 既可在弹窗中显示 table 表单
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::dialog/dialog-table-form-demo"
+/>
+
+### 弹窗内置自定义组件
+
+弹窗可以通过配置 `options.content[i].type` 为 Component，并传入自定义组件配置项 `options.content[i].options.comp` 既可在弹窗中显示自定义组件
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::dialog/dialog-component-demo"
+/>
+
+### 函数式创建弹窗
+
+1. 通过导入 CreateDialog 函数，传入弹窗配置项，即可创建弹窗实例；
+2. 弹窗实例返回 show 方法打开弹窗，close 方法关闭弹窗;
+
+- 注意：使用 CreateDialog 函数创建的弹窗必须传入 id 参数作为弹窗的唯一标识
+  <xw-demo
+      demo-height="400px"
+      source-code="element-plus:::dialog/dialog-api-demo"
+  />
+
+### 内容动态弹窗
+
+1. 可以通过修改自定义组件配置项 `options.content[i].options` 配置，动态显示弹窗内容。
+2. 通过导入 CreateDialog 函数，传入弹窗配置项，即可创建弹窗实例；
+3. 通过 `dialogInst?.resetContent(content);` 动态修改弹窗内容配置
+4. 弹窗实例返回 show 方法打开弹窗，close 方法关闭弹窗;
+
+- 注意：使用 CreateDialog 函数创建的弹窗必须传入 id 参数作为弹窗的唯一标识
+  <xw-demo
+      demo-height="400px"
+      source-code="element-plus:::dialog/dialog-dynamic-form-demo"
+  />

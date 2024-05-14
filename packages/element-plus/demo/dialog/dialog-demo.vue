@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import { createDialog, XDialog } from "@/xw-ui/element-plus";
+import { XDialog } from "@/xw-ui/element-plus";
 import { ref, reactive } from "vue";
 
 interface RuleForm {
@@ -147,7 +147,6 @@ const dialogOptions = {
   content: [
     {
       type: "Form",
-
       options: formOptions,
     },
   ],

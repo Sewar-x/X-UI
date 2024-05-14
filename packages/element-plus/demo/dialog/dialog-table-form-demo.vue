@@ -6,7 +6,6 @@
 <script setup lang="ts">
 import { CreateDialog } from "@/xw-ui/element-plus";
 import { ref, reactive } from "vue";
-
 interface RuleForm {
   username: string;
   description: string;
@@ -138,25 +137,151 @@ const formOptions = {
   ],
 };
 
+// 表格数据
+const tableData = [
+  {
+    date: "2016-05-02",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路 1518 弄",
+    select: "送货上门",
+  },
+  {
+    date: "2016-05-04",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路 1517 弄",
+    select: "自取",
+  },
+  {
+    date: "2016-05-01",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路 1519 弄",
+    select: "自取",
+  },
+  {
+    date: "2016-05-03",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路 1516 弄",
+    select: "自取",
+  },
+];
+// 表格列配置
+const columns = [
+  {
+    attr: {
+      prop: "date",
+      label: "日期",
+    },
+  },
+  {
+    attr: {
+      prop: "name",
+      label: "姓名",
+    },
+  },
+  {
+    attr: {
+      prop: "address",
+      label: "地址",
+    },
+    defaultSlot: {
+      comp: "el-input",
+    },
+  },
+  {
+    attr: {
+      prop: "select",
+      label: "配送方式",
+    },
+    defaultSlot: {
+      comp: "el-select",
+      attr: {
+        placeholder: "Select",
+        size: "default",
+      },
+      children: ["送货上门", "自取"].map((option) => {
+        return {
+          comp: "el-option",
+          attr: {
+            key: option,
+            label: option,
+            value: option,
+          },
+        };
+      }),
+      event: {
+        change: function (currentRowData: any, val: any) {
+          console.log(`🚀 ~ 您选中的行数据是 ${currentRowData}, 选中的值是 ${val}`);
+        },
+      },
+    },
+  },
+  {
+    attr: {
+      prop: "",
+      label: "操作",
+      width: "150",
+    },
+    defaultSlot: [
+      {
+        comp: "el-button",
+        attr: {
+          type: "primary",
+          size: "small",
+        },
+        content: {
+          text: "提交",
+        },
+        event: {
+          click: function (currentRowData: any) {
+            alert(`🚀 ~ 您提交的行数据是 ${currentRowData}`);
+          },
+        },
+      },
+      {
+        comp: "el-button",
+        attr: {
+          type: "danger",
+          size: "small",
+        },
+        content: {
+          text: "删除",
+        },
+        event: {
+          click: function (currentRowData: any) {
+            alert(`🚀 ~ 您删除的行数据是  ${currentRowData}`);
+          },
+        },
+      },
+    ],
+  },
+];
+// 表格配置
+const tableOptions = {
+  data: tableData,
+  pagination: false, //不使用分页模式，需要显示配置 false (默认使用分页模式)
+  columns: columns,
+};
+
 const dialogOptions = {
-  id: "test-dialog",
+  id: "test-table-dialog",
   visible: ref(false),
   attr: {
-    title: "基础弹窗",
+    title: "表格与表单弹窗",
     draggable: true,
-    modal: false,
     "close-on-click-modal": false,
   },
   content: [
     {
+      type: "Table",
+      options: tableOptions,
+    },
+    {
       type: "Form",
-
       options: formOptions,
     },
   ],
 };
 
-// 创建弹窗
 const dialogInst = CreateDialog(dialogOptions);
 const openDialog = () => {
   dialogInst?.show();
