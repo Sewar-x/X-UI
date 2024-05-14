@@ -26,6 +26,7 @@ interface ButtonType {
 }
 
 ```
+:::
 
 ## 参数 `json` 格式
 
@@ -73,7 +74,7 @@ interface ButtonType {
 ### 常规使用
 
 <xw-demo
-    demo-height="100px"
+    demo-height="300px"
     source-code="element-plus:::button/button-demo"
 />
 
