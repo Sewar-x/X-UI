@@ -10,7 +10,7 @@ export interface ButtonType {
   attr?: BtnType;
   event?: Recordable;
   colAttr?: Recordable;
-  content?: CompType;
+  text?: string;
   loading?: CompType;
   icon?: IconType;
 }

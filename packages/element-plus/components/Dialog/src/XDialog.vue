@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, isRef, reactive } from "vue";
+import { ref, isRef } from "vue";
 import { XForm } from "../../Form";
 import { XTable } from "../../Table";
 import type { OptionType } from "../type";

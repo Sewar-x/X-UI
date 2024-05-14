@@ -11,15 +11,15 @@
 
 ## 功能
 
-| 功能                    | 说明 | 状态 |
-| ----------------------- | ---- | ---- |
-| 弹窗配置内置 Form 表单  |      |      |
-| 弹窗配置内置 table 表格 |      |      |
-| 弹窗配置内置 自定义组件 |      |      |
-| 操作按钮按钮配置        |      |      |
-| 快速配置预定义操作按钮  |      |      |
-| 函数式调用弹窗          |      |      |
-|                         |      |      |
+| 功能                    |
+| ----------------------- |
+| 弹窗配置内置 Form 表单  |
+| 弹窗配置内置 table 表格 |
+| 弹窗配置内置 自定义组件 |
+| 操作按钮按钮配置        |
+| 快速配置预定义操作按钮  |
+| 函数式调用弹窗          |
+| 内容动态弹窗            |
 
 ## 文件说明
 
@@ -27,7 +27,7 @@
 
 - 组件类型：`components/Dialog/types.ts`
 
-::: details 点我查看代码
+::: details 组件类型
 
 ```typescript
 interface OptionType {
@@ -88,6 +88,21 @@ interface OptionType {
 ### 弹窗内置 Form 表单配置
 
 弹窗可以通过配置 `options.content[i].type` 为 Form，并传入 form 表单配置项 `options.content[i].options` 既可在弹窗中显示 form 表单
+
+```vue
+<template>
+  <el-button type="primary" @click="openDialog">Open Dialog</el-button>
+  <XDialog :options="dialogOptions"></XDialog>
+</template>
+<script setup lang="ts">
+// 导入弹窗组件
+import { XDialog } from "@/xw-ui/element-plus";
+</script>
+
+```
+
+
+
 <xw-demo
     demo-height="400px"
     source-code="element-plus:::dialog/dialog-demo"
@@ -96,6 +111,38 @@ interface OptionType {
 ### 弹窗内置 Table 表格配置
 
 弹窗可以通过配置 `options.content[i].type` 为 Table，并传入 table 表单配置项 `options.content[i].options` 既可在弹窗中显示 table 表单
+
+::: details 核心代码
+
+```vue
+<template>
+  <el-button type="primary" @click="openDialog">Open Dialog</el-button>
+  <el-button @click="closeDialog">Close Dialog</el-button>
+</template>
+
+<script setup lang="ts">
+// 使用弹窗函数创建弹窗
+import { CreateDialog } from "@/xw-ui/element-plus";
+// 定义弹窗配置项
+ const dialogOptions = {
+  // ...省略配置项  
+ };
+// 创建弹窗实例
+const dialogInst = CreateDialog(dialogOptions);
+const openDialog = () => {
+  // 显示弹窗
+  dialogInst?.show();
+};
+
+const closeDialog = () => {
+   // 关闭弹窗
+  dialogInst?.close();
+};
+</script>
+```
+
+:::
+
 <xw-demo
     demo-height="400px"
     source-code="element-plus:::dialog/dialog-table-demo"
@@ -103,20 +150,28 @@ interface OptionType {
 
 ### 弹窗内置表格和表单配置
 
-弹窗可以通过配置 `options.content[i].type` 为 Form，并传入 form 表单配置项 `options.content[i].options` 既可在弹窗中显示 form 表单
-弹窗可以通过配置 `options.content[i].type` 为 Table，并传入 table 表单配置项 `options.content[i].options` 既可在弹窗中显示 table 表单
+1. 弹窗可以通过配置 `options.content[i].type` 为 Form，并传入 form 表单配置项 `options.content[i].options` 既可在弹窗中显示 form 表单
+2. 弹窗可以通过配置 `options.content[i].type` 为 Table，并传入 table 表单配置项 `options.content[i].options` 既可在弹窗中显示 table 表单
+
+
+
 <xw-demo
     demo-height="400px"
     source-code="element-plus:::dialog/dialog-table-form-demo"
 />
 
+
+
 ### 弹窗内置自定义组件
 
 弹窗可以通过配置 `options.content[i].type` 为 Component，并传入自定义组件配置项 `options.content[i].options.comp` 既可在弹窗中显示自定义组件
+
 <xw-demo
     demo-height="400px"
     source-code="element-plus:::dialog/dialog-component-demo"
 />
+
+
 
 ### 函数式创建弹窗
 
@@ -124,10 +179,54 @@ interface OptionType {
 2. 弹窗实例返回 show 方法打开弹窗，close 方法关闭弹窗;
 
 - 注意：使用 CreateDialog 函数创建的弹窗必须传入 id 参数作为弹窗的唯一标识
-  <xw-demo
-      demo-height="400px"
-      source-code="element-plus:::dialog/dialog-api-demo"
-  />
+
+::: details 核心代码
+
+```vue
+<template>
+  <el-button type="primary" @click="openDialog">Open Dialog</el-button>
+  <el-button @click="closeDialog">Close Dialog</el-button>
+</template>
+
+<script setup lang="ts">
+// 使用弹窗函数创建弹窗
+import { CreateDialog } from "@/xw-ui/element-plus";
+// 定义弹窗配置项
+const dialogOptions = {
+  id: "test-table-dialog", // 必须传入 id
+  visible: ref(false),
+  attr: {
+    title: "表格弹窗",
+    draggable: true,
+    "close-on-click-modal": false,
+  },
+  content: [
+    {
+      type: "Table",
+      options: tableOptions,
+    },
+  ],
+};
+// 创建弹窗实例
+const dialogInst = CreateDialog(dialogOptions);
+const openDialog = () => {
+  // 显示弹窗
+  dialogInst?.show();
+};
+
+const closeDialog = () => {
+   // 关闭弹窗
+  dialogInst?.close();
+};
+</script>
+```
+
+:::
+
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::dialog/dialog-api-demo"
+/>
 
 ### 内容动态弹窗
 
@@ -137,7 +236,73 @@ interface OptionType {
 4. 弹窗实例返回 show 方法打开弹窗，close 方法关闭弹窗;
 
 - 注意：使用 CreateDialog 函数创建的弹窗必须传入 id 参数作为弹窗的唯一标识
-  <xw-demo
-      demo-height="400px"
-      source-code="element-plus:::dialog/dialog-dynamic-form-demo"
-  />
+
+::: details 核心代码
+
+```vue
+<template>
+  <el-button type="primary" @click="openForm1Dialog">打开 Form1 </el-button>
+  <el-button type="primary" @click="openForm2Dialog">打开 Form2 </el-button>
+  <el-button type="primary" @click="openTableDialog">打开 table </el-button>
+</template>
+
+<script setup lang="ts">
+// 使用弹窗函数创建弹窗
+import { CreateDialog } from "@/xw-ui/element-plus";
+// 定义弹窗配置项
+
+const dialogOptions = {
+  id: "test-dialog",
+  visible: ref(false),
+  attr: {
+    title: "内容动态弹窗",
+    draggable: true,
+    "close-on-click-modal": false,
+  },
+  content: [],
+};
+
+// 创建弹窗
+const dialogInst = CreateDialog(dialogOptions);
+// 打开 form1 弹窗内容
+const openForm1Dialog = () => {
+  // 重置弹窗内容
+  dialogInst?.resetContent([
+    {
+      type: "Form",
+      options: form1Options,
+    },
+  ]);
+  dialogInst?.show();
+};
+
+const openForm2Dialog = () => {
+  // 重置弹窗内容
+  dialogInst?.resetContent([
+    {
+      type: "Form",
+      options: form2Options,
+    },
+  ]);
+  dialogInst?.show();
+};
+
+const openTableDialog = () => {
+  // 重置弹窗内容
+  dialogInst?.resetContent([
+    {
+      type: "Table",
+      options: tableOptions,
+    },
+  ]);
+  dialogInst?.show();
+};
+</script>
+```
+
+:::
+
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::dialog/dialog-dynamic-form-demo"
+/>
