@@ -60,5 +60,4 @@ const props = defineProps<{
   options: ButtonType | Array<ButtonType>;
 }>();
 const isGroup = Array.isArray(props.options);
-console.log("🚀 ~ isGroup:", isGroup);
 </script>

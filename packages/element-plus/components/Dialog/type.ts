@@ -28,9 +28,12 @@ export interface OptionType {
   content?: Array<ContentType>;
   header?: CompType;
   footer?: {
-    type: FooterType,
-    options: Object
-  };
+    type: FooterType,// footer 组件类型
+    fixedButton?: boolean, // 是否使用固定按钮
+    options?: Object // 组件配置
+    cancelCallback?: Function, // 取消按钮回调
+    comfirmCallback?: Function// 确认按钮回调
+  } | Object;
   slots?: Function
 }
 

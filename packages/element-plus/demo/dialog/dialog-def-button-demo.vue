@@ -1,0 +1,266 @@
+<template>
+  <el-button type="primary" @click="openDialog">Open Dialog</el-button>
+  <el-button @click="closeDialog">Close Dialog</el-button>
+</template>
+
+<script setup lang="ts">
+import { CreateDialog } from "@/xw-ui/element-plus";
+import { ref, reactive } from "vue";
+import { ArrowLeft, ArrowRight, Delete, Edit, Share } from "@element-plus/icons-vue";
+interface RuleForm {
+  username: string;
+  description: string;
+  place: string;
+  remarks: string;
+  github: string;
+  start: boolean;
+}
+
+// 响应数据
+let data = reactive<RuleForm>({
+  username: "XW-UI",
+  description: "an vue2/3 & react componet library",
+  place: "huizhou",
+  remarks: "Vue React",
+  github: "https://github.com/Sewar-x/X-UI/",
+  start: true,
+});
+// from 表单配置项
+const formOptions = {
+  mode: data,
+  attr: {
+    "label-width": "auto",
+  },
+  items: [
+    [
+      {
+        attr: {
+          prop: "username",
+          label: "项目名称",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "description",
+          label: "项目描述",
+        },
+        component: {
+          comp: "el-input",
+          attr: {
+            type: "textarea",
+          },
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "place",
+          label: "项目地址",
+        },
+        component: {
+          comp: "el-select",
+          attr: {
+            placeholder: "项目地址",
+          },
+          children: [
+            {
+              comp: "el-option",
+              attr: {
+                label: "惠州",
+                value: "huizhou",
+              },
+            },
+            {
+              comp: "el-option",
+              attr: {
+                label: "广州",
+                value: "guangzhou",
+              },
+            },
+          ],
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "remarks",
+          label: "标签",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "github",
+          label: "GitHub",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+      {
+        attr: {
+          prop: "start",
+          label: "关注",
+        },
+        component: {
+          comp: "el-switch",
+        },
+      },
+      {
+        span: 2,
+        component: {
+          comp: "el-button",
+          attr: {
+            size: "mini",
+          },
+          content: {
+            text: "查看",
+          },
+          event: {
+            click: function (val: any) {
+              window.open(data.github);
+            },
+          },
+        },
+      },
+    ],
+  ],
+};
+
+const dialogOptions = {
+  id: "test-dialog",
+  visible: ref(false),
+  attr: {
+    title: "基础弹窗",
+    draggable: true,
+    modal: false,
+    "close-on-click-modal": false,
+  },
+  content: [
+    {
+      type: "Form",
+
+      options: formOptions,
+    },
+  ],
+  footer: {
+    // 配置底部插槽
+    type: "Button", // 配置底部类型为按钮
+    options: [
+      {
+        attr: {
+          size: "default",
+          type: "primary",
+        },
+        event: {
+          click: () => {
+            alert("您点击了按钮1！");
+          },
+        },
+        text: "按钮1",
+        colAttr: {
+          span: 4,
+        },
+        icon: {
+          name: ArrowLeft,
+        },
+      },
+      {
+        attr: {
+          size: "default",
+          type: "success",
+        },
+        event: {
+          click: () => {
+            alert("您点击了按钮2！");
+          },
+        },
+        text: "按钮2",
+        colAttr: {
+          span: 4,
+        },
+        icon: {
+          name: Delete,
+        },
+      },
+      {
+        attr: {
+          size: "default",
+          type: "info",
+        },
+        text: "按钮3",
+        event: {
+          click: () => {
+            alert("您点击了按钮3！");
+          },
+        },
+        colAttr: {
+          span: 4,
+        },
+        icon: {
+          name: Edit,
+        },
+      },
+      {
+        attr: {
+          size: "default",
+          type: "warning",
+        },
+        text: "按钮4",
+        event: {
+          click: () => {
+            alert("您点击了按钮4！");
+          },
+        },
+        colAttr: {
+          span: 4,
+        },
+        icon: {
+          name: Share,
+        },
+      },
+      {
+        attr: {
+          size: "default",
+          type: "danger",
+        },
+        text: "按钮5",
+        event: {
+          click: () => {
+            alert("您点击了按钮5！");
+          },
+        },
+        colAttr: {
+          span: 4,
+        },
+        icon: {
+          name: ArrowRight,
+        },
+      },
+    ],
+  },
+};
+
+// 创建弹窗
+const dialogInst = CreateDialog(dialogOptions);
+const openDialog = () => {
+  dialogInst?.show();
+};
+
+const closeDialog = () => {
+  dialogInst?.close();
+};
+</script>
+
+<style scoped lang="less"></style>

@@ -42,7 +42,11 @@ class DialogInstance {
             ...that.options, // 假设 options 包含了除插槽之外的所有 props  
             content: that.content,
             visible: that.visible, // 使用响应式引用的值  
-          }
+          },
+          // 添加事件监听器
+          onCloseDialog: () => {
+            that.close()
+          },
         }, slots.default ? slots.default() : []);
       }
     })

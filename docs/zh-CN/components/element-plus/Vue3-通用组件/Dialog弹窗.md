@@ -16,10 +16,10 @@
 | 弹窗配置内置 Form 表单  |
 | 弹窗配置内置 table 表格 |
 | 弹窗配置内置 自定义组件 |
-| 操作按钮按钮配置        |
-| 快速配置预定义操作按钮  |
 | 函数式调用弹窗          |
 | 内容动态弹窗            |
+| 快速配置预定义操作按钮  |
+| 操作按钮按钮配置        |
 
 ## 文件说明
 
@@ -89,6 +89,7 @@ interface OptionType {
 
 弹窗可以通过配置 `options.content[i].type` 为 Form，并传入 form 表单配置项 `options.content[i].options` 既可在弹窗中显示 form 表单
 
+::: details 核心示例代码
 ```vue
 <template>
   <el-button type="primary" @click="openDialog">Open Dialog</el-button>
@@ -100,7 +101,7 @@ import { XDialog } from "@/xw-ui/element-plus";
 </script>
 
 ```
-
+:::
 
 
 <xw-demo
@@ -306,3 +307,77 @@ const openTableDialog = () => {
     demo-height="400px"
     source-code="element-plus:::dialog/dialog-dynamic-form-demo"
 />
+
+
+
+### 固定操作按钮
+
+通过配置 `options.footer.type` 为 "Button"，并且配置  `options.footer.fixedButton`  为 true，自动在弹窗右下角显示"取消" 和 "确认" 按钮。
+
+::: details  按钮配置
+
+```json
+ {
+  // ...省略其他配置	 
+  footer: {
+    // 配置底部插槽
+    type: "Button", // 配置底部类型为按钮
+    fixedButton: true, // 使用固定按钮
+    cancelCallback: () => {
+      // 取消操作回调
+      alert("您点击了取消按钮！");
+    },
+    comfirmCallback: () => {
+      // 确定操作回调
+      alert("您点击了提交按钮！");
+    },
+  },
+};
+```
+:::
+
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::dialog/dialog-api-button-demo"
+/>
+
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::dialog/dialog-component-button-demo"
+/>
+
+
+
+
+
+### 自定义操作按钮
+
+您也可以自定义操作按钮，通过在 `options.footer.options` 传入按钮配置项并且配置  `options.footer.fixedButton`  为 false 或则不配置该字段，既可自定义操作按钮；
+
+按钮配置项可以参考按钮组件配置：[按钮 | XW-UI (sewar-x.github.io)](https://sewar-x.github.io/X-UI/zh-CN/components/element-plus/Vue3-通用组件/Button按钮.html#示例)
+
+::: details  按钮组件配置
+
+```javascript
+ [{
+  attr: {}, // el-button的属性对象
+  event: {}, // el-button的事件对象
+  colAttr： {}， // 包裹el-button的el-col的属性对象
+  text: '', // 按钮内容的配置对象
+  icon: { // 自定义图标组件的配置对象
+    isSvgIcon: false,
+    name: "",
+    size: "",
+    color: "",
+  },
+  loading: {}, 
+}]
+```
+
+:::
+
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::dialog/dialog-def-button-demo"
+/>
+

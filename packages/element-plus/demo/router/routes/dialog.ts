@@ -28,6 +28,20 @@ export default [
     path: '/dialog-dynamic-form-demo',
     component: () => import('../../dialog/dialog-dynamic-form-demo.vue'),
     name: 'dialogDynamicFormDemo'
+  },
+  {
+    path: '/dialog-api-button-demo',
+    component: () => import('../../dialog/dialog-api-button-demo.vue'),
+    name: 'dialogApiButtonDemo'
+  },
+  {
+    path: '/dialog-component-button-demo',
+    component: () => import('../../dialog/dialog-component-button-demo.vue'),
+    name: 'dialogComponentButtonDemo'
+  },
+  {
+    path: '/dialog-def-button-demo',
+    component: () => import('../../dialog/dialog-def-button-demo.vue'),
+    name: 'dialogDefButtonDemo'
   }
-
 ]
