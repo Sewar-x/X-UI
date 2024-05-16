@@ -15,6 +15,7 @@ import { RemoteSearchSelector } from './components/RemoteSearchSelector'
 import { DatePickerWrap, DateChangerWrap } from './components/DatePickerWrap'
 import { SelectorWrap } from './components/SelectorWrap'
 import { DialogWrap } from './components/DialogWrap'
+import { OnlyOffice } from './components/OnlyOffice'
 export const elmUiComponents = [
   BasicComponent,
   XTable,
@@ -31,7 +32,8 @@ export const elmUiComponents = [
   RemoteSearchSelector,
   DatePickerWrap,
   DateChangerWrap,
-  SelectorWrap
+  SelectorWrap,
+  OnlyOffice
 ]
 
 export const installer = (Vue) => {
