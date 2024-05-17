@@ -31,10 +31,22 @@
      <OnlyOffice  v-bind="$attrs" v-on="$listeners"/>
    </template>
    <script>
-   import { OnlyOffice } from 'xw-ui/element-ui'
+   import { OnlyOffice,initOnlyOffice,onlyOfficePermissions,opendFileByOnlyOffice } from 'xw-ui/element-ui'
    export default {
      name: 'OnlyOffice',
-     components: {OnlyOffice}
+     components: {OnlyOffice},
+     beforeCreated(){
+         initOnlyOffice({
+             siteUrl = 'http://siteUrl', // 当前部署站点地址
+             onlyofficeService =  'http://onlyofficeService', // onlyoffice 服务地址
+             documentService = 'http://documentService', // 文档编辑回调地址
+             documentServiceApi = 'http://documentServiceApi', // 文档 api 地址
+             documentServiceConvert = 'http://documentServiceConvert', // 文档格式转换服务
+             documentServiceCallbackOnlie = 'http://documentServiceCallbackOnlie',// 在线编辑文档回调地址
+             onlyofficeJwtEncode = 'http://onlyofficeJwtEncode', //onlyoffice 文件加密 api, 返回文件 Token
+             onlyofficeHistory = 'http://onlyofficeHistory' // 文档历史修改记录  api  
+         })
+     }
    }
    </script>
    ```
@@ -57,7 +69,7 @@
 3. 使用 OnlyOffice 打开文件：
 
    ```javascript
-   import {opendFileByOnlyOffice,onlyOfficePermissions} from 'xw-ui/element-ui/OnlyOffice'
+   import {opendFileByOnlyOffice,onlyOfficePermissions} from 'xw-ui/element-ui'
    // 文档权限配置
    const permissions =  permissions: {
            // 权限控制
@@ -118,4 +130,40 @@
 | title  （必填）         | 文档标题                   | string |
 | callbackUrl  （必填）   | 编辑word后保存时回调的地址 | string |
 | attachment_id  （必填） | 文档id,                    | number |
+
+### 方法
+
+| 方法                  | 描述                                                       | 参数                                                         | 返回值 |
+| --------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ | ------ |
+| initOnlyOffice        | 初始化 OnlyOffice                                          | 对象，对象包含以下值                                         |        |
+|                       |                                                            | siteUrl   // 当前部署站点地址                                |        |
+|                       |                                                            | onlyofficeService  // onlyoffice 服务地址                    |        |
+|                       |                                                            | documentService // 文档编辑回调地址                          |        |
+|                       |                                                            | documentServiceApi // 文档 api 地址                          |        |
+|                       |                                                            | documentServiceConvert // 文档格式转换服务                   |        |
+|                       |                                                            | documentServiceCallbackOnlie  // 在线编辑文档回调地址        |        |
+|                       |                                                            | onlyofficeJwtEncode  //onlyoffice 文件加密 api, 返回文件 Token |        |
+|                       |                                                            | onlyofficeHistory   // 文档历史修改记录  api                 |        |
+| onlyOfficePermissions | 文档权限配置对象,包含getPermissions 和 setPermissions 方法 |                                                              |        |
+|                       | getPermissions 获取文档权限                                | id // 文档 id                                                |        |
+|                       | setPermissions 设置文档权限                                | { id: 文档id permissions: 权限对象 }                         |        |
+| opendFileByOnlyOffice | 使用 OnlyOffice 打开文档                                   |                                                              |        |
+|                       |                                                            |                                                              |        |
+
+
+
+### 全局变量
+
+在调用 `initOnlyOffice` 方法后，会将 OnlyOffice 配置自动注入 Vue 全局变量中：
+
+```javascript
+ Vue.prototype.$onlyoffice = {
+  	siteUrl, // 当前部署站点地址
+    onlyofficeService, // onlyoffice 服务地址
+    documentService, // 文档编辑回调地址
+    documentServiceApi, // 文档 api 地址
+    documentServiceConvert, // 文档格式转换服务
+    documentServiceCallbackOnlie,// 在线编辑文档回调地址
+ }
+```
 

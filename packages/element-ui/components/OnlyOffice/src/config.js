@@ -2,12 +2,9 @@ import { randomString, handleDocType, getFileType, paramsCheck } from './utils.j
 import { getOnlyofficeToken, getHistory } from './request'
 import OnlyOfficeEvents from './events.js'
 import onlyOfficePermissions from './permission/permission.js'
-import {
-  SITE_URL,
-  DOCUMENT_SERVER,
-  DOCUMENT_SERVER_API,
-  DOCUMENT_SERVER_CONVERTSERVICE
-} from './settings.js'
+import { onlyofficeGlobalvar } from './settings.js'
+const OnlyOfficeSetting = onlyofficeGlobalvar.setting
+
 
 
 /**
@@ -37,12 +34,12 @@ export async function getEditorConfigure(options) {
 
   // 在线编辑回调，根据传入的 callbackUrl 是否包含文档站点地址，不包含自动拼接
   const onlineCallback = callbackUrl
-    ? callbackUrl.match(SITE_URL)
+    ? callbackUrl.match(OnlyOfficeSetting.SITE_URL)
       ? callbackUrl
-      : `${SITE_URL}/${callbackUrl}`
-    : `${SITE_URL}${DOCUMENT_SERVER_CALLBACKURL_ONLINE}`
+      : `${OnlyOfficeSetting.SITE_URL}/${callbackUrl}`
+    : `${OnlyOfficeSetting.SITE_URL}${OnlyOfficeSetting.DOCUMENT_SERVER_CALLBACKURL_ONLINE}`
 
-  const documentUrl = documentUrl ? (documentUrl.match(SITE_URL) ? documentUrl : `${SITE_URL}${url}`) : null
+  const documentUrl = documentUrl ? (documentUrl.match(OnlyOfficeSetting.SITE_URL) ? documentUrl : `${OnlyOfficeSetting.SITE_URL}${url}`) : null
   // onlyoffice 回调参数地址
   const onlineCallbackParams = `${onlineCallback}?attachment_id=${attachment_id}&userId=${user?.id}`
 
@@ -103,7 +100,7 @@ export async function getEditorConfigure(options) {
   })
   if (history && history[0]) {
     configure.document.key = history[0].key
-    configure.document.url = `${SITE_URL}${DOCUMENT_SERVER}${history[0].url}`
+    configure.document.url = `${OnlyOfficeSetting.SITE_URL}${OnlyOfficeSetting.DOCUMENT_SERVER}${history[0].url}`
   }
   // 注意： 生成 token 参数为整个配置对象！！，服务端在生成 token 方法 jwtEncode 中需要将密钥加入 密钥配置中， Node.js 服务端参考 Node.js 示例，示例 参考： https://juejin.cn/post/7195426970749337660
   configure.token = await getOnlyofficeToken(configure)
@@ -112,11 +109,11 @@ export async function getEditorConfigure(options) {
 
 export default {
   // 文档 api 地址
-  DOCUMENT_SERVER_API,
+  DOCUMENT_SERVER_API: OnlyOfficeSetting.DOCUMENT_SERVER_API,
   // 文档格式转换服务
-  DOCUMENT_SERVER_CONVERTSERVICE,
+  DOCUMENT_SERVER_CONVERTSERVICE: OnlyOfficeSetting.DOCUMENT_SERVER_CONVERTSERVICE,
   // 在线编辑文档回调地址
-  DOCUMENT_SERVER_CALLBACKURL_ONLINE,
+  DOCUMENT_SERVER_CALLBACKURL_ONLINE: OnlyOfficeSetting.DOCUMENT_SERVER_CALLBACKURL_ONLINE,
   getEditorConfigure,
   getOnlyofficeToken
 }

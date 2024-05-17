@@ -1,4 +1,5 @@
-import { onlyofficeHistory, onlyofficeJwtEncode } from './api'
+import { onlyofficeGlobalvar } from './settings.js'
+const { onlyofficeHistory = null, onlyofficeJwtEncode = null } = onlyofficeGlobalvar.api
 /**
  * 生成 onlyoffice token
  * @param {*} config 生成 token 的 hash 值
@@ -7,8 +8,10 @@ import { onlyofficeHistory, onlyofficeJwtEncode } from './api'
 export async function getOnlyofficeToken(config) {
   let token = null
   try {
-    const { data } = await onlyofficeJwtEncode(config)
-    token = data.token
+    if (onlyofficeJwtEncode) {
+      const { data } = await onlyofficeJwtEncode(config)
+      token = data.token
+    }
   } catch (err) {
     alert('onlyoffice 生成失败！请联系系统管理员 ')
   }
@@ -23,11 +26,13 @@ export async function getOnlyofficeToken(config) {
 export async function getHistory({ attachment_id, userId }) {
   let history = []
   try {
-    const { data } = await onlyofficeHistory({
-      attachment_id,
-      userId
-    })
-    history = data
+    if (onlyofficeHistory) {
+      const { data } = await onlyofficeHistory({
+        attachment_id,
+        userId
+      })
+      history = data
+    }
   } catch (err) {
     console.log('获取文档历史记录失败!')
   }

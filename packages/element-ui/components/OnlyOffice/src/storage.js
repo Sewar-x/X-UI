@@ -9,6 +9,9 @@ export class LocalStorageWrapper {
   }
 
   setItem(key, value, expires) {
+    if ((value !== null || value != undefined) && typeof value === 'object') {
+      value = JSON.stringify(value)
+    }
     switch (this.type) {
       case 'localStorage':
         window.localStorage.setItem(key, value);
@@ -25,16 +28,31 @@ export class LocalStorageWrapper {
   }
 
   getItem(key) {
+    let result = null
+    let value = null
     switch (this.type) {
       case 'localStorage':
-        return window.localStorage.getItem(key);
+        value = window.localStorage.getItem(key);
+        break;
       case 'sessionStorage':
-        return window.sessionStorage.getItem(key);
+        value = window.sessionStorage.getItem(key);
+        break;
       case 'cookie':
-        return Cookies.get(key);
+        value = Cookies.get(key);
+        break;
       default:
-        throw new Error('Invalid storage type');
+        value = null
     }
+
+
+    try {
+      if (value) {
+        result = JSON.parse(value)
+      }
+    } catch (e) {
+      result = value
+    }
+    return result
   }
 
   removeItem(key) {
