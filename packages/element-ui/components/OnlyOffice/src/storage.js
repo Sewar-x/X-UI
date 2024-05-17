@@ -50,7 +50,7 @@ function deleteAllCookies() {
   }
 }
 
-export class LocalStorageWrapper {
+export default class LocalStorageWrapper {
   type = null;
 
   constructor(type) {
