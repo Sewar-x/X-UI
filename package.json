@@ -1,6 +1,6 @@
 {
   "name": "xw-ui",
-  "version": "1.0.85",
+  "version": "1.0.89",
   "description": "配置化组件库",
   "workspaces": [
     "packages/*",
@@ -34,12 +34,12 @@
       "import": "./packages/http/dist/index.es.js"
     },
     "./element-plus/*": {
-      "require": "./packages/element-plus/dist/*",
-      "import": "./packages/element-plus/dist/*"
+      "require": "./packages/element-plus/*",
+      "import": "./packages/element-plus/*"
     },
     "./element-ui/*": {
-      "require": "./packages/element-ui/dist/*",
-      "import": "./packages/element-ui/dist/*"
+      "require": "./packages/element-ui/*",
+      "import": "./packages/element-ui/*"
     },
     "./ant-design/*": {
       "require": "./packages/ant-design/*",

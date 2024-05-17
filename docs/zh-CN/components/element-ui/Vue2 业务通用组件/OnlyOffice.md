@@ -28,27 +28,33 @@
 
    ```vue
    <template>
-     <OnlyOffice  v-bind="$attrs" v-on="$listeners"/>
+     <OnlyOffice v-bind="$attrs" v-on="$listeners" />
    </template>
    <script>
-   import { OnlyOffice,initOnlyOffice,onlyOfficePermissions,opendFileByOnlyOffice } from 'xw-ui/element-ui'
+   import {
+     OnlyOffice,
+     initOnlyOffice,
+     onlyOfficePermissions,
+     opendFileByOnlyOffice,
+   } from "xw-ui/element-ui";
    export default {
-     name: 'OnlyOffice',
-     components: {OnlyOffice},
-     beforeCreated(){
-         initOnlyOffice({
-             siteUrl = 'http://siteUrl', // 当前部署站点地址
-             onlyofficeService =  'http://onlyofficeService', // onlyoffice 服务地址
-             documentService = 'http://documentService', // 文档编辑回调地址
-             documentServiceApi = 'http://documentServiceApi', // 文档 api 地址
-             documentServiceConvert = 'http://documentServiceConvert', // 文档格式转换服务
-             documentServiceCallbackOnlie = 'http://documentServiceCallbackOnlie',// 在线编辑文档回调地址
-             onlyofficeJwtEncode = 'http://onlyofficeJwtEncode', //onlyoffice 文件加密 api, 返回文件 Token
-             onlyofficeHistory = 'http://onlyofficeHistory' // 文档历史修改记录  api  
-         })
-     }
-   }
+     name: "OnlyOffice",
+     components: { OnlyOffice },
+     beforeCreate() {
+       initOnlyOffice({
+         siteUrl: "http://siteUrl", // 当前部署站点地址
+         onlyofficeService: "http://onlyofficeService", // onlyoffice 服务地址
+         documentService: "http://documentService", // 文档编辑回调地址
+         documentServiceApi: "http://documentServiceApi", // 文档 api 地址
+         documentServiceConvert: "http://documentServiceConvert", // 文档格式转换服务
+         documentServiceCallbackOnlie: "http://documentServiceCallbackOnlie", // 在线编辑文档回调地址
+         onlyofficeJwtEncode: "http://onlyofficeJwtEncode", //onlyoffice 文件加密 api, 返回文件 Token
+         onlyofficeHistory: "http://onlyofficeHistory", // 文档历史修改记录  api
+       });
+     },
+   };
    </script>
+   
    ```
 
    
