@@ -8,10 +8,11 @@
   </div>
 </template>
 <script>
+import { onlyofficeGlobalvar } from "./settings.js";
 import { parallelLoadScripts } from "./utils.js";
 import { getFileType } from "./utils";
-import { SITE_URL } from "./settings.js";
 import configure from "./config.js";
+const OnlyOfficeSetting = onlyofficeGlobalvar.setting;
 export default {
   name: "OnlyOffice",
   props: {
@@ -91,7 +92,7 @@ export default {
       const fileType = getFileType(fileOption.url);
       // pdf 类型文件直接使用 iframe 文件预览
       if (fileType === "pdf") {
-        this.pdfURL = `${SITE_URL}${fileOption.url}`;
+        this.pdfURL = `${OnlyOfficeSetting.SITE_URL}${fileOption.url}`;
         return false;
       }
       const that = this;
