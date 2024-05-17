@@ -1,4 +1,54 @@
-import Cookies from 'js-cookie';
+function setCookie(name, value, options = {}) {
+  options = {
+    expires: 7, // 默认过期时间为7天  
+    path: '/', // 默认路径为根目录  
+    domain: '', // 默认为空，表示当前域名  
+    secure: false, // 默认为非安全连接  
+    ...options // 允许覆盖默认选项  
+  };
+
+  if (options.expires) {
+    const date = new Date();
+    date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000)); // 将天数转换为毫秒  
+    options.expires = date.toUTCString();
+  }
+
+  let cookieString = `${name}=${value}`;
+
+  for (let optionKey in options) {
+    if (options.hasOwnProperty(optionKey) && optionKey !== 'expires') {
+      cookieString += `; ${optionKey}=${options[optionKey]}`;
+    }
+  }
+
+  if (options.expires) {
+    cookieString += `; expires=${options.expires}`;
+  }
+
+  document.cookie = cookieString;
+}
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  return null;
+}
+
+function deleteCookie(name) {
+  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/`;
+}
+
+function deleteAllCookies() {
+  const cookies = document.cookie.split("; ");
+
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+    const eqPos = cookie.indexOf("=");
+    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/`;
+  }
+}
 
 export class LocalStorageWrapper {
   type = null;
@@ -20,7 +70,7 @@ export class LocalStorageWrapper {
         window.sessionStorage.setItem(key, value);
         break;
       case 'cookie':
-        Cookies.set(key, value, { expires: expires });
+        setCookie(key, value, { expires: expires });
         break;
       default:
         throw new Error('Invalid storage type');
@@ -38,7 +88,7 @@ export class LocalStorageWrapper {
         value = window.sessionStorage.getItem(key);
         break;
       case 'cookie':
-        value = Cookies.get(key);
+        value = getCookie(key);
         break;
       default:
         value = null
@@ -64,7 +114,7 @@ export class LocalStorageWrapper {
         window.sessionStorage.removeItem(key);
         break;
       case 'cookie':
-        Cookies.remove(key);
+        deleteCookie(key);
         break;
       default:
         throw new Error('Invalid storage type');
@@ -81,10 +131,7 @@ export class LocalStorageWrapper {
         break;
       case 'cookie':
         // 对于 cookie，js-cookie 没有直接提供 clear 方法，需要遍历并删除  
-        const cookies = Cookies.get();
-        for (const key in cookies) {
-          Cookies.remove(key);
-        }
+        deleteAllCookies()
         break;
       default:
         throw new Error('Invalid storage type');
