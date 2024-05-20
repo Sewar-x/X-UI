@@ -208,61 +208,60 @@ export default {
 
 
 
-### 按需引入  XW-UI
+### 按需引入  XW-UI 组件
 
-#### **1. 引入按需引入 Element 插件**
+直接在使用的地方使用完整路径 (`xw-ui/packages/element-ui/dist/index.es.js`) 导入相关组件即可：
+```vue
+<template>
+  <x-table :data="tableData" :default-columns="defaultColumns">
+    <el-table-column prop="date" label="日期" width="90"> </el-table-column>
+    <el-table-column prop="name" label="姓名" width="90"> </el-table-column>
+    <el-table-column prop="age" label="年龄" width="90"> </el-table-column>
+    <el-table-column prop="address" label="地址"> </el-table-column>
+  </x-table>
+</template>
 
-借助 [babel-plugin-component](https://github.com/QingWei-Li/babel-plugin-component)，我们可以只引入需要的组件，以达到减小项目体积的目的。
+<script>
+// 使用完整路径导入组件
+import { XTable } from "xw-ui/packages/element-ui/dist/index.es.js";
+export default {
+  name: "TableCustomColumns",
+  // 指定使用的组件
+  components: { XTable },
+  data() {
+    return {
+      defaultColumns: ["日期", "姓名", "地址"],
+      tableData: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          age: 20,
+          address: "上海市普陀区金沙江路 1518 弄",
+        },
+        {
+          date: "2016-05-04",
+          name: "王小虎",
+          age: 20,
+          address: "上海市普陀区金沙江路 1517 弄",
+        },
+        {
+          date: "2016-05-01",
+          name: "王小虎",
+          age: 20,
+          address: "上海市普陀区金沙江路 1519 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          age: 20,
+          address: "上海市普陀区金沙江路 1516 弄111",
+        },
+      ],
+    };
+  },
+};
+</script>
 
-首先，安装 babel-plugin-component：
-
-```bash
-npm install babel-plugin-component -D
-```
-
-然后，将 .babelrc 修改为：
-
-```json
-{
-  "presets": [["es2015", { "modules": false }]],
-  "plugins": [
-    [
-      "component",
-      {
-        "libraryName": "element-ui",
-        "styleLibraryName": "theme-chalk"
-      }
-    ]
-  ]
-}
-```
-
-#### **2. 按需引入插件**
-
-接下来，如果你只希望引入部分组件，比如 Form，那么需要在 main.js 中写入以下内容：
-
-```javascript
-import Vue from 'vue';
-// 引入依赖的 element-ui 组件
-import { Form, FormItem } from 'element-ui';
-// 引入 xw-ui 封装的组件
-import { XForm } from 'xw-ui/packages/element-ui';
-import App from './App.vue';
-
-Vue.component(Form.name, Form);
-Vue.component(FormItem.name, FormItem);
-Vue.component(XForm.name, XForm);
-
-/* 或写为
- * Vue.use(Form)
- * Vue.use(FormItem)
- * Vue.use(XForm)
- */
-
-new Vue({
-  el: '#app',
-  render: h => h(App)
-});
 ```
 
 

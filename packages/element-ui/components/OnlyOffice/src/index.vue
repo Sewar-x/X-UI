@@ -14,7 +14,7 @@ import { getFileType } from "./utils";
 import configure from "./config.js";
 const OnlyOfficeSetting = onlyofficeGlobalvar.setting;
 export default {
-  name: "OnlyOffice",
+  name: "XOnlyOffice",
   props: {
     // 文件配置选项
     fileOption: {
@@ -63,7 +63,10 @@ export default {
     // 监听路由参数变化，通过路由参数获取 onlyoffice 参数
     $route: {
       handler(newVal) {
-        const { attachment_id } = newVal.query;
+        if (!newVal) {
+          return;
+        }
+        const { attachment_id = null } = newVal?.query;
         if (!attachment_id) return;
         this.init(newVal.query);
       },

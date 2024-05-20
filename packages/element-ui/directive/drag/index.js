@@ -1,7 +1,7 @@
 /**
  * 用于实现元素拖拽 drag.ts
  */
-export default {
+export const drag = {
   bind(el) {
     el.style.position = 'absolute' // 将元素定位
     let x = 0
@@ -11,7 +11,7 @@ export default {
     let isDown = false
 
     // 鼠标按下事件
-    el.onmousedown = function(e) {
+    el.onmousedown = function (e) {
       x = e.clientX // 鼠标在视口中的x坐标
       y = e.clientY // 鼠标在视口中的y坐标
       l = el.offsetLeft // 当前元素左上角相对于 HTMLElement.offsetParent 节点的左边界偏移的像素值（即元素左上角相对于定位父元素的左侧偏移量）
@@ -23,7 +23,7 @@ export default {
     }
 
     // 鼠标移动
-    window.onmousemove = function(e) {
+    window.onmousemove = function (e) {
       if (isDown === false) {
         return
       }
@@ -39,10 +39,12 @@ export default {
     }
 
     // 鼠标抬起事件
-    el.onmouseup = function() {
+    el.onmouseup = function () {
       // 开关关闭
       isDown = false
       el.style.cursor = 'default'
     }
   }
 }
+
+export default drag

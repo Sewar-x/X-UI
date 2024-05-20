@@ -1,6 +1,6 @@
 import drag from './drag'
 
-const install = function(Vue) {
+const install = function (Vue) {
   Vue.directive('el-drag-dialog', drag)
 }
 
@@ -10,4 +10,5 @@ if (window.Vue) {
 }
 
 drag.install = install
-export default drag
+export const dragDialog = drag
+export default dragDialog

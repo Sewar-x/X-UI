@@ -4,7 +4,7 @@ import { OnlyOfficeSetting, onlyofficeGlobalvar } from './settings'
 /**
  * 初始化 onlyoffice 
  */
-export default function initOnlyOffice({
+export function initOnlyOffice({
   siteUrl = null, // 当前部署站点地址
   onlyofficeService = null, // onlyoffice 服务地址
   documentService = null, // 文档编辑回调地址
@@ -30,5 +30,8 @@ export default function initOnlyOffice({
     onlyofficeJwtEncode, //onlyoffice 文件加密 api, 返回文件 Token
     onlyofficeHistory // 文档历史修改记录  api
   }
-  Vue.prototype.$onlyoffice = $onlyofficeGlobalvar
+  Vue.prototype.$onlyoffice = {
+    onlyofficeJwtEncode, //onlyoffice 文件加密 api, 返回文件 Token
+    onlyofficeHistory // 文档历史修改记录  api
+  }
 }

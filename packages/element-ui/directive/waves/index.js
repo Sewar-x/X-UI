@@ -1,13 +1,14 @@
-import waves from './waves'
+import wave from './waves'
 
-const install = function(Vue) {
-  Vue.directive('waves', waves)
+const install = function (Vue) {
+  Vue.directive('waves', wave)
 }
 
 if (window.Vue) {
-  window.waves = waves
+  window.waves = wave
   Vue.use(install); // eslint-disable-line
 }
 
-waves.install = install
+wave.install = install
+export const waves = wave
 export default waves

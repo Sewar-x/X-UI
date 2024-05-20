@@ -1,3 +1,3 @@
-export * as drag from './drag'
-export * as permission from './permission'
-export * as waves from './waves'
+export * from './drag'
+export * from './permission'
+export * from './waves'
