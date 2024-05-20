@@ -1,94 +1,139 @@
 # 菜单
+
+菜单组件是对 [Element Plus 的菜单组件](https://element-plus.org/zh-CN/component/menu.html) 进行二次封装成 JSON 配置模式，除了支持 Element Plus 的 菜单基本功能之外还扩展了其他功能：
+
 ## 文件说明
 
 - 组件地址：`components/Menu/src/BasicMenu.vue`、`MenuItem.vue`
 
 - 组件类型：`components/Menu/types.ts`
 
-## 特性：
+::: details 组件类型
 
-  1. 采用了递归的方法，可以依据渲染数据对象进行循环渲染
+```typescript
+// el-menu 配置对象参数
+interface MenuType {
+  attr?: Recordable;    // el-menu 属性
+  event?: Recordable; // el-menu 事件
+  ref?: Ref<T>; // el-menu 引用
+  menu: Array<MenuItemType>;  // el-menu-item 子节点配置
+  component?: CompType; // 默认插槽组件
+}
+// el-menu-item 子节点配置
+interface MenuItemType {
+  attr?: Recordable; // 属性
+  event?: Recordable; // 事件
+  subMenu?: Array<MenuItemType>; // 子节点
+  icon?: IconType; // 图标
+  title?: string; // 菜单文本
+  component?: CompType; // 默认插槽组件
+}
+
+```
+
+:::
+
+## 特性
+
+采用了递归的方法，可以依据渲染数据对象进行循环渲染
 
 ##  参数`json`格式
 
   ```json
-  <menuOption> = {
-    attr: {}, // el-menu的属性对象
-    event: {}, // el-menu的事件对象
-    ref：ref(), // el-menu组件的实例对象
-    items: [  
+  <menuOption> ={
+    attr: { }, // el-menu的属性对象
+    event: { }, // el-menu的事件对象
+    ref: ref(), // el-menu组件的实例对象
+    menu: [
       // el-menu-item
       {
-        attr: {},	// el-menu-item的属性对象
+        attr: {}, // el-menu-item的属性对象
         event: {}, // el-menu-item的事件对象
         icon: {
-          isSvgIcon: true, // 图标是否为自引入Svg图标还是
-          name: "", // 图标名
-          size: "", // 图标大小
-          color: "", // 图标颜色
+          name: Document, // 图标对象
         },
-        text: '',	// 菜单项文本内容
+        title: "导航一", // 菜单项文本内容
       },
       // el-sub-menu
-      { // *
-        attr: {},	// el-sub-menu的属性对象
-        event: {}, // el-sub-menu的事件对象
-        icon: {}, // el-sub-menu的图标
-        text: '', // el-sub-menu的文本内容
-        items: [ // 2
+      {
+        attr: { }, // el-menu-item的属性对象
+        event: {  }, // el-menu-item的事件对象
+        icon: {
+          name: Setting, // 图标名
+        },
+        title: "导航三", // 菜单项文本内容
+        subMenu: [
+          // 2
           // el-menu-item
           {
-            attr: {},
-            event: {},
-            icon: {},
-        	  text: '',
+            attr: {   },
+            icon: {
+              name: Location,
+            },
+            title: "导航 3-1 ",
           },
           // el-sub-menu
           {
-            attr: {},
-            event: {},
-            icon: {},
-        	  text: '',
-            items: [ // 3
-  			      // el-menu-item
+            attr: {  },
+            icon: {
+              name: Setting,
+            },
+            title: "导航 3-2 ",
+            subMenu: [
+              // 3
+              // el-menu-item
               {
-                attr: {},
+                attr: {  },
                 event: {},
-                icon: {},
-        		  text: '',
+                icon: {
+                  name: Setting,
+                },
+                title: "导航 3-2-1 ",
               },
-            ] // 3
-          }
-        ]  // 2
-      } // *
-    ]
-  }
+            ], // 3
+          },
+        ], // 2
+      }, // *
+    ],
+  };
   ```
 
 ###  参数说明
 
-  1. `MenuType`
+#### `MenuType`
 
 | 属性名  |                             说明                             |         类型          | 默认值 |
-| :-----: | :----------------------------------------------------------: | :-------------------: | :----: |
-|  attr   | `el-menu`的属性对象，值为`element-plus`中 `el-menu` 的属性以及 HTML 属性 | `Record<String, any>` |   -    |
-|  event  | `el-menu`的事件对象，值为`element-plus`中 `el-menu` 的事件以及 HTML事件 | `Record<String, any>` |   -    |
-|   ref   |                   `el-menu`组件的实例对象                    |       `Ref<T>`        |   -    |
-| items |                          菜单项数组                          | `Array<MenuItemType>` |   -    |
+| :-----: | :----------------------------------------------------------- | :-------------------: | :----: |
+|  `attr` | `el-menu`的属性对象，值为`element-plus`中 `el-menu` 的属性以及 HTML 属性 | `Record<String, any>` |   -    |
+|  `event`  | `el-menu`的事件对象，值为`element-plus`中 `el-menu` 的事件以及 HTML事件 | `Record<String, any>` |   -    |
+|   `ref`   |                   `el-menu`组件的实例对象                    |       `Ref<T>`        |   -    |
+| `menu` |                          菜单项数组                          | `Array<MenuItemType>` |   -    |
+| `component` | 默认插槽组件 | `CompType` |  |
 
-  2. `MenuItemType`
+#### `MenuItemType`
 
 | 属性名  |                             说明                             |         类型          | 默认值 |
-| :-----: | :----------------------------------------------------------: | :-------------------: | :----: |
-|  attr   | `el-menu-item`的属性对象，值为`element-plus`中 `el-menu-item` 的属性以及 HTML属性 | `Record<String, any>` |   -    |
-|  event  | `el-menu-item`的事件对象，值为`element-plus`中 `el-menu-item` 的事件以及 HTML事件 | `Record<String, any>` |   -    |
-| items |              `el-sub-menu`的`el-menu-item`数组               | `Array<MenuItemType>` |   -    |
-|  icon   |                       菜单项的前缀图标                       |      `IconType`       |   -    |
-|  text   |                       菜单项的文本内容                       |       `String`        |   -    |
+| :-----: | :----------------------------------------------------------- | :-------------------: | :----: |
+|  `attr` | `el-menu-item`的属性对象，值为`element-plus`中 `el-menu-item` 的属性以及 HTML属性 | `Record<String, any>` |   -    |
+|  `event`  | `el-menu-item`的事件对象，值为`element-plus`中 `el-menu-item` 的事件以及 HTML事件 | `Record<String, any>` |   -    |
+| `subMenu` |              `el-sub-menu`的`el-menu-item`数组               | `Array<MenuItemType>` |   -    |
+|  `icon` |                       菜单项的前缀图标                       |      `IconType`       |   -    |
+|  `text` |                       菜单项的文本内容                       |       `String`        |   -    |
+| `component` | 默认插槽组件 | `CompType` |  |
 
-- 方法
+### 方法
 
-  | 方法名 |        说明         |                参数                 |
-  | :----: | :-----------------: | :---------------------------------: |
-  |  open  | 展开指定的 sub-menu | index: 需要打开的 sub-menu 的 index |
-  | close  | 收起指定的 sub-menu | index: 需要收起的 sub-menu 的 index |
+| 方法名 |        说明         |                参数                 |
+| :----: | :-----------------: | :---------------------------------: |
+|  open  | 展开指定的 sub-menu | index: 需要打开的 sub-menu 的 index |
+| close  | 收起指定的 sub-menu | index: 需要收起的 sub-menu 的 index |
+
+
+## 示例
+
+### 基础用法
+
+<xw-demo
+    demo-height="550px"
+    source-code="element-plus:::menu/menu-demo"
+/>

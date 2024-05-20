@@ -5,7 +5,7 @@ import { XButton } from './components/Button'
 import { XDescriptions } from './components/Descriptions'
 import { XDialog } from './components/Dialog'
 import { XSvgIcon, XIcon } from './components/Icon'
-import { XMenu, MenuItem } from './components/Menu'
+import { XMenu, XMenuItem } from './components/Menu'
 import { XPopover } from './components/Popover'
 import { XSearch } from './components/Search'
 import { XSwiper } from './components/Swiper'
@@ -22,7 +22,7 @@ export const elmPlusComponents = [
   XSvgIcon,
   XIcon,
   XMenu,
-  MenuItem,
+  XMenuItem,
   XPopover,
   XSearch,
   XSwiper,

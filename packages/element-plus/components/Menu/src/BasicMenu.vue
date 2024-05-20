@@ -1,16 +1,16 @@
 <template>
   <el-menu v-bind="options.attr" v-on="options.event || {}" :ref="options.ref">
-    <MenuItem
-      v-for="(menuItem, index) in options.items"
-      :key="index + menuItem.attr?.index"
-      :menuItemInfo="menuItem"
+    <XMenuItem
+      v-for="menuItem in options.menu"
+      :key="menuItem.attr?.index"
+      :options="menuItem"
     />
   </el-menu>
 </template>
 
 <script setup lang="ts">
 import type { MenuType } from "../type";
-import { MenuItem } from "..";
+import { XMenuItem } from "..";
 
 defineProps<{
   options: MenuType;
