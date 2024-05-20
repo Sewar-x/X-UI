@@ -28,29 +28,35 @@
 
    ```vue
    <template>
-     <OnlyOffice v-bind="$attrs" v-on="$listeners" />
+     <XOnlyOffice v-bind="$attrs" v-on="$listeners" />
    </template>
    <script>
    import {
-     OnlyOffice,
-     initOnlyOffice,
-     onlyOfficePermissions,
-     opendFileByOnlyOffice,
-   } from "xw-ui/element-ui";
+     XOnlyOffice,
+     init,
+     // opendByOnlyOffice,
+     permissions,
+   } from "xw-ui/packages/element-ui/dist/index.es.js";
    export default {
      name: "OnlyOffice",
-     components: { OnlyOffice },
+     components: { XOnlyOffice },
      beforeCreate() {
-       initOnlyOffice({
+       init({
          siteUrl: "http://siteUrl", // 当前部署站点地址
          onlyofficeService: "http://onlyofficeService", // onlyoffice 服务地址
          documentService: "http://documentService", // 文档编辑回调地址
          documentServiceApi: "http://documentServiceApi", // 文档 api 地址
          documentServiceConvert: "http://documentServiceConvert", // 文档格式转换服务
          documentServiceCallbackOnlie: "http://documentServiceCallbackOnlie", // 在线编辑文档回调地址
-         onlyofficeJwtEncode: "http://onlyofficeJwtEncode", //onlyoffice 文件加密 api, 返回文件 Token
-         onlyofficeHistory: "http://onlyofficeHistory", // 文档历史修改记录  api
+         onlyofficeJwtEncode: () => {
+           console.log("===onlyofficeJwtEncode===");
+         }, //onlyoffice 文件加密 api, 返回文件 Token
+         onlyofficeHistory: () => {
+           console.log("===onlyofficeHistory===");
+         }, // 文档历史修改记录  api
        });
+    
+       console.log("=======permissions===", permissions);
      },
    };
    </script>
@@ -75,9 +81,9 @@
 3. 使用 OnlyOffice 打开文件：
 
    ```javascript
-   import {opendFileByOnlyOffice,onlyOfficePermissions} from 'xw-ui/element-ui'
+   import {opendByOnlyOffice,permissions} from  "xw-ui/packages/element-ui/dist/index.es.js";
    // 文档权限配置
-   const permissions =  permissions: {
+   const onlyOfficePermissions = {
            // 权限控制
            comment: true, // 评论
            copy: true, // 是否可以复制, 编辑状态下可以复制
@@ -95,13 +101,13 @@
        },
            
    // 可以单独设置文档权限
-   onlyOfficePermissions.setPermissions({
+   permissions.setPermissions({
        id: '文件id',
-       permissions,
+       permissions:onlyOfficePermissions,
    });
    
    // 通过 onlyoffice 打开文档
-   opendFileByOnlyOffice({
+   opendByOnlyOffice({
        url: '文档 url',
        name: '查看文档的用户名称',
        callbackUrl:'保存文档回调地址',
@@ -109,7 +115,7 @@
        routeQuery: { // 路由参数
           
        },
-       permissions: permissions // 也可以在打开文档时直接传入文档文档权限
+       permissions: onlyOfficePermissions // 也可以在打开文档时直接传入文档文档权限
    })
    ```
 
@@ -139,22 +145,22 @@
 
 ### 方法
 
-| 方法                  | 描述                                                       | 参数                                                         | 返回值 |
-| --------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ | ------ |
-| initOnlyOffice        | 初始化 OnlyOffice                                          | 对象，对象包含以下值                                         |        |
-|                       |                                                            | siteUrl   // 当前部署站点地址                                |        |
-|                       |                                                            | onlyofficeService  // onlyoffice 服务地址                    |        |
-|                       |                                                            | documentService // 文档编辑回调地址                          |        |
-|                       |                                                            | documentServiceApi // 文档 api 地址                          |        |
-|                       |                                                            | documentServiceConvert // 文档格式转换服务                   |        |
-|                       |                                                            | documentServiceCallbackOnlie  // 在线编辑文档回调地址        |        |
-|                       |                                                            | onlyofficeJwtEncode  //onlyoffice 文件加密 api, 返回文件 Token |        |
-|                       |                                                            | onlyofficeHistory   // 文档历史修改记录  api                 |        |
-| onlyOfficePermissions | 文档权限配置对象,包含getPermissions 和 setPermissions 方法 |                                                              |        |
-|                       | getPermissions 获取文档权限                                | id // 文档 id                                                |        |
-|                       | setPermissions 设置文档权限                                | { id: 文档id permissions: 权限对象 }                         |        |
-| opendFileByOnlyOffice | 使用 OnlyOffice 打开文档                                   |                                                              |        |
-|                       |                                                            |                                                              |        |
+| 方法              | 描述                                                       | 参数                                                         | 返回值 |
+| ----------------- | ---------------------------------------------------------- | ------------------------------------------------------------ | ------ |
+| init              | 初始化 OnlyOffice                                          | 对象，对象包含以下值                                         |        |
+|                   |                                                            | siteUrl   // 当前部署站点地址                                |        |
+|                   |                                                            | onlyofficeService  // onlyoffice 服务地址                    |        |
+|                   |                                                            | documentService // 文档编辑回调地址                          |        |
+|                   |                                                            | documentServiceApi // 文档 api 地址                          |        |
+|                   |                                                            | documentServiceConvert // 文档格式转换服务                   |        |
+|                   |                                                            | documentServiceCallbackOnlie  // 在线编辑文档回调地址        |        |
+|                   |                                                            | onlyofficeJwtEncode  //onlyoffice 文件加密 api, 返回文件 Token |        |
+|                   |                                                            | onlyofficeHistory   // 文档历史修改记录  api                 |        |
+| permissions       | 文档权限配置对象,包含getPermissions 和 setPermissions 方法 |                                                              |        |
+|                   | getPermissions 获取文档权限                                | id // 文档 id                                                |        |
+|                   | setPermissions 设置文档权限                                | { id: 文档id permissions: 权限对象 }                         |        |
+| opendByOnlyOffice | 使用 OnlyOffice 打开文档                                   |                                                              |        |
+|                   |                                                            |                                                              |        |
 
 
 
