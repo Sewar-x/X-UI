@@ -1,20 +1,12 @@
 <template>
-  <div
-    v-if="typeof isVisible !== 'undefined' ? isVisible.value : true"
-    class="icon-style"
-  >
+  <div v-if="isNullOrUnDef(isVisible) ? isVisible.value : true" class="icon-style">
     <XSvgIcon
       v-if="isSvgIcon"
       :name="name"
-      :size="typeof size !== 'undefined' ? size : 14"
+      :size="isNullOrUnDef(size) ? size : 14"
       :style="style"
     />
-    <el-icon
-      v-else
-      :color="color"
-      :size="typeof size !== 'undefined' ? size : 14"
-      :style="style"
-    >
+    <el-icon v-else :color="color" :size="isNullOrUnDef(size) ? size : 14" :style="style">
       <component :is="name" />
     </el-icon>
   </div>
@@ -23,7 +15,7 @@
 <script setup lang="ts">
 import { XSvgIcon } from "../index";
 import type { Ref } from "vue";
-
+import { isNullOrUnDef } from "../../../utils/is.ts";
 defineProps<{
   isVisible?: Ref<Boolean>;
   isSvgIcon: boolean;

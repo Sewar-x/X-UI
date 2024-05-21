@@ -1,17 +1,17 @@
 <template>
-  <template v-if="options.buttonPrevSlotConfig">
-    <div v-bind="options.buttonPrevSlotConfig.attr" slot="button-prev">
+  <template v-if="options.buttonPrevSlot">
+    <div v-bind="options.buttonPrevSlot.attr" slot="button-prev">
       <BasicComponent
-        v-if="options.buttonPrevSlotConfig.childNode"
-        :options="options.buttonPrevSlotConfig.childNode"
+        v-if="options.buttonPrevSlot.childNode"
+        :options="options.buttonPrevSlot.childNode"
       />
     </div>
   </template>
-  <template v-if="options.buttonNextSlotConfig">
-    <div v-bind="options.buttonNextSlotConfig.attr" slot="button-next">
+  <template v-if="options.buttonNextSlot">
+    <div v-bind="options.buttonNextSlot.attr" slot="button-next">
       <BasicComponent
-        v-if="options.buttonNextSlotConfig.childNode"
-        :options="options.buttonNextSlotConfig.childNode"
+        v-if="options.buttonNextSlot.childNode"
+        :options="options.buttonNextSlot.childNode"
       />
     </div>
   </template>
@@ -64,7 +64,16 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 import type { SwiperType } from "../type";
 import "swiper/css/bundle";
-
+import {
+  isString,
+  isEmpty,
+  isObject,
+  isDef,
+  isUnDef,
+  isNullOrUnDef,
+  isBoolean,
+  isArray,
+} from "../../../utils/is.ts";
 defineProps<{
   options: SwiperType;
 }>();
