@@ -1,16 +1,19 @@
 <template>
   <el-descriptions v-bind="options.attr" v-on="options.event || {}" :ref="options.ref">
-    <template #title v-if="options.titleSlotName || options.titleSlotConfig">
-      <slot v-if="options.titleSlotConfig">
-        <BasicComponent :options="options.titleSlotConfig" />
-      </slot>
-      <slot v-if="options.titleSlotName" :name="options.titleSlotName"></slot>
+    <template #default v-if="isDef(options.defaultSlot)">
+      <BasicComponent
+        v-if="isObject(options.defaultSlot)"
+        :options="options.defaultSlot"
+      />
+      <slot v-if="isString(options.defaultSlot)" :name="options.defaultSlot"></slot>
     </template>
-    <template #extra v-if="options.extraSlotName || options.extraSlotConfig">
-      <slot v-if="options.extraSlotConfig">
-        <BasicComponent :options="options.extraSlotConfig" />
-      </slot>
-      <slot v-if="options.extraSlotName" :name="options.extraSlotName"></slot>
+    <template #title v-if="isDef(options.titleSlot)">
+      <BasicComponent v-if="isObject(options.titleSlot)" :options="options.titleSlot" />
+      <slot v-if="isString(options.titleSlot)" :name="options.titleSlot"></slot>
+    </template>
+    <template #extra v-if="isDef(options.extraSlot)">
+      <BasicComponent v-if="isObject(options.extraSlot)" :options="options.extraSlot" />
+      <slot v-if="isString(options.extraSlot)" :name="options.extraSlot"></slot>
     </template>
     <el-descriptions-item
       v-for="(descriptionsItem, index) of options.items"
@@ -18,26 +21,24 @@
       v-bind="descriptionsItem.attr"
       v-on="descriptionsItem.event || {}"
     >
-      <template
-        #label
-        v-if="descriptionsItem.labelSlotName || descriptionsItem.labelSlotConfig"
-      >
-        <slot v-if="descriptionsItem.labelSlotConfig">
-          <BasicComponent :options="descriptionsItem.labelSlotConfig" />
-        </slot>
-        <slot
-          v-if="descriptionsItem.labelSlotName"
-          :name="descriptionsItem.labelSlotName"
-        ></slot>
-      </template>
-      <template #default>
+      <template #label v-if="isDef(descriptionsItem.labelSlot)">
         <BasicComponent
-          v-if="descriptionsItem.defaultSlotConfig"
-          :options="descriptionsItem.defaultSlotConfig"
+          v-if="isObject(descriptionsItem.labelSlot)"
+          :options="descriptionsItem.labelSlot"
         />
         <slot
-          v-if="descriptionsItem.defaultSlotName"
-          :name="descriptionsItem.defaultSlotName"
+          v-if="isString(descriptionsItem.labelSlot)"
+          :name="descriptionsItem.labelSlot"
+        ></slot>
+      </template>
+      <template #default v-if="isDef(descriptionsItem.defaultSlot)">
+        <BasicComponent
+          v-if="isObject(descriptionsItem.defaultSlot)"
+          :options="descriptionsItem.defaultSlot"
+        />
+        <slot
+          v-if="isString(descriptionsItem.defaultSlot)"
+          :name="descriptionsItem.defaultSlot"
         ></slot>
       </template>
     </el-descriptions-item>
@@ -46,6 +47,7 @@
 
 <script setup lang="ts">
 import type { DescriptionsType } from "../type";
+import { isString, isEmpty, isObject, isDef } from "../../../utils/is.ts";
 
 defineProps<{
   options: DescriptionsType;

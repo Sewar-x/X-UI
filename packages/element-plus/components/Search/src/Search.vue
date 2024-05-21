@@ -38,6 +38,8 @@ import { ref, computed, reactive, watch } from "vue";
 import { XForm } from "../../Form";
 import type { SearchType } from "../type.d.ts";
 import { Search, Delete } from "@element-plus/icons-vue";
+import { isObject, isBoolean } from "../../../utils/is.ts";
+
 interface formChangeParams {
   prop: string;
   value: any;
@@ -55,7 +57,7 @@ let formOptions = reactive(props.options?.form || {});
  */
 const showInputs = function (): boolean | undefined {
   if (props.options.hasOwnProperty("inputShow")) {
-    return typeof props.options.inputShow === "boolean" ? props.options.inputShow : true;
+    return isBoolean(props.options.inputShow) ? props.options.inputShow : true;
   }
   return true;
 };
@@ -65,10 +67,7 @@ const showInputs = function (): boolean | undefined {
  * 否则返回空对象
  */
 const getInputConfig = function (type: string): object {
-  if (
-    props.options.hasOwnProperty("inputShow") &&
-    typeof props.options.inputShow === "object"
-  ) {
+  if (props.options.hasOwnProperty("inputShow") && isObject(props.options.inputShow)) {
     return props.options.inputShow[type] || {};
   }
   return {};

@@ -3,9 +3,9 @@
     <!--如果传入 options.slot 则使用默认插槽,该插槽内容会将所有配置项内容覆盖 -->
     <template #default v-if="options.slot">
       <!--传入 slot 为字符串表示插槽为 自定义 template -->
-      <slot v-if="typeof options.slot === 'string'" :name="options.slot"></slot>
+      <slot v-if="isString(options.slot)" :name="options.slot"></slot>
       <!--传入 slot 为对象表示插槽为 JSON 配置 -->
-      <BasicComponent v-if="typeof options.slot === 'object'" :options="options.slot" />
+      <BasicComponent v-if="isObject(options.slot)" :options="options.slot" />
     </template>
     <!--form 表单内置组件是一个二维数组排列-->
     <el-row
@@ -37,13 +37,13 @@
           <template #default v-if="formItem.slot">
             <!--传入 slot 为对象表示插槽为 JSON 配置 -->
             <BasicComponent
-              v-if="typeof formItem.slot === 'object'"
+              v-if="isObject(formItem.slot)"
               :options="formItem.slot"
               :data="data[formItem.attr.prop]"
             />
             <!--传入 slot 为字符串表示插槽为 自定义 template -->
             <slot
-              v-if="typeof formItem.slot === 'string'"
+              v-if="isString(formItem.slot)"
               :name="formItem.slot"
               :items="formItem"
               :data="data[formItem.attr.prop]"
@@ -54,13 +54,13 @@
           <template #label v-if="formItem.labelSlot">
             <!--传入 slot 为对象表示插槽为 JSON 配置 -->
             <BasicComponent
-              v-if="typeof formItem.labelSlot === 'object'"
+              v-if="isObject(formItem.labelSlot)"
               :options="formItem.labelSlot"
               :data="data[formItem.attr.prop]"
             />
             <!--传入 slot 为字符串表示插槽为 自定义 template -->
             <slot
-              v-if="typeof formItem.labelSlot === 'string'"
+              v-if="isString(formItem.labelSlot)"
               :name="formItem.labelSlot"
               :items="formItem"
               :data="data[formItem.attr.prop]"
@@ -71,13 +71,13 @@
           <template #error v-if="formItem.errorSlot">
             <!--传入 slot 为对象表示插槽为 JSON 配置 -->
             <BasicComponent
-              v-if="typeof formItem.errorSlot === 'object'"
+              v-if="isObject(formItem.errorSlot)"
               :options="formItem.errorSlot"
               :data="data[formItem.attr.prop]"
             />
             <!--传入 slot 为字符串表示插槽为 自定义 template -->
             <slot
-              v-if="typeof formItem.errorSlot === 'string'"
+              v-if="isString(formItem.errorSlot)"
               :name="formItem.errorSlot"
               :items="formItem"
               :data="data[formItem.attr.prop]"
@@ -93,6 +93,7 @@
 import { ref, unref, defineProps, defineEmits, computed, reactive, watch } from "vue";
 import { FormType, FormItemType } from "../type";
 import BasicComponent from "../../BasicComponent";
+import { isString, isEmpty, isObject, isDef, isUnDef } from "../../../utils/is.ts";
 const emit = defineEmits(["changeAfter"]);
 const props = defineProps<{
   // 表单数据
@@ -106,7 +107,7 @@ const data = reactive(props.options.mode);
 const formRef = ref();
 // 设置表单的引用，如果配置参数没传入，则使用默认的表单引用，否则使用配置参数的引用
 const setRef = function () {
-  return typeof props.options.ref === "undefined" ? formRef : props.options.ref;
+  return isUnDef(props.options.ref) ? formRef : props.options.ref;
 };
 
 /**
@@ -148,8 +149,7 @@ const setSpan = (formItem: Array<FormItemType>, val: string | number | undefined
   let spanIndex = 0;
   formItem.forEach((item) => {
     if (item.hasOwnProperty("span")) {
-      let value =
-        typeof item.span === "string" ? parseInt(item.span) : (item.span as number);
+      let value = isString(item.span) ? parseInt(item.span) : (item.span as number);
       spanValue = spanValue - value;
       spanIndex++;
     }
@@ -169,7 +169,7 @@ const setSpan = (formItem: Array<FormItemType>, val: string | number | undefined
  * @author
  */
 const setKey = (index: number, prop: string | undefined) => {
-  if (typeof prop === "undefined") {
+  if (isUnDef(prop)) {
     return index;
   } else {
     return index + prop;

@@ -44,11 +44,7 @@
         >
           <el-table-column
             :key="setKey(index, tableColumn.attr?.label)"
-            v-if="
-              tableColumn.isShow == null || tableColumn.isShow == undefined
-                ? true
-                : tableColumn.isShow
-            "
+            v-if="isNullOrUnDef(tableColumn.isShow) ? true : tableColumn.isShow"
             v-bind="tableColumn.attr"
             v-on="tableColumn.event || {}"
           >
@@ -56,24 +52,20 @@
             <template #header v-if="tableColumn.headerSlot">
               <!--传入 headerSlot 表示头部插槽为 自定义 template -->
               <slot
-                v-if="
-                  tableColumn.headerSlot && typeof tableColumn.headerSlot === 'string'
-                "
+                v-if="isString(tableColumn.headerSlot)"
                 :name="tableColumn.headerSlot"
                 :header="tableColumn"
               />
               <!--传入 headerSlot 表示头部插槽为 JSON 配置 -->
               <BasicComponent
-                v-if="tableColumn.headerSlot && typeof options.headerSlot === 'object'"
+                v-if="isObject(tableColumn.headerSlot)"
                 :options="tableColumn.headerSlot"
               />
             </template>
             <!--默认插槽-->
             <template #default="scope" v-if="tableColumn.defaultSlot">
               <slot
-                v-if="
-                  tableColumn.defaultSlot && typeof tableColumn.defaultSlot == 'string'
-                "
+                v-if="isString(tableColumn.defaultSlot)"
                 :name="tableColumn.defaultSlot"
                 :row="scope.row"
                 :columns="scope.column"
@@ -81,9 +73,7 @@
               />
 
               <BasicComponent
-                v-if="
-                  tableColumn.defaultSlot && typeof tableColumn.defaultSlot == 'object'
-                "
+                v-if="isObject(tableColumn.defaultSlot)"
                 :options="defaultSlotHandle(tableColumn.defaultSlot as CompType, scope)"
                 v-model="scope.row[tableColumn.attr?.prop]"
                 v-on="eventHandle(scope, tableColumn.defaultSlot as CompType) || {}"
@@ -100,23 +90,23 @@
         <!--append 	插入至表格最后一行之后的内容-->
         <template #append v-if="options.appendSlot">
           <slot
-            v-if="options.appendSlot && typeof options.appendSlot === 'string'"
+            v-if="isString(options.appendSlot)"
             :name="options.appendSlot"
             :options="options"
           />
           <BasicComponent
-            v-if="options.appendSlot && typeof options.appendSlot === 'object'"
+            v-if="isObject(options.appendSlot)"
             :options="options.appendSlot"
           />
         </template>
         <template #empty v-if="options.emptySlot">
           <slot
-            v-if="options.emptySlot && typeof options.emptySlot === 'string'"
+            v-if="isString(options.emptySlot)"
             :name="options.emptySlot"
             :options="options"
           />
           <BasicComponent
-            v-if="options.emptySlot && typeof options.emptySlot === 'object'"
+            v-if="isObject(options.emptySlot)"
             :options="options.emptySlot"
           />
         </template>
@@ -141,6 +131,17 @@ import { deepMerge } from "@/xw-ui/element-plus/utils";
 import BasicComponent from "../../BasicComponent";
 import { Filter } from "@element-plus/icons-vue";
 import OperateCol from "./OperateCol.vue";
+import {
+  isString,
+  isEmpty,
+  isObject,
+  isDef,
+  isUnDef,
+  isNullOrUnDef,
+  isBoolean,
+  isArray,
+} from "../../../utils/is.ts";
+
 const props = defineProps<{
   options: TableType;
 }>();
@@ -197,7 +198,7 @@ const getPaginationConfig = function (): PaginationType {
   // 如果配置为 false,则不显示分页
   if (
     props.options.hasOwnProperty("pagination") &&
-    typeof props.options.pagination === "boolean" &&
+    isBoolean(props.options.pagination) &&
     !props.options.pagination
   ) {
     return {
@@ -207,10 +208,7 @@ const getPaginationConfig = function (): PaginationType {
     };
   }
   // 如果存在 pagination 配置，则合并默认配置项和传入配置项
-  if (
-    props.options.hasOwnProperty("pagination") &&
-    typeof props.options.pagination === "object"
-  ) {
+  if (props.options.hasOwnProperty("pagination") && isObject(props.options.pagination)) {
     return deepMerge(defalutConfig, props.options.pagination) as PaginationType;
   }
 
@@ -260,10 +258,7 @@ const showColFilter = function (): boolean {
  * 设置默认操作列
  */
 const setShowDefaultOperateCol = function (): void {
-  if (
-    props.options.hasOwnProperty("operations") &&
-    Object.prototype.toString.call(props.options.operations) === "[object Array]"
-  ) {
+  if (props.options.hasOwnProperty("operations") && isArray(props.options.operations)) {
     props.options.columns.push({
       attr: {
         prop: "",
@@ -299,7 +294,7 @@ setShowDefaultOperateCol();
  * @author
  */
 const setKey = (index: number, label: string | undefined) => {
-  if (typeof label === "undefined") {
+  if (isUnDef(label)) {
     return index;
   } else {
     return index + label;
