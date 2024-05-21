@@ -5,8 +5,6 @@ export interface PopoverType {
   event?: Recordable;
   ref?: Ref<T>;
   isShowPopover?: Ref<Boolean>;
-  referenceSlotConfig?: CompType;
-  referenceSlotName?: String;
-  defaultSlotConfig?: CompType;
-  defaultSlotName?: String;
+  referenceSlot?: CompType;
+  defaultSlot?: CompType;
 }

@@ -31,7 +31,7 @@
           :name="descriptionsItem.labelSlot"
         ></slot>
       </template>
-      <template #default v-if="isDef(descriptionsItem.defaultSlot)">
+      <template #default>
         <BasicComponent
           v-if="isObject(descriptionsItem.defaultSlot)"
           :options="descriptionsItem.defaultSlot"
@@ -40,6 +40,7 @@
           v-if="isString(descriptionsItem.defaultSlot)"
           :name="descriptionsItem.defaultSlot"
         ></slot>
+        <span> {{ descriptionsItem.text || descriptionsItem?.attr?.text }}</span>
       </template>
     </el-descriptions-item>
   </el-descriptions>
@@ -47,9 +48,10 @@
 
 <script setup lang="ts">
 import type { DescriptionsType } from "../type";
+import BasicComponent from "../../BasicComponent";
 import { isString, isEmpty, isObject, isDef } from "../../../utils/is.ts";
 
-defineProps<{
+const props = defineProps<{
   options: DescriptionsType;
 }>();
 </script>
