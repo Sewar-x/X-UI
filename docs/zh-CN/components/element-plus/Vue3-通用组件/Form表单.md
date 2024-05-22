@@ -115,7 +115,7 @@ export interface ComponentType extends CompType {
 
 ###  参数说明
 
-### `FormType`
+### `FormType `表单配置
 
 | 属性名  |                             说明                             |            类型            | 默认值 |
 | :------ | :----------------------------------------------------------- | :------------------------: | :----: |
@@ -125,16 +125,16 @@ export interface ComponentType extends CompType {
 | items |                     表单项数组，二维数组                     | `Array<Array<FormItemType>` |   -    |
 | slot | 自定义表单插槽，该插槽内容会覆盖所有表单配置内容 | `string`或`object` |- |
 
-### `FormItemType`
+### `FormItemType`表单项配置
 
 | 属性名  |                             说明                             |        类型         | 默认值 |
-| :-----: | :----------------------------------------------------------- | :-----------------: | :----: |
+| :------ | :----------------------------------------------------------- | :-----------------: | :----: |
 |  span   |                        栅格占据的列数                        |       `Number `       |   24   |
 |  attr   | `el-form-item`的属性对象，值为`element-plus`中 `el-form-item` 的属性以及 HTML 元素属性 | `Record<String, any>` |   -    |
 | colAttr | 包含`el-form-item`的`el-col`的属性对象，值为`element-plus`中 `el-col` 的属性以及 HTML 元素属性 |`Record<String, any>` |   -    |
-|  comp   |              表单项所渲染的子元素组件的属性对象              |    `ComponentType`    |   -    |
+| component |              表单项所渲染的子元素组件的属性对象              |    `ComponentType`    |   -    |
 
-### `ComponentType extends CompType` 
+### `ComponentType`表单组件配置 
 
 |   属性名    |                             说明                             |        类型         | 默认值 |
 | :---------- | :----------------------------------------------------------- | :-----------------: | :----: |

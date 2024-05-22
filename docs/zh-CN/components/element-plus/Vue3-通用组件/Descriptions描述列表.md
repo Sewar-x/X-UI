@@ -102,6 +102,14 @@ interface DescriptionsItemType {
     source-code="element-plus:::descriptions/descriptions-demo"
 />
 
+### 多个描述列表组合
+
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::descriptions/descriptions-multiple-demo"
+/>
+
+
 ### 自定义插槽配置
 
 <xw-demo

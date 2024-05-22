@@ -5,6 +5,11 @@ export default [
     name: 'descriptionsDemo'
   },
   {
+    path: '/descriptions-multiple-demo',
+    component: () => import('../../descriptions/descriptions-multiple-demo.vue'),
+    name: 'descriptionsMultipleDemo'
+  },
+  {
     path: '/descriptions-slot-demo',
     component: () => import('../../descriptions/descriptions-slot-demo.vue'),
     name: 'descriptionsSlotDemo'
