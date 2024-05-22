@@ -44,11 +44,11 @@ interface OptionType {
 
 :::
 
-## 特性：
+## 特性
 
 对公共组件 Dialog 进行了函数化，即通过函数的方式进行创建，为创建 Dialog的函数 传配置对象参数
 
-参数`json`格式
+## 参数`json`格式
 
 ```json
 // 函数createDialog的参数对象
