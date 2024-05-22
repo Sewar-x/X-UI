@@ -96,3 +96,17 @@ export function isUrl(path: string): boolean {
   const reg = /^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
   return reg.test(path);
 }
+
+
+/**
+ * 判断数组是否为二维数组
+ * @param arr 
+ * @returns 
+ */
+export function isTwoDimensionalArray(arr) {
+  if (!Array.isArray(arr)) {
+    return false;
+  }
+  // 检查数组的每一个元素是否也都是数组  
+  return arr.every(item => Array.isArray(item));
+}  

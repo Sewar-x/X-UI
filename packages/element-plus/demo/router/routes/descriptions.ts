@@ -10,9 +10,19 @@ export default [
     name: 'descriptionsMultipleDemo'
   },
   {
+    path: '/descriptions-multiple-config-demo',
+    component: () => import('../../descriptions/descriptions-multiple-config-demo.vue'),
+    name: 'descriptionsMultipleConfigDemo'
+  },
+  {
     path: '/descriptions-slot-demo',
     component: () => import('../../descriptions/descriptions-slot-demo.vue'),
     name: 'descriptionsSlotDemo'
+  },
+  {
+    path: '/descriptions-template-slot-demo',
+    component: () => import('../../descriptions/descriptions-template-slot-demo.vue'),
+    name: 'descriptionsTemplateSlotDemo'
   },
   {
     path: '/descriptions-component-demo',

@@ -102,19 +102,33 @@ interface DescriptionsItemType {
     source-code="element-plus:::descriptions/descriptions-demo"
 />
 
-### 多个描述列表组合
-
+### 多列的描述列表组合
+你可以通过遍历该组件，传入不同的配置项，将多个描述列表组合，生成一个多列组合的描述列表
 <xw-demo
     demo-height="400px"
     source-code="element-plus:::descriptions/descriptions-multiple-demo"
 />
 
+我们封装了以上特性，你可以通过传入 `options.items` 为二维数组，来生成多列组合的描述列表；
+`options.items` 的每一个项为数组，每一项的数组长度表示列数
+此外还提供统一的配置项  `options.itemLabelWidth`, 用于统一所有描述列表 Label 的宽度
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::descriptions/descriptions-multiple-config-demo"
+/>
 
 ### 自定义插槽配置
 
 <xw-demo
     demo-height="400px"
     source-code="element-plus:::descriptions/descriptions-slot-demo"
+/>
+
+### 模板插槽配置
+
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::descriptions/descriptions-template-slot-demo"
 />
 
 ### 自定义Form组件

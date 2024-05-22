@@ -36,3 +36,44 @@ export function deepMerge(obj1: Mergeable, obj2: Mergeable): Mergeable {
 
   return result;
 }
+
+/**
+ * 深拷贝
+ * @param obj 
+ * @param hash 
+ * @returns 
+ */
+export function deepClone(obj: any, hash: WeakMap<any, any> = new WeakMap()) {
+  // 处理基本数据类型和null  
+  if (obj == null || typeof obj !== 'object') {
+    return obj;
+  }
+
+  // 处理Date和RegExp对象  
+  if (obj instanceof Date) {
+    return new Date(obj);
+  }
+  if (obj instanceof RegExp) {
+    return new RegExp(obj.source, obj.flags);
+  }
+
+  // 如果存在循环引用，则从hash中取出  
+  if (hash.has(obj)) {
+    return hash.get(obj);
+  }
+
+  // 初始化克隆对象或数组  
+  let cloneTarget: Object | Array<any> = Array.isArray(obj) ? [] : {};
+
+  // 存储当前对象，以便处理可能的循环引用  
+  hash.set(obj, cloneTarget);
+
+  // 遍历对象的所有属性  
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      cloneTarget[key] = deepClone(obj[key], hash);
+    }
+  }
+
+  return cloneTarget;
+}  
