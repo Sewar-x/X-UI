@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref, reactive, watch } from "vue";
 import { XForm, XDescriptions, XPopover } from "@/xw-ui/element-plus";
 import { ArrowLeft, ArrowRight, Delete, Edit, Share } from "@element-plus/icons-vue";
 // 编辑状态
@@ -92,37 +92,39 @@ const getFormOptions = (key: string): object => {
 };
 
 // 描述列表项配置
-const descriptionItem = Object.keys(data).map((key) => {
-  return {
-    labelSlot: {
-      comp: "div",
-      attr: { class: "cell-key" },
-      children: [
-        {
-          comp: icons[key],
-          attr: {
-            width: 20,
+const getDesItems = () => {
+  return Object.keys(data).map((key) => {
+    return {
+      labelSlot: {
+        comp: "div",
+        attr: { class: "cell-key" },
+        children: [
+          {
+            comp: icons[key],
+            attr: {
+              width: 20,
+            },
           },
+        ],
+        content: {
+          text: key,
         },
-      ],
-      content: {
-        text: key,
       },
-    },
-    defaultSlot: isEdit.value
-      ? getFormOptions(key)
-      : {
-          comp: "span",
-          content: {
-            text: data[key],
-            key: key,
+      defaultSlot: isEdit.value
+        ? getFormOptions(key)
+        : {
+            comp: "span",
+            content: {
+              text: data[key],
+              key: key,
+            },
           },
-        },
-  };
-});
+    };
+  });
+};
 
 // 描述列表配置
-const desOptions = {
+const desOptions = reactive({
   attr: {
     title: "Form表单描述列表",
     column: 3,
@@ -140,15 +142,23 @@ const desOptions = {
     event: {
       click: () => {
         isEdit.value = !isEdit.value;
-        console.log("🚀 ~  isEdit.value:", isEdit.value);
       },
     },
     content: {
-      text: isEdit.value ? "提交" : "编辑",
+      text: "编辑",
     },
   }, // 	自定义操作区配置对象或者操作区插槽名称，显示在右上方
-  items: descriptionItem,
-};
+  items: getDesItems(),
+});
+
+// 注意：需要使用 watch 监听状态，手动修改数据
+watch(
+  () => isEdit.value,
+  (newVal: boolean) => {
+    desOptions.items = getDesItems();
+    desOptions.extraSlot.content.text = isEdit.value ? "提交" : "编辑";
+  }
+);
 </script>
 
 <style lang="less">
