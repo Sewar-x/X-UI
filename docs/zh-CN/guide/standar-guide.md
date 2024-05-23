@@ -232,7 +232,7 @@ const options = {
 
 以 UnoCSS 为例，使用 UnoCSS 在对应的控件配置中的  `attr.class` 添加 UnoCSS 的类，即可控制对应控件的样式。
 
-
+> UnoCSS 详细预设配置参考：[工具优先的基础 - Tailwind CSS 中文网 (nodejs.cn)](https://tailwind.nodejs.cn/docs/utility-first)
 
 
 
