@@ -1,5 +1,243 @@
 # 开发规范指南
 
+## 💡 CSS 处理方案
+
+在使用该组件时，强烈推荐使用 CSS  原子化方案作为该组件库的 CSS 处理方案。
+
+> 关于什么是 CSS 原子化和 CSS 原子化框架选型，可以参考我的博客：[CSS 原子化 | Sewen 博客 (sewar-x.github.io)](https://sewar-x.github.io/myblog/article/css/CSS原子化.html)
+
+### 为什么推荐原子化 CSS 方案？
+
+使用配置化的组件，大大减少了模板的引入，因此在模板中使用 CSS  类和定位 CSS 样式优先级处理上，比较难处理和不直观。
+
+以下是一个使用 Element Plus 的 Form 表单 JSON 配置的示例：
+
+::: details 一个Form 表单配置示例
+
+```vue
+<template>
+  <XForm :options="options"></XForm>
+</template>
+
+<script setup lang="ts">
+import { XForm } from "xw-ui/element-plus";
+import { reactive } from "vue";
+import type { FormRules } from "element-plus";
+interface RuleForm {
+  username: string;
+  description: string;
+  place: string;
+  remarks: string;
+  github: string;
+  start: boolean;
+}
+
+// 响应数据
+let data = reactive<RuleForm>({
+  username: "XW-UI",
+  description: "an vue2/3 & react componet library",
+  place: "huizhou",
+  remarks: "Vue React",
+  github: "https://github.com/Sewar-x/X-UI/",
+  start: true,
+});
+
+const rules = reactive<FormRules<RuleForm>>({
+  username: [
+    { required: true, message: "Please input  name", trigger: "blur" },
+    { min: 3, max: 5, message: "Length should be 3 to 5", trigger: "blur" },
+  ],
+  description: [
+    {
+      required: true,
+      message: "Please input description",
+      trigger: "change",
+    },
+  ],
+  place: [
+    {
+      required: true,
+      message: "Please select Activity count",
+      trigger: "change",
+    },
+  ],
+  remarks: [
+    {
+      required: true,
+      message: "Please input a remarks",
+      trigger: "change",
+    },
+  ],
+  github: [
+    {
+      required: true,
+      message: "Please input github",
+      trigger: "change",
+    },
+  ],
+  start: [
+    {
+      required: true,
+      message: "Please input github",
+      trigger: "change",
+    },
+  ],
+});
+// from 表单配置项
+const options = {
+  mode: data,
+  attr: {
+    "label-width": "auto",
+    rules: rules,
+  },
+  items: [
+    [
+      {
+        attr: {
+          prop: "username",
+          label: "项目名称",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "description",
+          label: "项目描述",
+        },
+        component: {
+          comp: "el-input",
+          attr: {
+            type: "textarea",
+          },
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "place",
+          label: "项目地址",
+        },
+        component: {
+          comp: "el-select",
+          attr: {
+            placeholder: "项目地址",
+          },
+          children: [
+            {
+              comp: "el-option",
+              attr: {
+                label: "惠州",
+                value: "huizhou",
+              },
+            },
+            {
+              comp: "el-option",
+              attr: {
+                label: "广州",
+                value: "guangzhou",
+              },
+            },
+          ],
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "remarks",
+          label: "标签",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+    ],
+    [
+      {
+        attr: {
+          prop: "github",
+          label: "GitHub",
+        },
+        component: {
+          comp: "el-input",
+        },
+      },
+      {
+        attr: {
+          prop: "start",
+          label: "关注",
+        },
+        component: {
+          comp: "el-switch",
+        },
+      },
+      {
+        span: 2,
+        component: {
+          comp: "el-button",
+          attr: {
+            size: "mini",
+          },
+          content: {
+            text: "查看",
+          },
+          event: {
+            click: function (val: any) {
+              window.open(data.github);
+            },
+          },
+        },
+      },
+    ],
+    [
+      {
+        component: {
+          comp: "el-button",
+          content: {
+            text: "提交",
+          },
+          event: {
+            submit: (val: any) => {
+              // 表单提交事件
+              alert(`提交表单：${JSON.stringify(val)}`);
+            },
+          },
+        },
+      },
+    ],
+  ],
+};
+</script>
+
+<style scoped lang="less"></style>
+
+```
+
+:::
+
+
+
+通过以上示例可以看到，在一个具有多个交互控件的 Form 表单中，我们通过 JSON 配置项自动生成了 Form 表单，整个页面只有一个 `<XForm/>` 模板组件。因此假如需要修改某个控件样式时，需要在 配置的空间的 `attr.class` 添加css类，然后再定义该css类，并且在定义时需要注意覆盖 Element Plus 的样式。
+
+
+
+### 解决方案
+
+**推荐解决方案**：使用原子化 CSS 可以很好解决以问题。
+
+以 UnoCSS 为例，使用 UnoCSS 在对应的控件配置中的  `attr.class` 添加 UnoCSS 的类，即可控制对应控件的样式。
+
+
+
+
+
+---
+
 
 
 ## 📑 版本规范
