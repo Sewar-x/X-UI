@@ -183,6 +183,13 @@ export interface ComponentType extends CompType {
     source-code="element-plus:::form/form-demo"
 />
 
+### 使用 Tailwind CSS 配置类
+
+<xw-demo
+    demo-height="400px"
+    source-code="element-plus:::form/form-tailwind-demo"
+/>
+
 ### 表单项联动
 > 在以下示例中，请尝试选择不同的项目，查看表单中其他字段的变化。
 

@@ -5,6 +5,11 @@ export default [
     name: 'formDemo'
   },
   {
+    path: '/form-tailwind-demo',
+    component: () => import('../../form/form-tailwind-demo.vue'),
+    name: 'formTailwindDemo'
+  },
+  {
     path: '/form-slot-demo',
     component: () => import('../../form/form-slot-demo.vue'),
     name: 'formSlotDemo'
