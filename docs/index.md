@@ -1,11 +1,11 @@
 ---
 title: XW-UI
-titleTemplate: Vue2 & Vue3 & React JSON configer Component Library
-description: Vue2 & Vue3 & React JSON configer Component Library
+titleTemplate: Vue2 & Vue3 & React JSON Scheme (DSL) Component Library
+description: Vue2 & Vue3 & React JSON Scheme (DSL) Component Library
 head:
   - - meta
     - name: description
-      content: XW-UI is Vue2 & Vue3 & React JSON configer Component Library
+      content: XW-UI is Vue2 & Vue3 & React JSON Scheme configer Component Library
   - - meta
     - name: keywords
       content: XW-UI Vue2 Vue3 React Component Library
@@ -15,7 +15,7 @@ layout: home
 
 hero:
   name: XW-UI
-  text: JSON 配置化组件库
+  text: JSON Scheme (DSL) 组件库
   tagline: 基于 ElementUI、ElementPlus、AntDesign 组件库二次封装，JSON 配置化快速开发中后台组件库
   image:
     src: /images/xw-ui-icon.svg
@@ -39,7 +39,7 @@ features:
     details: 开箱即用，所有组件支持全量引入和按需引入。
   - icon:    💡
     title:   组件丰富
-    details: 通过 JSON 配置化快速开发，保持组件的原始用法基础上，扩展 JSON 配置模式，更加灵活便捷。
+    details: 通过 JSON Scheme（DSL） 配置化快速开发，保持组件的原始用法基础上，扩展 JSON Scheme（DSL）配置模式，更加灵活便捷。
   - icon:    🗃️
     title:   业务沉淀
     details: 沉淀的业务组件，更贴近业务场景，解决常规业务需求，开发提效。
