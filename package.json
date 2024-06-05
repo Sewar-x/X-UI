@@ -1,6 +1,6 @@
 {
   "name": "xw-ui",
-  "version": "1.0.99",
+  "version": "1.0.100",
   "description": "配置化组件库",
   "workspaces": [
     "packages/*",
@@ -30,8 +30,8 @@
       "import": "./packages/http/dist/index.es.js"
     },
     "./permission": {
-      "require": "./packages/http/dist/index.cjs.js",
-      "import": "./packages/http/dist/index.es.js"
+      "require": "./packages/permission/dist/index.cjs.js",
+      "import": "./packages/permission/dist/index.es.js"
     },
     "./element-plus/*": {
       "require": "./packages/element-plus/*",
