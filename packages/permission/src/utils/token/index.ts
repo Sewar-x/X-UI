@@ -52,7 +52,7 @@ export function getToken(key?: string | undefined): string {
 export function setToken(token: string | null | undefined) {
   const { type } = storageOptions
   const storage = new Storage(type);
-  return storage.setItem(tokenkeys.TOKEN_KEY, token)
+  return storage.setItem(tokenkeys.TOKEN_KEY, token || '')
 }
 
 /**

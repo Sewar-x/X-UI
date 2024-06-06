@@ -25,15 +25,3 @@ export function setKeys(keyOptions: TokenKeyOptions) {
 // 导出keys对象，以便在其他地方使用  
 export default tokenkeys;  
   
-// 枚举仍然可以单独导出  
-export enum envEnum {  
-  DEVELOPMENT = "development",  
-  PRODUCTION = "production",  
-  TEST = "test",  
-}  
-  
-export enum LoginEnum {  
-  USERNAME = "username",  
-  PASSWORD = "password",  
-  REMEMBERME = "rememberMe",  
-}  
