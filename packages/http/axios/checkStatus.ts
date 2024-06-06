@@ -20,11 +20,14 @@ export function checkStatus(opt: checkStatusOptType): string {
     0: {
       msg,
     },
+    200: {
+      msg,
+    },
     400: {
       msg,
     },
     401: {
-      msg: apiEnum.errMsg401,
+      msg: msg || apiEnum.errMsg401,
       callback: () => {
         if (clearToken && isFunction(clearToken)) {
           clearToken();
@@ -35,34 +38,34 @@ export function checkStatus(opt: checkStatusOptType): string {
       }
     },
     403: {
-      msg: apiEnum.errMsg403,
+      msg: msg || apiEnum.errMsg403,
     },
     404: {
-      msg: apiEnum.errMsg404,
+      msg: msg || apiEnum.errMsg404,
     },
     405: {
-      msg: apiEnum.errMsg405,
+      msg: msg || apiEnum.errMsg405,
     },
     408: {
-      msg: apiEnum.errMsg408,
+      msg: msg || apiEnum.errMsg408,
     },
     500: {
-      msg: apiEnum.errMsg500,
+      msg: msg || apiEnum.errMsg500,
     },
     501: {
-      msg: apiEnum.errMsg501,
+      msg: msg || apiEnum.errMsg501,
     },
     502: {
-      msg: apiEnum.errMsg502,
+      msg: msg || apiEnum.errMsg502,
     },
     503: {
-      msg: apiEnum.errMsg503,
+      msg: msg || apiEnum.errMsg503,
     },
     504: {
-      msg: apiEnum.errMsg504,
+      msg: msg || apiEnum.errMsg504,
     },
     505: {
-      msg: apiEnum.errMsg505,
+      msg: msg || apiEnum.errMsg505,
     }
   }
 

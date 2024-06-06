@@ -9,12 +9,13 @@ export class Modal {
 
     // 创建模态框容器
     const Modal = document.createElement('div');
-    Modal.className = 'xw-ui-http-modal-box';
+    Modal.className = 'xw-ui-http-modal-box fade-in';
     Modal.style.position = 'fixed';
     Modal.style.top = '50%';
     Modal.style.left = '50%';
     Modal.style.transform = 'translate(-50%, -50%)';
     Modal.style.zIndex = 1000;
+
 
     // 创建标题容器
     const titleContainer = document.createElement('div');
@@ -68,6 +69,7 @@ export class Modal {
     // 绑定关闭事件
     if (onClose) {
       this.onClose = onClose;
+      Modal.className = 'xw-ui-http-modal-box fade-out';
     }
 
     return Modal;
@@ -127,6 +129,7 @@ style.textContent = `
   width: 420px;
   padding: 10px;
   text-align: center;
+  transition: opacity 2s ease-in-out;  
 }
 
 .xw-ui-http-modal-box h2 {
@@ -182,6 +185,15 @@ style.textContent = `
 .el-icon-warning {
   color: #E6A23C;
 }
+
+.fade-in {  
+  opacity: 1;  
+}  
+    
+.fade-out {  
+  opacity: 0;  
+}
+
 `;
 
 document.head.appendChild(style);

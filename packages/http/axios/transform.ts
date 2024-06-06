@@ -61,23 +61,25 @@ export function transform(transformOpt: transformOptType, refreshTokenInst: Toke
           Message.success({ message: successMsg });
         }
         return result;
+      } else {
+
+        // 在此处根据自己项目的实际情况对不同的code执行不同的操作
+        // 如果不希望中断当前请求，请return数据，否则直接抛出异常即可
+        let timeoutMsg = checkStatus({
+          status: code,
+          msg: message || apiEnum.errorTip,
+          errorMessageMode: options.errorMessageMode,
+          statusMap,
+          Modal,
+          Message,
+          clearToken,
+          logout
+        });
+
+
+        throw new Error(timeoutMsg || apiEnum.apiRequestFailed);
       }
 
-      // 在此处根据自己项目的实际情况对不同的code执行不同的操作
-      // 如果不希望中断当前请求，请return数据，否则直接抛出异常即可
-      let timeoutMsg = checkStatus({
-        status: code,
-        msg: apiEnum.errorTip,
-        errorMessageMode: options.errorMessageMode,
-        statusMap,
-        Modal,
-        Message,
-        clearToken,
-        logout
-      });
-
-
-      throw new Error(timeoutMsg || apiEnum.apiRequestFailed);
     },
 
     // 请求之前处理config
