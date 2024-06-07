@@ -35,9 +35,9 @@ export async function createPermissionGuard(
                 const whiteList = globalState.getState('whiteList');
                 const domain = globalState.getState('domain');
                 // 兼容oa 系统单点登录，获取 oa 中的 token
-                const { oaToken } = getSSOToken(domain)
+                const { ossToken } = getSSOToken(domain)
                 // oa 存在 token，用户已经登录 oa
-                if (oaToken) {
+                if (ossToken) {
                     try {
                         // 使用 oa token 换取当前系统的 token, 登录系统
                         await userStore.CheckOaLogin();
@@ -75,7 +75,7 @@ export async function routerPermission(
     // 已经存在 token, 进入用户登录页面
     if (to.path == '/login' && from) {
         // 从登录页面进入，直接进入登录页面
-        if (from.path === '/login' || '/') {
+        if (from.path === '/login' || from.path === '/') {
             return next();
         } else {
             //已经存在 token, 从其他页面进入用户登录页面，直接返回来源页面
@@ -152,6 +152,12 @@ export async function reloadHacker() {
                 const asyncRoutes = globalState.getState('asyncRoutes');
                 const basicRoutes = globalState.getState('basicRoutes');
                 routeStore.GenerateRoutes(accessRoutes?.menuNames || [], asyncRoutes, basicRoutes)
+            }
+            const domain = globalState.getState('domain');
+            // 兼容oa 系统单点登录，获取 oa 中的 token
+            const { ossToken } = getSSOToken(domain)
+            if (!toGetToken() && !ossToken) {
+                return userStore.Logout()
             }
         } catch (err) {
             return userStore.Logout()

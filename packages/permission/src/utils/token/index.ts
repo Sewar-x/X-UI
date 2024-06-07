@@ -71,7 +71,7 @@ export function removeToken(domain: string) {
 
 interface oaTokensType {
   key: string | null,
-  oaToken: string | null | undefined,
+  ossToken: string | null | undefined,
 }
 /**
  * 获取 Token, 由于 OA 使用三个 token，因此需要遍历获取 token
@@ -79,15 +79,15 @@ interface oaTokensType {
  */
 export function getSSOToken(domain: string): oaTokensType {
   let key = null
-  let oaToken = null
+  let ossToken = null
   const storageType = globalState.getState('storageType');
   const storage = new Storage(storageType);
   const SSO_TOKEN_KEYS = globalState.getState('SSO_TOKEN_KEYS');
   for (const keys of SSO_TOKEN_KEYS) {
-    oaToken = storage.getItem(keys, {
+    ossToken = storage.getItem(keys, {
       domain: domain
     })
-    if (oaToken) {
+    if (ossToken) {
       key = keys
       break
     }
@@ -95,7 +95,7 @@ export function getSSOToken(domain: string): oaTokensType {
 
   return {
     key,
-    oaToken
+    ossToken
   }
 }
 
