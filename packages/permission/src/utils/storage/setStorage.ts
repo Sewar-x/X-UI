@@ -1,12 +1,8 @@
-import type { StorageOptions } from "../../types/token";
+import type { StorageOptions } from "@/types/token";
+import globalState from '@/utils/GlobalState';
 
-const storageOptions: StorageOptions = {
-    type: "cookie",
-    expires: undefined
-};
 export function setStorage(options: StorageOptions) {
-    const { type, expires } = options
-    if (type) storageOptions.type = type
-    if (expires) storageOptions.expires = expires
+    const { storageType, expires } = options
+    globalState.setState("storageType", storageType);
+    globalState.setState("expires", expires);
 }
-export default storageOptions;

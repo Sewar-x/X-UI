@@ -9,8 +9,14 @@ export default class Storage {
   }
 
   //获取 Cookies
-  getCookies<T>(key: string, params?: object | null): T | null {
-    const value = Cookies.get(key, params);
+  getCookies<T>(key: string, params?: object | undefined): T | null {
+    let value = undefined
+    if (params) {
+      value = Cookies.get(key, params);
+    } else {
+      value = Cookies.get(key);
+    }
+
     if (value === undefined) {
       return null;
     }
@@ -21,7 +27,7 @@ export default class Storage {
     }
   }
   //设置 Cookies
-  setCookies(key: string, value: any, options?: Cookies.CookieAttributes): void {
+  setCookies(key: string, value: any, options?: Cookies.CookieAttributes): string | undefined {
     if (typeof value === 'object') {
       value = JSON.stringify(value);
     }
@@ -128,14 +134,14 @@ export default class Storage {
     }
   }
 
-  getItem(key: string, params?: object | null): string | null {
+  getItem(key: string, params?: object): string | null {
     switch (this.type) {
       case 'localStorage':
         return this.getLocalStorage(key);
       case 'sessionStorage':
         return this.getSessionStorage(key);
       case 'cookie':
-        return this.getCookies(key, params);
+        return this.getCookies(key, params | undefined);
       default:
         throw new Error('Invalid storage type');
     }

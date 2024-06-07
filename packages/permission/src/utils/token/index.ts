@@ -1,7 +1,5 @@
-import Storage from "../../utils/storage";
-import tokenkeys from "../../utils/token/tokenKey";
-import storageOptions from "../../utils/storage/setStorage";
-
+import Storage from "@/utils/storage";
+import globalState from '@/utils/GlobalState';
 // oa 中单点登录使用 token 可能存在两个 key 值，需要循环使用两个 key 获取 cookies 中的 token
 // 旧 OA 使用 SIAMJWT, 新 OA 使用 SIAMTGT 和 LtpaToken
 // OA 系统中会使用'SIAMTGT', 'SIAMJWT' 换取该 token 进行登录, 在内嵌 oa 页面中必须使用 LtpaToken  进行跳转登录 oa
@@ -13,15 +11,18 @@ interface tokenInfoType {
   ticketName: string,
   ticketValue: string
 }
+
+const storageType = globalState.getState('storageType')
+const SSO_TOKEN_KEYS = globalState.getState('SSO_TOKEN_KEYS')
+const TOKEN_KEY = globalState.getState('TOKEN_KEY')
 /**
  * 设置 Token 信息
  * @param {*} param
  */
-export function setTokenInfo({ token, expire, key, ticketName, ticketValue }: tokenInfoType, domain: string): viod {
-  const { type } = storageOptions
-  const storage = new Storage(type);
-  storage.setItem(tokenkeys.TOKEN_KEY, token as string)
-  return setOAToken(ticketName, ticketValue, domain)
+export function setTokenInfo({ token, expire, key, ticketName, ticketValue }: tokenInfoType, domain: string): string | null | undefined {
+  const storage = new Storage(storageType);
+  storage.setItem(TOKEN_KEY, token as string)
+  SetSSOToken(ticketName, ticketValue, domain)
 }
 
 /**
@@ -29,7 +30,7 @@ export function setTokenInfo({ token, expire, key, ticketName, ticketValue }: to
  */
 export function removeAuthToken(domain: string) {
   removeToken(domain)
-  removeOAToken(domain)
+  removeSSOToken(domain)
 }
 
 /**
@@ -38,9 +39,9 @@ export function removeAuthToken(domain: string) {
  * @returns
  */
 export function getToken(key?: string | undefined): string {
-  const setKey = key || tokenkeys.TOKEN_KEY
-  const { type } = storageOptions
-  const storage = new Storage(type);
+  const setKey = key || TOKEN_KEY
+
+  const storage = new Storage(storageType);
   return storage.getItem(setKey) as string
 }
 
@@ -50,9 +51,9 @@ export function getToken(key?: string | undefined): string {
  * @returns
  */
 export function setToken(token: string | null | undefined) {
-  const { type } = storageOptions
-  const storage = new Storage(type);
-  return storage.setItem(tokenkeys.TOKEN_KEY, token || '')
+
+  const storage = new Storage(storageType);
+  return storage.setItem(TOKEN_KEY, token || '')
 }
 
 /**
@@ -60,10 +61,10 @@ export function setToken(token: string | null | undefined) {
  * @returns
  */
 export function removeToken(domain: string) {
-  const { type } = storageOptions
-  const storage = new Storage(type);
-  removeOAToken(domain)
-  return storage.removeItem(tokenkeys.TOKEN_KEY)
+
+  const storage = new Storage(storageType);
+  removeSSOToken(domain)
+  return storage.removeItem(TOKEN_KEY)
 }
 
 interface oaTokensType {
@@ -74,12 +75,12 @@ interface oaTokensType {
  * 获取 Token, 由于 OA 使用三个 token，因此需要遍历获取 token
  * @returns
  */
-export function getOAToken(domain: string): oaTokensType {
+export function getSSOToken(domain: string): oaTokensType {
   let key = null
   let oaToken = null
-  const { type } = storageOptions
-  const storage = new Storage(type);
-  for (const keys of tokenkeys.OA_TOKEN_KEYS) {
+
+  const storage = new Storage(storageType);
+  for (const keys of SSO_TOKEN_KEYS) {
     oaToken = storage.getItem(keys, {
       domain: domain
     })
@@ -101,9 +102,9 @@ export function getOAToken(domain: string): oaTokensType {
  * @param {*} token
  * @returns
  */
-export function setOAToken(tokenKey: string, token: string, domain: string) {
-  const { type } = storageOptions
-  const storage = new Storage(type);
+export function SetSSOToken(tokenKey: string, token: string, domain: string) {
+
+  const storage = new Storage(storageType);
   return storage.setItem(tokenKey, token, {
     expires: new Date(new Date().getTime() + 1 * 60 * 60 * 1000),
     domain: domain
@@ -113,10 +114,10 @@ export function setOAToken(tokenKey: string, token: string, domain: string) {
 /**
  * 清空所有 oa token
  */
-export function removeOAToken(domain: string) {
-  const { type } = storageOptions
-  const storage = new Storage(type);
-  tokenkeys.OA_TOKEN_KEYS.forEach((key: string) =>
+export function removeSSOToken(domain: string) {
+
+  const storage = new Storage(storageType);
+  SSO_TOKEN_KEYS.forEach((key: string) =>
     storage.removeItem(key, {
       domain: domain
     })

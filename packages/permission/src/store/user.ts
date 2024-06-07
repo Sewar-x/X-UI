@@ -1,10 +1,10 @@
-import Storage from "../utils/storage";
 import { defineStore } from "pinia";
-import { store } from "../store";
-import { getToken, setToken, removeToken, getOAToken } from "../utils/token";
-import storageOptions from "../utils/storage/setStorage";
-import { authorityType, TokenType } from "../types/token";
-
+import Storage from "@/utils/storage";
+import { store } from "@/store";
+import { getToken, setToken, removeToken, getSSOToken } from "@/utils/token";
+import { authorityType, TokenType } from "@/types/token";
+import globalState from '@/utils/GlobalState';
+import { isFunction } from "@/utils/index"
 interface UserState {
   authority: authorityType, // 用户所有权限
   token?: string | undefined | null,
@@ -12,7 +12,8 @@ interface UserState {
   oa?: {
     ticketName?: string | undefined | null,
     ticketValue?: string | undefined | null,
-  }
+  },
+
 }
 
 export const useUserStore = defineStore({
@@ -40,34 +41,47 @@ export const useUserStore = defineStore({
     },
     // 获取所有权限
     getAuthority(): authorityType {
-      return this.authority || {};
+      // @ts-ignore
+      return this.authority || {
+        menuNames: [],  // 菜单权限名称列表，取路由表中的 name 字段
+        rule: [], // 按钮级别权限
+      };
     }
   },
 
   actions: {
+    // 设置 token
     SetToken(data: TokenType) {
       const {
         oa = { ticketName: null, ticketValue: null },
         token = null
       } = data;
+      // @ts-ignore
       this.token = token || ''; // for null or undefined value
+      // @ts-ignore
       this.oa = oa || { ticketName: null, ticketValue: null };
       setToken(token);
+      // 存储 oa token
       if (oa.ticketName) {
-        const { type } = storageOptions
-        const storage = new Storage(type);
+        const storageType = globalState.getState('storageType')
+        const storage = new Storage(storageType);
         storage.setItem(oa.ticketName, oa.ticketValue as string);
       }
     },
+
     // 设置用户所有权限列表
     SetAuthority(authority: authorityType) {
-      this.authority = authority
+      // @ts-ignore
+      this.authority.menuNames = authority.menuNames
+      // @ts-ignore
+      this.authority.rule = authority.rule
     },
 
     // 获取用户权限列表
-    async GetAuthority(getAuthList: Function, domain: string): Promise<T> {
+    async GetAuthority(): Promise<any> {
       try {
-        if (!getAuthList || typeof getAuthList !== "function") {
+        const getAuthList = globalState.getState('getAuthList')
+        if (!isFunction(getAuthList)) {
           return Error("getAuthList 参数错误")
         }
         const authority: authorityType = {
@@ -89,17 +103,22 @@ export const useUserStore = defineStore({
         this.SetAuthority(authority);
         return authority
       } catch (error) {
-        this.ClearLocal(domain);
+        // @ts-ignore
+        this.ClearLocal();
         return null;
       }
     },
 
     // 使用 oa token 登录系统
-    async CheckOaLogin(checkOaLogin: Function, domain: string) {
-      const { key, oaToken } = getOAToken(domain);
+    async CheckOaLogin(): Promise<any> {
+      const domain = globalState.getState('domain')
+      const checkOaLogin = globalState.getState('checkOaLogin')
+      // @ts-ignore
+      const { key, oaToken } = getSSOToken(domain);
       if (!oaToken) return false;
       try {
-        if (!checkOaLogin || typeof checkOaLogin !== "function") {
+        // @ts-ignore
+        if (!isFunction(checkOaLogin)) {
           return Error("checkOaLogin 参数错误")
         }
         /**
@@ -115,14 +134,15 @@ export const useUserStore = defineStore({
         setToken(data.token)
         return data;
       } catch (error) {
-        this.Logout(domain);
+        this.Logout();
       }
     },
 
     // 退出
-    async Logout(domain: string, logout?: Function) {
+    async Logout() {
       try {
-        if (!logout || typeof logout !== "function") {
+        const logout = globalState.getState('logout')
+        if (!isFunction(logout)) {
           return Error("logout 参数错误")
         }
         /**
@@ -137,13 +157,15 @@ export const useUserStore = defineStore({
       } catch (error) {
         console.error(error);
       } finally {
-        this.ClearLocal(domain);
-        location.hash = '/login'
+        this.ClearLocal();
+        location.hash = '/'
       }
     },
 
     //清空存储数据
-    ClearLocal(domain: string) {
+    ClearLocal() {
+      const domain = globalState.getState('domain')
+      // @ts-ignore
       removeToken(domain);
       Storage.clearAll();
     },

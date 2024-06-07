@@ -132,7 +132,7 @@ app.use(router)
 
 const domain = '.example.com' // 你的系统域名
 const publicPath = import.meta.env.VITE_PUBLIC_PATH // 系统 publicPath 目录
-//定义一个符合 permissionOptions 接口的对象 
+//定义一个符合 permissionOptionsType 接口的对象 
 const options = {
   publicPath, // 系统 publicPath 目录
   router,  // 路由对象（可选）

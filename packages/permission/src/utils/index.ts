@@ -23,8 +23,8 @@ export function isFunction(functionToCheck: Function) {
  * @returns
  */
 export function getChildValue(
-  data: Array<T> = [],
-  arr: Array<T> = [],
+  data: Array<any> = [],
+  arr: Array<any> = [],
   key: string = '',
   children: string = 'children'
 ) {
@@ -35,4 +35,20 @@ export function getChildValue(
     }
     arr.push(item[key])
   })
+}
+
+/**
+ * 获取路由名称
+ * @param data 
+ * @returns 
+ */
+export function getRouteNames(data: {
+  menu?: Array<any>,
+  menuNames: Array<any>,
+}) {
+  let menuNames: Array<any> = []
+  // 递归获取后端路由 name 的数组存入 leftMenuNames
+  getChildValue(data?.menu || [], menuNames, 'name', 'children')
+  data.menuNames = menuNames
+  return data
 }

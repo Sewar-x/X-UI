@@ -1,23 +1,26 @@
 
 import type { Router, RouteItem } from 'vue-router';
-import { getToken as toGetToken, getOAToken } from "@/utils/token";
+import { Message as showMsg } from '@/plugin/Message.ts';
+import { getToken as toGetToken, getSSOToken } from "@/utils/token";
 import { routesStoreWithOut } from "@/store/routes";
 import { useUserStoreWithOut } from "@/store/user";
-import type { AppRouteModule } from "@/types/router";
-import { Message as showMsg } from '@/plugin/Message.ts';
+import globalState from '@/utils/GlobalState';
+
 
 const routeStore = routesStoreWithOut();
 const userStore = useUserStoreWithOut();
 
+// 获取全局变量
+const whiteList = globalState.getState('whiteList');
+const domain = globalState.getState('domain');
+const asyncRoutes = globalState.getState('asyncRoutes');
+const basicRoutes = globalState.getState('basicRoutes');
+
+
+
 export async function createPermissionGuard(
     router: Router,
-    whiteList: string[],
-    asyncRoutes: AppRouteModule[],
-    basicRoutes: AppRouteModule[],
-    getAuthList: Function,
-    checkOaLogin: Function,
-    domain: string,
-    Message: Function
+    Message: Function | undefined
 ) {
     /**
      * 问题： 直接使用 router.beforeEach 会导致在刷新页面时无法进入 router.beforeEach 的回调函数
@@ -30,19 +33,19 @@ export async function createPermissionGuard(
         router.beforeEach(async (to: any, from: any, next: Function) => {
             // 判断用户是否已经登录，已经登录情况下，进入权限判断
             if (toGetToken()) {
-                return await routerPermission(to, from, next, whiteList, asyncRoutes, basicRoutes, getAuthList, domain, Message)
+                return await routerPermission(to, from, next, Message)
             } else {
                 // 兼容oa 系统单点登录，获取 oa 中的 token
-                const { oaToken } = getOAToken(domain)
+                const { oaToken } = getSSOToken(domain)
                 // oa 存在 token，用户已经登录 oa
                 if (oaToken) {
                     try {
                         // 使用 oa token 换取当前系统的 token, 登录系统
-                        await userStore.CheckOaLogin(checkOaLogin, domain);
+                        await userStore.CheckOaLogin();
 
                         return next();
                     } catch (err) {
-                        userStore.ClearLocal(domain);
+                        userStore.ClearLocal();
                         return next("/login?redirect=" + to.path);
 
                     }
@@ -67,12 +70,7 @@ export async function routerPermission(
     to: RouteItem,
     from: RouteItem,
     next: Function,
-    whiteList: string[],
-    asyncRoutes: AppRouteModule[],
-    basicRoutes: AppRouteModule[],
-    getAuthList: Function,
-    domain: string,
-    Message: Function
+    Message: Function | undefined,
 ) {
 
     // 已经存在 token, 进入用户登录页面
@@ -86,7 +84,7 @@ export async function routerPermission(
         }
     } else {
         // 获取是否用户权限
-        const canAccess = await canUserAccess(to, whiteList, asyncRoutes, basicRoutes, getAuthList, domain)
+        const canAccess = await canUserAccess(to)
         if (canAccess) {
             return next()
         } else {
@@ -114,20 +112,13 @@ export async function routerPermission(
 * @param to 
 * @returns 
 */
-export async function canUserAccess(
-    to: RouteItem,
-    whiteList: string[],
-    asyncRoutes: AppRouteModule[],
-    basicRoutes: AppRouteModule[],
-    getAuthList: Function,
-    domain: string
-) {
+export async function canUserAccess(to: RouteItem) {
     if (!to || to?.name === "Login") return false
     try {
         let accessRoutes = userStore.getAuthority || {}
         if (accessRoutes?.menuNames && accessRoutes?.menuNames?.length === 0) {
             // 获取用户异步路由权限
-            accessRoutes = await userStore.GetAuthority(getAuthList, domain)
+            accessRoutes = await userStore.GetAuthority()
             // 生成用户所有路由权限
             routeStore.GenerateRoutes(accessRoutes?.menuNames || [], asyncRoutes, basicRoutes)
         }
@@ -139,4 +130,25 @@ export async function canUserAccess(
     }
 
 }
+
+
+/**
+ * 解决刷新不触发 router.beforeEach 回调bug
+ * @returns
+ */
+export async function reloadHacker() {
+    if (window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD) {
+        // 用户进行了刷新动作
+        try {
+            let accessRoutes = userStore.getAuthority || {}
+            if (accessRoutes?.menuNames && accessRoutes?.menuNames?.length === 0) {
+                accessRoutes = await userStore.GetAuthority()
+                routeStore.GenerateRoutes(accessRoutes?.menuNames || [])
+            }
+        } catch (err) {
+            return userStore.Logout()
+        }
+    }
+}
+reloadHacker()
 
