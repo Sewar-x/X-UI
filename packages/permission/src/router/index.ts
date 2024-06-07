@@ -3,7 +3,6 @@ import type { AppRouteModule } from "../types/router";
 import type { SetupRouterOptions } from "../types/store";
 import type { App } from "vue";
 import globalState from '@/utils/GlobalState';
-const routerMode = globalState.getState('routerMode')
 
 // 创建一个可以被 Vue 应用程序使用的路由实例
 export function toCreateRouter(
@@ -13,7 +12,7 @@ export function toCreateRouter(
 ) {
   return createRouter({
     // 创建一个 hash 历史记录。
-    history: routerMode === 'hash' ? createWebHashHistory(publicPath) : createWebHistory(publicPath),
+    history: globalState.getState('routerMode') === 'hash' ? createWebHashHistory(publicPath) : createWebHistory(publicPath),
     // 应该添加到路由的初始路由列表。
     routes: [...asyncRoutes, ...basicRoutes] as unknown as RouteRecordRaw[],
   });

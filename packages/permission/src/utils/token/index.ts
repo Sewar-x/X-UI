@@ -12,15 +12,14 @@ interface tokenInfoType {
   ticketValue: string
 }
 
-const storageType = globalState.getState('storageType')
-const SSO_TOKEN_KEYS = globalState.getState('SSO_TOKEN_KEYS')
-const TOKEN_KEY = globalState.getState('TOKEN_KEY')
 /**
  * 设置 Token 信息
  * @param {*} param
  */
 export function setTokenInfo({ token, expire, key, ticketName, ticketValue }: tokenInfoType, domain: string): string | null | undefined {
+  const storageType = globalState.getState('storageType')
   const storage = new Storage(storageType);
+  const TOKEN_KEY = globalState.getState('TOKEN_KEY');
   storage.setItem(TOKEN_KEY, token as string)
   SetSSOToken(ticketName, ticketValue, domain)
 }
@@ -39,10 +38,11 @@ export function removeAuthToken(domain: string) {
  * @returns
  */
 export function getToken(key?: string | undefined): string {
-  const setKey = key || TOKEN_KEY
-
+  const TOKEN_KEY = globalState.getState('TOKEN_KEY');
+  const setKey = key || TOKEN_KEY;
+  const storageType = globalState.getState('storageType');
   const storage = new Storage(storageType);
-  return storage.getItem(setKey) as string
+  return storage.getItem(setKey) as string;
 }
 
 /**
@@ -51,8 +51,9 @@ export function getToken(key?: string | undefined): string {
  * @returns
  */
 export function setToken(token: string | null | undefined) {
-
+  const storageType = globalState.getState('storageType');
   const storage = new Storage(storageType);
+  const TOKEN_KEY = globalState.getState('TOKEN_KEY');
   return storage.setItem(TOKEN_KEY, token || '')
 }
 
@@ -61,9 +62,10 @@ export function setToken(token: string | null | undefined) {
  * @returns
  */
 export function removeToken(domain: string) {
-
+  const storageType = globalState.getState('storageType');
   const storage = new Storage(storageType);
   removeSSOToken(domain)
+  const TOKEN_KEY = globalState.getState('TOKEN_KEY');
   return storage.removeItem(TOKEN_KEY)
 }
 
@@ -78,8 +80,9 @@ interface oaTokensType {
 export function getSSOToken(domain: string): oaTokensType {
   let key = null
   let oaToken = null
-
+  const storageType = globalState.getState('storageType');
   const storage = new Storage(storageType);
+  const SSO_TOKEN_KEYS = globalState.getState('SSO_TOKEN_KEYS');
   for (const keys of SSO_TOKEN_KEYS) {
     oaToken = storage.getItem(keys, {
       domain: domain
@@ -103,7 +106,7 @@ export function getSSOToken(domain: string): oaTokensType {
  * @returns
  */
 export function SetSSOToken(tokenKey: string, token: string, domain: string) {
-
+  const storageType = globalState.getState('storageType');
   const storage = new Storage(storageType);
   return storage.setItem(tokenKey, token, {
     expires: new Date(new Date().getTime() + 1 * 60 * 60 * 1000),
@@ -115,8 +118,9 @@ export function SetSSOToken(tokenKey: string, token: string, domain: string) {
  * 清空所有 oa token
  */
 export function removeSSOToken(domain: string) {
-
+  const storageType = globalState.getState('storageType');
   const storage = new Storage(storageType);
+  const SSO_TOKEN_KEYS = globalState.getState('SSO_TOKEN_KEYS');
   SSO_TOKEN_KEYS.forEach((key: string) =>
     storage.removeItem(key, {
       domain: domain

@@ -11,7 +11,7 @@ const initRoute = async (app: any, options: permissionOptionsType) => {
     // 创建路由实例
     const routeInstance = routerMethod.setupRouter({ app, router, publicPath, asyncRoutes, basicRoutes });
     const guard = await import("@/router/guard");
-    guard.setupRouterGuard({ router: routeInstance, Message });
+    await guard.setupRouterGuard({ router: routeInstance, Message });
     return routeInstance
   });
 }

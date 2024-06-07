@@ -11,10 +11,7 @@ const routeStore = routesStoreWithOut();
 const userStore = useUserStoreWithOut();
 
 // 获取全局变量
-const whiteList = globalState.getState('whiteList');
-const domain = globalState.getState('domain');
-const asyncRoutes = globalState.getState('asyncRoutes');
-const basicRoutes = globalState.getState('basicRoutes');
+
 
 
 
@@ -35,6 +32,8 @@ export async function createPermissionGuard(
             if (toGetToken()) {
                 return await routerPermission(to, from, next, Message)
             } else {
+                const whiteList = globalState.getState('whiteList');
+                const domain = globalState.getState('domain');
                 // 兼容oa 系统单点登录，获取 oa 中的 token
                 const { oaToken } = getSSOToken(domain)
                 // oa 存在 token，用户已经登录 oa
@@ -114,12 +113,17 @@ export async function routerPermission(
 */
 export async function canUserAccess(to: RouteItem) {
     if (!to || to?.name === "Login") return false
+    const domain = globalState.getState('domain');
     try {
+        const whiteList = globalState.getState('whiteList');
         let accessRoutes = userStore.getAuthority || {}
         if (accessRoutes?.menuNames && accessRoutes?.menuNames?.length === 0) {
             // 获取用户异步路由权限
             accessRoutes = await userStore.GetAuthority()
             // 生成用户所有路由权限
+            const asyncRoutes = globalState.getState('asyncRoutes');
+            const basicRoutes = globalState.getState('basicRoutes');
+
             routeStore.GenerateRoutes(accessRoutes?.menuNames || [], asyncRoutes, basicRoutes)
         }
         const allRoutes = [...whiteList, ...accessRoutes?.menuNames]
@@ -137,13 +141,17 @@ export async function canUserAccess(to: RouteItem) {
  * @returns
  */
 export async function reloadHacker() {
+    if (!window) return
     if (window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD) {
         // 用户进行了刷新动作
         try {
             let accessRoutes = userStore.getAuthority || {}
-            if (accessRoutes?.menuNames && accessRoutes?.menuNames?.length === 0) {
+            const menuNames = accessRoutes?.menuNames
+            if (Array.isArray(menuNames) && accessRoutes?.menuNames?.length === 0) {
                 accessRoutes = await userStore.GetAuthority()
-                routeStore.GenerateRoutes(accessRoutes?.menuNames || [])
+                const asyncRoutes = globalState.getState('asyncRoutes');
+                const basicRoutes = globalState.getState('basicRoutes');
+                routeStore.GenerateRoutes(accessRoutes?.menuNames || [], asyncRoutes, basicRoutes)
             }
         } catch (err) {
             return userStore.Logout()
