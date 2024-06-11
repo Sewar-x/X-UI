@@ -95,9 +95,11 @@ export const useUserStore = defineStore({
             rule: [],// 按钮级别权限
          }
          */
-        const data = await getAuthList({
-          token: getToken()
-        })
+        const token  = getToken()
+        if(!token){
+          return Error("token 不存在！ ")
+        }
+        const data = await getAuthList({token})
         authority.menuNames = data.menuNames
         authority.rule = data.rule
         this.SetAuthority(authority);

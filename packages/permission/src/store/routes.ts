@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 import { store } from "@/store";
 import type { RouteItem } from 'vue-router';
 import type { AppRouteModule } from "@/types/router.d.ts";
-
+import globalState from '@/utils/GlobalState';
 /**
  * Filter asynchronous routing tables by recursion
  * 过滤没有权限的常量路由路由：递归前端路由，查找 name 不存在的路由，删除
@@ -60,7 +60,9 @@ export const useRoutesStore = defineStore({
     },
 
     // 获取异步路由
-    getAsyncRoutes(asyncRoutes: AppRouteModule[]): Array<RouteItem | null> {
+    getAsyncRoutes(): Array<RouteItem | null > | undefined {
+      const asyncRoutes = globalState.getState('asyncRoutes');
+      if(!asyncRoutes) return undefined
       const asyncRoute = (asyncRoutes[0] && asyncRoutes[0]?.children) as Array<RouteItem>;
       return asyncRoute;
     }

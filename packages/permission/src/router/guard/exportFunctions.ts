@@ -2,7 +2,6 @@ import { routesStoreWithOut } from "@/store/routes";
 import { useUserStoreWithOut } from "@/store/user";
 import { authorityType, TokenType } from "@/types/token";
 import type { RouteItem } from 'vue-router';
-import type { AppRouteModule } from "@/types/router.d.ts";
 import globalState from '@/utils/GlobalState';
 
 //处理菜单名称列表
@@ -16,8 +15,8 @@ const routeStore = routesStoreWithOut();
 const userStore = useUserStoreWithOut();
 // --------------------------路由相关--------------------------
 // 获取后台管理路由
-function getAsyncRoutes(asyncRoutes: AppRouteModule[]) {
-    return routeStore.getAsyncRoutes(asyncRoutes || [])
+function getAsyncRoutes() {
+    return routeStore.getAsyncRoutes
 }
 // 获取所有路由
 function getRoutes() {
@@ -49,7 +48,9 @@ async function SetShowRouters(routes: RouteItem) {
     return await routeStore.SetShowRouters(routes)
 }
 // 生成异步路由
-async function GenerateRoutes(routesMenuNames: Array<RouteItem>, asyncRoutes: AppRouteModule[], basicRoutes: AppRouteModule[]) {
+async function GenerateRoutes(routesMenuNames: Array<RouteItem>) {
+    const asyncRoutes = globalState.getState('asyncRoutes');
+    const basicRoutes = globalState.getState('basicRoutes');
     return await routeStore.GenerateRoutes(routesMenuNames, asyncRoutes, basicRoutes)
 }
 
