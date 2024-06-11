@@ -22,7 +22,7 @@ export interface permissionOptionsType {
     domain?: string | null, // oa 域名
     Message?: Function, // 消息提示
     getAuthList?: Function | null, // 获取用户权限列表接口
-    checkOaLogin?: Function | null, // 检查oa登录状态接口
+    checkSSOLogin?: Function | null, // 检查oa登录状态接口
     logout?: Function | null, //退出登录接口
     storageType?: 'localStorage' | 'sessionStorage' | 'cookie',  // 本地数据存储类型
     expires?: string,// 本地数据存储过期时间

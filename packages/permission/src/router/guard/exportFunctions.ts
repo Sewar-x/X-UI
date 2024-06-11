@@ -77,8 +77,8 @@ async function GetAuthority() {
     return await userStore.GetAuthority()
 }
 // 使用 oa token 登录系统
-async function CheckOaLogin() {
-    return await userStore.CheckOaLogin()
+async function checkSSOLogin() {
+    return await userStore.checkSSOLogin()
 }
 // 退出
 async function Logout() {
@@ -104,7 +104,7 @@ export default {
     SetToken,
     SetAuthority,
     GetAuthority,
-    CheckOaLogin,
+    checkSSOLogin,
     Logout,
     ClearLocal,
     Globalstate: globalState,

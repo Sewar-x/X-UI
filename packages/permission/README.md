@@ -120,7 +120,7 @@ import App from './views/App.vue'
 import { createPinia } from 'pinia'
 import bootstrap from "vivien-permission"
 import { whiteList, asyncRoutes, basicRoutes } from "这是你的接口路由配置"
-import { getAuthList, checkOaLogin } from "这是你的接口"
+import { getAuthList, checkSSOLogin } from "这是你的接口"
 import router from '这是你的router实例';  
 import ElMessage from '这是你的消息提示';  
 
@@ -140,7 +140,7 @@ const options = {
   asyncRoutes, // 异步路由
   basicRoutes, // 基础路由
   getAuthList, // 获取用户权限列表
-  checkOaLogin, // 检查oa登录状态
+  checkSSOLogin, // 检查oa登录状态
   domain, // oa 域名
   ElMessage // 消息提示
 }
@@ -178,7 +178,7 @@ interface PermissionGuardOptions {
     asyncRoutes: AppRouteModule[], // 异步路由
     basicRoutes: AppRouteModule[], // 基础路由
     getAuthList: Function, // 获取用户权限列表
-    checkOaLogin: Function, //  使用 oa token 换取当前系统的 token, 登录系统
+    checkSSOLogin: Function, //  使用 oa token 换取当前系统的 token, 登录系统
     domain: string, // oa 域名
     Message: Function // 消息提示组件
 }
@@ -202,7 +202,7 @@ type AppRouteRecordRaw = RouteRecordRaw & {
 | asyncRoutes  | 异步加载的路由列表                                      | `AppRouteModule[]` 数组<br />数组内每一项为路由对象 |
 | basicRoutes  | 基础路由，非异步加载的路由                              | `AppRouteModule[]` 数组<br />数组内每一项为路由对象 |
 | getAuthList  | 获取权限列表异步方法(接口)                              | `Function`                                          |
-| checkOaLogin | 方法，使用 oa token 换取当前系统的 token 接口, 登录系统 | `Function`                                          |
+| checkSSOLogin | 方法，使用 oa token 换取当前系统的 token 接口, 登录系统 | `Function`                                          |
 | domain       | oa 域名                                                 | `String`                                            |
 | Message      | 消息提示组件                                            | `Function`                                          |
 
@@ -239,12 +239,12 @@ getAuthList({
 
 
 
-#### **checkOaLogin 接口**
+#### **checkSSOLogin 接口**
 
 传入其他系统的 token，返回当前系统的 token，用于 其他系统 和 使用当前插件系统的 单点登录。 
 
 ```javascript
-checkOaLogin({
+checkSSOLogin({
      ticketName: key,
      ticketValue: oaToken
 })
@@ -291,7 +291,7 @@ checkOaLogin({
     SetToken,
     SetAuthority,
     GetAuthority,
-    CheckOaLogin,
+    checkSSOLogin,
     Logout,
     ClearLocal
  })=> {
@@ -315,7 +315,7 @@ checkOaLogin({
 | SetToken       | 设置用户 token               | `{token: '用户token', oa: {ticketName:'其他系统token key', ticketValue:'其他系统 token 值' }}` |                          |
 | SetAuthority   | 设置用户权限列表             | `{authority: []}`                                            |                          |
 | GetAuthority   | 获取用户权限列表             | `(getAuthList: Function, domain: string)`<br />getAuthList: 获取用户权限列表接口<br />domain： 系统域名 | 用户权限列表             |
-| CheckOaLogin   | 使用其他系统 token 登录系统  | `(checkOaLogin: Function, domain: string)`<br />checkOaLogin: 用其他系统 token 换取当前系统的接口<br />domain: 当前系统域名 |                          |
+| checkSSOLogin   | 使用其他系统 token 登录系统  | `(checkSSOLogin: Function, domain: string)`<br />checkSSOLogin: 用其他系统 token 换取当前系统的接口<br />domain: 当前系统域名 |                          |
 | Logout         | 退出当前系统                 | `(domain: string, logout?: Function)`<br />domain: 当前系统域名<br />logout： 退出系统接口 |                          |
 | ClearLocal     | 清空存储数据                 | `{domain: 当前系统域名}`                                     |                          |
 

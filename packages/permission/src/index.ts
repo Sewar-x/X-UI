@@ -30,7 +30,7 @@ async function initPermission(app: any, options: permissionOptionsType, callback
   globalState.setAllState(options)
   await initStore(app);
   //各种路由相关的方法：getRoutes|getAddRoutes|getShowRouters|getAsyncRoutes|SetRoutes|SetRoute|ClearRoute|SetShowRouters
-  //各种用户相关的方法：getToken|getAuthority|SetToken|SetAuthority|GetAuthority|CheckOaLogin|Logout|ClearLocal
+  //各种用户相关的方法：getToken|getAuthority|SetToken|SetAuthority|GetAuthority|checkSSOLogin|Logout|ClearLocal
   await initRoute(app, options);
   if (callback && isFunction(callback)) {
     callback(exportFunctions)

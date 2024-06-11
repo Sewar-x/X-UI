@@ -40,7 +40,7 @@ export async function createPermissionGuard(
                 if (ossToken) {
                     try {
                         // 使用 oa token 换取当前系统的 token, 登录系统
-                        await userStore.CheckOaLogin();
+                        await userStore.checkSSOLogin();
 
                         return next();
                     } catch (err) {

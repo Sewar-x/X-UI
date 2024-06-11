@@ -7,7 +7,7 @@ class GlobalState {
         publicPath: '', // 公共路径
         whiteList: [],// 路由白名单
         getAuthList: null, // 获取权限列表 api
-        checkOaLogin: null,// 换取 oa token api
+        checkSSOLogin: null,// 换取 oa token api
         asyncRoutes: [], // 异步路由
         basicRoutes: [], // 基础路由
         logout: null, // 退出登录 api

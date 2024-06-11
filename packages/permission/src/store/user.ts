@@ -110,24 +110,24 @@ export const useUserStore = defineStore({
     },
 
     // 使用 oa token 登录系统
-    async CheckOaLogin(): Promise<any> {
+    async checkSSOLogin(): Promise<any> {
       const domain = globalState.getState('domain')
-      const checkOaLogin = globalState.getState('checkOaLogin')
+      const checkSSOLogin = globalState.getState('checkSSOLogin')
       // @ts-ignore
       const { key, oaToken } = getSSOToken(domain);
       if (!oaToken) return false;
       try {
         // @ts-ignore
-        if (!isFunction(checkOaLogin)) {
-          return Error("checkOaLogin 参数错误")
+        if (!isFunction(checkSSOLogin)) {
+          return Error("checkSSOLogin 参数错误")
         }
         /**
-         * checkOaLogin 接口使用 oa token 换取当前系统 token
+         * checkSSOLogin 接口使用 oa token 换取当前系统 token
          * @params { string } ticketName:  oa token key
          * @params { string } ticketValue:  oa token 
          * @returns { token: string } 返回对象：token: 当前系统token
          */
-        const data = await checkOaLogin({
+        const data = await checkSSOLogin({
           ticketName: key,
           ticketValue: oaToken
         })
@@ -146,7 +146,7 @@ export const useUserStore = defineStore({
           return Error("logout 参数错误")
         }
         /**
-         * checkOaLogin 接口使用 oa token 换取当前系统 token
+         * checkSSOLogin 接口使用 oa token 换取当前系统 token
          * @params { string } ticketName:  oa token key
          * @params { string } ticketValue:  oa token 
          * @returns { token: string } 返回对象：token: 当前系统token
