@@ -13,7 +13,13 @@ export default [
     path: '/menu-collapse-demo',
     component: () => import('../../menu/menu-collapse-demo.vue'),
     name: 'MenuCollapseDemo'
+  },
+  {
+    path: '/menu-aside-demo',
+    component: () => import('../../menu/menu-aside-demo.vue'),
+    name: 'MenuAsideDemo'
   }
+
 
 
 ]

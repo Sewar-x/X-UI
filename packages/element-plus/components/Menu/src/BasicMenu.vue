@@ -1,82 +1,48 @@
 <template>
-  <el-menu
-    v-bind="options.attr"
-    v-on="options.event || {}"
-    :ref="options.ref"
-    :collapse="isCollapse"
+  <el-aside
+    v-if="mode === 'vertical'"
+    :width="isCollapse ? closeWidth : opendWidth"
+    class="aside"
   >
-    <div class="menu-header-collapse-container" :class="{ 'menu-collapsed': isCollapse }">
-      <div class="menu-header" v-if="!isCollapse">
+    <Menus :options="options">
+      <template #header>
         <slot name="header" />
-      </div>
-      <div
-        class="menu-collapse"
-        v-if="isDef(options.collapse)"
-        :class="options.collapse.class"
-      >
-        <XIcon
-          class="menu-collapse-icon"
-          v-if="collapseType === 'Icon'"
-          :isSvgIcon="false"
-          :name="isCollapse ? options.collapse?.colseIcon : options.collapse?.showIcon"
-          :color="options.collapse?.color"
-          :size="options.collapse?.size || 30"
-          :style="options.collapse?.style"
-          @click="handleCollapse"
-        />
-        <BasicComponent v-if="collapseType === 'Component'" :options="options.collapse" />
-      </div>
-    </div>
-
-    <XMenuItem
-      v-for="menuItem in options.menu"
-      :key="menuItem.attr?.index"
-      :options="menuItem"
-    />
-    <div class="menu-footer" v-if="!isCollapse">
-      <slot name="footer" />
-    </div>
-  </el-menu>
+      </template>
+      <template #footer>
+        <slot name="footer" />
+      </template>
+    </Menus>
+  </el-aside>
+  <el-header v-if="mode === 'horizontal'">
+    <Menus :options="options">
+      <template #header>
+        <slot name="header" />
+      </template>
+      <template #footer>
+        <slot name="footer" />
+      </template>
+    </Menus>
+  </el-header>
 </template>
 
 <script setup lang="ts">
 import type { MenuType } from "../type";
-import { XMenuItem } from "..";
-import { XIcon } from "../../Icon";
 import { ref, toRef } from "vue";
 import { isDef } from "../../../utils/is.ts";
+import Menus from "./Menus.vue";
 
 const props = defineProps<{
   options: MenuType;
 }>();
-const collapseType = props.options.collapse?.type ? props.options.collapse?.type : "Icon";
+let isCollapse = props.options.attr.collapse;
+const opendWidth = props.options?.collapse?.opendWidth
+  ? `${props.options?.collapse.opendWidth}px`
+  : "240px";
+const closeWidth = props.options?.collapse?.closeWidth
+  ? `${props.options?.collapse.closeWidth}px`
+  : "60px";
 
-let isCollapse = ref(false);
-if (props.options?.attr && props.options?.attr.hasOwnProperty("collapse")) {
-  isCollapse = toRef(props.options.attr.collapse);
-}
-
-function handleCollapse() {
-  isCollapse.value = !isCollapse.value;
-}
+const mode = props.options?.attr?.mode ? props.options?.attr?.mode : "vertical";
 </script>
 
-<style scoped lang="less">
-.menu-header-collapse-container {
-  display: flex;
-  justify-content: space-between;
-}
-.menu-collapsed {
-  display: flex;
-  justify-items: center;
-  justify-content: center;
-}
-
-.menu-collapse {
-  display: flex;
-  .menu-collapse-icon {
-    cursor: pointer;
-    margin-right: 5px;
-  }
-}
-</style>
+<style scoped lang="less"></style>

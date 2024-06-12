@@ -36,8 +36,6 @@ const options = {
     showIcon: Fold,
     colseIcon: Expand,
     size: 30,
-    opendWidth: 200,
-    closeWidth: 60,
   }, // 折叠按钮
   event: {
     open: () => {
