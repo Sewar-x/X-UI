@@ -131,9 +131,16 @@ interface MenuItemType {
 
 ## 示例
 
-### 基础用法
+### 侧边栏菜单
 
 <xw-demo
     demo-height="550px"
     source-code="element-plus:::menu/menu-demo"
+/>
+
+### 水平菜单
+
+<xw-demo
+    demo-height="550px"
+    source-code="element-plus:::menu/menu-horizontal-demo"
 />

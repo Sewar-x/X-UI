@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isNullOrUnDef(isVisible) ? isVisible.value : true" class="icon-style">
+  <div v-if="isDef(isVisible) ? isVisible : true" class="icon-style">
     <XSvgIcon
       v-if="isSvgIcon"
       :name="name"
@@ -15,8 +15,8 @@
 <script setup lang="ts">
 import { XSvgIcon } from "../index";
 import type { Ref } from "vue";
-import { isNullOrUnDef } from "../../../utils/is.ts";
-defineProps<{
+import { isNullOrUnDef, isDef } from "../../../utils/is.ts";
+const props = defineProps<{
   isVisible?: Ref<Boolean>;
   isSvgIcon: boolean;
   name: string;
