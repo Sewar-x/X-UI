@@ -3,10 +3,16 @@
     <XSvgIcon
       v-if="isSvgIcon"
       :name="name"
-      :size="isNullOrUnDef(size) ? size : 14"
+      :size="isNullOrUnDef(size) ? 14 : size"
       :style="style"
     />
-    <el-icon v-else :color="color" :size="isNullOrUnDef(size) ? size : 14" :style="style">
+    <el-icon
+      v-else
+      :color="color"
+      :size="isNullOrUnDef(size) ? 14 : size"
+      :style="style"
+      v-bind="attr || {}"
+    >
       <component :is="name" />
     </el-icon>
   </div>
@@ -22,6 +28,7 @@ const props = defineProps<{
   name: string;
   size?: number | string;
   color?: string;
+  attr?: object;
   style?: object;
 }>();
 </script>

@@ -3,22 +3,40 @@
     <template #header>
       <img class="logo" :src="Logo" />
     </template>
+    <template #footer>
+      <img class="logo" :src="Logo" />
+    </template>
   </XMenu>
 </template>
 
 <script setup lang="ts">
 import { XMenu } from "@/xw-ui/element-plus";
 import { ref, reactive } from "vue";
-import { Document, Menu as IconMenu, Location, Setting } from "@element-plus/icons-vue";
 import Logo from "./assets/logo.svg";
+import {
+  Document,
+  Menu as IconMenu,
+  Location,
+  Setting,
+  Expand,
+  Fold,
+} from "@element-plus/icons-vue";
+
 // from 表单配置项
 const options = {
   attr: {
     class: "el-menu-vertical-demo",
     "default-active": "2-1",
     "active-text-color": "#ffd04b",
-    mode: "horizontal",
+    collapse: false,
   }, // el-menu的属性对象
+
+  collapse: {
+    type: "Icon",
+    showIcon: Fold,
+    colseIcon: Expand,
+    size: 30,
+  }, // 折叠按钮
   event: {
     open: () => {
       console.log("===打开侧边栏===");
@@ -141,6 +159,6 @@ const options = {
 
 <style scoped lang="less">
 .logo {
-  height: 60px;
+  width: 120px;
 }
 </style>

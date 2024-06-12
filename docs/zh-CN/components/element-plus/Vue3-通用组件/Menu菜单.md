@@ -109,6 +109,7 @@ interface MenuItemType {
 |   `ref`   |                   `el-menu`组件的实例对象                    |       `Ref<T>`        |   -    |
 | `menu` |                          菜单项数组                          | `Array<MenuItemType>` |   -    |
 | `component` | 默认插槽组件 | `CompType` |  |
+| `collapse` | 折叠配置项 |  | |
 
 #### `MenuItemType`
 
@@ -121,12 +122,33 @@ interface MenuItemType {
 |  `text` |                       菜单项的文本内容                       |       `String`        |   -    |
 | `component` | 默认插槽组件 | `CompType` |  |
 
+#### **collapse**
+
+collapse 为侧边栏菜单折叠配置，该配置为对象，包含如下配置：
+
+| 属性名    | 说明                                                         | 类型                | 默认值 |
+| --------- | ------------------------------------------------------------ | ------------------- | ------ |
+| type      | 折叠图标配置（当type 为 component 时，传入 BasicComponent 组件相关配置） | `Icon 或 Component` | Icon   |
+| showIcon  | 展开图标（当 type = Icon 时有效）                            |                     |        |
+| colseIcon | 关闭图标（当 type = Icon 时有效）                            |                     |        |
+| size      | 图标大小                                                     |                     | 30     |
+
+
+
 ### 方法
 
 | 方法名 |        说明         |                参数                 |
 | :----: | :-----------------: | :---------------------------------: |
 |  open  | 展开指定的 sub-menu | index: 需要打开的 sub-menu 的 index |
 | close  | 收起指定的 sub-menu | index: 需要收起的 sub-menu 的 index |
+
+## 插槽
+
+| 插槽名称 | 说明              |
+| -------- | ----------------- |
+| header   | 顶部或左侧 header |
+| footer   | 底部或右侧footer  |
+
 
 
 ## 示例
@@ -143,4 +165,11 @@ interface MenuItemType {
 <xw-demo
     demo-height="550px"
     source-code="element-plus:::menu/menu-horizontal-demo"
+/>
+
+### 可折叠和 Logo 
+
+<xw-demo
+    demo-height="550px"
+    source-code="element-plus:::menu/menu-collapse-demo"
 />
