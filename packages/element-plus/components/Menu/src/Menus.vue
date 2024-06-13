@@ -77,6 +77,11 @@ function handleCollapse() {
 .@{prefix-cls}-header {
   display: flex;
   justify-content: space-between;
+  &_slot {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
   &_collapse {
     display: flex;
     justify-items: center;
