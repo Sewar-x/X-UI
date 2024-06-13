@@ -1,7 +1,7 @@
 <template>
   <div>
     <XSearch
-      class="advance-container"
+      :class="[`${prefixCls}-advance-container`]"
       v-if="options.seach"
       :options="options.seach"
       @search="advanceSearch"
@@ -17,7 +17,10 @@
           <template #reference>
             <el-button :icon="Filter">筛选</el-button>
           </template>
-          <el-checkbox-group class="selectCheck" v-model="selectColumns">
+          <el-checkbox-group
+            :class="[`${prefixCls}-selectCheck`]"
+            v-model="selectColumns"
+          >
             <el-checkbox
               v-for="item in options.columns"
               :label="item.attr.label"
@@ -30,7 +33,7 @@
         </el-popover>
       </template>
     </XSearch>
-    <div class="table-container">
+    <div :class="[`${prefixCls}-table-container`]">
       <el-table
         v-loading="loading"
         :data="data"
@@ -111,7 +114,7 @@
           />
         </template>
       </el-table>
-      <div class="pagination-container">
+      <div :class="[`${prefixCls}-pagination-container`]">
         <el-pagination
           v-if="paginationConfig.show"
           v-bind="paginationConfig.attr"
@@ -131,6 +134,10 @@ import { deepMerge } from "@/xw-ui/element-plus/utils";
 import BasicComponent from "../../BasicComponent";
 import { Filter } from "@element-plus/icons-vue";
 import OperateCol from "./OperateCol.vue";
+import { useDesign } from "../../../hooks/useDesign";
+const { getPrefixCls } = useDesign();
+
+const prefixCls = getPrefixCls("table");
 import {
   isString,
   isEmpty,
@@ -373,7 +380,8 @@ watch(
 </script>
 
 <style scoped lang="less">
-.advance-container {
+@prefix-cls: ~"@{XWUINamespace}-table";
+.@{prefix-cls}-advance-container {
   margin-bottom: 10px;
 
   :deep(.el-card__body) {
@@ -381,13 +389,13 @@ watch(
   }
 }
 
-.pagination-container {
+.@{prefix-cls}-pagination-container {
   margin: 10px auto 0 auto;
   display: flex;
   justify-content: center;
 }
 
-.table-container {
+.@{prefix-cls}-table-container {
   background-color: white;
   padding: 20px 5px;
 

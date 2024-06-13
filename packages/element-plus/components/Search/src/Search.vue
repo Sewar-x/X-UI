@@ -2,11 +2,11 @@
   <el-card v-if="options" v-bind="options.cardAttr || {}">
     <XForm
       v-if="options.form"
-      class="search-form-container"
+      :class="[`${prefixCls}-form-container`]"
       :options="formOptions"
       @changeAfter="formBlurSearchHandler"
     />
-    <div class="search-item-container" v-if="showInputs()">
+    <div :class="[`${prefixCls}-item-container`]" v-if="showInputs()">
       <el-input
         :placeholder="getInputConfig('attr')?.attr?.placeholder || '请输入关键字'"
         v-model="keyword"
@@ -17,7 +17,7 @@
         v-on="getInputConfig('event')"
       >
       </el-input>
-      <el-button-group class="buttons-group-container">
+      <el-button-group :class="[`${prefixCls}-buttons-group-container`]">
         <slot name="buttonPrefix" />
         <el-tooltip
           v-for="(but, butIndex) in getButtons()"
@@ -39,6 +39,11 @@ import { XForm } from "../../Form";
 import type { SearchType } from "../type.d.ts";
 import { Search, Delete } from "@element-plus/icons-vue";
 import { isObject, isBoolean } from "../../../utils/is.ts";
+import { useDesign } from "../../../hooks/useDesign";
+
+const { getPrefixCls } = useDesign();
+
+const prefixCls = getPrefixCls("search");
 
 interface formChangeParams {
   prop: string;
@@ -172,18 +177,19 @@ const clearSearchData = function () {
 </script>
 
 <style scoped lang="less">
-.search-form-container {
+@prefix-cls: ~"@{XWUINamespace}-search";
+.@{prefix-cls}-form-container {
   :deep(.el-form-item__label) {
     justify-content: center;
   }
 }
 
-.search-item-container {
+.@{prefix-cls}-item-container {
   display: flex;
   justify-content: flex-start;
 }
 
-.buttons-group-container {
+.@{prefix-cls}-buttons-group-container {
   margin-left: 2px;
   display: flex;
   justify-content: center;

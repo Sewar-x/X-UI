@@ -23,6 +23,16 @@ export default defineConfig(async ({ command, mode }: ConfigEnv) => {
       port: '3333'
     },
     plugins: [vue()],
+    // css 配置
+    css: {
+      preprocessorOptions: {
+        // 引入 less 全局变量
+        less: {
+          additionalData: '@import "./style/variables.module.less";',
+          javascriptEnabled: true
+        }
+      }
+    },
     build: {
       rollupOptions: {
         output: {

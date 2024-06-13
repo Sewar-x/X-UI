@@ -1,5 +1,5 @@
 <template>
-  <div class="x-table-oprations-container">
+  <div :class="[`${prefixCls}-container`]">
     <div>
       <el-button v-for="but in sigleOpe" v-bind="but" @click="commandHandler(but)">
         {{ but.text }}
@@ -24,6 +24,10 @@
 import { defineEmits } from "vue";
 import { ArrowDownBold } from "@element-plus/icons-vue";
 import type { OperateColType } from "../type";
+import { useDesign } from "../../../hooks/useDesign";
+const { getPrefixCls } = useDesign();
+
+const prefixCls = getPrefixCls("table-oprations");
 const props = defineProps<{
   options: OperateColType;
   slotScope: any;
@@ -57,7 +61,8 @@ const commandHandler = (value: any) => {
 </script>
 
 <style scoped lang="less">
-.x-table-oprations-container {
+@prefix-cls: ~"@{XWUINamespace}-table-oprations";
+.@{prefix-cls}-container {
   display: flex;
 }
 </style>

@@ -126,12 +126,14 @@ interface MenuItemType {
 
 collapse 为侧边栏菜单折叠配置，该配置为对象，包含如下配置：
 
-| 属性名    | 说明                                                         | 类型                | 默认值 |
-| --------- | ------------------------------------------------------------ | ------------------- | ------ |
-| type      | 折叠图标配置（当type 为 component 时，传入 BasicComponent 组件相关配置） | `Icon 或 Component` | Icon   |
-| showIcon  | 展开图标（当 type = Icon 时有效）                            |                     |        |
-| colseIcon | 关闭图标（当 type = Icon 时有效）                            |                     |        |
-| size      | 图标大小                                                     |                     | 30     |
+| 属性名     | 说明                                                         | 类型                | 默认值 |
+| ---------- | ------------------------------------------------------------ | ------------------- | ------ |
+| type       | 折叠图标配置（当type 为 component 时，传入 BasicComponent 组件相关配置） | `Icon 或 Component` | Icon   |
+| showIcon   | 展开图标（当 type = Icon 时有效）                            |                     |        |
+| colseIcon  | 关闭图标（当 type = Icon 时有效）                            |                     |        |
+| size       | 图标大小                                                     | Number              | 30     |
+| opendWidth | 打开侧边栏宽度                                               | Number              | 260    |
+| closeWidth | 关闭侧边栏宽度                                               |                     | 60     |
 
 
 

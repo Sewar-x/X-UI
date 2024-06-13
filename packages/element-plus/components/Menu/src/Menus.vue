@@ -4,18 +4,18 @@
     v-on="options.event || {}"
     :ref="options.ref"
     :collapse="isCollapse"
+    :class="prefixCls"
   >
-    <div class="menu-header-collapse-container" :class="{ 'menu-collapsed': isCollapse }">
-      <div class="menu-header" v-if="!isCollapse">
+    <div :class="[`${prefixCls}-header`, { [`${prefixCls}-header_closed`]: isCollapse }]">
+      <div :class="[`${prefixCls}-header_slot`]" v-if="!isCollapse">
         <slot name="header" />
       </div>
       <div
-        class="menu-collapse"
+        :class="[`${prefixCls}-header_collapse`, options.collapse.class]"
         v-if="isDef(options.collapse)"
-        :class="options.collapse.class"
       >
         <XIcon
-          class="menu-collapse-icon"
+          :class="[`${prefixCls}-header_collapse_icon`]"
           v-if="collapseType === 'Icon'"
           :isSvgIcon="false"
           :name="isCollapse ? options.collapse?.colseIcon : options.collapse?.showIcon"
@@ -24,7 +24,11 @@
           :style="options.collapse?.style"
           @click="handleCollapse"
         />
-        <BasicComponent v-if="collapseType === 'Component'" :options="options.collapse" />
+        <BasicComponent
+          :class="[`${prefixCls}-header_collapse_component`]"
+          v-if="collapseType === 'Component'"
+          :options="options.collapse"
+        />
       </div>
     </div>
 
@@ -33,7 +37,7 @@
       :key="menuItem.attr?.index"
       :options="menuItem"
     />
-    <div class="menu-footer" v-if="!isCollapse">
+    <div :class="[`${prefixCls}-footer`]" v-if="!isCollapse">
       <slot name="footer" />
     </div>
   </el-menu>
@@ -45,10 +49,15 @@ import { XMenuItem } from "..";
 import { XIcon } from "../../Icon";
 import { ref, toRef } from "vue";
 import { isDef } from "../../../utils/is.ts";
+import { useDesign } from "../../../hooks/useDesign";
 
 const props = defineProps<{
   options: MenuType;
 }>();
+
+const { getPrefixCls } = useDesign();
+
+const prefixCls = getPrefixCls("menus");
 const collapseType = props.options.collapse?.type ? props.options.collapse?.type : "Icon";
 
 let isCollapse = ref(false);
@@ -61,22 +70,25 @@ function handleCollapse() {
 }
 </script>
 
-<style scoped lang="less">
-.menu-header-collapse-container {
+<style lang="less">
+@prefix-cls: ~"@{XWUINamespace}-menus";
+
+.@{prefix-cls}-header {
   display: flex;
   justify-content: space-between;
-}
-.menu-collapsed {
-  display: flex;
-  justify-items: center;
-  justify-content: center;
-}
-
-.menu-collapse {
-  display: flex;
-  .menu-collapse-icon {
-    cursor: pointer;
-    margin-right: 5px;
+  &_collapse {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    &_icon {
+      cursor: pointer;
+      margin-right: 5px;
+    }
+  }
+  &_closed {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
   }
 }
 </style>

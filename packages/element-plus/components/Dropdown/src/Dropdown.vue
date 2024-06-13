@@ -3,7 +3,7 @@
     v-bind="options.attr"
     v-on="options.event || {}"
     :ref="options.ref"
-    class="default-style"
+    :class="[`${prefixCls}`]"
   >
     <span class="el-dropdown-link">
       <XIcon
@@ -56,11 +56,13 @@
 import type { DropdownType } from "../type";
 import { XIcon } from "../../Icon";
 import BasicComponent from "../../BasicComponent";
-
+import { useDesign } from "../../../hooks/useDesign";
 defineProps<{
   options: DropdownType;
 }>();
+const { getPrefixCls } = useDesign();
 
+const prefixCls = getPrefixCls("dropdown");
 //组件类型判断
 function basicCompoType(comp: CompType): Boolean {
   return typeof comp.content !== "string";
@@ -68,11 +70,11 @@ function basicCompoType(comp: CompType): Boolean {
 </script>
 
 <style scoped lang="less">
+@prefix-cls: ~"@{XWUINamespace}-dropdown";
 span {
   display: flex;
 }
-
-.default-style {
+.@{prefix-cls} {
   cursor: pointer;
 }
 </style>
