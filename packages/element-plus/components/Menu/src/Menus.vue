@@ -7,7 +7,7 @@
     :class="prefixCls"
   >
     <div :class="[`${prefixCls}-header`, { [`${prefixCls}-header_closed`]: isCollapse }]">
-      <div :class="[`${prefixCls}-header_slot`]" v-if="!isCollapse">
+      <div :class="[`${prefixCls}-header_slot`]" v-show="!isCollapse">
         <slot name="header" />
       </div>
       <div
@@ -37,7 +37,7 @@
       :key="menuItem.attr?.index"
       :options="menuItem"
     />
-    <div :class="[`${prefixCls}-footer`]" v-if="!isCollapse">
+    <div :class="[`${prefixCls}-footer`]" v-show="!isCollapse">
       <slot name="footer" />
     </div>
   </el-menu>
@@ -50,7 +50,7 @@ import { XIcon } from "../../Icon";
 import { ref, toRef } from "vue";
 import { isDef } from "../../../utils/is.ts";
 import { useDesign } from "../../../hooks/useDesign";
-
+const emit = defineEmits(["collapse"]);
 const props = defineProps<{
   options: MenuType;
 }>();
@@ -67,6 +67,7 @@ if (props.options?.attr && props.options?.attr.hasOwnProperty("collapse")) {
 
 function handleCollapse() {
   isCollapse.value = !isCollapse.value;
+  emit("collapse", isCollapse.value);
 }
 </script>
 

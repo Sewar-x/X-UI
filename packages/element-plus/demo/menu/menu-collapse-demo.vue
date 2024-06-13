@@ -37,7 +37,7 @@ const options = {
     colseIcon: Expand,
     size: 30,
     opendWidth: 200,
-    closeWidth: 60,
+    closeWidth: 80,
   }, // 折叠按钮
   event: {
     open: () => {
