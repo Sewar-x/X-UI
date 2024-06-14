@@ -1,7 +1,7 @@
 <template>
   <!-- 没有子节点，使用 el-menu-item 渲染 -->
   <el-menu-item
-    v-if="!options.subMenu || !options.subMenu.length"
+    v-if="!subMenu || !subMenu.length"
     v-bind="options.attr"
     v-on="options.event || {}"
   >
@@ -32,7 +32,7 @@
     </template>
     <!-- 循环渲染 -->
     <XMenuItem
-      v-for="(subMenuItem, index) in options.subMenu"
+      v-for="(subMenuItem, index) in subMenu"
       :key="index + subMenuItem.attr?.index"
       :options="subMenuItem"
     />
@@ -40,13 +40,15 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import type { MenuItemType } from "../type";
 import { XMenuItem } from "..";
 import { XIcon } from "../../Icon";
 
-defineProps<{
+const props = defineProps<{
   options: MenuItemType;
 }>();
+let subMenu = computed(() => props.options.subMenu);
 </script>
 
 <style scoped lang="less"></style>
