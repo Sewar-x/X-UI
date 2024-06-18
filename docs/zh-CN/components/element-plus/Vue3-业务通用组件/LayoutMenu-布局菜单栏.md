@@ -51,6 +51,7 @@ interface SideMenuType {
 | 属性            | 描述                                 | 类型                         | 默认值 |
 | --------------- | ------------------------------------ | ---------------------------- | ------ |
 | routes          | 所有路由对象，根据路由对象渲染菜单栏 | object                       |        |
+| routeInst       | `vue-router`  实例                   |                              |        |
 | layoutMode      | 布局模式                             | `top、aside、topAside、none` | top    |
 | defaultActive   | 默认激活的菜单，使用路由名称         |                              |        |
 | asyncRoutes     | 异步路由对象                         | `Array<any>`                 | `[]`   |
@@ -184,12 +185,13 @@ export default [
 
 ## 插槽
 
-| 插槽       | 描述                                                 |
-| ---------- | ---------------------------------------------------- |
-| sideHeader | 侧边栏菜单顶部插槽，仅在 layoutMode = 'aside' 时生效 |
-| sideFooter | 侧边栏菜单底部插槽，仅在 layoutMode = 'aside' 时生效 |
-| topHeader  | 横向栏菜单顶部插槽，仅在 layoutMode = 'top' 时生效   |
-| topFooter  | 横向栏菜单底部插槽，仅在 layoutMode = 'top' 时生效   |
+| 插槽       | 描述                                                         |
+| ---------- | ------------------------------------------------------------ |
+| viewer     | 路由显示布局部分插槽，默认为`vue-router` 的  `<router-view>` 组件 |
+| sideHeader | 侧边栏菜单顶部插槽，仅在 layoutMode = 'aside' 时生效         |
+| sideFooter | 侧边栏菜单底部插槽，仅在 layoutMode = 'aside' 时生效         |
+| topHeader  | 横向栏菜单顶部插槽，仅在 layoutMode = 'top' 时生效           |
+| topFooter  | 横向栏菜单底部插槽，仅在 layoutMode = 'top' 时生效           |
 
 ## 示例
 

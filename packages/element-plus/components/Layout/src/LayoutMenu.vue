@@ -28,7 +28,9 @@
         </TopMenu>
       </el-header>
       <el-main class="layout-content-main">
-        <router-view />
+        <slot name="viewer">
+          <router-view />
+        </slot>
       </el-main>
       <el-footer>
         <slot name="layout-content-footer" />
@@ -37,7 +39,9 @@
   </div>
   <div v-else class="layout-container">
     <el-main class="layout-content-main">
-      <router-view />
+      <slot name="viewer">
+        <router-view />
+      </slot>
     </el-main>
   </div>
 </template>
@@ -45,23 +49,23 @@
 <script setup lang="ts">
 import TopMenu from "./TopMenu.vue";
 import SideMenu from "./SideMenu.vue";
-import { useRouter } from "vue-router";
 import type { SideMenuType } from "../types";
 const props = defineProps<{
   options: SideMenuType;
 }>();
-
-const router = useRouter();
+const layoutMode = props.options.layoutMode;
+const routeInst = props.options.routeInst;
+if (!routeInst) {
+  throw Error("请传入路由对象！");
+}
 const options = {
-  routeInst: router,
-  layoutMode: props.options.layoutMode,
+  routeInst,
+  layoutMode,
   routes: props.options.routes,
   asyncRoutes: props.options.asyncRoutes,
   asyncSideRoutes: props.options.asyncSideRoutes,
   defaultActive: props.options.defaultActive,
 };
-
-const layoutMode = props.options.layoutMode;
 </script>
 
 <style scoped lang="less">

@@ -13,8 +13,10 @@
 import { LayoutMenu } from "@/xw-ui/element-plus";
 import Logo from "../assets/logo.svg";
 import routes from "./routes.js";
-
+import { useRouter } from "vue-router";
+const router = useRouter();
 const options = {
+  routeInst: router,
   layoutMode: "top",
   routes,
   asyncRoutes: [],
