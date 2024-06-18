@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { XMenu } from "@/xw-ui/element-plus";
 import { ref, reactive } from "vue";
-import Logo from "./assets/logo.svg";
+import Logo from "../assets/logo.svg";
 import {
   Document,
   Menu as IconMenu,

@@ -12,6 +12,7 @@ import { XSwiper } from './components/Swiper'
 import { XTable } from './components/Table'
 import { XUpload } from './components/Upload'
 import { XLoading } from './components/Loading'
+import { LayoutMenu } from './components/Layout'
 // 组件列表
 export const elmPlusComponents = [
   BasicComponent,
@@ -28,7 +29,8 @@ export const elmPlusComponents = [
   XSwiper,
   XTable,
   XUpload,
-  XLoading
+  XLoading,
+  LayoutMenu
 ]
 // 遍历一次性注册所有组件
 export const installer = (app: App) => {

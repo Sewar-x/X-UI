@@ -10,7 +10,7 @@
 import { XMenu } from "@/xw-ui/element-plus";
 import { ref, reactive } from "vue";
 import { Document, Menu as IconMenu, Location, Setting } from "@element-plus/icons-vue";
-import Logo from "./assets/logo.svg";
+import Logo from "../assets/logo.svg";
 // from 表单配置项
 const options = {
   attr: {
