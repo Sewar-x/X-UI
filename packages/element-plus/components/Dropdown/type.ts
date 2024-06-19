@@ -26,5 +26,5 @@ export interface DropdownType {
   attr?: Recordable;
   event?: Recordable;
   ref?: Ref<T>;
-  itemArr: Array<DropdownItemType>;
+  items: Array<DropdownItemType>;
 }

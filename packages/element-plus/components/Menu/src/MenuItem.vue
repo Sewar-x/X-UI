@@ -44,7 +44,7 @@ import { computed } from "vue";
 import type { MenuItemType } from "../type";
 import { XMenuItem } from "..";
 import { XIcon } from "../../Icon";
-
+import BasicComponent from "../../BasicComponent";
 const props = defineProps<{
   options: MenuItemType;
 }>();

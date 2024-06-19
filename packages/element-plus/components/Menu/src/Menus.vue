@@ -47,6 +47,7 @@
 import type { MenuType } from "../type";
 import { XMenuItem } from "..";
 import { XIcon } from "../../Icon";
+import BasicComponent from "../../BasicComponent";
 import { ref, toRef, computed } from "vue";
 import { isDef } from "../../../utils/is.ts";
 import { useDesign } from "../../../hooks/useDesign";

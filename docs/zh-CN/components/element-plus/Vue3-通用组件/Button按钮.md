@@ -1,6 +1,6 @@
 # 按钮
 
-按钮组件是对 [Element Plus 的按钮组件](https://element-plus.org/zh-CN/component/button.html)  进行二次封装成 JSON 配置模式，除了支持 Element Plus 的 弹窗基本功能之外还扩展了其他功能
+按钮组件是对 [Element Plus 的按钮组件](https://element-plus.org/zh-CN/component/button.html)  进行二次封装成 JSON 配置模式，除了支持 Element Plus 的按钮基本功能之外还扩展了其他功能
 
 ## 文件说明
 
