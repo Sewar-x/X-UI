@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import type { AxiosResponse } from 'axios';
 import type { RequestOptions, Result, Recordable, transformOptType } from '../types/axios';
@@ -10,17 +9,28 @@ import { setObjToUrlParams } from '../utils/index.ts';
 import { apiEnum } from '../enums/messageEnum.ts';
 import { joinTimestamp, formatRequestDate } from './helper.ts';
 import { AxiosRetry } from './axiosRetry.ts';
-import TokenRefreshService from './tokenRefreshService.ts'
-
-
-
+import TokenRefreshService from './tokenRefreshService.ts';
 
 /**
  * @description: 数据处理，方便区分多种处理方式
  */
 
-export function transform(transformOpt: transformOptType, refreshTokenInst: TokenRefreshService | null): AxiosTransform {
-  const { Modal, Message, getToken, clearToken, logout, addAjaxErrorInfo, formatResponse, refreshTokenConfig, statusMap = {} } = transformOpt
+export function transform(
+  transformOpt: transformOptType,
+  refreshTokenInst: TokenRefreshService | null,
+): AxiosTransform {
+  const {
+    Modal,
+    Message,
+    getToken,
+    clearToken,
+    logout,
+    addAjaxErrorInfo,
+    formatResponse,
+    refreshTokenConfig,
+    statusMap = {},
+    authorizationKey = 'Authorization',
+  } = transformOpt;
   return {
     /**
      * @description: 处理响应数据。如果数据不是预期格式，可直接抛出错误
@@ -44,7 +54,8 @@ export function transform(transformOpt: transformOptType, refreshTokenInst: Toke
         throw new Error(apiEnum.apiRequestFailed);
       }
       //  这里 code，result，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式, 如果不需要统一的格式，需要传入 formatResponse 函数，将服务端返回格式进行转换
-      const { code, result, message } = (formatResponse && isFunction(formatResponse)) ? formatResponse(data) : data;
+      const { code, result, message } =
+        formatResponse && isFunction(formatResponse) ? formatResponse(data) : data;
 
       // 这里逻辑可以根据项目进行修改,响应结果为成功状态
       const hasSuccess = data && code === ResultEnum.SUCCESS;
@@ -62,7 +73,6 @@ export function transform(transformOpt: transformOptType, refreshTokenInst: Toke
         }
         return result;
       } else {
-
         // 在此处根据自己项目的实际情况对不同的code执行不同的操作
         // 如果不希望中断当前请求，请return数据，否则直接抛出异常即可
         let timeoutMsg = checkStatus({
@@ -73,18 +83,23 @@ export function transform(transformOpt: transformOptType, refreshTokenInst: Toke
           Modal,
           Message,
           clearToken,
-          logout
+          logout,
         });
-
 
         throw new Error(timeoutMsg || apiEnum.apiRequestFailed);
       }
-
     },
 
     // 请求之前处理config
     beforeRequestHook: (config, options) => {
-      const { apiUrl, joinPrefix, joinParamsToUrl, formatDate, joinTime = true, urlPrefix } = options;
+      const {
+        apiUrl,
+        joinPrefix,
+        joinParamsToUrl,
+        formatDate,
+        joinTime = true,
+        urlPrefix,
+      } = options;
       // 默认将prefix 添加到url
       if (joinPrefix) {
         config.url = `${urlPrefix}${config.url}`;
@@ -142,24 +157,23 @@ export function transform(transformOpt: transformOptType, refreshTokenInst: Toke
      */
     requestInterceptors: (config, options) => {
       // 请求之前处理config
-      let token = null
+      let token = null;
 
       if (refreshTokenConfig && !isEmpty(refreshTokenConfig)) {
         // 如果没有创建 token 刷新类则创建，使用单例模式
         if (!refreshTokenInst) {
-          refreshTokenInst = new TokenRefreshService(transformOpt)
+          refreshTokenInst = new TokenRefreshService(transformOpt);
         } else {
           // 检查是否需要刷新token
-          refreshTokenInst.refreshTokenCheck(config, options)
+          refreshTokenInst.refreshTokenCheck(config, options);
         }
-
       }
       if (getToken && isFunction(getToken)) {
         token = getToken();
       }
       if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
         // jwt token
-        (config as Recordable).headers.Authorization = options.authenticationScheme
+        (config as Recordable).headers[authorizationKey] = options.authenticationScheme
           ? `${options.authenticationScheme} ${token}`
           : token;
       }
@@ -218,7 +232,7 @@ export function transform(transformOpt: transformOptType, refreshTokenInst: Toke
         Modal,
         Message,
         clearToken,
-        logout
+        logout,
       });
 
       // 添加自动重试机制 保险起见 只针对GET请求
@@ -231,6 +245,4 @@ export function transform(transformOpt: transformOptType, refreshTokenInst: Toke
       return Promise.reject(error);
     },
   };
-
 }
-

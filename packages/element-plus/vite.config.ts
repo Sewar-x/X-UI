@@ -46,6 +46,7 @@ export default defineConfig(async ({ command, mode }: ConfigEnv) => {
         },
         external: ['element-plus', 'vue'] // 打包结果排除第三方包，不打包 'element-plus'和 'vue'
       },
+      //库模式: https://cn.vitejs.dev/guide/build.html#library-mode
       lib: {//打包纯组件(供用户在业务项目中安装、导入、使用的组件)，入口是 /components/index.(js/ts)
         entry: path.resolve(__dirname, './index.ts'),
         name: 'xwElementPlus',

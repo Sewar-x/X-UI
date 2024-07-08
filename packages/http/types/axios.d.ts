@@ -101,7 +101,8 @@ export interface transformOptType {
   addAjaxErrorInfo?: Function,
   statusMap?: Record<number, any>,
   formatResponse?: Function // 转换响应数据格式函数
-  refreshTokenConfig?: refreshTokenType // 刷新 token 配置
+  refreshTokenConfig?: refreshTokenType, // 刷新 token 配置
+  authorizationKey?: string
 }
 
 export interface checkStatusOptType {
