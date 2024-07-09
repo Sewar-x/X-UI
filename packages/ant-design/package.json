@@ -28,7 +28,8 @@
   "dependencies": {
     "@xw-ui/hooks": "workspace:^",
     "@xw-ui/shared": "workspace:^",
-    "antd": "^4.21.7"
+    "antd": "^4.21.7",
+    "vite": "^5.3.3"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.0",

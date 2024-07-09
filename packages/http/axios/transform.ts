@@ -29,7 +29,7 @@ export function transform(
     formatResponse,
     refreshTokenConfig,
     statusMap = {},
-    authorizationKey = 'Authorization',
+    authorizationKey = 'accessToken',
   } = transformOpt;
   return {
     /**
