@@ -41,7 +41,7 @@ export default class TokenRefreshService {
       tokenKey,
       formatResponse,
       refreshTokenConfig,
-      authorizationKey = 'Authorization',
+      authorizationKey = 'accessToken',
     } = this.transformOpt;
 
     const {
@@ -124,7 +124,7 @@ export default class TokenRefreshService {
       storageType,
       getToken,
       refreshTokenConfig,
-      authorizationKey = 'Authorization',
+      authorizationKey = 'accessToken',
     } = this.transformOpt;
     const {
       expires, //过期时间
