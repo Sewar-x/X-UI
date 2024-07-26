@@ -23,17 +23,16 @@ build:
 # 部署工作  
 deploy:  
   stage: deploy  
-  image: alpine/git  # 注意：这里可能需要更换为包含 Node.js 的镜像，取决于 deploy 脚本的需求  
+  image: alpine/git  # 注意：这里可能需要更换为包含 Node.js 的镜像  
   dependencies:  
     - build  
   before_script:  
-    - # 如果 deploy 脚本需要 Node.js，安装 Node.js 和 pnpm  
-    - apk add --no-cache nodejs npm  
-    - npm install -g pnpm  
+    - apk add --no-cache nodejs npm  # 如果 deploy 脚本需要 Node.js  
+    - npm install -g pnpm            # 安装 pnpm  
   script:  
     - pnpm install  # 如果 deploy 脚本需要项目依赖  
     - pnpm run deploy  
   environment:  
-    name: production  # 通常使用更具描述性的环境名称，如 production 而不是 main  
+    name: production  # 通常使用更具描述性的环境名称  
   only:  
     - main  # 确保只在推送 main 分支时触发部署
