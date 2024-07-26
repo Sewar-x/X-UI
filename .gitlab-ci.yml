@@ -1,32 +1,39 @@
-stages:
-  - build
-  - deploy
-
-# 构建工作
-build:
-  stage: build
-  image: node:18
-  cache:
-    paths:
-      - node_modules/
-  script:
-	 	- npm install -g pnpm  
+stages:  
+  - build  
+  - deploy  
+  
+# 构建工作  
+build:  
+  stage: build  
+  image: node:18  
+  cache:  
+    paths:  
+      - node_modules/  
+  script:  
+    - npm install -g pnpm  
     - pnpm install  
-    - pnpm run docs:build
-  artifacts:
-    paths:
-      - docs/.vitepress/dist
-    expire_in: 1 week
-
-# 部署工作
-deploy:
-  stage: deploy
-  image: alpine/git
-  dependencies:
-    - build
-  script:
-    - pnpm run deploy
-  environment:
-    name: main
-  only:
-    - main
+    - pnpm run docs:build  
+  artifacts:  
+    paths:  
+      - docs/.vitepress/dist  
+    expire_in: 1 week  
+  only:  
+    - main  # 确保只在推送 main 分支时触发构建  
+  
+# 部署工作  
+deploy:  
+  stage: deploy  
+  image: alpine/git  # 注意：这里可能需要更换为包含 Node.js 的镜像，取决于 deploy 脚本的需求  
+  dependencies:  
+    - build  
+  before_script:  
+    - # 如果 deploy 脚本需要 Node.js，安装 Node.js 和 pnpm  
+    - apk add --no-cache nodejs npm  
+    - npm install -g pnpm  
+  script:  
+    - pnpm install  # 如果 deploy 脚本需要项目依赖  
+    - pnpm run deploy  
+  environment:  
+    name: production  # 通常使用更具描述性的环境名称，如 production 而不是 main  
+  only:  
+    - main  # 确保只在推送 main 分支时触发部署
