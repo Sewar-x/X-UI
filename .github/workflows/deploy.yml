@@ -1,12 +1,10 @@
 # 构建 VitePress 站点并将其部署到 GitHub Pages 的示例工作流程
-#
-name: Deploy XW-UI Document Site to GitHub Pages
+name: Deploy XW-UI Document Site to GitHub Pages #name: 定义了工作流程的名称
 
-on:
-  # 在针对 `main` 分支的推送上运行。如果你
-  # 使用 `master` 分支作为默认分支，请将其更改为 `master`
+on: #on: 指定了触发此工作流程的事件
+  # 在针对 `main` 分支的推送上运行。如果你使用 `master` 分支作为默认分支，请将其更改为 `master`
   push:
-    branches: [master, main, fix-deploy]
+    branches: [master, main, fix-deploy] #当master、main或fix-deploy分支上有推送时，或者手动从Actions选项卡触发时，会运行此工作流程。
 
   # 允许你从 Actions 选项卡手动运行此工作流程
   workflow_dispatch:
@@ -14,39 +12,38 @@ on:
 # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
 permissions:
   contents: read
-  pages: write
+  pages: write #pages: write允许写入GitHub Page
   id-token: write
 
-# 只允许同时进行一次部署，跳过正在运行和最新队列之间的运行队列
-# 但是，不要取消正在进行的运行，因为我们希望允许这些生产部署完成
-concurrency:
-  group: pages
-  cancel-in-progress: false
+# 只允许同时进行一次部署，跳过正在运行和最新队列之间的运行队列, 但是，不要取消正在进行的运行，因为我们希望允许这些生产部署完成
+concurrency: # concurrency确保同一时间只有一个部署作业在运行。
+  group: pages #group指定了作业组
+  cancel-in-progress: false #cancel-in-progress设置为false表示不会取消当前正在进行的部署作业
 
 jobs:
   # 构建工作
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout #检出仓库的代码
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      - uses: pnpm/action-setup@v2.1.0
+      - uses: pnpm/action-setup@v2.1.0 #安装并配置pnpm
         with:
           version: 6.x # 你可以指定你需要的 pnpm 版本
-      - name: Setup Node
+      - name: Setup Node #安装并配置Node.js环境
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: pnpm # 或 pnpm / yarn
-      - name: Setup Pages
+      - name: Setup Pages #配置GitHub Pages（虽然在此脚本中可能未直接使用，但是为了后续步骤做准备)
         uses: actions/configure-pages@v4
-      - name: Install dependencies
+      - name: Install dependencies #使用pnpm安装项目依赖
         run: pnpm install # 或 pnpm install / yarn install / bun install
-      - name: Build with VitePress
+      - name: Build with VitePress #使用pnpm运行docs:build脚本来构建VitePress站点
         run: pnpm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
-      - name: Upload artifact
+      - name: Upload artifact #将构建的输出（假设是docs/.vitepress/dist）上传为构建产物
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
