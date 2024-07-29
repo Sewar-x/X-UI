@@ -1,6 +1,7 @@
-const chalk = require('chalk')
-const fsPromise = require('fs').promises
-
+const chalk = require('chalk');
+const fs = require('fs');
+const path = require('path');
+const fsPromises = fs.promises;
 /**
  * 修改所有packages的版本号
  */
@@ -28,21 +29,21 @@ async function changeVersion(): Promise<boolean | undefined> {
     setPackagesVersion(packagePath, version)
   }
   console.log(chalk.blue(`完成版本号更改,当前把版本号为： ${version}`))
+  return true
 }
 
-function getVersion(): string {
-  
-    // 获取项目根路径
-    const packagePath = path.resolve(__dirname, '../package.json')
-    // 读取 package.json 文件内容
-    const packageJSON = require(packagePath)
-    // 获取当前版本号
-    let versions = packageJSON.version.split('.')
-    let lastVer = Number(versions[versions.length-1])
-    // 最后版本号加一
-    versions[versions.length-1] = lastVer++
-    
-    return versions.join('.')
+/**
+ * 获取当前版本号并加1
+ * @returns 
+ */
+function getVersion() {
+  const packagePath = path.resolve(__dirname, '../package.json');
+  const packageJSON = require(packagePath);
+  let versions = packageJSON.version.split('.');
+  let lastVer = parseInt(versions.pop(), 10);
+  lastVer = ++lastVer; // 使用前缀形式加1
+  versions.push(lastVer.toString());
+  return versions.join('.');
 }
 
 /**
@@ -50,7 +51,7 @@ function getVersion(): string {
  * @param packagePath 
  * @param version 
  */
-function setPackagesVersion(packagePath: string, version: string) {
+async function setPackagesVersion(packagePath: string, version: string) {
   // 读取 package.json 文件内容
   const packageJSON = require(packagePath)
 
@@ -58,7 +59,7 @@ function setPackagesVersion(packagePath: string, version: string) {
   packageJSON.version = version
   try {
     // 将更新后的 package.json 文件内容写回文件
-    fs.writeFileSync(packagePath, JSON.stringify(packageJSON, null, 2))
+    await fsPromises.writeFile(packagePath, JSON.stringify(packageJSON, null, 2));
   } catch (err) {
     console.log(chalk.red('版本号文件写入失败,请检查文件权限'))
   }
