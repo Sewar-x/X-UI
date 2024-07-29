@@ -56,6 +56,7 @@ interface SideMenuType {
 | defaultActive   | 默认激活的菜单，使用路由名称         |                              |        |
 | asyncRoutes     | 异步路由对象                         | `Array<any>`                 | `[]`   |
 | asyncSideRoutes |                                      |                              |        |
+| isShowLogout    | 是否显示退出按钮                     | boolean                      | false  |
 
 路由对象示例:
 
@@ -185,13 +186,15 @@ export default [
 
 ## 插槽
 
-| 插槽       | 描述                                                         |
-| ---------- | ------------------------------------------------------------ |
-| viewer     | 路由显示布局部分插槽，默认为`vue-router` 的  `<router-view>` 组件 |
-| sideHeader | 侧边栏菜单顶部插槽，仅在 layoutMode = 'aside' 时生效         |
-| sideFooter | 侧边栏菜单底部插槽，仅在 layoutMode = 'aside' 时生效         |
-| topHeader  | 横向栏菜单顶部插槽，仅在 layoutMode = 'top' 时生效           |
-| topFooter  | 横向栏菜单底部插槽，仅在 layoutMode = 'top' 时生效           |
+| 插槽           | 描述                                                         |
+| -------------- | ------------------------------------------------------------ |
+| viewer         | 路由显示布局部分插槽，默认为`vue-router` 的  `<router-view>` 组件 |
+| sideHeader     | 侧边栏菜单顶部插槽，仅在 layoutMode = 'aside' 时生效         |
+| sideFooter     | 侧边栏菜单底部插槽，仅在 layoutMode = 'aside' 时生效         |
+| topHeader      | 横向栏菜单顶部插槽，仅在 layoutMode = 'top' 时生效           |
+| topFooterLeft  | 横向栏菜单底部插槽，仅在 layoutMode = 'top' 时生效，在”退出“前面 |
+| topFooterRight | 横向栏菜单底部插槽，仅在 layoutMode = 'top' 时生效，在”退出“后面 |
+| avatarFilled   | 更换“退出”部分的头像填充内容                                 |
 
 ## 示例
 

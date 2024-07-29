@@ -50,7 +50,7 @@ let _allRoutes: Array<any> =  []
 let _asyncRoutes: Array<any>  = []
 let _asyncSideRoutes: Array<any> = []
 let _defaultTopActive: String = ''
-
+let _isShowLogout : boolean = false
 
 // from 表单配置项
 const menuConfig = {
@@ -81,6 +81,7 @@ const useMenu = ({
   asyncSideRoutes= [],
   layoutMode = 'aside',
   defaultActive = '',
+  isShowLogout = false
 }:SideMenuType) => {
   // 初始化全局参数
   _layoutMode = layoutMode
@@ -89,6 +90,7 @@ const useMenu = ({
   _asyncRoutes = asyncRoutes
   _asyncSideRoutes = asyncSideRoutes
   _defaultTopActive = defaultActive
+  _isShowLogout = isShowLogout
 
   const hanleMap = {
     'top': handleTopOrSideMenuConfig,
@@ -198,6 +200,7 @@ function generateTopMenuConfig(){
   const topMenus = menuStore.getTopRouters()
   if(!isEmpty(topMenus)){
     console.log("🚀 生成顶部栏函数，顶部菜单栏不是空，直接返回:")
+    topMenus.isShowLogout = _isShowLogout
     topMenuOptions.value  = topMenus
     return 
   }
@@ -240,7 +243,6 @@ function generateAsideMenuConfig({
   const topMenus = menuStore.getTopRouters()
   if(_layoutMode === 'topAside' && isEmpty(topMenus)){
     console.log("🚀 生成侧边栏函数，顶部菜单栏为空，生成顶部菜单:")
-
     generateTopMenuConfig()
   }
   const options = deepClone(menuConfig)
