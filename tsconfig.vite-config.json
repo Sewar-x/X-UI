@@ -11,6 +11,7 @@
     "**/vitest.config.*",
     "**/vite.init.*",
     "scripts/*",
+    "scripts/*.ts",
     "config/*"
   ],
   "exclude": [

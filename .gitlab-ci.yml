@@ -1,38 +1,41 @@
 stages:  
-  - build  
-  - deploy  
+  - build  # 构建文档
+  - deploy # 发布
+   
+cache:  
+  paths:  
+    - node_modules/  
   
 # 构建工作  
 build:  
   stage: build  
-  image: node:18  
-  cache:  
-    paths:  
-      - node_modules/  
+  image: node:16
+  tags:  
+    - gr03  # 确保这个 tag 对应于您的 GitLab Runner , 该 runner 已经有一个配置了 GitLab Runner 的 Linux 环境，该环境可以访问并安装 Node.js
   script:  
-    - npm install -g pnpm  
-    - pnpm install  
-    - pnpm run docs:build  
+    - node --version  # 可选：检查 Node.js 版本  
+    - npm install  
+    - npm run build  
   artifacts:  
     paths:  
       - docs/.vitepress/dist  
     expire_in: 1 week  
   only:  
-    - main  # 确保只在推送 main 分支时触发构建  
-  
-# 部署工作  
-deploy:  
+    - main  
+
+
+# 发布 npm 镜像 
+deploy_npm:  
   stage: deploy  
-  image: alpine/git  # 注意：这里可能需要更换为包含 Node.js 的镜像  
+  tags:  
+    - gr03  # 确保这个 tag 对应于您的 GitLab Runner , 该 runner 已经有一个配置了 GitLab Runner 的 Linux 环境，该环境可以访问并安装 Node.js
   dependencies:  
     - build  
-  before_script:  
-    - apk add --no-cache nodejs npm  # 如果 deploy 脚本需要 Node.js  
-    - npm install -g pnpm            # 安装 pnpm  
   script:  
-    - pnpm install  # 如果 deploy 脚本需要项目依赖  
-    - pnpm run deploy  
-  environment:  
-    name: production  # 通常使用更具描述性的环境名称  
+    - npm config set registry http://10.126.16.116:4873/
+    - npm login
+    - sewen
+    - sewen
+    - npm publish
   only:  
-    - main  # 确保只在推送 main 分支时触发部署
+    - main  
