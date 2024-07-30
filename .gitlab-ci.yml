@@ -1,0 +1,41 @@
+stages:  
+  - build  # 构建文档
+  - deploy # 发布
+   
+cache:  
+  paths:  
+    - node_modules/  
+  
+# 构建工作  
+build:  
+  stage: build  
+  image: node:16
+  tags:  
+    - gr03  # 确保这个 tag 对应于您的 GitLab Runner , 该 runner 已经有一个配置了 GitLab Runner 的 Linux 环境，该环境可以访问并安装 Node.js
+  script:  
+    - node --version  # 可选：检查 Node.js 版本  
+    - npm install  
+    - npm run build  
+  artifacts:  
+    paths:  
+      - docs/.vitepress/dist  
+    expire_in: 1 week  
+  only:  
+    - main  
+
+
+# 发布 npm 镜像 
+deploy_npm:  
+  stage: deploy  
+  tags:  
+    - gr03  # 确保这个 tag 对应于您的 GitLab Runner , 该 runner 已经有一个配置了 GitLab Runner 的 Linux 环境，该环境可以访问并安装 Node.js
+  dependencies:  
+    - build  
+  script:  
+    - npm config set registry http://10.126.16.116:4873/
+    - npm login
+    - sewen
+    - sewen
+    - npm publish
+  only:  
+    - main  

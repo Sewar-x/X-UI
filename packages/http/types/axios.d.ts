@@ -88,8 +88,8 @@ export interface refreshTokenType {
   params?: object
 }
 export interface transformOptType {
-  Modal?: Fcuntion,
-  Message?: Fcuntion,
+  Modal?: Function,
+  Message?: Function,
   token?: string,
   tokenKey?: string,
   tokenExpires?: number,
@@ -110,10 +110,10 @@ export interface checkStatusOptType {
   msg: string,
   errorMessageMode: ErrorMessageMode,
   statusMap: Record<number, any>,
-  Modal: Fcuntion,
-  Message: Fcuntion,
-  clearToken: Fcuntion,
-  logout: Fcuntion,
+  Modal: Function,
+  Message: Function,
+  clearToken: Function,
+  logout: Function,
 }
 
 

@@ -29,4 +29,5 @@ export interface permissionOptionsType {
     TOKEN_KEY?: string, // token key
     SSO_TOKEN_KEYS?: string | Array<any>// 单点登录 Keys
     Message?: Function | undefined // 消息提示组件
+    homeRoute: String | undefined // 首页路由(路径)
 }

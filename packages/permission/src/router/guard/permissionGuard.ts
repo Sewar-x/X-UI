@@ -76,7 +76,8 @@ export async function routerPermission(
     if (to.path == '/login' && from) {
         // 从登录页面进入，直接进入登录页面
         if (from.path === '/login' || from.path === '/') {
-            return next();
+            const homeRoute =  globalState.getState('homeRoute')
+            return next(homeRoute);
         } else {
             //已经存在 token, 从其他页面进入用户登录页面，直接返回来源页面
             return next(from.path);

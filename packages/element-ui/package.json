@@ -1,6 +1,6 @@
 {
   "name": "@xw-ui/element-ui",
-  "version": "1.0.34",
+  "version": "1.0.155",
   "description": "二次封装 element-ui",
   "main": "./index.js",
   "module": "./index.js",

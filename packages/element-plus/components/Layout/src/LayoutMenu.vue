@@ -23,7 +23,20 @@
             <slot name="topHeader" />
           </template>
           <template #footer>
-            <slot name="topFooter" />
+            <slot name="topFooterLeft" />
+            <div class="logout_area-dropdown-avator" v-show="showLogout">
+              <el-dropdown divided>
+                <slot name="avatarFilled">
+                  <el-avatar :icon="UserFilled"/>
+                </slot>
+                <template #dropdown>
+                  <el-dropdown-menu>
+                    <el-dropdown-item @click="handleLogout">退出登录</el-dropdown-item>
+                  </el-dropdown-menu>
+                </template>
+              </el-dropdown>
+            </div>
+            <slot name="topFooterRight" />
           </template>
         </TopMenu>
       </el-header>
@@ -50,6 +63,10 @@
 import TopMenu from "./TopMenu.vue";
 import SideMenu from "./SideMenu.vue";
 import type { SideMenuType } from "../types";
+import { computed } from "vue";
+import { UserFilled } from '@element-plus/icons-vue'
+const emit = defineEmits(["logout"]);
+
 const props = defineProps<{
   options: SideMenuType;
 }>();
@@ -65,6 +82,13 @@ const options = {
   asyncRoutes: props.options.asyncRoutes,
   asyncSideRoutes: props.options.asyncSideRoutes,
   defaultActive: props.options.defaultActive,
+  isShowLogout: props.options.isShowLogout,
+};
+
+let showLogout = computed(() => props.options.isShowLogout );  
+
+const handleLogout = () => {
+  emit("logout");
 };
 </script>
 
@@ -105,5 +129,13 @@ const options = {
       }
     }
   }
+}
+.logout_area-dropdown-avator{
+  position: fixed;
+  right: 20px;
+  top: 10px;
+  z-index: 999;
+  width: 30px;
+  height: 30px;
 }
 </style>

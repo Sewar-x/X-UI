@@ -12,6 +12,7 @@
   },
   "include": [
     "config/**/*.ts",
+    "scripts/*.ts",
     "scripts/**/*.ts",
     "packages/ant-design/**/*.ts",
     "packages/ant-design/**/*.tsx",

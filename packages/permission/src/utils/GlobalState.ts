@@ -16,6 +16,7 @@ class GlobalState {
         expires: undefined, // 本地数据存储过期时间
         TOKEN_KEY: '_TOKEN__', // token key
         SSO_TOKEN_KEYS: [],// 单点登录 Keys
+        homeRoute: '/',
     }; // 或者使用具体的类型，如interface  
 
     // 私有构造函数，确保外部不能直接通过new创建实例  
