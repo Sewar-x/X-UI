@@ -4,7 +4,6 @@ node_modules
 
 # 文档忽略文件
 docs/**/node_modules
-docs/**/pnpm-lock.yaml
 docs/.vitepress/cache
 docs/.vitepress/dist
 docs/.vitepress/.temp
@@ -12,12 +11,10 @@ docs/**/.pnpm-debug.log
 
 # 项目文件忽略
 packages/**/node_modules
-packages/**/pnpm-lock.yaml
 packages/**/dist
 packages/**/.pnpm-debug.log
 
 # 测试文件忽略
 test/packages/**/node_modules
-test/packages/**/pnpm-lock.yaml
 test/packages/**/dist
 test/packages/**/.pnpm-debug.log
