@@ -1,6 +1,6 @@
 {
   "name": "@xw-ui/ant-design",
-  "version": "1.0.34",
+  "version": "1.0.155",
   "description": "二次封装ant-design",
   "main": "./index.ts",
   "module": "./index.ts",
@@ -28,8 +28,7 @@
   "dependencies": {
     "@xw-ui/hooks": "workspace:^",
     "@xw-ui/shared": "workspace:^",
-    "antd": "^4.21.7",
-    "vite": "^5.3.3"
+    "antd": "^4.21.7"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.0",

@@ -54,15 +54,9 @@ const getConfig = async function () {
     user: users?.user,
     password: users?.password,
     host: "10.126.16.116",
-    port: new Map([
-      ["test", 2021],
-      ["production", 2021],
-    ]),
-    localRoot: path.resolve(__dirname, `../dist`),
-    remoteRoot: {// 远程静态资源文件路径
-      test: '/data/xwui',
-      production: '/data/xwui'
-    }
+    port: 2021,
+    localRoot: path.resolve(__dirname, `../../docs/.vitepress/dist`),
+    remoteRoot:  '/xwui'
   };
 }
 

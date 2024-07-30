@@ -1,6 +1,6 @@
 {
   "name": "xhttp",
-  "version": "1.0.0",
+  "version": "1.0.155",
   "description": "基于 axios 二次封装的 http ",
   "main": "./dist/xw-http.es.js",
   "module": "./dist/xw-http.cjs.js",
@@ -15,7 +15,6 @@
     "axios": "^1.6.8",
     "dayjs": "^1.11.10",
     "js-cookie": "^3.0.5",
-    "qs": "^6.12.1",
-    "vite": "^5.3.3"
+    "qs": "^6.12.1"
   }
 }

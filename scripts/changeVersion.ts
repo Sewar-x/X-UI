@@ -2,6 +2,8 @@ const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
 const fsPromises = fs.promises;
+const pathResolve = (target: string) => (...args: any) => path.resolve(__dirname, `../packages/${target}`, ...args)
+
 /**
  * 修改所有packages的版本号
  */
@@ -17,7 +19,7 @@ async function changeVersion(): Promise<boolean | undefined> {
   const projectPath = path.resolve(__dirname, '../packages')
 
   // 读取项目路径下的所有文件/文件夹
-  const targets = await fsPromise.readdir(projectPath)
+  const targets = await fsPromises.readdir(projectPath)
 
   // 遍历每个文件/文件夹
   for (let target of targets) {

@@ -1,6 +1,6 @@
 {
   "name": "@xw-ui/element-plus",
-  "version": "1.0.38",
+  "version": "1.0.155",
   "description": "二次封装 element-plus",
   "main": "./index.ts",
   "moudle": "./index.ts",
@@ -29,7 +29,6 @@
     "@xw-ui/shared": "workspace:^",
     "element-plus": "^2.6.2",
     "swiper": "^8.4.5",
-    "vite": "^5.3.3",
     "vue-awesome-swiper": "^5.0.1"
   },
   "devDependencies": {

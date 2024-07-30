@@ -1,6 +1,6 @@
 {
   "name": "@xw-ui/hooks",
-  "version": "1.0.34",
+  "version": "1.0.155",
   "description": "XW-Ui composables hooks",
   "license": "MIT",
   "main": "index.ts",
@@ -13,8 +13,5 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
     "vue": "^3.2.36"
-  },
-  "dependencies": {
-    "vite": "^5.3.3"
   }
 }
