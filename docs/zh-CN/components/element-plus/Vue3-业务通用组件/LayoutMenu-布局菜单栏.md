@@ -194,7 +194,8 @@ export default [
 | topHeader      | 横向栏菜单顶部插槽，仅在 layoutMode = 'top' 时生效           |
 | topFooterLeft  | 横向栏菜单底部插槽，仅在 layoutMode = 'top' 时生效，在”退出“前面 |
 | topFooterRight | 横向栏菜单底部插槽，仅在 layoutMode = 'top' 时生效，在”退出“后面 |
-| avatarFilled   | 更换“退出”部分的头像填充内容                                 |
+| avatarFilled   | 更换横向菜单右侧的头像填充内容                               |
+| dropdownMenu   | 更换横向菜单右侧的头像下拉菜单                               |
 
 ## 示例
 
@@ -221,4 +222,18 @@ export default [
 <xw-demo
     demo-height="500px"
     source-code="element-plus:::layout/layout-topaside-menu-demo"
+/>
+
+### 使用默认横向菜单右侧下拉菜单
+
+<xw-demo
+    demo-height="500px"
+    source-code="element-plus:::layout/layout-topaside-menu-dropdown-demo"
+/>
+
+### 使用自定义横向菜单右侧下拉菜单
+
+<xw-demo
+    demo-height="500px"
+    source-code="element-plus:::layout/layout-topaside-menu-dropdown-custom-demo"
 />

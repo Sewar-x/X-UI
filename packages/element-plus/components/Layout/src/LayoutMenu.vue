@@ -2,13 +2,11 @@
   <div
     v-if="layoutMode !== 'none'"
     class="layout-container"
-    :class="[`layout-${layoutMode}-container`]"
-  >
+    :class="[`layout-${layoutMode}-container`]">
     <SideMenu
       class="layout-side-menu"
       v-if="layoutMode === 'aside' || layoutMode === 'topAside'"
-      :options="options"
-    >
+      :options="options">
       <template #header>
         <slot name="sideHeader" />
       </template>
@@ -27,12 +25,14 @@
             <div class="logout_area-dropdown-avator" v-show="showLogout">
               <el-dropdown divided>
                 <slot name="avatarFilled">
-                  <el-avatar :icon="UserFilled"/>
+                  <el-avatar :icon="UserFilled" />
                 </slot>
                 <template #dropdown>
-                  <el-dropdown-menu>
-                    <el-dropdown-item @click="handleLogout">退出登录</el-dropdown-item>
-                  </el-dropdown-menu>
+                  <slot name="dropdownMenu">
+                    <el-dropdown-menu>
+                      <el-dropdown-item @click="handleLogout">退出登录</el-dropdown-item>
+                    </el-dropdown-menu>
+                  </slot>
                 </template>
               </el-dropdown>
             </div>
@@ -60,12 +60,12 @@
 </template>
 
 <script setup lang="ts">
-import TopMenu from "./TopMenu.vue";
-import SideMenu from "./SideMenu.vue";
-import type { SideMenuType } from "../types";
-import { computed } from "vue";
-import { UserFilled } from '@element-plus/icons-vue'
-const emit = defineEmits(["logout"]);
+import TopMenu from './TopMenu.vue';
+import SideMenu from './SideMenu.vue';
+import type { SideMenuType } from '../types';
+import { computed } from 'vue';
+import { UserFilled } from '@element-plus/icons-vue';
+const emit = defineEmits(['logout']);
 
 const props = defineProps<{
   options: SideMenuType;
@@ -73,7 +73,7 @@ const props = defineProps<{
 const layoutMode = props.options.layoutMode;
 const routeInst = props.options.routeInst;
 if (!routeInst) {
-  throw Error("请传入路由对象！");
+  throw Error('请传入路由对象！');
 }
 const options = {
   routeInst,
@@ -85,10 +85,10 @@ const options = {
   isShowLogout: props.options.isShowLogout,
 };
 
-let showLogout = computed(() => props.options.isShowLogout );  
+let showLogout = computed(() => props.options.isShowLogout);
 
 const handleLogout = () => {
-  emit("logout");
+  emit('logout');
 };
 </script>
 
@@ -130,7 +130,7 @@ const handleLogout = () => {
     }
   }
 }
-.logout_area-dropdown-avator{
+.logout_area-dropdown-avator {
   position: fixed;
   right: 20px;
   top: 10px;

@@ -1,8 +1,5 @@
 <template>
-  <LayoutMenu :options="options" @logout="logout">
-    <template #avatarFilled>
-      <el-avatar> user </el-avatar>
-    </template>
+  <LayoutMenu :options="options">
     <template #sideHeader>
       <img class="logo" :src="Logo" />
     </template>
@@ -25,12 +22,7 @@ const options = {
   asyncRoutes: [],
   asyncSideRoutes: [],
   defaultActive: "", //authMenus
-  isShowLogout: true
 };
-
-function logout() {
-  console.log("🚀 ~ logout ~ logout:")
-}
 </script>
 
 <style scoped lang="less">

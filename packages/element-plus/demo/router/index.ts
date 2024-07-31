@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 // import.meta.globEager() 直接引入所有的模块 Vite 独有的功能
-// const modules = import.meta.globEager("./routes/**.ts") as any;
-const modules = import.meta.glob("./routes/**.ts", {eager: true}) as any;
+const modules = import.meta.globEager("./routes/**.ts") as any; // vite 2.9.18 版本时需要换成这个
+// const modules = import.meta.glob("./routes/**.ts", {eager: true}) as any;  // Vite 5.33 版本时需要换成这个
 let routeModuleList: Array<any> = []
 
 // 加入到路由集合中

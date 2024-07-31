@@ -1,9 +1,9 @@
 <template>
-  <LayoutMenu :options="options">
-    <template #topHeader>
+  <LayoutMenu :options="options" @logout="logout">
+    <template #sideHeader>
       <img class="logo" :src="Logo" />
     </template>
-    <template #topFooter>
+    <template #sideFooter>
       <img class="logo" :src="Logo" />
     </template>
   </LayoutMenu>
@@ -17,12 +17,18 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const options = {
   routeInst: router,
-  layoutMode: "top",
+  layoutMode: "topAside",
   routes,
   asyncRoutes: [],
   asyncSideRoutes: [],
-  defaultActive: "",
+  defaultActive: "", //authMenus
+  isShowLogout: true, //右侧添加下拉
 };
+
+// 响应子组件中的 emit('logout') 事件
+function logout() { 
+
+}
 </script>
 
 <style scoped lang="less">
