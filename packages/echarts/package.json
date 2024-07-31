@@ -1,0 +1,18 @@
+{
+  "name": "x-charts",
+  "version": "1.0.157",
+  "description": "echart.js 二次封装，使用统一数据格式和配置",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "x-charts"
+  ],
+  "dependencies": {
+    "echarts": "^5.2.0",
+    "vue": "^2.6.10"
+  },
+  "author": "",
+  "license": "ISC"
+}

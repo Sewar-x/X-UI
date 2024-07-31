@@ -1,0 +1,27 @@
+/* echart theme 主题颜色 字体等 */
+$theme:#999999;
+//统计图主题色系，主题色系修改，此处应相应修改
+$lengendColors:"#409eff","#e6a23c","#67c23a","#d87c7c","#22e4b5","#b6a2de","#e4bc20","#d95850","#74B5F9";
+$chartPrimary:rgba(255, 255, 255, 1);
+$chartfontSize:12px;
+$fontColor:#000000;
+$markLineColor:yellow;
+$platformColor:#67c23a; //平台类
+$projectColor:#e6a23c;  //项目类
+$standardColor:#0098d9; //标准工时
+$declarationColor:#b6a2de; //申报工时
+$chartHeight: 300px;
+
+:export {
+    theme:$theme;
+    lengendColors:$lengendColors;
+    chartPrimary: $chartPrimary;
+    chartfontSize:$chartfontSize;
+    fontColor:$fontColor;
+    markLineColor:$markLineColor;
+    platformColor:$platformColor;
+    projectColor:$projectColor;
+    standardColor:$standardColor;
+    declarationColor:$declarationColor;
+    chartHeight: $chartHeight;
+}

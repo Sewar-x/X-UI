@@ -1,1 +1,1 @@
-export const docsSite = '/X-UI'
+export const docsSite = ''

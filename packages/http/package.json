@@ -1,6 +1,6 @@
 {
   "name": "xhttp",
-  "version": "1.0.155",
+  "version": "1.0.157",
   "description": "基于 axios 二次封装的 http ",
   "main": "./dist/xw-http.es.js",
   "module": "./dist/xw-http.cjs.js",
