@@ -2,11 +2,13 @@
   <div
     v-if="layoutMode !== 'none'"
     class="layout-container"
-    :class="[`layout-${layoutMode}-container`]">
+    :class="[`layout-${layoutMode}-container`]"
+  >
     <SideMenu
       class="layout-side-menu"
       v-if="layoutMode === 'aside' || layoutMode === 'topAside'"
-      :options="options">
+      :options="options"
+    >
       <template #header>
         <slot name="sideHeader" />
       </template>
@@ -60,12 +62,12 @@
 </template>
 
 <script setup lang="ts">
-import TopMenu from './TopMenu.vue';
-import SideMenu from './SideMenu.vue';
-import type { SideMenuType } from '../types';
-import { computed } from 'vue';
-import { UserFilled } from '@element-plus/icons-vue';
-const emit = defineEmits(['logout']);
+import TopMenu from "./TopMenu.vue";
+import SideMenu from "./SideMenu.vue";
+import type { SideMenuType } from "../types";
+import { computed } from "vue";
+import { UserFilled } from "@element-plus/icons-vue";
+const emit = defineEmits(["logout"]);
 
 const props = defineProps<{
   options: SideMenuType;
@@ -73,7 +75,7 @@ const props = defineProps<{
 const layoutMode = props.options.layoutMode;
 const routeInst = props.options.routeInst;
 if (!routeInst) {
-  throw Error('请传入路由对象！');
+  throw Error("请传入路由对象！");
 }
 const options = {
   routeInst,
@@ -88,7 +90,7 @@ const options = {
 let showLogout = computed(() => props.options.isShowLogout);
 
 const handleLogout = () => {
-  emit('logout');
+  emit("logout");
 };
 </script>
 
