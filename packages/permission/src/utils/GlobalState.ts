@@ -24,7 +24,7 @@ class GlobalState {
 
     // 获取单例实例  
     public static getInstance(): GlobalState {
-        if (!GlobalState.instance) {
+        if (!GlobalState.instance || GlobalState.instance == null) {
             GlobalState.instance = new GlobalState();
         }
         return GlobalState.instance;

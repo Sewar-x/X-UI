@@ -165,5 +165,4 @@ export async function reloadHacker() {
         }
     }
 }
-reloadHacker()
 

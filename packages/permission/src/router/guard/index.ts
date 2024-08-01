@@ -1,4 +1,4 @@
-import { createPermissionGuard } from '@/router/guard/permissionGuard';
+import { createPermissionGuard,reloadHacker } from '@/router/guard/permissionGuard';
 import type { permissionOptionsType } from "@/types/store";
 
 
@@ -8,4 +8,5 @@ export async function setupRouterGuard(options: permissionOptionsType) {
     const { router, Message } = options;
     // 使用参数
     await createPermissionGuard(router, Message)
+    reloadHacker()
 }

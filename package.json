@@ -1,6 +1,6 @@
 {
   "name": "xw-ui",
-  "version": "1.0.157",
+  "version": "1.0.161",
   "description": "配置化组件库",
   "workspaces": [
     "packages/*",
@@ -64,11 +64,13 @@
     "demo:dev-elu": "pnpm run -C packages/element-ui dev",
     "demo:dev-ant": "pnpm run -C packages/ant-design dev",
     "test:elp": "pnpm run -C test/packages/element-plus dev",
-    "build": "pnpm run build:elp && pnpm run build:elu && pnpm run build:ant && pnpm run build:shared",
+    "build": "pnpm run build:elp && pnpm run build:elu && pnpm run build:ant && pnpm run build:permission && pnpm run build:http && pnpm run build:shared ",
     "build:elp": "pnpm run -C packages/element-plus build",
     "build:elu": "pnpm run -C packages/element-ui build",
     "build:ant": "pnpm run -C packages/ant-design build",
     "build:shared": "pnpm run -C packages/shared build",
+    "build:permission": "pnpm run -C packages/permission build",
+    "build:http": "pnpm run -C packages/http build",
     "changever": "ts-node scripts/changeVersion.ts",
     "release": "pnpm run changever && pnpm run build && pnpm run  docs:build && pnpm run docs:deploy",
     "lint:script": "eslint --ext .js,.jsx,.ts,.tsx,.vue --fix ./"

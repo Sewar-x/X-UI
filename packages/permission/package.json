@@ -1,6 +1,6 @@
 {
   "name": "vivien-permission",
-  "version": "1.0.157",
+  "version": "1.0.161",
   "description": "vue3后台管理系统路由权限插件",
   "main": "./dist/index.es.js",
   "module": "./dist/index.cjs.js",

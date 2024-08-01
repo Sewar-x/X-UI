@@ -3,7 +3,6 @@ import { isFunction } from "@/utils/index"
 import globalState from '@/utils/GlobalState';
 import exportFunctions from '@/router/guard/exportFunctions';
 
-
 // 初始化路由
 const initRoute = async (app: any, options: permissionOptionsType) => {
   const { publicPath, router, asyncRoutes, basicRoutes, Message } = options;
@@ -45,5 +44,7 @@ export { getRouteNames } from '@/utils/index';
 export { setKeys } from '@/utils/token/tokenKey';
 // 设置存储方式
 export { setStorage } from '@/utils/storage/setStorage';
+// 监听用户刷新动作的方法
+export { reloadHacker } from '@/router/guard/permissionGuard'
 // 设置存储方式
 export { globalState }
