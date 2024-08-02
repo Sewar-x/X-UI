@@ -1,6 +1,6 @@
 {
   "name": "@xw-ui/element-plus",
-  "version": "1.0.161",
+  "version": "1.0.179",
   "description": "二次封装 element-plus",
   "main": "./index.ts",
   "moudle": "./index.ts",
