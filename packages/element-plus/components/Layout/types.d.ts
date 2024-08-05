@@ -11,5 +11,6 @@ export interface SideMenuType {
     asyncSideRoutes?: Array<any>,
     layoutMode?: string,
     defaultActive?: string,
+    defaultSideActive?: string,
     isShowLogout?: boolean; // 是否显示退出按钮
   }

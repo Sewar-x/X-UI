@@ -50,6 +50,7 @@ let _allRoutes: Array<any> =  []
 let _asyncRoutes: Array<any>  = []
 let _asyncSideRoutes: Array<any> = []
 let _defaultTopActive: String = ''
+let _defaultSideActive: String = ''
 let _isShowLogout : boolean = false
 
 // from 表单配置项
@@ -81,6 +82,7 @@ const useMenu = ({
   asyncSideRoutes= [],
   layoutMode = 'aside',
   defaultActive = '',
+  defaultSideActive = '',
   isShowLogout = false
 }:SideMenuType) => {
   // 初始化全局参数
@@ -90,6 +92,7 @@ const useMenu = ({
   _asyncRoutes = asyncRoutes
   _asyncSideRoutes = asyncSideRoutes
   _defaultTopActive = defaultActive
+  _defaultSideActive = defaultSideActive
   _isShowLogout = isShowLogout
 
   const hanleMap = {
@@ -138,6 +141,16 @@ function handleTopOrSideMenuConfig(){
  * @param routeName 
  */
 function setdefaultTopActive(routeName: string, options: object){
+  /* eslint-disable no-unused-vars */  
+  options.attr["default-active"] = routeName
+  _routeInstance.push({name:routeName})
+}
+
+/**
+ * 设置默认激活侧边栏
+ * @param routeName 
+ */
+function setdefaultSizeActive(routeName: string, options: object){
   /* eslint-disable no-unused-vars */  
   options.attr["default-active"] = routeName
   _routeInstance.push({name:routeName})
@@ -261,7 +274,8 @@ function generateAsideMenuConfig({
   options.event['select'] =  (name: string) => {
     _routeInstance.push({name})
   }
-  sideMenuOptions.value = deepClone(options)
+  setdefaultSizeActive(_defaultSideActive as string, options)
+  sideMenuOptions.value = options
   menuStore.SetSideRouters(sideMenuOptions.value)
   console.log("🚀 ~ 生成侧边菜单配置====", JSON.parse(JSON.stringify(sideMenuOptions.value)))
 }

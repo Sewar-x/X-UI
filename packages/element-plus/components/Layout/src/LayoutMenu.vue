@@ -82,6 +82,7 @@ const options = {
   asyncRoutes: props.options.asyncRoutes,
   asyncSideRoutes: props.options.asyncSideRoutes,
   defaultActive: props.options.defaultActive,
+  defaultSideActive: props.options.defaultSideActive,
   isShowLogout: props.options.isShowLogout,
 };
 
