@@ -14,4 +14,5 @@ export interface SideMenuType {
     defaultSideActive?: string,
     isShowLogout?: boolean; // 是否显示退出按钮
     isShowFooter?: boolean; // 是否显示footer
+    defaultOptions?: Object,
   }

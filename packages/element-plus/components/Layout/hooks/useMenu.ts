@@ -53,7 +53,7 @@ let _defaultTopActive: String = ''
 let _defaultSideActive: String = ''
 
 // from 表单配置项
-const menuConfig = {
+let menuConfig = {
   attr: {
     class: "layout-menu",
     "active-text-color": "#ffd04b",
@@ -82,6 +82,7 @@ const useMenu = ({
   layoutMode = 'aside',
   defaultActive = '',
   defaultSideActive = '',
+  ...rest
 }:SideMenuType) => {
   // 初始化全局参数
   _layoutMode = layoutMode
@@ -91,14 +92,16 @@ const useMenu = ({
   _asyncSideRoutes = asyncSideRoutes
   _defaultTopActive = defaultActive
   _defaultSideActive = defaultSideActive
-
   const hanleMap = {
     'top': handleTopOrSideMenuConfig,
     'aside': handleTopOrSideMenuConfig,
     'topAside': handleAsideTopMenuConfig
   }
 
-  const handler =  hanleMap[_layoutMode as string]
+
+  menuConfig = Object.assign({}, menuConfig, rest)
+
+  const handler = hanleMap[_layoutMode as string]
   if(handler) {
     handler({
       type
@@ -167,7 +170,7 @@ function handleAsideMenu(routes: Array<any>, options: object){
         name: route?.meta?.icon || '', // 图标名
       },
       title: route.meta.title, // 菜单项文本内容
-      subMenu: route.children? handleAsideMenu(route.children,options): []
+      subMenu: route.children ? handleAsideMenu(route.children,options): []
     }
   })
 }

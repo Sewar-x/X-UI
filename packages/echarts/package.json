@@ -1,6 +1,6 @@
 {
   "name": "x-charts",
-  "version": "1.0.191",
+  "version": "1.0.194",
   "description": "echart.js 二次封装，使用统一数据格式和配置",
   "main": "index.js",
   "scripts": {

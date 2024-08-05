@@ -1,6 +1,6 @@
 {
   "name": "@xw-ui/ant-design",
-  "version": "1.0.191",
+  "version": "1.0.194",
   "description": "二次封装ant-design",
   "main": "./index.ts",
   "module": "./index.ts",

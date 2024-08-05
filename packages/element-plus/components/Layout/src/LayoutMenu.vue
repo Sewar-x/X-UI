@@ -76,13 +76,14 @@ if (!routeInst) {
   throw Error('请传入路由对象！');
 }
 const options = {
+  ...props.options,
   routeInst,
   layoutMode,
   routes: props.options.routes,
   asyncRoutes: props.options.asyncRoutes,
   asyncSideRoutes: props.options.asyncSideRoutes,
   defaultActive: props.options.defaultActive,
-  defaultSideActive: props.options.defaultSideActive,
+  defaultSideActive: props.options.defaultSideActive
 };
 
 let showLogout = computed(() => props.options.isShowLogout);

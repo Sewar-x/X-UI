@@ -1,6 +1,6 @@
 {
   "name": "xw-ui",
-  "version": "1.0.191",
+  "version": "1.0.194",
   "description": "配置化组件库",
   "workspaces": [
     "packages/*",
