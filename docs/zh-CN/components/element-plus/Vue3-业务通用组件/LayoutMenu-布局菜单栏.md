@@ -41,6 +41,7 @@ interface SideMenuType {
     defaultActive?: string,
     defaultSideActive?: string,
     isShowLogout?: boolean; // 是否显示退出按钮
+    isShowFooter?: boolean; // 是否显示footer
 }
 
 ```
@@ -61,7 +62,8 @@ interface SideMenuType {
 | defaultSideActive | 默认激活的侧边栏菜单，使用路由名称   | String                       |        |
 | asyncRoutes       | 异步路由对象                         | `Array<any>`                 | `[]`   |
 | asyncSideRoutes   | 侧边栏异步路由                       | `Array<any>`                 |        |
-| isShowLogout      | 是否显示退出按钮                     | boolean                      | false  |
+| isShowLogout      | 是否显示退出按钮                     | boolean                      |        |
+| isShowFooter      | 是否显示footer                       | boolean                      |        |
 
 路由对象示例:
 

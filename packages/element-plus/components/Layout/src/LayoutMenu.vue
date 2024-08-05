@@ -45,7 +45,7 @@
           <router-view />
         </slot>
       </el-main>
-      <el-footer>
+      <el-footer v-if="isShowFooter">
         <slot name="layout-content-footer" />
       </el-footer>
     </div>
@@ -83,10 +83,10 @@ const options = {
   asyncSideRoutes: props.options.asyncSideRoutes,
   defaultActive: props.options.defaultActive,
   defaultSideActive: props.options.defaultSideActive,
-  isShowLogout: props.options.isShowLogout,
 };
 
 let showLogout = computed(() => props.options.isShowLogout);
+let isShowFooter = computed(() => props.options.isShowFooter);
 
 const handleLogout = () => {
   emit('logout');

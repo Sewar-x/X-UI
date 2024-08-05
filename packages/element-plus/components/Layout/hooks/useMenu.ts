@@ -51,7 +51,6 @@ let _asyncRoutes: Array<any>  = []
 let _asyncSideRoutes: Array<any> = []
 let _defaultTopActive: String = ''
 let _defaultSideActive: String = ''
-let _isShowLogout : boolean = false
 
 // from 表单配置项
 const menuConfig = {
@@ -83,7 +82,6 @@ const useMenu = ({
   layoutMode = 'aside',
   defaultActive = '',
   defaultSideActive = '',
-  isShowLogout = false
 }:SideMenuType) => {
   // 初始化全局参数
   _layoutMode = layoutMode
@@ -93,7 +91,6 @@ const useMenu = ({
   _asyncSideRoutes = asyncSideRoutes
   _defaultTopActive = defaultActive
   _defaultSideActive = defaultSideActive
-  _isShowLogout = isShowLogout
 
   const hanleMap = {
     'top': handleTopOrSideMenuConfig,
@@ -213,7 +210,6 @@ function generateTopMenuConfig(){
   const topMenus = menuStore.getTopRouters()
   if(!isEmpty(topMenus)){
     console.log("🚀 生成顶部栏函数，顶部菜单栏不是空，直接返回:")
-    topMenus.isShowLogout = _isShowLogout
     topMenuOptions.value  = topMenus
     return 
   }
