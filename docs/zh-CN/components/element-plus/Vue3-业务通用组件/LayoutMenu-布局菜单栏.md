@@ -32,11 +32,16 @@ interface LayoutType {
 }
 
 interface SideMenuType {
-  routes?: Array<any>,
-  asyncRoutes?: Array<any>,
-  asyncSideRoutes?: Array<any>,
-  layoutMode?: string,
-  defaultActive?: string
+    type?: 'side' | 'top',
+    routeInst?: any,
+    routes?: Array<any>,
+    asyncRoutes?: Array<any>,
+    asyncSideRoutes?: Array<any>,
+    layoutMode?: string,
+    defaultActive?: string,
+    defaultSideActive?: string,
+    isShowLogout?: boolean; // 是否显示退出按钮
+    isShowFooter?: boolean; // 是否显示footer
 }
 
 ```
@@ -48,15 +53,17 @@ interface SideMenuType {
 
 仅接收一个 options 参数，该参数为对象，包含以下属性：
 
-| 属性            | 描述                                 | 类型                         | 默认值 |
-| --------------- | ------------------------------------ | ---------------------------- | ------ |
-| routes          | 所有路由对象，根据路由对象渲染菜单栏 | object                       |        |
-| routeInst       | `vue-router`  实例                   |                              |        |
-| layoutMode      | 布局模式                             | `top、aside、topAside、none` | top    |
-| defaultActive   | 默认激活的菜单，使用路由名称         |                              |        |
-| asyncRoutes     | 异步路由对象                         | `Array<any>`                 | `[]`   |
-| asyncSideRoutes |                                      |                              |        |
-| isShowLogout    | 是否显示退出按钮                     | boolean                      | false  |
+| 属性              | 描述                                 | 类型                         | 默认值 |
+| ----------------- | ------------------------------------ | ---------------------------- | ------ |
+| routes            | 所有路由对象，根据路由对象渲染菜单栏 | object                       |        |
+| routeInst         | `vue-router`  实例                   |                              |        |
+| layoutMode        | 布局模式                             | `top、aside、topAside、none` | top    |
+| defaultActive     | 默认激活的横向菜单，使用路由名称     | String                       |        |
+| defaultSideActive | 默认激活的侧边栏菜单，使用路由名称   | String                       |        |
+| asyncRoutes       | 异步路由对象                         | `Array<any>`                 | `[]`   |
+| asyncSideRoutes   | 侧边栏异步路由                       | `Array<any>`                 |        |
+| isShowLogout      | 是否显示退出按钮                     | boolean                      |        |
+| isShowFooter      | 是否显示footer                       | boolean                      |        |
 
 路由对象示例:
 

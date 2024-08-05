@@ -20,13 +20,14 @@ const props = defineProps<{
 }>();
 
 const { topMenuOptions } = useMenu({
+  ...props.options,
   type: "top",
   routeInst: props.options.routeInst,
   layoutMode: props.options.layoutMode,
   routes: props.options.routes,
   asyncRoutes: props.options.asyncRoutes,
   asyncSideRoutes: props.options.asyncSideRoutes,
-  defaultActive: props.options.defaultActive,
+  defaultActive: props.options.defaultActive
 });
 
 const config = computed(() => topMenuOptions.value);

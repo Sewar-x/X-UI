@@ -50,10 +50,10 @@ let _allRoutes: Array<any> =  []
 let _asyncRoutes: Array<any>  = []
 let _asyncSideRoutes: Array<any> = []
 let _defaultTopActive: String = ''
-let _isShowLogout : boolean = false
+let _defaultSideActive: String = ''
 
 // from 表单配置项
-const menuConfig = {
+let menuConfig = {
   attr: {
     class: "layout-menu",
     "active-text-color": "#ffd04b",
@@ -81,7 +81,8 @@ const useMenu = ({
   asyncSideRoutes= [],
   layoutMode = 'aside',
   defaultActive = '',
-  isShowLogout = false
+  defaultSideActive = '',
+  ...rest
 }:SideMenuType) => {
   // 初始化全局参数
   _layoutMode = layoutMode
@@ -90,15 +91,17 @@ const useMenu = ({
   _asyncRoutes = asyncRoutes
   _asyncSideRoutes = asyncSideRoutes
   _defaultTopActive = defaultActive
-  _isShowLogout = isShowLogout
-
+  _defaultSideActive = defaultSideActive
   const hanleMap = {
     'top': handleTopOrSideMenuConfig,
     'aside': handleTopOrSideMenuConfig,
     'topAside': handleAsideTopMenuConfig
   }
 
-  const handler =  hanleMap[_layoutMode as string]
+
+  menuConfig = Object.assign({}, menuConfig, rest)
+
+  const handler = hanleMap[_layoutMode as string]
   if(handler) {
     handler({
       type
@@ -144,6 +147,16 @@ function setdefaultTopActive(routeName: string, options: object){
 }
 
 /**
+ * 设置默认激活侧边栏
+ * @param routeName 
+ */
+function setdefaultSizeActive(routeName: string, options: object){
+  /* eslint-disable no-unused-vars */  
+  options.attr["default-active"] = routeName
+  _routeInstance.push({name:routeName})
+}
+
+/**
  * 生成仅侧边栏菜单
  */
 function handleAsideMenu(routes: Array<any>, options: object){
@@ -157,7 +170,7 @@ function handleAsideMenu(routes: Array<any>, options: object){
         name: route?.meta?.icon || '', // 图标名
       },
       title: route.meta.title, // 菜单项文本内容
-      subMenu: route.children? handleAsideMenu(route.children,options): []
+      subMenu: route.children ? handleAsideMenu(route.children,options): []
     }
   })
 }
@@ -200,7 +213,6 @@ function generateTopMenuConfig(){
   const topMenus = menuStore.getTopRouters()
   if(!isEmpty(topMenus)){
     console.log("🚀 生成顶部栏函数，顶部菜单栏不是空，直接返回:")
-    topMenus.isShowLogout = _isShowLogout
     topMenuOptions.value  = topMenus
     return 
   }
@@ -261,7 +273,8 @@ function generateAsideMenuConfig({
   options.event['select'] =  (name: string) => {
     _routeInstance.push({name})
   }
-  sideMenuOptions.value = deepClone(options)
+  setdefaultSizeActive(_defaultSideActive as string, options)
+  sideMenuOptions.value = options
   menuStore.SetSideRouters(sideMenuOptions.value)
   console.log("🚀 ~ 生成侧边菜单配置====", JSON.parse(JSON.stringify(sideMenuOptions.value)))
 }

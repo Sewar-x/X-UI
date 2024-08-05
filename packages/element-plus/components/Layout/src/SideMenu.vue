@@ -20,6 +20,7 @@ const props = defineProps<{
 }>();
 
 const { sideMenuOptions } = useMenu({
+  ...props.options,
   type: "side",
   routeInst: props.options.routeInst,
   layoutMode: props.options.layoutMode,
@@ -27,6 +28,7 @@ const { sideMenuOptions } = useMenu({
   asyncRoutes: props.options.asyncRoutes,
   asyncSideRoutes: props.options.asyncSideRoutes,
   defaultActive: props.options.defaultActive,
+  defaultSideActive: props.options.defaultSideActive
 });
 
 const config = computed(() => sideMenuOptions.value);
