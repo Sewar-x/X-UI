@@ -35,5 +35,16 @@
         "link": "/zh-CN/components/library/vivien-permission/使用"
       }
     ]
+  },
+  {
+    "text": "v-micro-app-plugin",
+    "collapsible": true,
+    "collapsed": false,
+    "items": [
+      {
+        "text": "使用",
+        "link": "/zh-CN/components/library/v-micro-app-plugin/使用"
+      }
+    ]
   }
 ]
