@@ -47,7 +47,7 @@
           <router-view />
         </slot>
       </el-main>
-      <el-footer>
+      <el-footer v-if="isShowFooter">
         <slot name="layout-content-footer" />
       </el-footer>
     </div>
@@ -78,16 +78,18 @@ if (!routeInst) {
   throw Error("请传入路由对象！");
 }
 const options = {
+  ...props.options,
   routeInst,
   layoutMode,
   routes: props.options.routes,
   asyncRoutes: props.options.asyncRoutes,
   asyncSideRoutes: props.options.asyncSideRoutes,
   defaultActive: props.options.defaultActive,
-  isShowLogout: props.options.isShowLogout,
+  defaultSideActive: props.options.defaultSideActive
 };
 
 let showLogout = computed(() => props.options.isShowLogout);
+let isShowFooter = computed(() => props.options.isShowFooter);
 
 const handleLogout = () => {
   emit("logout");
