@@ -33,6 +33,10 @@
       "require": "./packages/permission/dist/index.cjs.js",
       "import": "./packages/permission/dist/index.es.js"
     },
+    "./micro-app": {
+      "require": "./packages/micro-app/dist/v-micro-app-plugin.cjs.js",
+      "import": "./packages/micro-app/dist/v-micro-app-plugin.es.js"
+    },
     "./element-plus/*": {
       "require": "./packages/element-plus/*",
       "import": "./packages/element-plus/*"
@@ -52,6 +56,10 @@
     "./permission/*": {
       "require": "./packages/permission/*",
       "import": "./packages/permission/*"
+    },
+    "./micro-app/*": {
+      "require": "./packages/micro-app/*",
+      "import": "./packages/micro-app/*"
     },
     "./*": "./packages/*"
   },
