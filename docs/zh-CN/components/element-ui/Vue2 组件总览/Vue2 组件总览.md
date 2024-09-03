@@ -92,12 +92,12 @@ const businesList = [
   {
     title: 'OnlyOffice',
     tag: '1.0.0',
-    link:'https://sewar-x.github.io/sewen-ui/zh-CN/components/element-ui/Vue2%20业务通用组件/OnlyOffice.html'
+    link:'https://sewar-x.github.io/X-UI/zh-CN/components/element-ui/Vue2%20业务通用组件/OnlyOffice.html'
   },
   {
     title: '任务看板',
     tag: '1.0.0',
-    link:'https://sewar-x.github.io/sewen-ui/zh-CN/components/element-ui/Vue2%20业务通用组件/Vue2-任务看板.html'
+    link:'https://sewar-x.github.io/X-UI/zh-CN/components/element-ui/Vue2%20业务通用组件/Vue2-任务看板.html'
   }
 ]
 </script>

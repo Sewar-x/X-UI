@@ -93,6 +93,10 @@
   ],
   "author": "Sewen",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sewar-x/X-UI"
+  },
   "dependencies": {
     "@types/lodash": "^4.17.0",
     "ftp-deploy": "^2.4.7",

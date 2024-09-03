@@ -13,12 +13,12 @@ export default defineConfig({
       'link',
       {
         rel: 'icon',
-        href: '/images/sewen-ui-icon.svg'
+        href: '/images/xw-ui-icon.svg'
       }
     ]
   ],
   themeConfig: {
-    logo: '/images/sewen-ui-icon.svg',
+    logo: '/images/xw-ui-icon.svg',
     nav,
     sidebar,
     footer,

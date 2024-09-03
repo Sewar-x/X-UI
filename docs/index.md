@@ -18,7 +18,7 @@ hero:
   text: JSON Scheme (DSL) 组件库
   tagline: 基于 ElementUI、ElementPlus、AntDesign 组件库二次封装，JSON 配置化快速开发中后台组件库
   image:
-    src: /images/sewen-ui-icon.svg
+    src: /images/xw-ui-icon.svg
   actions:
     - theme: brand
       text:  Vue2
