@@ -1,6 +1,6 @@
 {
   "name": "sewen-ui",
-  "version": "1.0.201",
+  "version": "1.0.202",
   "description": "配置化组件库",
   "workspaces": [
     "packages/*",
