@@ -9,7 +9,7 @@ export class Modal {
 
     // 创建模态框容器
     const Modal = document.createElement('div');
-    Modal.className = 'xw-ui-http-modal-box fade-in';
+    Modal.className = 'sewen-ui-http-modal-box fade-in';
     Modal.style.position = 'fixed';
     Modal.style.top = '50%';
     Modal.style.left = '50%';
@@ -23,7 +23,7 @@ export class Modal {
     // 添加类型图标
     if (type) {
       const iconEl = document.createElement('i');
-      iconEl.className = `xw-ui-icon el-icon-${type}`;
+      iconEl.className = `sewen-ui-icon el-icon-${type}`;
       titleContainer.appendChild(iconEl);
     }
 
@@ -41,7 +41,7 @@ export class Modal {
 
     // 创建按钮容器
     const buttonsEl = document.createElement('div');
-    buttonsEl.className = 'xw-ui-http-modal-box__buttons';
+    buttonsEl.className = 'sewen-ui-http-modal-box__buttons';
 
     // 取消按钮
     if (showCancelButton) {
@@ -69,7 +69,7 @@ export class Modal {
     // 绑定关闭事件
     if (onClose) {
       this.onClose = onClose;
-      Modal.className = 'xw-ui-http-modal-box fade-out';
+      Modal.className = 'sewen-ui-http-modal-box fade-out';
     }
 
     return Modal;
@@ -121,7 +121,7 @@ export class Modal {
 // 添加一些简单的样式
 const style = document.createElement('style');
 style.textContent = `
-.xw-ui-http-modal-box {
+.sewen-ui-http-modal-box {
   border: 1px solid #dcdfe6;
   background-color: #fff;
   border-radius: 4px;
@@ -132,7 +132,7 @@ style.textContent = `
   transition: opacity 2s ease-in-out;  
 }
 
-.xw-ui-http-modal-box h2 {
+.sewen-ui-http-modal-box h2 {
   display: inline-block;
   margin: 0 0 0 5px;
   font-size: 16px;
@@ -140,18 +140,18 @@ style.textContent = `
   color: #303133;
 }
 
-.xw-ui-http-modal-box p {
+.sewen-ui-http-modal-box p {
   font-size: 14px;
   color: #606266;
   word-break: break-all;
 }
 
-.xw-ui-http-modal-box__buttons {
+.sewen-ui-http-modal-box__buttons {
   margin-top: 20px;
   text-align: right;
 }
 
-.xw-ui-http-modal-box__buttons button {
+.sewen-ui-http-modal-box__buttons button {
   padding: 5px 12px;
   margin-left: 10px;
   border: none;
@@ -162,11 +162,11 @@ style.textContent = `
   cursor: pointer;
 }
 
-.xw-ui-http-modal-box__buttons button:hover {
+.sewen-ui-http-modal-box__buttons button:hover {
   opacity: 0.9;
 }
 
-.xw-ui-icon {
+.sewen-ui-icon {
   display: inline-block;
 }
 

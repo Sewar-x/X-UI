@@ -355,12 +355,12 @@
 </template>
 
 <script>
-import BasicComponent from "@/xw-ui/element-ui/components/BasicComponent";
-import FileUploadWrap from "@/xw-ui/element-ui/components/FileUploadWrap";
-import RemoteSearchSelector from "@/xw-ui/element-ui/components/RemoteSearchSelector";
-import Tinymce from "@/xw-ui/element-ui/components/Tinymce";
-import DatePickerWrap from "@/xw-ui/element-ui/components/DatePickerWrap";
-import SelectorWrap from "@/xw-ui/element-ui/components/SelectorWrap";
+import BasicComponent from "@/sewen-ui/element-ui/components/BasicComponent";
+import FileUploadWrap from "@/sewen-ui/element-ui/components/FileUploadWrap";
+import RemoteSearchSelector from "@/sewen-ui/element-ui/components/RemoteSearchSelector";
+import Tinymce from "@/sewen-ui/element-ui/components/Tinymce";
+import DatePickerWrap from "@/sewen-ui/element-ui/components/DatePickerWrap";
+import SelectorWrap from "@/sewen-ui/element-ui/components/SelectorWrap";
 import { placeholderFormate, eventHandler } from "./config.js";
 import { FormCompType } from "./constant.js";
 export default {

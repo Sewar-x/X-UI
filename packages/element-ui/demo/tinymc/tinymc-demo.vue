@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Tinymce from "@/xw-ui/element-ui/components/Tinymce";
+import Tinymce from "@/sewen-ui/element-ui/components/Tinymce";
 export default {
   name: "TinymceDemo",
   components: { Tinymce },

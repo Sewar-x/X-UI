@@ -57,7 +57,7 @@
 
 <script>
 import Avatar from "vue-avatar";
-import { getValueByPath } from "@/xw-ui/element-ui/utils/index.js";
+import { getValueByPath } from "@/sewen-ui/element-ui/utils/index.js";
 export default {
   name: "Components",
   components: {

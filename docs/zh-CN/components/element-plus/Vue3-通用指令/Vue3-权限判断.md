@@ -80,7 +80,7 @@ import permissions from '存放服务端返回接口权限列表数据的地方'
 ```javascript
 import { createApp } from 'vue'
 import App from './views/App.vue'
-import { directive } from 'xw-ui/element-ui'
+import { directive } from 'sewen-ui/element-ui'
 import permissionList from './permission'
 import permissions from '存放服务端返回接口权限列表数据的地方'
 

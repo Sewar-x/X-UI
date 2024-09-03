@@ -5,9 +5,9 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { CreateDialog } from "@/xw-ui/element-plus";
+import { CreateDialog } from "@/sewen-ui/element-plus";
 // 引入你的自定义组件
-import SearchCascadeDemo from "@/xw-ui/element-plus/demo/search/search-cascade-demo.vue";
+import SearchCascadeDemo from "@/sewen-ui/element-plus/demo/search/search-cascade-demo.vue";
 
 //下拉选项
 const selectOpt = ["送货上门", "自取"].map((option) => {

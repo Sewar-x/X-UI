@@ -9,7 +9,7 @@
 * 根据传入的路由对象，自动生成菜单栏
 * 点击菜单自动跳转路由
 
-可以结合 [xw-ui/permission](https://sewar-x.github.io/X-UI/zh-CN/components/library/vivien-permission/%E4%BD%BF%E7%94%A8.html)  插件，自动根据用户权限生成对应的菜单
+可以结合 [sewen-ui/permission](https://sewar-x.github.io/sewen-ui/zh-CN/components/library/vivien-permission/%E4%BD%BF%E7%94%A8.html)  插件，自动根据用户权限生成对应的菜单
 
 ## 布局
 

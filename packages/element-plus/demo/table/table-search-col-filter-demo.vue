@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { XTable } from "@/xw-ui/element-plus";
+import { XTable } from "@/sewen-ui/element-plus";
 import { reactive } from "vue";
 
 //下拉选项

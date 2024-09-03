@@ -47,8 +47,8 @@
 import {
   placeholderFormate,
   eventHandler,
-} from "@/xw-ui/element-ui/components/FormWrap/src/config.js";
-import { isDefined } from "@/xw-ui/element-ui/utils";
+} from "@/sewen-ui/element-ui/components/FormWrap/src/config.js";
+import { isDefined } from "@/sewen-ui/element-ui/utils";
 export default {
   name: "SelectorWrap",
   props: {

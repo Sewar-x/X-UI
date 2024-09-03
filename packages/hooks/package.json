@@ -1,7 +1,7 @@
 {
-  "name": "@xw-ui/hooks",
+  "name": "@sewen-ui/hooks",
   "version": "1.0.194",
-  "description": "XW-Ui composables hooks",
+  "description": "sewen-ui composables hooks",
   "license": "MIT",
   "main": "index.ts",
   "module": "index.ts",

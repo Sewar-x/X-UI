@@ -96,7 +96,7 @@ pnpm install vivien-permission
 
 ### 引入vivien-perimission
 
-在你的项目中直接引入 XW-UI 的 vivien-perimission 插件
+在你的项目中直接引入 sewen-ui 的 vivien-perimission 插件
 
 ```js
 // 引入插件初始化方法

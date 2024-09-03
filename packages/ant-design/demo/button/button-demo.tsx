@@ -1,5 +1,5 @@
 import React from "react";
-import { XwButton } from "@/xw-ui/ant-design";
+import { XwButton } from "@/sewen-ui/ant-design";
 
 const ButtonDemo = () => {
   return (

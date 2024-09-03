@@ -1,5 +1,5 @@
 {
-  "name": "@xw-ui/ant-design",
+  "name": "@sewen-ui/ant-design",
   "version": "1.0.194",
   "description": "二次封装ant-design",
   "main": "./index.ts",
@@ -26,8 +26,8 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@xw-ui/hooks": "workspace:^",
-    "@xw-ui/shared": "workspace:^",
+    "@sewen-ui/hooks": "workspace:^",
+    "@sewen-ui/shared": "workspace:^",
     "antd": "^4.21.7"
   },
   "devDependencies": {

@@ -7,7 +7,7 @@
 
 ```js
 // 引入使用工具
-import { deepMerge } from 'xw-ui/shared'
+import { deepMerge } from 'sewen-ui/shared'
 ```
 
 ## 自定义函数列表
@@ -26,7 +26,7 @@ import { deepMerge } from 'xw-ui/shared'
 
 ```javascript
 // 引入使用工具
-import { transformJsonKeys } from 'xw-ui/shared'
+import { transformJsonKeys } from 'sewen-ui/shared'
 // 需要转换的 Key
 const keyMap = {
   id: "u_id",

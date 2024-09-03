@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { createDateRangeShortcuts } from "@/xw-ui/element-ui";
+import { createDateRangeShortcuts } from "@/sewen-ui/element-ui";
 
 export default {
   name: "DataPickerShortcuts",

@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { XButton } from "@/xw-ui/element-plus";
+import { XButton } from "@/sewen-ui/element-plus";
 import { Share } from "@element-plus/icons-vue";
 const buttonOptions = {
   attr: {

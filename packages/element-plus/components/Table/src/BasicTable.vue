@@ -129,8 +129,8 @@
 import { ref, watch, onBeforeMount, defineEmits, reactive } from "vue";
 import type { TableType, columnsType, PaginationType } from "../type";
 import { XSearch } from "../../Search";
-import { CompType } from "@/xw-ui/element-plus/types/gloabl.d.ts";
-import { deepMerge } from "@/xw-ui/element-plus/utils";
+import { CompType } from "@/sewen-ui/element-plus/types/gloabl.d.ts";
+import { deepMerge } from "@/sewen-ui/element-plus/utils";
 import BasicComponent from "../../BasicComponent";
 import { Filter } from "@element-plus/icons-vue";
 import OperateCol from "./OperateCol.vue";

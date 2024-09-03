@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { XMenu } from "@/xw-ui/element-plus";
+import { XMenu } from "@/sewen-ui/element-plus";
 import { ref, reactive } from "vue";
 import Logo from "../assets/logo.svg";
 import {

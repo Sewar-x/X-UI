@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { XSearch } from "@/xw-ui/element-plus";
+import { XSearch } from "@/sewen-ui/element-plus";
 import { reactive, watch } from "vue";
 import { Share } from "@element-plus/icons-vue";
 //配送方式下拉选项

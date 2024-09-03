@@ -4,10 +4,10 @@
 
 <script setup lang="ts">
 import { reactive, watch } from "vue";
-import { XForm } from "@/xw-ui/element-plus";
+import { XForm } from "@/sewen-ui/element-plus";
 
 //项目下拉选项
-const projectOpt = ["XW-UI", "BLOG"].map((option) => {
+const projectOpt = ["sewen-ui", "BLOG"].map((option) => {
   return {
     comp: "el-option",
     attr: {
@@ -19,7 +19,7 @@ const projectOpt = ["XW-UI", "BLOG"].map((option) => {
 });
 // 响应数据
 let data = {
-  project: "XW-UI",
+  project: "sewen-ui",
   description: "an vue2/3 & react componet library",
   hard: "描述项目的难易程度。",
   blogIntro: "博客介绍",
@@ -59,7 +59,7 @@ const getItmes = function (type: string): Array<any> {
         },
       ],
     ],
-    "XW-UI": [
+    "sewen-ui": [
       [
         {
           attr: {

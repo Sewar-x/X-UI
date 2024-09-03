@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import BasicComponent from "@/xw-ui/element-ui/components/BasicComponent";
+import BasicComponent from "@/sewen-ui/element-ui/components/BasicComponent";
 
 export default {
   name: "DialogContent",

@@ -1,5 +1,5 @@
 {
-  "name": "@xw-ui/element-ui",
+  "name": "@sewen-ui/element-ui",
   "version": "1.0.194",
   "description": "二次封装 element-ui",
   "main": "./index.js",
@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.0.1",
-    "@xw-ui/hooks": "workspace:^",
-    "@xw-ui/shared": "workspace:^",
+    "@sewen-ui/hooks": "workspace:^",
+    "@sewen-ui/shared": "workspace:^",
     "element-ui": "^2.15.6",
     "sass": "^1.74.1",
     "tinymce": "^5.1.0",

@@ -10,22 +10,14 @@
     "scripts/*.ts",
     "scripts/**/*.ts" /* 包含项目中的所有 TypeScript 文件 */
   ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ], //指定编译器需要排除的文件或文件夹
+  "exclude": ["node_modules", "dist"], //指定编译器需要排除的文件或文件夹
   "compilerOptions": {
     //配置编译选项
     "diagnostics": true, // 打印诊断信息
     "outDir": "dist",
     "target": "esnext",
     "module": "esnext",
-    "lib": [
-      "esnext",
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["esnext", "ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "baseUrl": ".",
     "sourceMap": false,
@@ -46,12 +38,8 @@
     "jsx": "react-jsx",
     "types": [],
     "paths": {
-      "@xw-ui/*": [
-        "packages/*"
-      ],
-      "@/xw-ui/*": [
-        "packages/*"
-      ]
+      "@sewen-ui/*": ["packages/*"],
+      "@/sewen-ui/*": ["packages/*"]
     }
   }
 }

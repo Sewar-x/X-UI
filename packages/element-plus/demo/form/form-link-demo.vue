@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { reactive, watch, onMounted, ref } from "vue";
-import { XForm } from "@/xw-ui/element-plus";
+import { XForm } from "@/sewen-ui/element-plus";
 const loading = ref(false);
 // 异步获取下拉选项
 const getOptions = (
@@ -33,7 +33,7 @@ const getOptions = (
 };
 // 响应数据
 let data = {
-  project: "XW-UI",
+  project: "sewen-ui",
   description: "an vue2/3 & react componet library",
   hard: "描述项目的难易程度。",
   blogIntro: "博客介绍",
@@ -48,7 +48,7 @@ const getItmes = async (type: string): Promise<Array<object>> => {
   loading.value = true;
   const blogFllower = ["A", "B", "C"];
   const uiFllower = ["D", "E", "F"];
-  const projOpt = await getOptions(["XW-UI", "BLOG"]);
+  const projOpt = await getOptions(["sewen-ui", "BLOG"]);
   const follwerOpt = await getOptions(type === "BLOG" ? blogFllower : uiFllower);
   loading.value = false;
   return [
@@ -107,7 +107,7 @@ const getItmes = async (type: string): Promise<Array<object>> => {
           comp: "el-input",
           attr: {
             type: "textarea",
-            disabled: type === "XW-UI",
+            disabled: type === "sewen-ui",
           },
         },
       },
@@ -121,7 +121,7 @@ const getItmes = async (type: string): Promise<Array<object>> => {
         component: {
           comp: "el-input",
           attr: {
-            disabled: type === "XW-UI",
+            disabled: type === "sewen-ui",
           },
         },
       },

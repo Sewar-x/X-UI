@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import { CreateDialog } from "@/xw-ui/element-plus";
+import { CreateDialog } from "@/sewen-ui/element-plus";
 import { ref } from "vue";
 
 // 表格数据

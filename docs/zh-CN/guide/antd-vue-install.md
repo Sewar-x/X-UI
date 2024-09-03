@@ -1,4 +1,4 @@
-# 使用 `xw-ui-ant-vue-design`
+# 使用 `sewen-ui-ant-vue-design`
 
 ## 使用包管理器
 

@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { XTable } from "@/xw-ui/element-plus";
+import { XTable } from "@/sewen-ui/element-plus";
 //下拉选项
 const selectOpt = ["送货上门", "自取"].map((option) => {
   return {

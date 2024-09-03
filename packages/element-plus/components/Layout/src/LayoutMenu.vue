@@ -99,7 +99,7 @@ const handleLogout = () => {
 <style scoped lang="less">
 .layout-container {
   height: 100%;
-  :deep(.xw-ui-menus-header) {
+  :deep(.sewen-ui-menus-header) {
     height: 60px;
   }
 }

@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { XDropdown } from "@/xw-ui/element-plus";
+import { XDropdown } from "@/sewen-ui/element-plus";
 import {
   ArrowDown,
   Check,

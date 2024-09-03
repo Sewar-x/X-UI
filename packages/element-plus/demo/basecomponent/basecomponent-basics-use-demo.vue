@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { BasicComponent } from "@/xw-ui/element-plus";
+import { BasicComponent } from "@/sewen-ui/element-plus";
 
 const element = {
   // 节点标签名

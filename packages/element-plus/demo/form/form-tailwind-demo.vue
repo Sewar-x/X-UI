@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { XForm } from "@/xw-ui/element-plus";
+import { XForm } from "@/sewen-ui/element-plus";
 import { reactive } from "vue";
 import type { FormRules } from "element-plus";
 interface RuleForm {
@@ -17,11 +17,11 @@ interface RuleForm {
 
 // 响应数据
 let data = reactive<RuleForm>({
-  username: "XW-UI",
+  username: "sewen-ui",
   description: "an vue2/3 & react componet library",
   place: "huizhou",
   remarks: "Vue React",
-  github: "https://github.com/Sewar-x/X-UI/",
+  github: "https://github.com/Sewar-x/sewen-ui/",
   start: true,
 });
 

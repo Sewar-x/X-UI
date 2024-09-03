@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { XMenu } from "@/xw-ui/element-plus";
+import { XMenu } from "@/sewen-ui/element-plus";
 import { ref, reactive } from "vue";
 import { Document, Menu as IconMenu, Location, Setting } from "@element-plus/icons-vue";
 // from 表单配置项

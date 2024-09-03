@@ -54,10 +54,10 @@ xhttp 除了支持 axios 的基础功能之外，封装了以下功能：
 
 ## 安装
 
-可以引入 xw-ui 库
+可以引入 sewen-ui 库
 
 ```shell
-npm install xw-ui
+npm install sewen-ui
 ```
 
 也可以直接单独使用 xhttp 库
@@ -77,7 +77,7 @@ npm install xhttp
 引入 xhttp 库:
 
 ```typescript
-import { createXhttp } from 'xw-ui/xhttp'
+import { createXhttp } from 'sewen-ui/xhttp'
 
 export default createXhttp({
     tokenKey: 'test-token', // token key值，传入token key值，默认使用内部获取方法

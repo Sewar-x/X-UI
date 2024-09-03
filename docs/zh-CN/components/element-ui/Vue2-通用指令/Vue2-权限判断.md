@@ -12,7 +12,7 @@
 
 ```javascript
 import Vue from 'vue'
-import { directive } from 'xw-ui/element-ui'
+import { directive } from 'sewen-ui/element-ui'
 import permissionList from './permission/index.js'
 import permissions from '服务端返回的用户权限列表接口数组'
 Vue.use(directive.permission, {

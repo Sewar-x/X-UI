@@ -1,6 +1,6 @@
-# 使用 XW-UI/Ant-Design
+# 使用 sewen-ui/Ant-Design
 
-本节将介绍如何在项目中使用 XW-UI Ant-Design。
+本节将介绍如何在项目中使用 sewen-ui Ant-Design。
 
 ## 环境支持
 
@@ -13,21 +13,21 @@
 
 ## 安装
 
-### 1. 安装 XW-UI
+### 1. 安装 sewen-ui
 
 ```js [NPM]
 # npm
-npm install xw-ui
+npm install sewen-ui
 ```
 
 ```js [Yarn]
 # yarn
-yarn install xw-ui
+yarn install sewen-ui
 ```
 
 ```js [PNPM]
 # pnpm
-pnpm install xw-ui
+pnpm install sewen-ui
 ```
 
 ### 2. 安装相关依赖
@@ -47,7 +47,7 @@ pnpm install antd --save
 ### 注意
 
 ::: danger 关于 npm 镜像源
-XW-UI 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
+sewen-ui 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
 :::
 
 如果你使用的私有 npm 仓库，请先将镜像源切换到你的私有 npm 仓库，推荐使用 [nrm](https://www.npmjs.com/package/nrm)  来管理你的镜像源。
@@ -80,10 +80,10 @@ XW-UI 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
    nrm use your-private-npm
    ```
 
-5. 安装以上步骤安装 XW-UI
+5. 安装以上步骤安装 sewen-ui
 
    ```shell
-   npm install xw-ui
+   npm install sewen-ui
    ```
 
 6. 安装相关依赖
@@ -100,14 +100,14 @@ XW-UI 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
 ## 快速开始
 
 ::: danger 关于依赖库
-组件库打包时会对第三方包如 `Ant-Design` 、`react` 进行 `externals` 处理，所以 XW-UI 源代码中没有将 React 相关代码打包。
+组件库打包时会对第三方包如 `Ant-Design` 、`react` 进行 `externals` 处理，所以 sewen-ui 源代码中没有将 React 相关代码打包。
 
 务必保证使用组件的项目中导入必须要的第三方库。
 :::
 
 
 
-XW-UI 的 React 组件库是基于 [Ant Design](https://ant-design.antgroup.com/index-cn) 进行二次封装，因此在使用 XW-UI 之前，需要将 Ant-Design 完整导入到你的项目。
+sewen-ui 的 React 组件库是基于 [Ant Design](https://ant-design.antgroup.com/index-cn) 进行二次封装，因此在使用 sewen-ui 之前，需要将 Ant-Design 完整导入到你的项目。
 
 > 如何引入 Antd 参考 Ant Design 官方手册：
 >
@@ -115,13 +115,13 @@ XW-UI 的 React 组件库是基于 [Ant Design](https://ant-design.antgroup.com/
 >
 > [在 Vite 中使用 - Ant Design (antgroup.com)](https://ant-design.antgroup.com/docs/react/use-with-vite-cn)
 
-### 引入 XW-UI
+### 引入 sewen-ui
 
-在你的页面组件中直接引入 XW-UI 的 ant design 组件库
+在你的页面组件中直接引入 sewen-ui 的 ant design 组件库
 
 ```tsx
 import React from "react";
-import { XwButton } from "xw-ui/ant-design";
+import { XwButton } from "sewen-ui/ant-design";
 
 const ButtonDemo = () => {
   return (

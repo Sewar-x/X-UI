@@ -64,9 +64,9 @@ const sourceCode = () => {
         const compPathStrArr = compPath.split('/')
         // iframe src 地址
         const iframeSrc = compPathStrArr[compPathStrArr.length - 1]
-        // 正则匹配 @xw-ui 路径别名替换为原路径
-        const searchString = new RegExp(`@/xw-ui/${packageName}`, 'g')
-        const replaceString = `xw-ui/${packageName}`
+        // 正则匹配 @sewen-ui 路径别名替换为原路径
+        const searchString = new RegExp(`@/sewen-ui/${packageName}`, 'g')
+        const replaceString = `sewen-ui/${packageName}`
         const file = filesRes[i] ? (filesRes[i] as string).replace(searchString, replaceString) : null
         i++
         // 返回编码后的源码文件内容

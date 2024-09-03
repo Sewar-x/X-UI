@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { CreateDialog } from "@/xw-ui/element-plus";
+import { CreateDialog } from "@/sewen-ui/element-plus";
 import { ref, reactive } from "vue";
 
 interface RuleForm1 {
@@ -23,11 +23,11 @@ interface RuleForm2 {
 }
 // 响应数据
 let form1Data = reactive<RuleForm1>({
-  username: "XW-UI",
+  username: "sewen-ui",
   description: "an vue2/3 & react componet library",
   place: "huizhou",
   remarks: "Vue React",
-  github: "https://github.com/Sewar-x/X-UI/",
+  github: "https://github.com/Sewar-x/sewen-ui/",
   start: true,
 });
 

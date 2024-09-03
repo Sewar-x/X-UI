@@ -4,8 +4,8 @@ import nav from './configs/nav'
 import sidebar from './configs/sidebar'
 import footer from './configs/footer'
 export default defineConfig({
-  title: 'XW-UI',
-  description: 'XW-UI 是一套基于 Vue3、Vue2、React 的 UI 组件库，主要服务于 PC 界面的中后台产品',
+  title: 'sewen-ui',
+  description: 'sewen-ui 是一套基于 Vue3、Vue2、React 的 UI 组件库，主要服务于 PC 界面的中后台产品',
   appearance: false,
   base: `${docsSite}/`,
   head: [
@@ -13,12 +13,12 @@ export default defineConfig({
       'link',
       {
         rel: 'icon',
-        href: '/images/xw-ui-icon.svg'
+        href: '/images/sewen-ui-icon.svg'
       }
     ]
   ],
   themeConfig: {
-    logo: '/images/xw-ui-icon.svg',
+    logo: '/images/sewen-ui-icon.svg',
     nav,
     sidebar,
     footer,

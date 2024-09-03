@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import { XDescriptions } from "@/xw-ui/element-plus";
+import { XDescriptions } from "@/sewen-ui/element-plus";
 const desOptions = {
   attr: {
     title: "描述列表标题",

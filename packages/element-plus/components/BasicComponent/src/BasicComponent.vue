@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { CompType } from "@/xw-ui/element-plus/types/gloabl.d.ts";
+import { CompType } from "@/sewen-ui/element-plus/types/gloabl.d.ts";
 import { defineProps, toRef } from "vue";
 import { isString } from "../../../utils/is.ts";
 const props = defineProps<{

@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { XSearch } from "@/xw-ui/element-plus";
+import { XSearch } from "@/sewen-ui/element-plus";
 import { reactive } from "vue";
 //下拉选项
 const selectOpt = ["送货上门", "自取"].map((option) => {

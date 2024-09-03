@@ -97,7 +97,7 @@ interface OptionType {
 </template>
 <script setup lang="ts">
 // 导入弹窗组件
-import { XDialog } from "@/xw-ui/element-plus";
+import { XDialog } from "@/sewen-ui/element-plus";
 </script>
 
 ```
@@ -123,7 +123,7 @@ import { XDialog } from "@/xw-ui/element-plus";
 
 <script setup lang="ts">
 // 使用弹窗函数创建弹窗
-import { CreateDialog } from "@/xw-ui/element-plus";
+import { CreateDialog } from "@/sewen-ui/element-plus";
 // 定义弹窗配置项
  const dialogOptions = {
   // ...省略配置项  
@@ -191,7 +191,7 @@ const closeDialog = () => {
 
 <script setup lang="ts">
 // 使用弹窗函数创建弹窗
-import { CreateDialog } from "@/xw-ui/element-plus";
+import { CreateDialog } from "@/sewen-ui/element-plus";
 // 定义弹窗配置项
 const dialogOptions = {
   id: "test-table-dialog", // 必须传入 id
@@ -249,7 +249,7 @@ const closeDialog = () => {
 
 <script setup lang="ts">
 // 使用弹窗函数创建弹窗
-import { CreateDialog } from "@/xw-ui/element-plus";
+import { CreateDialog } from "@/sewen-ui/element-plus";
 // 定义弹窗配置项
 
 const dialogOptions = {
@@ -354,7 +354,7 @@ const openTableDialog = () => {
 
 您也可以自定义操作按钮，通过在 `options.footer.options` 传入按钮配置项并且配置  `options.footer.fixedButton`  为 false 或则不配置该字段，既可自定义操作按钮；
 
-按钮配置项可以参考按钮组件配置：[按钮 | XW-UI (sewar-x.github.io)](https://sewar-x.github.io/X-UI/zh-CN/components/element-plus/Vue3-通用组件/Button按钮.html#示例)
+按钮配置项可以参考按钮组件配置：[按钮 | sewen-ui (sewar-x.github.io)](https://sewar-x.github.io/sewen-ui/zh-CN/components/element-plus/Vue3-通用组件/Button按钮.html#示例)
 
 ::: details  按钮组件配置
 

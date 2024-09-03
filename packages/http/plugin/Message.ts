@@ -10,7 +10,7 @@ export class Message {
 
     // 创建消息容器
     const messageEl = document.createElement('div');
-    messageEl.classList.add('xw-ui-http-message', `xw-ui-http-message__${type || 'info'}`, 'xw-ui-http-message--info');
+    messageEl.classList.add('sewen-ui-http-message', `sewen-ui-http-message__${type || 'info'}`, 'sewen-ui-http-message--info');
     messageEl.style.position = 'fixed';
     messageEl.style.top = '5%';
     messageEl.style.left = '50%';
@@ -19,7 +19,7 @@ export class Message {
 
     if (showClose) {
       const closeBtn = document.createElement('button');
-      closeBtn.classList.add('xw-ui-http-message__close-btn');
+      closeBtn.classList.add('sewen-ui-http-message__close-btn');
       closeBtn.textContent = '×';
       closeBtn.onclick = () => this.close();
       messageEl.appendChild(closeBtn);
@@ -85,7 +85,7 @@ export class Message {
 
   // 关闭所有消息的实例
   static closeAll() {
-    document.querySelectorAll('.xw-ui-http-message').forEach(messageEl => {
+    document.querySelectorAll('.sewen-ui-http-message').forEach(messageEl => {
       messageEl.remove();
     });
   }
@@ -94,7 +94,7 @@ export class Message {
 // 添加一些简单的样式
 const style = document.createElement('style');
 style.textContent = `
-.xw-ui-http-message {
+.sewen-ui-http-message {
   border: 1px solid #dcdfe6;
   background-color: #fff;
   border-radius: 4px;
@@ -104,24 +104,24 @@ style.textContent = `
   color: white;
   text-align: center;
 }
-.xw-ui-http-message__close-btn {
+.sewen-ui-http-message__close-btn {
   width: 16px;
   height: 16px;
   border-radius: 50%;
 }
-.xw-ui-http-message__success {
+.sewen-ui-http-message__success {
   background-color: #67C23A;
 }
 
-.xw-ui-http-message__error {
+.sewen-ui-http-message__error {
   background-color: #F56C6C;
 }
 
-.xw-ui-http-message__info {
+.sewen-ui-http-message__info {
   background-color: #909399;
 }
 
-.xw-ui-http-message__warning {
+.sewen-ui-http-message__warning {
   background-color: #E6A23C;
 }
 `;

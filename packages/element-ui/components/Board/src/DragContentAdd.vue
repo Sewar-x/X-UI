@@ -16,7 +16,7 @@
 
 <script>
 import DialogAdd from "./components/modify/DialogAdd.vue";
-import elDragDialog from "@/xw-ui/element-ui/directive/el-drag-dialog"; // base on element-ui
+import elDragDialog from "@/sewen-ui/element-ui/directive/el-drag-dialog"; // base on element-ui
 
 export default {
   name: "DragContentAdd",

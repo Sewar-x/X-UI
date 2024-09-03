@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { formateOptions, debounce } from "@/xw-ui/element-ui/utils/index.js";
+import { formateOptions, debounce } from "@/sewen-ui/element-ui/utils/index.js";
 export default {
   name: "RemoteSearchSelector",
   model: {

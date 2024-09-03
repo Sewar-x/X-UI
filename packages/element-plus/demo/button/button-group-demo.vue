@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { XButton } from "@/xw-ui/element-plus";
+import { XButton } from "@/sewen-ui/element-plus";
 import { ArrowLeft, ArrowRight, Delete, Edit, Share } from "@element-plus/icons-vue";
 
 const multOpions = [

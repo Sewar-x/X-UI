@@ -1,5 +1,5 @@
 {
-  "name": "@xw-ui/element-plus",
+  "name": "@sewen-ui/element-plus",
   "version": "1.0.194",
   "description": "二次封装 element-plus",
   "main": "./index.ts",
@@ -25,8 +25,8 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.6",
-    "@xw-ui/hooks": "workspace:^",
-    "@xw-ui/shared": "workspace:^",
+    "@sewen-ui/hooks": "workspace:^",
+    "@sewen-ui/shared": "workspace:^",
     "element-plus": "^2.6.2",
     "swiper": "^8.4.5",
     "vue-awesome-swiper": "^5.0.1"

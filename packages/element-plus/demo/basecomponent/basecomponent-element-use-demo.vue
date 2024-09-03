@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { BasicComponent } from "@/xw-ui/element-plus";
+import { BasicComponent } from "@/sewen-ui/element-plus";
 const inputValue = ref("输出框初始值");
 const textarea = {
   comp: "div",

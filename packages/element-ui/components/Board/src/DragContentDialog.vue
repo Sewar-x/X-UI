@@ -75,8 +75,8 @@
 import TopContent from "./components/card/TopContent.vue";
 import Comments from "./components/comments/Comments.vue";
 import InfiniteScroll from "./components/comments/InfiniteScrollWrap.vue";
-import Tinymce from "@/xw-ui/element-ui/components/Tinymce";
-import elDragDialog from "@/xw-ui/element-ui/directive/el-drag-dialog"; // base on element-ui
+import Tinymce from "@/sewen-ui/element-ui/components/Tinymce";
+import elDragDialog from "@/sewen-ui/element-ui/directive/el-drag-dialog"; // base on element-ui
 
 export default {
   name: "DragContentDialog",

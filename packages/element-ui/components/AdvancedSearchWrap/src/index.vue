@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import FormWrap from "@/xw-ui/element-ui/components/FormWrap";
+import FormWrap from "@/sewen-ui/element-ui/components/FormWrap";
 export default {
   name: "AdvancedSearchWrap",
   components: {

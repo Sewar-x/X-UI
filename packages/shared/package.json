@@ -1,6 +1,6 @@
 {
-  "name": "@xw-ui/shared",
-  "description": "XW-Ui composables shared",
+  "name": "@sewen-ui/shared",
+  "description": "sewen-ui composables shared",
   "private": true,
   "license": "MIT",
   "main": "./index.ts",

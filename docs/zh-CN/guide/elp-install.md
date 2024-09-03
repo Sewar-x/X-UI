@@ -1,6 +1,6 @@
-# 使用 XW-UI/Element-Plus
+# 使用 sewen-ui/Element-Plus
 
-本节将介绍如何在项目中使用 XW-UI Element Plus。
+本节将介绍如何在项目中使用 sewen-ui Element Plus。
 
 ## 环境支持
 ::: tip 当前封装所使用的库版本
@@ -11,21 +11,21 @@
 
 ## 安装
 
-### 1. 安装 XW-UI
+### 1. 安装 sewen-ui
 
 ```js [NPM]
 # npm
-npm install xw-ui
+npm install sewen-ui
 ```
 
 ```js [Yarn]
 # yarn
-yarn install xw-ui
+yarn install sewen-ui
 ```
 
 ```js [PNPM]
 # pnpm
-pnpm install xw-ui
+pnpm install sewen-ui
 ```
 
 ### 2. 安装相关依赖
@@ -45,7 +45,7 @@ pnpm install element-plus
 ### 注意
 
 ::: danger 关于 npm 镜像源
-XW-UI 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
+sewen-ui 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
 :::
 
 如果你使用的私有 npm 仓库，请先将镜像源切换到你的私有 npm 仓库，推荐使用 [nrm](https://www.npmjs.com/package/nrm)  来管理你的镜像源。
@@ -78,10 +78,10 @@ XW-UI 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
    nrm use your-private-npm
    ```
 
-5. 安装以上步骤安装 XW-UI
+5. 安装以上步骤安装 sewen-ui
 
    ```shell
-   npm install xw-ui
+   npm install sewen-ui
    ```
 
 6. 安装相关依赖
@@ -98,14 +98,14 @@ XW-UI 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
 ## 快速开始
 
 ::: danger 关于依赖库
-组件库打包时会对第三方包如 `element-plus` 、`vue` 进行 `externals` 处理，所以 XW-UI 源代码中没有将 Vue 相关代码打包。
+组件库打包时会对第三方包如 `element-plus` 、`vue` 进行 `externals` 处理，所以 sewen-ui 源代码中没有将 Vue 相关代码打包。
 
 务必保证使用组件的项目中导入必须要的第三方库。
 :::
 
 
 
-XW-UI 的 Vue3 组件库是基于 [Element Plus](https://element-plus.org/zh-CN/guide/quickstart.html) 进行二次封装，因此在使用 XW-UI 之前，需要将 Element Plus 完整导入到你的项目。
+sewen-ui 的 Vue3 组件库是基于 [Element Plus](https://element-plus.org/zh-CN/guide/quickstart.html) 进行二次封装，因此在使用 sewen-ui 之前，需要将 Element Plus 完整导入到你的项目。
 
 **完整导入 Element Plus**
 
@@ -130,7 +130,7 @@ app.mount('#app')
 
 
 
-### 完整引入 XW-UI
+### 完整引入 sewen-ui
 
 如果你对打包后的文件大小不是很在乎，那么使用完整导入会更方便。
 
@@ -141,8 +141,8 @@ app.mount('#app')
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import { XElementPlusInstall } from 'xw-ui/element-plus'
-import 'xw-ui/element-plus/style.css'
+import { XElementPlusInstall } from 'sewen-ui/element-plus'
+import 'sewen-ui/element-plus/style.css'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -155,9 +155,9 @@ app.mount('#app')
 
 
 
-### 按需引入  XW-UI
+### 按需引入  sewen-ui
 
-需要在使用 `XW-UI ` 组件的地方进行按需引入。
+需要在使用 `sewen-ui ` 组件的地方进行按需引入。
 
 ```vue{3,9,12}
 <template>
@@ -168,7 +168,7 @@ app.mount('#app')
 
 <script>
 import { defineComponent } from "vue";
-import { XBasicForm } from "xw-ui/element-plus";
+import { XBasicForm } from "sewen-ui/element-plus";
 export default defineComponent({
   components: {
     XBasicForm,
@@ -177,11 +177,11 @@ export default defineComponent({
     return {
       createForm: {
         mode: {
-          username: "XW-UI",
+          username: "sewen-ui",
           description: "an vue2/3 & react componet library",
           place: "huizhou",
           remarks: "Vue React",
-          github: "https://github.com/Sewar-x/X-UI/",
+          github: "https://github.com/Sewar-x/sewen-ui/",
         },
         attr: {
           "label-width": "30px",

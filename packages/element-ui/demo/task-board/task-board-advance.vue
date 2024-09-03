@@ -303,17 +303,17 @@
 </template>
 
 <script>
-import AdvancedSearch from "@/xw-ui/element-ui/components/AdvancedSearchWrap";
+import AdvancedSearch from "@/sewen-ui/element-ui/components/AdvancedSearchWrap";
 import {
   XTaskBoard,
   TopContent,
   DialogEdit,
   ChildTask,
   DialogAdd,
-} from "@/xw-ui/element-ui/components/Board/index.js";
-import { FileUploadWrap } from "@/xw-ui/element-ui/components/FileUploadWrap";
-import { generateRandomString, rangetimePickerOptions } from "@/xw-ui/element-ui/utils";
-import DialogWrap from "@/xw-ui/element-ui/components/DialogWrap";
+} from "@/sewen-ui/element-ui/components/Board/index.js";
+import { FileUploadWrap } from "@/sewen-ui/element-ui/components/FileUploadWrap";
+import { generateRandomString, rangetimePickerOptions } from "@/sewen-ui/element-ui/utils";
+import DialogWrap from "@/sewen-ui/element-ui/components/DialogWrap";
 
 import {
   getDiscussionList,
@@ -329,7 +329,7 @@ import {
   digitalTaskInfo,
   digitalizeTask,
   digitalTaskArchive,
-} from "@/xw-ui/element-ui/components/Board/api/index.js";
+} from "@/sewen-ui/element-ui/components/Board/api/index.js";
 const OPERATION = {
   ADD: "add",
   EDIT: "edit",

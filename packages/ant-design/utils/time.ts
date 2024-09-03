@@ -1,4 +1,4 @@
-import { createDateRangeShortcuts as create } from '@/xw-ui/shared'
+import { createDateRangeShortcuts as create } from '@/sewen-ui/shared'
 
 export function createDateRangeShortcuts() {
   const shortcuts = create()

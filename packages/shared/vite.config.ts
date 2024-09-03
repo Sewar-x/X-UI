@@ -10,7 +10,7 @@ export default defineConfig({
       },
       manualChunks(id) {
         if (id.includes('node_modules')) {
-          return 'xw-ui-shared'
+          return 'sewen-ui-shared'
         }
       },
       // 确保外部化依赖，这样它们不会被打包进你的库中  
@@ -30,7 +30,7 @@ export default defineConfig({
       // 当产物为 umd、iife 格式时，该模块暴露的全局变量名称
       name: 'xwuiShared',
       // 产物文件名称
-      fileName: 'xw-ui-shared',
+      fileName: 'sewen-ui-shared',
     },
     // true:混淆产物代码
     minify: false,

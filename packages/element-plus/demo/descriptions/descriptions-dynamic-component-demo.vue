@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, watch } from "vue";
-import { XForm, XDescriptions, XPopover } from "@/xw-ui/element-plus";
+import { XForm, XDescriptions, XPopover } from "@/sewen-ui/element-plus";
 import { ArrowLeft, ArrowRight, Delete, Edit, Share } from "@element-plus/icons-vue";
 // 编辑状态
 const isEdit = ref<boolean>(false);

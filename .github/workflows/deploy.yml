@@ -1,5 +1,5 @@
 # 构建 VitePress 站点并将其部署到 GitHub Pages 的示例工作流程
-name: Deploy XW-UI Document Site to GitHub Pages #name: 定义了工作流程的名称
+name: Deploy sewen-ui Document Site to GitHub Pages #name: 定义了工作流程的名称
 
 on: #on: 指定了触发此工作流程的事件
   # 在针对 `main` 分支的推送上运行。如果你使用 `master` 分支作为默认分支，请将其更改为 `master`

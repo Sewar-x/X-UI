@@ -256,15 +256,15 @@
 </template>
 
 <script>
-import { generateRandomString } from "@/xw-ui/element-ui/utils";
+import { generateRandomString } from "@/sewen-ui/element-ui/utils";
 import {
   XTaskBoard,
   TopContent,
   DialogEdit,
   ChildTask,
   DialogAdd,
-} from "@/xw-ui/element-ui/components/Board/index.js";
-import { FileUploadWrap } from "@/xw-ui/element-ui/components/FileUploadWrap/index.js";
+} from "@/sewen-ui/element-ui/components/Board/index.js";
+import { FileUploadWrap } from "@/sewen-ui/element-ui/components/FileUploadWrap/index.js";
 import {
   getDiscussionList,
   discussionAdd,
@@ -278,7 +278,7 @@ import {
   digitalTaskCopy,
   digitalTaskInfo,
   digitalizeTask,
-} from "@/xw-ui/element-ui/components/Board/api/index.js";
+} from "@/sewen-ui/element-ui/components/Board/api/index.js";
 
 const OPERATION = {
   ADD: "add",

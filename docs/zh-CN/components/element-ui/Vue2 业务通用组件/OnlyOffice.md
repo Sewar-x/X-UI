@@ -36,7 +36,7 @@
      init,
      // opendByOnlyOffice,
      permissions,
-   } from "xw-ui/packages/element-ui/dist/index.es.js";
+   } from "sewen-ui/packages/element-ui/dist/index.es.js";
    export default {
      name: "OnlyOffice",
      components: { XOnlyOffice },
@@ -81,7 +81,7 @@
 3. 使用 OnlyOffice 打开文件：
 
    ```javascript
-   import {opendByOnlyOffice,permissions} from  "xw-ui/packages/element-ui/dist/index.es.js";
+   import {opendByOnlyOffice,permissions} from  "sewen-ui/packages/element-ui/dist/index.es.js";
    // 文档权限配置
    const onlyOfficePermissions = {
            // 权限控制

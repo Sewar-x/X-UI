@@ -1,24 +1,24 @@
 ---
-title: XW-UI
+title: sewen-ui
 titleTemplate: Vue2 & Vue3 & React JSON Scheme (DSL) Component Library
 description: Vue2 & Vue3 & React JSON Scheme (DSL) Component Library
 head:
   - - meta
     - name: description
-      content: XW-UI is Vue2 & Vue3 & React JSON Scheme configer Component Library
+      content: sewen-ui is Vue2 & Vue3 & React JSON Scheme configer Component Library
   - - meta
     - name: keywords
-      content: XW-UI Vue2 Vue3 React Component Library
+      content: sewen-ui Vue2 Vue3 React Component Library
 
       
 layout: home
 
 hero:
-  name: XW-UI
+  name: sewen-ui
   text: JSON Scheme (DSL) 组件库
   tagline: 基于 ElementUI、ElementPlus、AntDesign 组件库二次封装，JSON 配置化快速开发中后台组件库
   image:
-    src: /images/xw-ui-icon.svg
+    src: /images/sewen-ui-icon.svg
   actions:
     - theme: brand
       text:  Vue2
@@ -31,7 +31,7 @@ hero:
       link: /zh-CN/guide/antd-install
     - theme: alt
       text:  GitHub
-      link:  https://github.com/Sewar-x/X-UI
+      link:  https://github.com/Sewar-xsewen-ui/
 
 features:
   - icon:    ⚡️
@@ -78,7 +78,7 @@ const members = [
       团队成员
     </template>
     <template #lead>
-      核心团队成员是那些积极参与维护组件核心项目的人。他们对 XW-UI 组件做出了贡献。
+      核心团队成员是那些积极参与维护组件核心项目的人。他们对 sewen-ui 组件做出了贡献。
     </template>
   </VPTeamPageTitle>
   <VPTeamMembers

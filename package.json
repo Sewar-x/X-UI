@@ -1,6 +1,6 @@
 {
-  "name": "xw-ui",
-  "version": "1.0.194",
+  "name": "sewen-ui",
+  "version": "1.0.201",
   "description": "配置化组件库",
   "workspaces": [
     "packages/*",
@@ -84,7 +84,7 @@
     "lint:script": "eslint --ext .js,.jsx,.ts,.tsx,.vue --fix ./"
   },
   "keywords": [
-    "xw-ui",
+    "sewen-ui",
     "vue",
     "react",
     "element",

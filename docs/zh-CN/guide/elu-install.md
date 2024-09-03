@@ -1,6 +1,6 @@
-# 使用 XW-UI/Element-UI
+# 使用 sewen-ui/Element-UI
 
-本节将介绍如何在项目中使用 XW-UI Element UI。
+本节将介绍如何在项目中使用 sewen-ui Element UI。
 
 ## 环境支持
 
@@ -13,21 +13,21 @@
 
 ## 安装
 
-### 1. 安装 XW-UI
+### 1. 安装 sewen-ui
 
 ```js [NPM]
 # npm
-npm install xw-ui
+npm install sewen-ui
 ```
 
 ```js [Yarn]
 # yarn
-yarn install xw-ui
+yarn install sewen-ui
 ```
 
 ```js [PNPM]
 # pnpm
-pnpm install xw-ui
+pnpm install sewen-ui
 ```
 
 ### 2. 安装相关依赖
@@ -47,7 +47,7 @@ pnpm install element-ui -S
 ### 注意
 
 ::: danger 关于 npm 镜像源
-XW-UI 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
+sewen-ui 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
 :::
 
 如果你使用的私有 npm 仓库，请先将镜像源切换到你的私有 npm 仓库，推荐使用 [nrm](https://www.npmjs.com/package/nrm)  来管理你的镜像源。
@@ -80,10 +80,10 @@ XW-UI 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
    nrm use your-private-npm
    ```
 
-5. 安装以上步骤安装 XW-UI
+5. 安装以上步骤安装 sewen-ui
 
    ```shell
-   npm install xw-ui
+   npm install sewen-ui
    ```
 
 6. 安装相关依赖
@@ -100,14 +100,14 @@ XW-UI 发布在私有 npm 镜像中，下载该包之前先切换 npm 镜像源
 ## 快速开始
 
 ::: danger 关于依赖库
-组件库打包时会对第三方包如 `element-UI` 、`vue` 进行 `externals` 处理，所以 XW-UI 源代码中没有将 Vue 相关代码打包。
+组件库打包时会对第三方包如 `element-UI` 、`vue` 进行 `externals` 处理，所以 sewen-ui 源代码中没有将 Vue 相关代码打包。
 
 务必保证使用组件的项目中导入必须要的第三方库。
 :::
 
 
 
-XW-UI 的 Vue2 组件库是基于 [Element UI](https://element.eleme.cn/#/zh-CN/guide/design) 进行二次封装，因此在使用 XW-UI 之前，需要将 Element UI 完整导入到你的项目。
+sewen-ui 的 Vue2 组件库是基于 [Element UI](https://element.eleme.cn/#/zh-CN/guide/design) 进行二次封装，因此在使用 sewen-ui 之前，需要将 Element UI 完整导入到你的项目。
 
 **完整导入 Element UI**
 
@@ -133,7 +133,7 @@ new Vue({
 
 
 
-### 完整引入 XW-UI
+### 完整引入 sewen-ui
 
 如果你对打包后的文件大小不是很在乎，那么使用完整导入会更方便。
 
@@ -145,8 +145,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import XWUI from 'xw-ui'
-import 'xw-ui/packages/element-ui/dist/style.css'
+import XWUI from 'sewen-ui'
+import 'sewen-ui/packages/element-ui/dist/style.css'
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 XWUI.XElementUI.XElementUiInstall(Vue)
@@ -156,7 +156,7 @@ new Vue({
 
 ```
 
-使用 `XW-UI`:
+使用 `sewen-ui`:
 
 ```vue
 <template>
@@ -208,9 +208,9 @@ export default {
 
 
 
-### 按需引入  XW-UI 组件
+### 按需引入  sewen-ui 组件
 
-直接在使用的地方使用完整路径 (`xw-ui/packages/element-ui/dist/index.es.js`) 导入相关组件即可：
+直接在使用的地方使用完整路径 (`sewen-ui/packages/element-ui/dist/index.es.js`) 导入相关组件即可：
 ```vue
 <template>
   <x-table :data="tableData" :default-columns="defaultColumns">
@@ -223,7 +223,7 @@ export default {
 
 <script>
 // 使用完整路径导入组件
-import { XTable } from "xw-ui/packages/element-ui/dist/index.es.js";
+import { XTable } from "sewen-ui/packages/element-ui/dist/index.es.js";
 export default {
   name: "TableCustomColumns",
   // 指定使用的组件
