@@ -73,3 +73,9 @@
 | ------- | ---------------- |
 | default | 下拉内容默认插槽 |
 
+## 示例
+
+<xw-demo
+    demo-height="100px"
+    source-code="element-plus:::dropdown/dropdown-demo"
+/>
