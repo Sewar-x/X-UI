@@ -20,3 +20,12 @@ body {
   --xw-c-brand-dark: var(--xw-primary-color);
   --xw-c-brand-darker: var(--xw-primary-hover-color);
 }
+
+
+.VPFeature {
+  cursor: pointer;
+  &:hover {
+    transition: all .5s  ease-in-out ;
+    transform: scale(1.05);
+  }
+}
