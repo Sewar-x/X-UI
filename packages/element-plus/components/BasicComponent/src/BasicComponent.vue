@@ -18,17 +18,28 @@
     <template v-if="options.content">
       <span> {{ options.content.text ? options.content.text : options.content }} </span>
     </template>
+    <template
+      v-for="slotName in Object.keys(slots)"
+      :key="slotName"
+      #[slotName]="slotProps"
+    >
+      <slot
+        :name="slotName"
+        v-if="slotName"
+        :slotScope="Object.assign({}, slotProps, options.slotScope) || {}"
+      ></slot>
+    </template>
   </component>
 </template>
 
 <script setup lang="ts">
 import { CompType } from "@/sewen-ui/element-plus/types/gloabl.d.ts";
-import { defineProps, toRef } from "vue";
+import { defineProps, toRef, useSlots  } from "vue";
 import { isString } from "../../../utils/is.ts";
 const props = defineProps<{
   options: CompType;
 }>();
-
+const slots = useSlots();
 const compName = isString(props.options.comp)
   ? `${props.options.comp}`
   : props.options.comp;
