@@ -126,7 +126,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onBeforeMount, defineEmits, reactive } from "vue";
+import { ref, watch, onBeforeMount, defineEmits, reactive, computed } from "vue";
 import type { TableType, columnsType, PaginationType } from "../type";
 import { XSearch } from "../../Search";
 import { CompType } from "@/sewen-ui/element-plus/types/gloabl.d.ts";
@@ -222,9 +222,9 @@ const getPaginationConfig = function (): PaginationType {
   return deepMerge(defalutConfig, props.options.pagination) as PaginationType;
 };
 // 分页配置项
-const paginationConfig = getPaginationConfig();
+const paginationConfig = computed(()=>  getPaginationConfig());
 // 获取表格数据，当使用分页时候，data 表示分页数据和数据，data.data 表示表格数据，当使用分页时，data 表示表格数据
-const data = paginationConfig.show ? props.options.data.data : props.options.data;
+const data = computed(()=> paginationConfig.show ? props.options.data.data : props.options.data);
 const loading = ref(false);
 //选中显示的列
 const selectColumns: Array<columnsType> = ref([]);
